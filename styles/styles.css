@@ -5,6 +5,16 @@
     box-sizing: border-box;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 /* ! ****************************** */
 /* ! CUSTOM PROPERITES ************ */
@@ -39,20 +49,25 @@ body{
     height: 100%;
 }
 
+a{
+    color: black;
+}
+
 h1{
     color: var(--footer-clor);
-    font-size: 33px;
+    font-size: 2.5rem;
     margin-bottom: 20px;
     text-shadow: 1px 1px 1px darkgreen;
 }
 
 h2{
+    font-size: 1.8rem;
     margin-bottom: 20px;
 }
 
 h5{
     color: var(--btn-color);
-    font-size: 20px;
+    font-size: 1.2rem;
     margin-bottom: 10px;
     text-transform: uppercase;
 }
@@ -203,6 +218,82 @@ section::before{
     padding: 25%;
 }
 
+/* # DI COSA MI OCCUPO */
+
+/* # CONTATTAMI */
+#contattami li{
+    margin-bottom: 30px;
+    line-height: 1.5rem;
+}
+
+#contattami .fa-li{
+    color: var(--btn-color);
+    font-size: 1.5rem;
+}
+
+/* * contattami form */
+#contattami .d-flex{
+    display: block;
+}
+
+#contattami .form-card{
+    background-color: var(--green-bg-color);
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 2px 2px 5px gray;
+}
+
+#contattami label{
+    display: block;
+}
+
+#contattami .clients-data{
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    height: 2rem;
+    padding: 1rem;
+    outline: none;
+    border-radius: .5rem;
+    border: 1px solid gray;
+}
+
+textarea#message{
+    outline: none;
+    width: 100%;
+    resize: none;
+    background-color: white;
+    z-index: 0;
+    border-radius: .5rem;
+    
+    padding: 1rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+input[type="submit"]{
+    width: 100%;
+    border: none;
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.iubenda-link{
+    display: inline-block;
+    color: gray;
+    transition: color 300ms
+}
+
+.iubenda-link:hover{
+    color: orange;
+}
+
+label[for="miele-cb"]{
+    position: absolute;
+    top: 0;
+    left: -800px;
+}
+
+/* # CONTATTI */
 
 /* ! ****************************** */
 /* ! FOOTER *********************** */
@@ -213,6 +304,11 @@ footer{
     color: white;
 
     padding: 20px;
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }
 
 /* ! ****************************** */
@@ -266,6 +362,11 @@ footer{
     #hero .container{
         display: flex;
         gap: 50px;
+    }
+
+    /* # CONTATTAMI */
+    #contattami .d-flex{
+        display: flex;
     }
 
 

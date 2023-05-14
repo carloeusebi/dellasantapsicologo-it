@@ -16,6 +16,10 @@ img{
     border-radius: 50%;
 }
 
+.w-100{
+    width: 100%;
+}
+
 /* # flex utilities */
 .d-flex{
     display: flex;
@@ -53,8 +57,16 @@ img{
     align-items: center;
 }
 
+.col-33{
+    flex-basis: calc(100% / 3);
+}
+
 .col-50{
     flex-basis: 50%;
+}
+
+.col-66{
+    flex-basis: calc(100% / 3 * 2);
 }
 
 .d-flex .flex-grow{
