@@ -14,18 +14,83 @@
     --btn-color: #6ecc84;
     --green-bg-color: #bed5c4;
     --footer-clor: #264e32;
+
+    /* layout */
+    --header-height: 100px;
+    --footer-height: 65px;
+    --navbar-width: 270px;
 }
 
 /* ! ****************************** */
 /* ! GENERALS ********************* */
 /* ! ****************************** */
 body{
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container{
+    max-width: 550px;
+    margin: 0 auto;
 }
 
 /* ! ****************************** */
 /* ! HEADER *********************** */
 /* ! ****************************** */
+header{
+    height: var(--header-height);
+    background-color: #fff;
+
+    position: sticky;
+    top: 0;
+    left: 0;
+
+    box-shadow: 0 0 2px black;
+}
+
+header .container{
+    height: 100%;
+}
+
+#hdr-logo img{
+    max-width: 75%;
+    max-height: var(--header-height);
+}
+
+/* # NAVBAR */
+#main-navbar{
+    position: absolute;
+    top: calc(var(--header-height) + 1px);
+    left: calc(var(--navbar-width) * -1);
+
+    width: var(--navbar-width);
+    height: calc(100vh - var(--header-height));
+    background-color: white;
+    box-shadow: 0 0 2px gray;
+
+    padding: 50px 20px;
+
+    transition: left 300ms;
+}
+
+#main-navbar li a{
+    display: block;
+    font-weight: bold;
+    padding: 20px 0;
+    
+    border-bottom: 1px solid lightgray;
+    color: black;
+
+    transition: color 300ms;
+}
+
+#main-navbar li a.active{
+    color: var(--btn-color);
+}
+#main-navbar li a:hover{
+    color: var(--btn-color);
+}
+
+
 
 /* ! ****************************** */
 /* ! MAIN ************************* */
@@ -34,3 +99,48 @@ body{
 /* ! ****************************** */
 /* ! FOOTER *********************** */
 /* ! ****************************** */
+
+/* ! ****************************** */
+/* ! RESPONSIVE ******************* */
+/* ! ****************************** */
+/* # tablet */
+@media screen and (min-width: 768px) {
+    .container{
+        max-width: 980px;
+    }
+}
+
+/* # desktop */
+@media screen and (min-width: 992px) {
+    .container{
+        max-width: 1400px;
+    }
+
+    header{
+        padding: 0;
+    }
+
+    /* * navbar switch */
+    #hamburger-menu{
+        display: none;
+    }
+
+    #main-navbar{
+        position: static;
+        width: auto;
+        height: auto;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    #main-navbar ul{
+        display: flex;
+    }
+
+    #main-navbar li a{
+        padding: 20px;
+        border: none;
+    }
+
+
+}

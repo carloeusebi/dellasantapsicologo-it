@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Carlo Eusebi">
     <title>Dellasanta Psicologo Fano</title>
+    <!-- roboto -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic" rel="stylesheet">
     <!-- font awesome -->
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' integrity='sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==' crossorigin='anonymous'>
     <!--  my library -->
@@ -17,7 +19,25 @@
 
     <!-- ! HEADER -->
     <header>
-
+        <div class="container d-flex justify-space-between align-center">
+            <div id="hdr-logo">
+                <a href="https://www.dellasantapsicologo.it" target="_blank">
+                    <img class="fluid-img" src="img/Logo.webp" alt="logo del sito">
+                </a>
+            </div>
+            <div id="hamburger-menu" class="p-20 c-pointer">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <nav id="main-navbar">
+                <ul>
+                    <li><a class="main-navbar-item active" href="#hero">Home</a></li>
+                    <li><a class="main-navbar-item" href="#chi-sono">Chi Sono</a></li>
+                    <li><a class="main-navbar-item" href="#cosa-aspettarsi">Cosa aspettarsi dalla Terapia</a></li>
+                    <li><a class="main-navbar-item" href="#di-cosa-mi-occupo">Di cosa mi Occupo</a></li>
+                    <li><a class="main-navbar-item" href="#contatti">Contatti</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <!-- ! MAIN -->
@@ -59,6 +79,41 @@
     <footer>
 
     </footer>
+
+
+    <!-- TODO MOVE SCRIPTS -->
+    <script>
+        
+        // navbar script
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const mainNavbar = document.getElementById('main-navbar');
+
+        let flag = false;
+
+        hamburgerMenu.addEventListener('click', function() {
+            if (flag){
+                mainNavbar.style.left = 'calc(var(--navbar-width) * -1)';
+                flag = false;
+            } else {
+                mainNavbar.style.left = 0;
+                flag = true;
+            }
+        })
+
+        // active menu scrpit
+        const navbarItems = document.getElementsByClassName('main-navbar-item');
+       
+        for(let i = 0; i < navbarItems.length; i++){
+            console.log(navbarItems[i]);
+            navbarItems[i].addEventListener('click', function(){
+                for(let j = 0; j < navbarItems.length; j++){
+                    navbarItems[j].classList.remove('active');
+                }
+                navbarItems[i].classList.add('active');
+            })
+        }
+
+    </script>
     
 </body>
 </html>
