@@ -25,8 +25,10 @@
                     <img class="fluid-img" src="img/Logo.webp" alt="logo del sito">
                 </a>
             </div>
-            <div id="hamburger-menu" class="p-20 c-pointer">
-                <i class="fa-solid fa-bars"></i>
+            <div id="hamburger-menu" class="m-20">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
             <nav id="main-navbar">
                 <ul>
@@ -93,9 +95,11 @@
         hamburgerMenu.addEventListener('click', function() {
             if (flag){
                 mainNavbar.style.left = 'calc(var(--navbar-width) * -1)';
-                flag = false;
+                hamburgerMenu.classList.remove('open');
+                flag = false;                
             } else {
                 mainNavbar.style.left = 0;
+                hamburgerMenu.classList.add('open');
                 flag = true;
             }
         })

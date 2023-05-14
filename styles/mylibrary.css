@@ -69,6 +69,10 @@
 }
 
 /* # margins and paddings */
+.m-20{
+    margin: 20px;
+}
+
 .mr-10{
     margin-right: 10px;
 }
