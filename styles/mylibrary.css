@@ -7,7 +7,8 @@
     text-align: center;
 }
 
-.fluid-img{
+img{
+    display: block;
     max-width: 100%;
 }
 
@@ -52,6 +53,10 @@
     align-items: center;
 }
 
+.col-50{
+    flex-basis: 50%;
+}
+
 .d-flex .flex-grow{
     flex-grow: 1;
 }
@@ -60,11 +65,11 @@
     flex-shrink: 1;
 }
 
-.d-flex .flex-gap10{
+.d-flex.flex-gap10{
     gap: 10px;
 }
 
-.d-flex .flex-gap20{
+.d-flex.flex-gap20{
     gap: 20px;
 }
 

@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-touch-callout:none;
 }
 
 
@@ -40,21 +39,63 @@ body{
     height: 100%;
 }
 
+h1{
+    color: var(--footer-clor);
+    font-size: 33px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 1px darkgreen;
+}
+
+h2{
+    margin-bottom: 20px;
+}
+
+h5{
+    color: var(--btn-color);
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+p{
+    line-height: 1.5;
+}
+
+.btn{
+    display: inline-block;
+    padding: 17px 32px;
+    background-color: var(--btn-color);
+    
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    transition: background-color 300ms;
+}
+
+.btn:hover{
+    background-color: var(--footer-clor);
+}
+
 /* ! ****************************** */
 /* ! HEADER *********************** */
 /* ! ****************************** */
-header{
+#main-header{
     height: var(--header-height);
     background-color: #fff;
 
     position: sticky;
     top: 0;
     left: 0;
+    z-index: 1;
 
     box-shadow: 0 0 2px black;
 }
 
-header .container{
+#main-header .container{
     height: 100%;
 }
 
@@ -104,11 +145,64 @@ header .container{
 section{
     min-height: 100px;
     scroll-margin-top: var(--header-height);
+    padding: 60px 20px;
+
+    z-index: 0;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
 }
 
-section:nth-child(odd){
+section::before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--green-bg-color);
+    opacity: .95;
+    z-index: -1;
+}
+
+/* # HERO */
+#hero{
+    box-shadow: inset 0 0 100px 150px var(--green-bg-color);
+    background-image: url(../img/WhatsApp\ Image\ 2023-05-14\ at\ 07.41.07.jpg);
+}
+
+#hero::before{
+    content: '';    
     background-color: var(--green-bg-color);
 }
+
+#hero img{
+    box-shadow: 20px 20px 5px gray;
+}
+
+#hero h5{
+    text-shadow: 1px 1px 1px darkgreen;
+}
+
+/* # CHI SONO */
+
+/* # COSA ASPETTARSI */
+#cosa-aspettarsi{
+    box-shadow: inset 0 0 100px 150px lightgray;
+    background-image: url(../img/WhatsApp\ Image\ 2023-05-14\ at\ 07.41.07.jpg);
+ 
+}
+
+#cosa-aspettarsi::before{
+    content: '';
+    background-color: #eee;
+}
+
+#cosa-aspettarsi figure{
+    padding: 25%;
+}
+
 
 /* ! ****************************** */
 /* ! FOOTER *********************** */
@@ -134,10 +228,15 @@ footer{
 /* # desktop */
 @media screen and (min-width: 992px) {
     .container{
+        max-width: 1080px;
+    }
+
+    #main-header .container,
+    footer .container{
         max-width: 1400px;
     }
 
-    header{
+    #main-header{
         padding: 0;
     }
 
@@ -161,6 +260,12 @@ footer{
     #main-navbar li a{
         padding: 20px;
         border: none;
+    }
+
+    /* # HERO */
+    #hero .container{
+        display: flex;
+        gap: 50px;
     }
 
 
