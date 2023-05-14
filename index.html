@@ -12,8 +12,13 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' integrity='sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==' crossorigin='anonymous'>
     <!--  my library -->
     <link rel="stylesheet" href="styles/mylibrary.css" type="text/css">
+    <!-- animations -->
+    <link rel="stylesheet" href="styles/animations.css" type="text/css">
     <!-- styles.css -->
     <link rel="stylesheet" href="styles/styles.css" type="text/css">
+
+    <!-- scripts -->
+    <script defer src="app/app.js"></script>
 </head>
 <body>
 
@@ -79,45 +84,9 @@
 
     <!-- ! FOOTER -->
     <footer>
-
-    </footer>
-
-
-    <!-- TODO MOVE SCRIPTS -->
-    <script>
-        
-        // navbar script
-        const hamburgerMenu = document.getElementById('hamburger-menu');
-        const mainNavbar = document.getElementById('main-navbar');
-
-        let flag = false;
-
-        hamburgerMenu.addEventListener('click', function() {
-            if (flag){
-                mainNavbar.style.left = 'calc(var(--navbar-width) * -1)';
-                hamburgerMenu.classList.remove('open');
-                flag = false;                
-            } else {
-                mainNavbar.style.left = 0;
-                hamburgerMenu.classList.add('open');
-                flag = true;
-            }
-        })
-
-        // active menu scrpit
-        const navbarItems = document.getElementsByClassName('main-navbar-item');
-       
-        for(let i = 0; i < navbarItems.length; i++){
-            console.log(navbarItems[i]);
-            navbarItems[i].addEventListener('click', function(){
-                for(let j = 0; j < navbarItems.length; j++){
-                    navbarItems[j].classList.remove('active');
-                }
-                navbarItems[i].classList.add('active');
-            })
-        }
-
-    </script>
-    
+        <div class="container d-flex align-center">
+            <div class="copyright">Federico Dellasanta P.I. 02766970418 | © 2022 tutti i diritti riservati</div>
+        </div>
+    </footer>    
 </body>
 </html>
