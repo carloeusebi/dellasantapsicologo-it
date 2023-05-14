@@ -1,0 +1,90 @@
+
+.c-pointer{
+    cursor: pointer;
+}
+
+.text-align-center{
+    text-align: center;
+}
+
+.round-img{
+    border-radius: 50%;
+}
+
+/* # flex utilities */
+.d-flex{
+    display: flex;
+}
+
+.d-flex.flex-column{
+    flex-direction: column;
+}
+
+.d-flex.f-wrap{
+    flex-wrap: wrap;
+}
+
+.d-flex.justify-start{
+    justify-content: flex-start;
+}
+
+.d-flex.justify-center{
+    justify-content: center;
+}
+
+.d-flex.justify-end{
+    justify-content: flex-end;
+}
+
+.d-flex.justify-space-between{
+    justify-content: space-between;
+}
+
+.d-flex.align-start{
+    align-items: flex-start;
+}
+
+.d-flex.align-center{
+    align-items: center;
+}
+
+.d-flex .flex-grow{
+    flex-grow: 1;
+}
+
+.d-flex .flex-srhink{
+    flex-shrink: 1;
+}
+
+.d-flex .flex-gap10{
+    gap: 10px;
+}
+
+.d-flex .flex-gap20{
+    gap: 20px;
+}
+
+/* # margins and paddings */
+.mr-10{
+    margin-right: 10px;
+}
+
+.mb-10{
+    margin-bottom: 10px;
+}
+
+.mb-20{
+    margin-bottom: 20px;
+}
+
+.mb-30{
+    margin-bottom: 30px;
+}
+
+.mb-50{
+    margin-bottom: 50px;
+}
+
+.ml-10{
+    margin-left: 10px;
+}
