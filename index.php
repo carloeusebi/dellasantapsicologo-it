@@ -17,11 +17,15 @@
     <!-- styles.css -->
     <link rel="stylesheet" href="styles/styles.css" type="text/css">
 
+    
     <!-- scripts -->
     <script defer src="app/app.js"></script>
 </head>
 <body>
-
+    
+    <?php
+    session_start();
+    ?>
     <!-- ! HEADER -->
     <header id="main-header">
         <div class="container d-flex justify-space-between align-center">
@@ -110,20 +114,22 @@
 
         <!-- # CONTATTAMI -->
         <section id="contattami">
-            <div class="container d-flex align-center flex-gap20">
-                <div class="col-33">
-                    <h5>Hai bisogno di un consulto?</h5>
-                    <h2>Contattami</h2>
-                    <p class="mb-30">
-                        Scrivi le tue informazioni e ti ricontatterò per fissare un primo consulto.
-                    </p>
-                    <hr class="mb-30">
-                    <ul class="fa-ul">
-                        <li><a href="https://www.google.it/maps/place/Via+Cavour,+8,+61032+Fano+PU/@43.8403484,13.0176242,17z/data=!3m1!4b1!4m5!3m4!1s0x132d1058e81f0963:0x77cf665ada2f3879!8m2!3d43.8403484!4d13.0198182?shorturl=1">
-                            <span class="fa-li"><i class="fa-solid fa-location-dot"></i></span>
-                            Via Cavour, 8 61032 Fano PU 
-                        </a></li>
-                        <li><a href="mailto:dellasanta.federico@gmail.com ">
+            <div class="container">
+
+                <div class="container d-flex align-center flex-gap20">
+                    <div class="col-33">
+                        <h5>Hai bisogno di un consulto?</h5>
+                        <h2>Contattami</h2>
+                        <p class="mb-30">
+                            Scrivi le tue informazioni e ti ricontatterò per fissare un primo consulto.
+                        </p>
+                        <hr class="mb-30">
+                        <ul class="fa-ul">
+                            <li><a href="https://www.google.it/maps/place/Via+Cavour,+8,+61032+Fano+PU/@43.8403484,13.0176242,17z/data=!3m1!4b1!4m5!3m4!1s0x132d1058e81f0963:0x77cf665ada2f3879!8m2!3d43.8403484!4d13.0198182?shorturl=1">
+                                <span class="fa-li"><i class="fa-solid fa-location-dot"></i></span>
+                                Via Cavour, 8 61032 Fano PU 
+                            </a></li>
+                            <li><a href="mailto:dellasanta.federico@gmail.com ">
                             <span class="fa-li"><i class="fa-solid fa-envelope"></i></span>
                             dellasanta.federico@gmail.com 
                         </a></li>
@@ -137,10 +143,11 @@
                         </a></li>
                     </ul>
                 </div>
+                <!-- # FORM -->
                 <div class="col-66">
-                    <form class="form-card" method="post" action="send-email.php">
+                    <form class="form-card mb-50" method="post" action="send-email.php">
                         <div class="d-flex flex-gap20">
-
+                            
                             <div class="col-50">
                                 <label for="name">Il tuo nome:
                                     <input class="clients-data" type="text" name="name" id="name" placeholder="Nome" required>
@@ -156,12 +163,12 @@
                                     Normativa sull'utilizzo dei dati personali
                                 </a>
                                 <label for="norm-cb">                        
-                                    <input type="checkbox" name="norm-cb" id="norm-cb" required>
-                                Ho letto e accetto la normativa sui dati personali <sup>*</sup>                            
+                                    <input type="checkbox" name="norm-cb" id="norm-cb" required checked>
+                                    Ho letto e accetto la normativa sui dati personali <sup>*</sup>                            
                                 </label>
                             </div>
                             <div class="col-50">
-                                <textarea name="message" id="message" rows="15" placeholder="Come posso aiutarti?" required></textarea>
+                                <textarea name="message" id="message" rows="15" placeholder="Come posso aiutarti?" required>placeholder</textarea>
                                 <label for="miele-cb">
                                     <input type="checkbox" id="miele-cb" name="miele-cb">
                                     sei sicuro di voler inviare il messaggio?
@@ -172,8 +179,28 @@
                     </form>
                 </div>
             </div>
+            
+            <!-- <div class="response bad">hello</div> -->
+            <?php
+            if(isset($_SESSION['status']))
+            {
+                if ($_SESSION['status'] == 'success'){
+                    ?>
+                    <div class="response success d-flex align-center justify-space-between" >Email inviata correttamente
+                        <i class="fa-solid fa-xmark fa-xl"></i></div>
+                    <?php
+                }else{
+                    ?>
+                    <div class="response bad d-flex align-center justify-space-between" ><?php echo $_SESSION['status'] ?>
+                    <i class="fa-solid fa-xmark fa-xl"></i></div>    
+                    <?php
+            }
+        }
+        unset($_SESSION['status']);
+        ?>
+            </div>
         </section>
-
+        
         <!-- # CONTATTI -->
         <section id="contatti">
 

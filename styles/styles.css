@@ -36,7 +36,7 @@ input[type=number] {
 /* ! ****************************** */
 html{
     -webkit-tap-highlight-color: transparent;
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
 }
 
 body{
@@ -296,6 +296,47 @@ label[for="miele-cb"]{
     display: none;
 }
 
+/* # RISPOSTA */
+.response{
+    padding: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 15px;
+    font-weight: bold;
+
+    transition: opacity 300ms;
+}
+
+.response::before{
+    font: var(--fa-font-solid);
+    padding-right: 1rem;
+}
+
+.response .fa-xmark{
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.response.success{
+    color: #0a3622;
+    border-color: #a9d2bf;
+    background-color: #d1e7dd;
+}
+
+.response.success::before{
+    content: '\f058';
+}
+
+.response.bad{
+    color: #664d03;
+    border-color: #ffecb2;
+    background-color: #fff3cd;
+}
+
+.response.bad::before{
+    content: '\f06a';
+}
+
 /* # CONTATTI */
 
 /* ! ****************************** */
@@ -307,11 +348,6 @@ footer{
     color: white;
 
     padding: 20px;
-
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    right: 0;
 }
 
 /* ! ****************************** */

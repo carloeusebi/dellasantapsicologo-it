@@ -2,6 +2,7 @@
 // navbar script
 const hamburgerMenu = document.getElementById('hamburger-menu');
 const mainNavbar = document.getElementById('main-navbar');
+const navbarItems = document.getElementsByClassName('main-navbar-item');
 
 let flag = false;
 
@@ -18,7 +19,6 @@ hamburgerMenu.addEventListener('click', function() {
 })
 
 // active menu scrpit
-const navbarItems = document.getElementsByClassName('main-navbar-item');
 
 for(let i = 0; i < navbarItems.length; i++){
     navbarItems[i].addEventListener('click', function(){
@@ -26,6 +26,12 @@ for(let i = 0; i < navbarItems.length; i++){
             navbarItems[j].classList.remove('active');
         }
         navbarItems[i].classList.add('active');
+
+        //al click chiudo la navbar
+        mainNavbar.style.left = 'calc(var(--navbar-width) * -1)';
+        hamburgerMenu.classList.remove('open');
+        flag = false; 
+
     })
 }
 
@@ -58,3 +64,15 @@ document.addEventListener('scroll', function(){
     }
 })
 
+// ! Closing email response popup
+
+const closeResponse = document.getElementsByClassName('fa-xmark');
+const response = document.getElementsByClassName('response');
+
+closeResponse[0].addEventListener('click', async function() {
+    response[0].style.opacity = '0';
+    
+    // it waits for animation to complete, then it hides popup
+    await new Promise(resolve => setTimeout(resolve, 300));
+    response[0].style.visibility = 'hidden';
+})
