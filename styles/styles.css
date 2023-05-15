@@ -185,6 +185,7 @@ section::before{
 #hero{
     box-shadow: inset 0 0 100px 150px var(--green-bg-color);
     background-image: url(../img/WhatsApp\ Image\ 2023-05-14\ at\ 07.41.07.jpg);
+    padding-bottom: 150px;
 }
 
 #hero::before{
@@ -258,6 +259,10 @@ section::before{
     border: 1px solid gray;
 }
 
+.form-card #norm-cb{
+    cursor: pointer;
+}
+
 textarea#message{
     outline: none;
     width: 100%;
@@ -270,11 +275,10 @@ textarea#message{
     font-family: 'Roboto', sans-serif;
 }
 
-input[type="submit"]{
+.form-card .btn{
     width: 100%;
     border: none;
-    opacity: .6;
-    cursor: not-allowed;
+    cursor: pointer;    
 }
 
 .iubenda-link{
@@ -288,9 +292,8 @@ input[type="submit"]{
 }
 
 label[for="miele-cb"]{
-    position: absolute;
-    top: 0;
-    left: -800px;
+    visibility: hidden;
+    display: none;
 }
 
 /* # CONTATTI */

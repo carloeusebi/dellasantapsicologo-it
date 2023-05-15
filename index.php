@@ -138,11 +138,10 @@
                     </ul>
                 </div>
                 <div class="col-66">
-                    <form class="form-card">
+                    <form class="form-card" method="post" action="send-email.php">
                         <div class="d-flex flex-gap20">
 
                             <div class="col-50">
-                                
                                 <label for="name">Il tuo nome:
                                     <input class="clients-data" type="text" name="name" id="name" placeholder="Nome" required>
                                 </label>
@@ -150,24 +149,24 @@
                                     <input class="clients-data" type="number" name="phone" id="phone" placeholder="Numero di Telefono" required>
                                 </label>
                                 <label for="email">La tua Email:
-                                    <input class="clients-data" type="email" name="mail" id="mail" placeholder="Email" required>
+                                    <input class="clients-data" type="email" name="mail" id="mail" placeholder="Email" required >
                                 </label>
                                 <a href="https://www.iubenda.com/privacy-policy/29156312" class="iubenda-link mb-10" target
                                 ="_blank">
                                     Normativa sull'utilizzo dei dati personali
                                 </a>
                                 <label for="norm-cb">                        
-                                    <input type="checkbox" name="norm-cb" id="norm-cb">
+                                    <input type="checkbox" name="norm-cb" id="norm-cb" required>
                                 Ho letto e accetto la normativa sui dati personali <sup>*</sup>                            
                                 </label>
                             </div>
                             <div class="col-50">
-                                <textarea name="message" id="message" rows="15" placeholder="Come posso aiutarti?"></textarea>
+                                <textarea name="message" id="message" rows="15" placeholder="Come posso aiutarti?" required></textarea>
                                 <label for="miele-cb">
                                     <input type="checkbox" id="miele-cb" name="miele-cb">
                                     sei sicuro di voler inviare il messaggio?
                                 </label>
-                                <input type="submit" class="btn" value="invia il messaggio">
+                                <input type="submit" class="btn" name="submit" value="invia il messaggio">
                             </div>
                         </div>
                     </form>

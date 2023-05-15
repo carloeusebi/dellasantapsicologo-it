@@ -18,43 +18,43 @@ hamburgerMenu.addEventListener('click', function() {
 })
 
 // active menu scrpit
-// const navbarItems = document.getElementsByClassName('main-navbar-item');
+const navbarItems = document.getElementsByClassName('main-navbar-item');
 
-// for(let i = 0; i < navbarItems.length; i++){
-//     navbarItems[i].addEventListener('click', function(){
-//         for(let j = 0; j < navbarItems.length; j++){
-//             navbarItems[j].classList.remove('active');
-//         }
-//         navbarItems[i].classList.add('active');
-//     })
-// }
+for(let i = 0; i < navbarItems.length; i++){
+    navbarItems[i].addEventListener('click', function(){
+        for(let j = 0; j < navbarItems.length; j++){
+            navbarItems[j].classList.remove('active');
+        }
+        navbarItems[i].classList.add('active');
+    })
+}
 
-// function isInViewport(element) {
-//     const rect = element.getBoundingClientRect();
-//     return (
-//         rect.top >= 0 &&
-//         rect.left >= 0 &&
-//         rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-//         rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-//     );
-// }
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
 
-// const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-// const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
 
-// const sections = document.querySelectorAll('section');
+const sections = document.querySelectorAll('section');
 
-// document.addEventListener('scroll', function(){
+document.addEventListener('scroll', function(){
 
-//     for(let i = 0; i < navbarItems.length; i++){
+    for(let i = 0; i < navbarItems.length; i++){
         
-//         const message = isInViewport(sections[i]);
-//         if (message){
-//             for (let j = 0; j < navbarItems.length; j++){
-//                 navbarItems[j].classList.remove('active');
-//             }
-//             navbarItems[i].classList.add('active');
-//         }
-//     }
-// })
+        const message = isInViewport(sections[i]);
+        if (message){
+            for (let j = 0; j < navbarItems.length; j++){
+                navbarItems[j].classList.remove('active');
+            }
+            navbarItems[i].classList.add('active');
+        }
+    }
+})
 
