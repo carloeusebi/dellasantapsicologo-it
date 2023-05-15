@@ -5,15 +5,10 @@
     box-sizing: border-box;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 /* ! ****************************** */
@@ -26,7 +21,7 @@ input[type=number] {
     --footer-clor: #264e32;
 
     /* layout */
-    --header-height: 100px;
+    --navbar-height: 100px;
     --footer-height: 65px;
     --navbar-width: 270px;
 }
@@ -103,10 +98,10 @@ p{
 }
 
 /* ! ****************************** */
-/* ! HEADER *********************** */
+/* ! NAVBAR *********************** */
 /* ! ****************************** */
 #top-nav{
-    height: var(--header-height);
+    height: var(--navbar-height);
     background-color: #fff;
 
     position: sticky;
@@ -123,17 +118,17 @@ p{
 
 #hdr-logo img{
     max-width: 75%;
-    max-height: var(--header-height);
+    max-height: var(--navbar-height);
 }
 
 /* # NAVBAR */
 #main-navbar{
     position: absolute;
-    top: calc(var(--header-height) + 1px);
+    top: calc(var(--navbar-height) + 1px);
     left: calc(var(--navbar-width) * -1);
 
     width: var(--navbar-width);
-    height: calc(100vh - var(--header-height));
+    height: calc(100vh - var(--navbar-height));
     background-color: white;
     box-shadow: 0 0 2px gray;
 
@@ -168,9 +163,9 @@ p{
 /* ! ****************************** */
 /* ! MAIN ************************* */
 /* ! ****************************** */
-section{
+section, header{
     min-height: 100px;
-    scroll-margin-top: var(--header-height);
+    scroll-margin-top: var(--navbar-height);
     padding: 60px 20px;
 
     z-index: 0;
@@ -181,7 +176,8 @@ section{
     position: relative;
 }
 
-section::before{
+section::before,
+header::before{
     position: absolute;
     top: 0;
     left: 0;

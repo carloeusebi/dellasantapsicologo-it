@@ -28,6 +28,8 @@
 
     <?php include "./assets/navbar.html" ?>
 
+    <h1>CHI SONO</h1>
+
     <?php include "./assets/footer.php" ?>
 
 

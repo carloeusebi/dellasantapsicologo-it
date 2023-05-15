@@ -26,8 +26,11 @@
         session_start();
     ?>
 
+
     <?php include "./assets/navbar.html" ?>
 
+    <h1>COSA ASPETTARSI</h1>
+    
     <?php include "./assets/footer.php" ?>
 
 

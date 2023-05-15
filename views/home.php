@@ -32,7 +32,7 @@
     <main>
 
         <!-- # HERO -->
-        <section id="hero">
+        <header id="hero">
             <div class="container">                
                 <div class="col-50">
                     <h3>DR. Dellasanta Federico</h3>
@@ -48,7 +48,7 @@
                     </figure>
                 </div>
             </div>
-        </section>
+        </header>
 
         <!-- # CHI SONO -->
         <section id="chi-sono" class="text-align-center">
@@ -161,6 +161,6 @@
             </div>
         </section>
     </main>
-    <?php include "./assets/footer.php" ?>
+    <?php include "./assets/footer.php" ?>    
 </body>
 </html>
