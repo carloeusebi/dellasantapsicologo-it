@@ -23,7 +23,7 @@
                             <span class="fa-li"><i class="fa-solid fa-phone"></i></span>
                             375 7345384
                         </a></li>
-                        <li><a href="https://wa.me/0393757345384">
+                        <li><a href="https://wa.me/0393757345384" target="_blank">
                             <span class="fa-li"><i class="fa-brands fa-whatsapp"></i></span>
                             Inviami un messaggio
                         </a></li>
@@ -117,7 +117,7 @@
                             <span class="fa-li"><i class="fa-solid fa-phone"></i></span>
                             375 7345384
                         </a></li>
-                        <li><a href="https://wa.me/0393757345384">
+                        <li><a href="https://wa.me/0393757345384" target="_blank">
                             <span class="fa-li"><i class="fa-regular fa-clock"></i></span>
                             Dalle 9:00 alle 19:00 <br>
                             Lunedì - Venerdi
