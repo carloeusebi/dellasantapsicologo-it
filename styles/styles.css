@@ -184,7 +184,7 @@ section::before{
 /* # HERO */
 #hero{
     box-shadow: inset 0 0 100px 150px var(--green-bg-color);
-    background-image: url(../img/WhatsApp\ Image\ 2023-05-14\ at\ 07.41.07.jpg);
+    background-image: url(../img/test.jpg);
     padding-bottom: 150px;
 }
 
@@ -206,7 +206,7 @@ section::before{
 /* # COSA ASPETTARSI */
 #cosa-aspettarsi{
     box-shadow: inset 0 0 100px 150px lightgray;
-    background-image: url(../img/WhatsApp\ Image\ 2023-05-14\ at\ 07.41.07.jpg);
+    background-image: url(../img/test.jpg);
  
 }
 
@@ -239,7 +239,7 @@ section::before{
 
 #contattami .form-card{
     background-color: var(--green-bg-color);
-    padding: 2rem;
+    padding: 2rem 1rem; 
     border-radius: 2rem;
     box-shadow: 2px 2px 5px gray;
 }

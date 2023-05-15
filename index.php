@@ -67,7 +67,7 @@
                 </div>
                 <div class="col-50">
                     <figure>
-                        <img src="img/WhatsApp Image 2023-05-14 at 07.41.07.jpg" alt="Il Dottor Dellasanta">
+                        <img src="img/test.jpg" alt="Il Dottor Dellasanta">
                     </figure>
                 </div>
             </div>
@@ -155,7 +155,7 @@
                                 <label for="phone">Il tuo numero di Telefono:
                                     <input class="clients-data" type="number" name="phone" id="phone" placeholder="Numero di Telefono" required>
                                 </label>
-                                <label for="email">La tua Email:
+                                <label for="mail">La tua Email:
                                     <input class="clients-data" type="email" name="mail" id="mail" placeholder="Email" required >
                                 </label>
                                 <a href="https://www.iubenda.com/privacy-policy/29156312" class="iubenda-link mb-10" target
@@ -179,7 +179,7 @@
                     </form>
                 </div>
             </div>
-            
+
             <!-- <div class="response bad">hello</div> -->
             <?php
             if(isset($_SESSION['status']))
