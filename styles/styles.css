@@ -421,6 +421,10 @@ footer{
     #di-cosa-mi-occupo .col{
         flex-basis: calc((100% - 40px) / 2);
     }
+
+    #contatti .col-50:nth-child(2){
+        display: flex;
+    }
 }
 
 /* # desktop */

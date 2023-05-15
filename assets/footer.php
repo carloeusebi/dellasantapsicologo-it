@@ -88,11 +88,11 @@
         <!-- # CONTATTI -->
         <section id="contatti">
             <div class="container d-flex">
-                <div class="col-50">
+                <div class="col-50 tablet">
                     <img src="img/Logo-768x191.webp" alt="">
                 </div>
-                <div class="col-50 d-flex">
-                    <div class="col-50">
+                <div class="col-50">
+                    <div class="col-50 mb-50">
                         <h4>Link Utili</h4>
                         <ul>
                             <li><a href="/">Home</a></li>
