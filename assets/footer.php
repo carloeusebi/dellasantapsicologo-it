@@ -70,12 +70,12 @@
             {
                 if ($_SESSION['status'] == 'success'){
                     ?>
-                    <div class="response success d-flex align-center justify-space-between" >Email inviata correttamente
+                    <div class="response success" >Email inviata correttamente
                         <i class="fa-solid fa-xmark fa-xl"></i></div>
                     <?php
                 }else{
                     ?>
-                    <div class="response bad d-flex align-center justify-space-between" ><?php echo $_SESSION['status'] ?>
+                    <div class="response bad" ><?php echo $_SESSION['status'] ?>
                     <i class="fa-solid fa-xmark fa-xl"></i></div>    
                     <?php
                 }

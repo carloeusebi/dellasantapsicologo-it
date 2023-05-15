@@ -260,7 +260,7 @@ header::before{
 }
 
 /* * contattami form */
-#contattami .d-flex{
+#contattami > .container > .d-flex:first-of-type{
     display: block;
 }
 
@@ -331,6 +331,8 @@ label[for="miele-cb"]{
     border-radius: 15px;
     font-weight: bold;
 
+    position: relative;
+
     transition: opacity 300ms;
 }
 
@@ -341,7 +343,11 @@ label[for="miele-cb"]{
 
 .response .fa-xmark{
     cursor: pointer;
-    margin-left: auto;
+
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
 }
 
 .response.success{
