@@ -105,7 +105,7 @@ p{
 /* ! ****************************** */
 /* ! HEADER *********************** */
 /* ! ****************************** */
-#main-header{
+#top-nav{
     height: var(--header-height);
     background-color: #fff;
 
@@ -117,7 +117,7 @@ p{
     box-shadow: 0 0 2px black;
 }
 
-#main-header .container{
+#top-nav .container{
     height: 100%;
 }
 
@@ -429,12 +429,12 @@ footer{
         max-width: 1080px;
     }
     
-    #main-header .container,
+    #top-nav .container,
     footer .container{
         max-width: 1400px;
     }
     
-    #main-header{
+    #top-nav{
         padding: 0;
     }
     

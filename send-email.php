@@ -6,6 +6,8 @@ $phone = $_POST['phone'];
 $email = $_POST['mail'];
 $message = $_POST['message'];
 
+$location = '/contatti';
+
 // $honeypot = $_POST['miele-cb'];
 
 $emailTo = 'carloeusebi@gmail.com';
@@ -46,13 +48,13 @@ if ($_POST['submit']){
     if (isset($_POST['miele-cb'])){
         mail($emailTo, $subject, "un bot ha provato ad inviare una mail");
         $_SESSION['status'] = 'sei un bot';
-        header("Location: index.php#contattami");
+        header("Location: $location");
         exit();
     }
     
     if (filter_var($email, FILTER_VALIDATE_EMAIL) === false){
         $_SESSION['status'] = 'Email non valida';
-        header("Location: index.php#contattami");
+        header("Location: $location");
         exit();
     }
     
@@ -62,11 +64,11 @@ if ($_POST['submit']){
     //TODO un comment when server is up
     // if(!$mail->Send()) {
     //     $_SESSION['status'] = 'Invio non riuscito';
-    //     header("Location: index.php#contattami");
+    //     header("Location: $location");
     //     exit();
     // } else {
         $_SESSION['status'] = 'success';
-        header("Location: index.php#contattami");
+        header("Location: $location");
     //}    
    
 
