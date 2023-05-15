@@ -28,8 +28,6 @@
 
     <?php include "./assets/navbar.html" ?>
 
-    <h1>CONTATTI</h1>
-
     <?php include "./assets/footer.php" ?>
 
 

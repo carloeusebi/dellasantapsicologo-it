@@ -31,7 +31,7 @@
                 </div>
                 <!-- # FORM -->
                 <div class="col-66">
-                    <form class="form-card mb-50" method="post" action="send-email.php">
+                    <form id="contact-form" class="form-card mb-50" method="post" action="send-email.php">
                         <div class="d-flex flex-gap20">
                             
                             <div class="col-50">
@@ -65,9 +65,14 @@
                     </form>
                 </div>
             </div>
+            <div id="response-anchor"></div>
             <?php
             if(isset($_SESSION['status']))
-            {
+            {?>
+                <script>
+                    document.getElementById('response-anchor').scrollIntoView(true);
+                </script>
+                <?php
                 if ($_SESSION['status'] == 'success'){
                     ?>
                     <div class="response success" >Email inviata correttamente
