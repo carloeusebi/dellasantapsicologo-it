@@ -65,12 +65,19 @@ h2{
     margin-bottom: 20px;
 }
 
-h5{
+h3{
     color: var(--btn-color);
     font-size: 1.2rem;
     margin-bottom: 10px;
     text-transform: uppercase;
 }
+
+h4{
+    color: var(--btn-color);
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
 
 p{
     line-height: 1.5;
@@ -220,6 +227,26 @@ section::before{
 }
 
 /* # DI COSA MI OCCUPO */
+#di-cosa-mi-occupo{
+    background-color: var(--green-bg-color);
+}
+
+#di-cosa-mi-occupo .col{
+    flex-basis: 100%;
+    background-color: white;
+}
+
+#di-cosa-mi-occupo .col-text{
+    padding: 2rem 1rem;
+}
+
+#di-cosa-mi-occupo .col-text p{
+    font-size: .9rem;
+}
+
+#di-cosa-mi-occupo .btn{
+    margin: 0 auto;
+}
 
 /* # CONTATTAMI */
 #contattami li{
@@ -338,6 +365,38 @@ label[for="miele-cb"]{
 }
 
 /* # CONTATTI */
+#contatti{
+    background-color: var(--green-bg-color);
+}
+
+#contatti img{
+    width: 75%;    
+}
+
+#contatti > .col-50:first-child{
+    align-self: flex-start;
+}
+
+#contatti address{
+    font-style: normal;
+}
+
+#contatti h4{
+    display: inline-block;
+    color: var(--footer-clor);
+    border-bottom: 2px solid var(--btn-color);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+#contatti address i{
+    color: var(--btn-color);
+}
+
+#contatti li{
+    margin-bottom: 1rem;
+}
+
 
 /* ! ****************************** */
 /* ! FOOTER *********************** */
@@ -358,6 +417,10 @@ footer{
     .container{
         max-width: 980px;
     }
+    
+    #di-cosa-mi-occupo .col{
+        flex-basis: calc((100% - 40px) / 2);
+    }
 }
 
 /* # desktop */
@@ -365,21 +428,21 @@ footer{
     .container{
         max-width: 1080px;
     }
-
+    
     #main-header .container,
     footer .container{
         max-width: 1400px;
     }
-
+    
     #main-header{
         padding: 0;
     }
-
+    
     /* * navbar switch */
     #hamburger-menu{
         display: none;
     }
-
+    
     #main-navbar{
         position: static;
         width: auto;
@@ -387,26 +450,31 @@ footer{
         box-shadow: none;
         padding: 0;
     }
-
+    
     #main-navbar ul{
         display: flex;
     }
-
+    
     #main-navbar li a{
         padding: 20px;
         border: none;
     }
-
+    
     /* # HERO */
     #hero .container{
         display: flex;
         gap: 50px;
+    }
+    
+    /* # DI COSA MI OCCUPO */
+    #di-cosa-mi-occupo .col{
+        flex-basis: calc((100% - 40px) / 3);
     }
 
     /* # CONTATTAMI */
     #contattami .d-flex{
         display: flex;
     }
-
-
+    
+    
 }

@@ -58,7 +58,7 @@
         <section id="hero">
             <div class="container">                
                 <div class="col-50">
-                    <h5>DR. Dellasanta Federico</h5>
+                    <h3>DR. Dellasanta Federico</h3>
                     <h1>Psicologo Cognitivo Comportamentale</h1>
                     <p class="mb-20">
                         Mi occupo di consulenze psicologiche, sostegno e propongo percorsi individualizzati a Fano e online.
@@ -77,7 +77,7 @@
         <section id="chi-sono" class="text-align-center">
             <div class="container">
 
-                <h5>chi sono</h5>
+                <h3>chi sono</h3>
                 <h2>Dr. Federico Dellasanta Psicologo</h2>
                 <p class="mb-30">
                     Pratico la professione di <strong>Psicologo Cognitivo Comportamentale</strong> nel mio studio a Fano e online,
@@ -92,7 +92,7 @@
             <div class="container d-flex align-center flex-gap20">
                 <div class="col-50">
 
-                    <h5>cosa aspettarsi dalla terapia</h5>
+                    <h3>cosa aspettarsi dalla terapia</h3>
                     <h2>L'approccio congitivo-comportamentale</h2>
                     <p class="mb-30">
                         La terapia cognitivo comportamentale rappresenta attualmente uno dei modelli per la comprensione e il trattamento dei disturbi psicopatologici ritenuti più efficaci a livello internazionale.
@@ -108,8 +108,80 @@
         </section>
 
         <!-- # DI COSA MI OCCUPO -->
-        <section id="di-cosa-mi-occupo">
+        <section id="di-cosa-mi-occupo" class="text-align-center">
+            <h2>Di cosa mi occupo</h2>
+            <div class="container d-flex f-wrap flex-gap20">
 
+                <!-- first column -->
+                <div class="col">
+                    <div class="col-img">
+                        <img src="img/Ansia.webp" alt="Disturbi d'ansia e attacchi di panico">
+                    </div>
+                    <div class="col-text">
+                        <h4>Disturbi d'ansia e attacchi di panico</h4>
+                        <p>L'ansia si manifesta in modo molto simile alla paura, compare in risposta ad una minaccia futura percepita o situazioni incerte. Anche se una persona su venti soffre quotidianamente di ansia acuta o cronica, si tende a sminuirne l'impatto e molti ne soffrono in silenzio. L'ansia si manifesta con preoccupazione, stato di allerta e vari sintomi fisici, tra cui tachicardia, tremori e senso di soffocamento e può essere molto invalidante per chi ne soffre.</p>
+                    </div>
+                </div>
+
+                <!-- second column -->
+                <div class="col">
+                    <div class="col-img">
+                        <img src="img/Depressione.webp" alt="Depressione e disturbi dell'umore">
+                    </div>
+                    <div class="col-text">
+                        <h4>Depressione e disturbi dell'umore</h4>
+                        <p>Considerata da molti la malattia del secolo, può gravemente limitare il normale svolgimento delle attività quotidiane, fino ad impedirle del tutto. Oltre al classico abbassamento dell'umore, può manifestarsi anche con un calo dell'energia, dell'autostima, cambiamenti nel sonno e nell'appetito, difficoltà di concentrazione, incapacità di provare piacere da attività che in precedenza ne davano e un pattern di pensieri negativi.</p>
+                    </div>
+                </div>
+
+                <!-- third column -->
+                <div class="col">
+                    <div class="col-img">
+                        <img src="img/Stress-da-lavoro-correlato.webp" alt="Momenti difficili e disturbo dell'adattamento">
+                    </div>
+                    <div class="col-text">
+                        <h4>Momenti difficili e disturbo dell'adattamento</h4>
+                        <p>Nella vita succede di dover affrontare problemi e momenti difficili che sembrano essere più grandi di noi. Problemi che ci schiacciano e non ci permettono di andare avanti. Situazioni come lutti, separazioni, divorzi, licenziamenti o malattie di familiari, affrontate da soli possono sembrare ostacoli insormontabili. Chiedi aiuto ad un terapista specializzato nell'affrontare e superare questi momenti.</p>
+                    </div>
+                </div>
+
+                <!-- fourth column -->
+                <div class="col">
+                    <div class="col-img">
+                        <img src="img/Insonnia-1.webp" alt="Insonnia e disturbi del sonno">
+                    </div>
+                    <div class="col-text">
+                        <h4>Insonnia e disturbi del sonno</h4>
+                        <p>È successo a tutti di non riuscire a prendere sonno, di svegliarsi più volte durante la notte o una solta volta ma molto prima della sveglia. Se lo esperiamo in modo frequente non solo inizieremo la giornata con il “piede sbagliato”: la mancanza prolungata di un buon sonno ristoratore, porta con sé mancanza di energie, deficit di attenzione, concentrazione e memoria oltre a un umore instabile e maggiormente irritabile.</p>
+                    </div>
+                </div>
+
+                <!-- fifth column -->
+                <div class="col">
+                    <div class="col-img">
+                        <img src="img/Autostima.webp" alt="Autostima e sviluppo autoefficacia">
+                    </div>
+                    <div class="col-text">
+                        <h4>Autostima e sviluppo autoefficacia</h4>
+                        <p>Se siamo fortunati, fin da bambini ci è stato insegnato ad avere fiducia in noi stessi. Nel corso della vita, tuttavia, l'idea che abbiamo di noi potrebbe deteriorarsi, portandoci a pensare a noi stessi in modo poco lusinghiero o come incapaci di superare alcune difficoltà. Se siamo meno fortunati, la stessa credenza potrebbe essersi formata in modo già distorto. Un'immagine di sè negativa porta a sofferenza e difficoltà di vario tipo.</p>
+                    </div>
+                </div>
+
+                <!-- first columns -->
+                <div class="col">
+                    <div class="col-img">
+                        <img src="img/Disturbo-personalita.webp" alt="Disturbi della personalità">
+                    </div>
+                    <div class="col-text">
+                        <h4>Disturbi della personalità</h4>
+                        <p>Capita che disturbi d'ansia, depressivi e difficoltà nel regolare le proprie emozioni siano solo la punta dell'iceberg. Quando si inizia a notare (o sono gli altri a farlo presente) di vivere sempre lo stesso tipo di problemi nello stesso genere di situazioni o nelle varie relazioni, potrebbe essere utile una valutazione personologica per individuare i tratti di personalità che non ci aiutano in alcune circostanze, ma ci complicano invece un po' la vita, e iniziare a lavorare per una loro flessibilizzazione.
+                        </p>
+                    </div>
+                </div>
+
+                <a class="btn" href="#contattami">Richiedi un appuntamento</a>
+
+            </div>
         </section>
 
         <!-- # CONTATTAMI -->
@@ -118,14 +190,14 @@
 
                 <div class="container d-flex align-center flex-gap20">
                     <div class="col-33">
-                        <h5>Hai bisogno di un consulto?</h5>
+                        <h3>Hai bisogno di un consulto?</h3>
                         <h2>Contattami</h2>
                         <p class="mb-30">
                             Scrivi le tue informazioni e ti ricontatterò per fissare un primo consulto.
                         </p>
                         <hr class="mb-30">
                         <ul class="fa-ul">
-                            <li><a href="https://www.google.it/maps/place/Via+Cavour,+8,+61032+Fano+PU/@43.8403484,13.0176242,17z/data=!3m1!4b1!4m5!3m4!1s0x132d1058e81f0963:0x77cf665ada2f3879!8m2!3d43.8403484!4d13.0198182?shorturl=1">
+                            <li><a href="https://www.google.it/maps/place/Via+Cavour,+8,+61032+Fano+PU/@43.8403484,13.0176242,17z/data=!3m1!4b1!4m5!3m4!1s0x132d1058e81f0963:0x77cf665ada2f3879!8m2!3d43.8403484!4d13.0198182?shorturl=1" target="_blank">
                                 <span class="fa-li"><i class="fa-solid fa-location-dot"></i></span>
                                 Via Cavour, 8 61032 Fano PU 
                             </a></li>
@@ -179,8 +251,6 @@
                     </form>
                 </div>
             </div>
-
-            <!-- <div class="response bad">hello</div> -->
             <?php
             if(isset($_SESSION['status']))
             {
@@ -194,16 +264,54 @@
                     <div class="response bad d-flex align-center justify-space-between" ><?php echo $_SESSION['status'] ?>
                     <i class="fa-solid fa-xmark fa-xl"></i></div>    
                     <?php
+                }
             }
-        }
-        unset($_SESSION['status']);
-        ?>
+            unset($_SESSION['status']);
+            ?>
             </div>
         </section>
         
         <!-- # CONTATTI -->
         <section id="contatti">
-
+            <div class="container d-flex">
+                <div class="col-50">
+                    <img src="img/Logo-768x191.webp" alt="">
+                </div>
+                <div class="col-50 d-flex">
+                    <div class="col-50">
+                        <h4>Link Utili</h4>
+                        <ul>
+                            <li><a href="#hero">Home</a></li>
+                            <li><a href="#chi-sono">Chi sono</a></li>
+                            <li><a href="#cosa-aspettarsi">Cosa aspettarsi dalla Terapia</a></li>
+                            <li><a href="#di-cosa-mi-occupo">Di cosa mi occupo</a></li>
+                            <li><a href="#contattami">Contatti</a></li>
+                        </ul>
+                    </div>
+                    <address class="col50">
+                        <h4>Contatti</h4>
+                        <ul class="fa-ul">
+                            <li><a href="https://www.google.it/maps/place/Via+Cavour,+8,+61032+Fano+PU/@43.8403484,13.0176242,17z/data=!3m1!4b1!4m5!3m4!1s0x132d1058e81f0963:0x77cf665ada2f3879!8m2!3d43.8403484!4d13.0198182?shorturl=1" target="_blank">
+                                <span class="fa-li"><i class="fa-solid fa-location-dot"></i></span>
+                                Via Cavour, 8 61032 Fano PU 
+                            </a></li>
+                            <li><a href="mailto:dellasanta.federico@gmail.com ">
+                            <span class="fa-li"><i class="fa-solid fa-envelope"></i></span>
+                            dellasanta.federico@gmail.com 
+                        </a></li>
+                        <li><a href="tel:375-7345384">
+                            <span class="fa-li"><i class="fa-solid fa-phone"></i></span>
+                            375 7345384
+                        </a></li>
+                        <li><a href="https://wa.me/0393757345384">
+                            <span class="fa-li"><i class="fa-regular fa-clock"></i></span>
+                            Dalle 9:00 alle 19:00 <br>
+                            Lunedì - Venerdi
+                        </a></li>
+                    </ul>
+                    </address>
+                </div>
+            </div>
         </section>
 
     </main>
