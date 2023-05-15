@@ -29,11 +29,11 @@ $mail = new PHPMailer(true);
 $mail->isSMTP();
 $mail->isSMTPAuth = true;
 
-$mail->Host = "smtp.gmail.com";
+$mail->Host = "";
 $mail->SMTPSecure = "tls";
 $mail->Port = 587;
 
-$mail->Username = "";
+$mail->Username = "email@dellasantapsicologo.it";
 $mail->Password = "";
 
 $mail->setFrom($email, $name);
