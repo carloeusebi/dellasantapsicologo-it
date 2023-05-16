@@ -39,10 +39,6 @@ $mail->Port = 587;
 $mail->Username = $credentialUsername;
 $mail->Password = $credentialPassword;
 
-echo $mail->Username;
-echo $mail->Password;
-exit;
-
 $mail->setFrom($emailFrom, $name);
 $mail->addAddress($emailTo);
 
@@ -65,7 +61,7 @@ if ($_POST['submit']){
     }
     
     if (filter_var($emailFrom, FILTER_VALIDATE_EMAIL) === false){
-        $_SESSION['status'] = 'Email non valida';
+        $_SESSION['status'] = 'Formato Email non valido, deve contenere una @ e un .it o .com';
         header("Location: $location");
         exit();
     }

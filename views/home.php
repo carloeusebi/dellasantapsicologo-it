@@ -40,7 +40,7 @@
                     <p class="mb-20">
                         Mi occupo di consulenze psicologiche, sostegno e propongo percorsi individualizzati a Fano e online.
                     </p>
-                    <a href="#contattami" class="btn mb-50">Prenota un appuntamento</a>
+                    <a href="/contatti" class="btn mb-50">Prenota un appuntamento</a>
                 </div>
                 <div class="col-50">
                     <figure>
@@ -60,7 +60,7 @@
                     Pratico la professione di <strong>Psicologo Cognitivo Comportamentale</strong> nel mio studio a Fano e online,
                     dove svolgo attività di prevenzione, valutazione psicodiagnostica e sostegno psicologico per bambini, adolescenti e adulti.
                 </p>
-                <a href="#" class="btn">Scopri di più</a>
+                <a href="/chi-sono" class="btn">Scopri di più</a>
             </div>
         </section>
 
@@ -74,7 +74,7 @@
                     <p class="mb-30">
                         La terapia cognitivo comportamentale rappresenta attualmente uno dei modelli per la comprensione e il trattamento dei disturbi psicopatologici ritenuti più efficaci a livello internazionale.
                     </p>
-                    <a href="#" class="btn">scopri di più sulla terapia</a>
+                    <a href="/cosa-aspettarsi" class="btn">scopri di più sulla terapia</a>
                 </div>
                 <div class="col-50 tablet">
                     <figure>
@@ -156,7 +156,7 @@
                     </div>
                 </div>
 
-                <a class="btn" href="#contattami">Richiedi un appuntamento</a>
+                <a class="btn" href="/contatti">Richiedi un appuntamento</a>
 
             </div>
         </section>
