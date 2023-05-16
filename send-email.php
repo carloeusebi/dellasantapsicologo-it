@@ -55,6 +55,7 @@ if ($_POST['submit']){
         mail($emailTo, $subject, "un bot ha provato ad inviare una mail");
         $_SESSION['status'] = 'sei un bot';
         header("Location: $location");
+        // TODO send an email for debugging purposes
         exit();
     }
     
@@ -66,26 +67,26 @@ if ($_POST['submit']){
     
     //TODO Check if email is valid!!
 
-    // check how many credits
-    $balance = $verifalia
-    ->credits
-    ->getBalance();
+    //check how many credits
+    // $balance = $verifalia
+    // ->credits
+    // ->getBalance();
 
     // only if have credits check email
-    if($balance->freeCredits > 0){
+    // if($balance->freeCredits > 0){
 
         
-        $validation = $verifalia
-        ->emailValidations
-        ->submit($emailFrom, true);
+    //     $validation = $verifalia
+    //     ->emailValidations
+    //     ->submit($emailFrom, true);
         
-        $entry = $validation->entries[0];
-        if ($entry->classification === 'Undeliverable'){
-            $_SESSION['status'] = 'Email non valida';
-            header("Location: $location");
-            exit();
-        }
-    }
+    //     $entry = $validation->entries[0];
+    //     if ($entry->classification === 'Undeliverable'){
+    //         $_SESSION['status'] = 'Email non valida';
+    //         header("Location: $location");
+    //         exit();
+    //     }
+    // }
         
     //TODO un comment when server is up
     // if(!$mail->Send()) {
@@ -95,6 +96,7 @@ if ($_POST['submit']){
     // } else {
         $_SESSION['status'] = 'success';
         header("Location: $location");
+        //echo nl2br ($body);
     //}    
    
 

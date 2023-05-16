@@ -36,7 +36,7 @@
                             
                             <div class="col-50">
                                 <label for="name">Il tuo nome:
-                                    <input class="clients-data" type="text" name="name" id="name" placeholder="Nome" required>
+                                    <input class="clients-data" type="text" name="name" id="name" placeholder="Nome" autocomplete="name" required>
                                 </label>
                                 <label for="phone">Il tuo numero di Telefono:
                                     <input class="clients-data" type="number" name="phone" id="phone" placeholder="Numero di Telefono" required>
@@ -66,27 +66,20 @@
                 </div>
             </div>
             <div id="response-anchor"></div>
-            <?php
-            if(isset($_SESSION['status']))
-            {?>
+            <?php if(isset($_SESSION['status'])) : ?>
                 <script>
                     document.getElementById('response-anchor').scrollIntoView(true);
                 </script>
-                <?php
-                if ($_SESSION['status'] == 'success'){
-                    ?>
+                <?php if ($_SESSION['status'] == 'success') : ?>
                     <div class="response success" >Email inviata correttamente
-                        <i class="fa-solid fa-xmark fa-xl"></i></div>
-                    <?php
-                }else{
-                    ?>
+                        <i class="fa-solid fa-xmark fa-xl"></i>
+                    </div>
+                <?php else : ?>
                     <div class="response bad" ><?php echo $_SESSION['status'] ?>
-                    <i class="fa-solid fa-xmark fa-xl"></i></div>    
-                    <?php
-                }
-            }
-            unset($_SESSION['status']);
-            ?>
+                    <i class="fa-solid fa-xmark fa-xl"></i></div>  
+                <?php endif; ?>
+            <?php endif; ?>  
+            <?php unset($_SESSION['status']); ?>
             </div>
         </section>
         
