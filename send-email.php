@@ -22,6 +22,7 @@ require "vendor/autoload.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use \Verifalia\VerifaliaRestClient;
+include 'assets\credentials.php';
 
 
 $mail = new PHPMailer(true);
@@ -35,8 +36,12 @@ $mail->Host = "";
 $mail->SMTPSecure = "tls";
 $mail->Port = 587;
 
-$mail->Username = "email@dellasantapsicologo.it";
-$mail->Password = "";
+$mail->Username = $credentialUsername;
+$mail->Password = $credentialPassword;
+
+echo $mail->Username;
+echo $mail->Password;
+exit;
 
 $mail->setFrom($emailFrom, $name);
 $mail->addAddress($emailTo);
