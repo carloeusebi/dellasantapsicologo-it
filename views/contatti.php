@@ -26,9 +26,9 @@
         session_start();
     ?>
 
-    <?php include "./assets/navbar.html" ?>
+    <?php include "navbar.html" ?>
 
-    <?php include "./assets/footer.php" ?>
+    <?php include "footer.php" ?>
 
 
 </body>

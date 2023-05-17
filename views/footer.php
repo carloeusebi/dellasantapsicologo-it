@@ -31,7 +31,7 @@
                 </div>
                 <!-- # FORM -->
                 <div class="col-66">
-                    <form id="contact-form" class="form-card mb-50" method="post" action="send-email.php">
+                    <form id="contact-form" class="form-card mb-50" method="post" action="email-send.php">
                         <div class="d-flex flex-gap20">
                             
                             <div class="col-50">

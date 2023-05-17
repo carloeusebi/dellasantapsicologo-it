@@ -27,11 +27,11 @@
     ?>
 
 
-    <?php include "./assets/navbar.html" ?>
+    <?php include "navbar.html" ?>
 
     <h1>COSA ASPETTARSI</h1>
     
-    <?php include "./assets/footer.php" ?>
+    <?php include "footer.php" ?>
 
 
 </body>
