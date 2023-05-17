@@ -3,7 +3,7 @@
             <div class="container">
 
                 <div class="container d-flex-lg flex-gap20 align-end mb-20">
-                    <div class="col-33">
+                    <div class="col-33 mb-20">
                         <h3>Hai bisogno di un consulto?</h3>
                         <h2>Contattami</h2>
                         <p class="mb-30">
@@ -31,7 +31,7 @@
                 </div>
 
                 <!-- # FORM -->
-                <div class="col-66">
+                <div class="col-66 mb-20">
                     <form id="contact-form" method="post" action="app/email-send.php">
                         <div class="d-flex-lg flex-gap20">
                             
@@ -56,7 +56,7 @@
                                     </div>
                                 <div class="col-50 p-20-lg">
                                     <input type="checkbox" id="miele-cb" name="miele-cb">                            
-                                    <input type="submit" class="btn unclickable" name="submit" id="formButton" value="invia il messaggio">
+                                    <input type="submit" class="btn unclickable mt-20" name="submit" id="formButton" value="invia il messaggio">
                                 </div>
                             </div>
                         </form>

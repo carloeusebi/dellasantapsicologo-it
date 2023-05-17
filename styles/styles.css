@@ -234,7 +234,7 @@ header::before{
 }
 
 #cosa-aspettarsi figure{
-    padding: 25%;
+    padding: 0 20% 0 30%;
 }
 
 /* # DI COSA MI OCCUPO */
@@ -520,5 +520,8 @@ footer{
         flex-basis: calc((100% - 40px) / 3);
     }
     
+    #formButton{
+        margin-top: 0;
+    }
     
 }
