@@ -8,10 +8,10 @@
 
         <!-- # HERO -->
         <header id="hero">
-            <div class="container">                
+            <div class="container d-flex-lg flex-gap20">                
                 <div class="col-50">
                     <h3>DR. Dellasanta Federico</h3>
-                    <h1>Psicologo Cognitivo Comportamentale</h1>
+                    <h1>Psicologo Psicoterapeuta Cognitivo Comportamentale</h1>
                     <p class="mb-20">
                         Mi occupo di consulenze psicologiche, sostegno e propongo percorsi individualizzati a Fano e online.
                     </p>
@@ -41,7 +41,7 @@
 
         <!-- # COSA ASPETTARSI DALLA TERAPIA -->
         <section id="cosa-aspettarsi">
-            <div class="container d-flex align-center flex-gap20">
+            <div class="container d-flex-lg align-center flex-gap20">
                 <div class="col-50">
 
                     <h3>cosa aspettarsi dalla terapia</h3>

@@ -20,6 +20,14 @@ img{
     width: 100%;
 }
 
+.d-block{
+    display: block;
+}
+
+.d-inline-block{
+    display: inline-block;
+}
+
 /* # flex utilities */
 .d-flex{
     display: flex;
@@ -53,8 +61,20 @@ img{
     align-items: flex-start;
 }
 
+.d-flex-lg.align-start{
+    align-items: flex-start;
+}
+
 .d-flex.align-center{
     align-items: center;
+}
+
+.d-flex.align-end{
+    align-items: flex-end;
+}
+
+.d-flex-lg.align-end{
+    align-items: flex-end;
 }
 
 .col-33{
@@ -77,11 +97,11 @@ img{
     flex-shrink: 1;
 }
 
-.d-flex.flex-gap10{
+.flex-gap10{
     gap: 10px;
 }
 
-.d-flex.flex-gap20{
+.flex-gap20{
     gap: 20px;
 }
 
@@ -90,12 +110,24 @@ img{
     margin: 20px;
 }
 
+.mt-10{
+    margin-top: 10px;
+}
+
+.mt-20{
+    margin-top: 20px;
+}
+
 .mr-10{
     margin-right: 10px;
 }
 
 .mr-20{
     margin-right: 20px;
+}
+
+.mb-0{
+    margin-bottom: 0!important;
 }
 
 .mb-10{
@@ -116,6 +148,10 @@ img{
 
 .ml-10{
     margin-left: 10px;
+}
+
+.ml-20{
+    margin-left: 20px;
 }
 
 .p-10{
@@ -152,12 +188,24 @@ a{
     .smartphone-only{
         display: none;
     }
+
+    .d-flex-md{
+        display: flex;
+    }
 }
 
 /* #desktop */
 @media screen and (min-width:992px){
     .desktop{
         display: block;
+    }
+
+    .d-flex-lg{
+        display: flex;
+    }
+
+    .p20-lg{
+        padding: 20px;
     }
 
 }

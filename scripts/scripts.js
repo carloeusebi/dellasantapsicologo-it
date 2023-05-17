@@ -35,10 +35,26 @@ setTimeout(function(){
 const closeResponse = document.getElementsByClassName('fa-xmark');
 const response = document.getElementsByClassName('response');
 
-closeResponse[0].addEventListener('click', async function() {
-    response[0].style.opacity = '0';
+if (closeResponse[0] != null){
+
+    closeResponse[0].addEventListener('click', async function() {
+        response[0].style.opacity = '0';
+        
+        // it waits for animation to complete, then it hides popup
+        await new Promise(resolve => setTimeout(resolve, 300));
+        response[0].style.visibility = 'hidden';
+    })
+}
     
-    // it waits for animation to complete, then it hides popup
-    await new Promise(resolve => setTimeout(resolve, 300));
-    response[0].style.visibility = 'hidden';
+// ! Button is greyed out if checkbox is not checked
+
+const normativeCheckbox = document.getElementById('norm-cb');
+const formButton = document.getElementById('formButton');
+
+normativeCheckbox.addEventListener('click', () => {
+    if(normativeCheckbox.checked){
+        formButton.classList.remove('unclickable');
+    } else {
+        formButton.classList.add('unclickable');        
+    }
 })

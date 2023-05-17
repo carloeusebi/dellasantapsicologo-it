@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+*:focus{
+   outline: none;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -40,7 +44,7 @@ html{
 }
 
 body{
-    font-family: 'Roboto', sans-serif;
+    font-family: sans-serif;
 }
 
 .container{
@@ -54,13 +58,14 @@ a{
 }
 
 h1{
+    font-family: serif;
     color: var(--footer-clor);
     font-size: 2.5rem;
     margin-bottom: 20px;
-    text-shadow: 1px 1px 1px darkgreen;
 }
 
 h2{
+    font-family: serif;
     font-size: 1.8rem;
     margin-bottom: 20px;
 }
@@ -98,7 +103,8 @@ p{
     transition: background-color 300ms;
 }
 
-.btn:hover{
+.btn:not(.unclickable):hover,
+.btn:not(.unclickable):focus{
     background-color: var(--footer-clor);
 }
 
@@ -255,7 +261,7 @@ header::before{
 
 /* # CONTATTAMI */
 #contattami li{
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     line-height: 1.5rem;
 }
 
@@ -264,53 +270,57 @@ header::before{
     font-size: 1.5rem;
 }
 
+#contattami hr{
+    width: 80px;
+    border: none;
+    background-color: var(--footer-clor);
+    height: 5px;
+}
+
 /* * contattami form */
-#contattami > .container > .d-flex:first-of-type{
+#contattami .col-50.flex-column{
+    min-height: 150px;
+}
+
+.contact-info{
     display: block;
-}
+    border: 1px solid lightgray;
+    outline: 0;
 
-#contattami .form-card{
-    background-color: var(--green-bg-color);
-    padding: 2rem 1rem; 
-    border-radius: 2rem;
-    box-shadow: 2px 2px 5px gray;
-}
-
-#contattami label{
-    display: block;
-}
-
-#contattami .clients-data{
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-    height: 2rem;
-    padding: 1rem;
-    outline: none;
-    border-radius: .5rem;
-    border: 1px solid gray;
-}
-
-.form-card #norm-cb{
-    cursor: pointer;
-}
-
-textarea#message{
     outline: none;
     width: 100%;
     resize: none;
     background-color: white;
     z-index: 0;
-    border-radius: .5rem;
     
     padding: 1rem;
-    font-family: 'Roboto', sans-serif;
+    font-family: sans-serif;
 }
 
-.form-card .btn{
+.contact-info:focus{
+    border-color: var(--btn-color);
+    box-shadow: 0 2px 9px 2px rgba(0,0,0,.15);
+}
+
+#contact-form input{
+    height: 18px;
+}
+
+#contact-form textarea{
+    height: 150px;
+}
+
+#contact-form .btn{
     width: 100%;
+    height: 50px;
     border: none;
-    cursor: pointer;    
+    cursor: pointer;
+    transition: opacity 300ms;
+}
+
+#contact-form .btn.unclickable{
+    cursor: not-allowed;
+    opacity: .5;
 }
 
 .iubenda-link{
@@ -319,13 +329,47 @@ textarea#message{
     transition: color 300ms
 }
 
-.iubenda-link:hover{
+.iubenda-link:hover,
+.iubenda-link:focus{
     color: orange;
 }
 
-label[for="miele-cb"]{
+#miele-cb{
     visibility: hidden;
     display: none;
+}
+
+#contattami sup{
+    color: red;
+}
+
+input[type="checkbox"]{
+    appearance: none;
+    vertical-align: middle;
+}
+
+input[type="checkbox"]::before{
+    content: '\f0c8';
+    font: var(--fa-font-regular);
+    font-size: 1rem;
+    color: lightgray;
+}
+
+input[type="checkbox"]:checked::before{
+    content: '\f14a';
+    font: var(--fa-font-solid);
+    color: var(--btn-color);
+    font-size: 1rem;
+}
+
+input[type="checkbox"]:focus::before,
+input[type="checkbox"]:hover::before{
+    color: var(--btn-color);
+    text-shadow: 0 2px 9px 2px rgba(0,0,0,.15);
+}
+
+label[for="norm-cb"]{
+    user-select: none;
 }
 
 /* # RISPOSTA */
@@ -338,7 +382,7 @@ label[for="miele-cb"]{
 
     position: relative;
 
-    transition: opacity 300ms;
+    transition: opacity 500ms;
 }
 
 .response::before{
@@ -432,16 +476,12 @@ footer{
     #di-cosa-mi-occupo .col{
         flex-basis: calc((100% - 40px) / 2);
     }
-
-    #contatti .col-50:nth-child(2){
-        display: flex;
-    }
 }
 
 /* # desktop */
 @media screen and (min-width: 992px) {
     .container{
-        max-width: 1080px;
+        max-width: 1200px;
     }
     
     #top-nav .container,
@@ -475,20 +515,9 @@ footer{
         border: none;
     }
     
-    /* # HERO */
-    #hero .container{
-        display: flex;
-        gap: 50px;
-    }
-    
     /* # DI COSA MI OCCUPO */
     #di-cosa-mi-occupo .col{
         flex-basis: calc((100% - 40px) / 3);
-    }
-
-    /* # CONTATTAMI */
-    #contattami > .container > .d-flex:first-of-type{
-        display: flex;
     }
     
     

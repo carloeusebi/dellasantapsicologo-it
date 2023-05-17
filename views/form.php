@@ -2,7 +2,7 @@
         <section id="contattami">
             <div class="container">
 
-                <div class="container d-flex align-center flex-gap20">
+                <div class="container d-flex-lg flex-gap20 align-end mb-20">
                     <div class="col-33">
                         <h3>Hai bisogno di un consulto?</h3>
                         <h2>Contattami</h2>
@@ -23,62 +23,61 @@
                             <span class="fa-li"><i class="fa-solid fa-phone"></i></span>
                             375 7345384
                         </a></li>
-                        <li><a href="https://wa.me/0393757345384" target="_blank">
+                        <li class="mb-0"><a href="https://wa.me/0393757345384" target="_blank">
                             <span class="fa-li"><i class="fa-brands fa-whatsapp"></i></span>
                             Inviami un messaggio
                         </a></li>
                     </ul>
                 </div>
+
                 <!-- # FORM -->
                 <div class="col-66">
-                    <form id="contact-form" class="form-card mb-50" method="post" action="app/email-send.php">
-                        <div class="d-flex flex-gap20">
+                    <form id="contact-form" method="post" action="app/email-send.php">
+                        <div class="d-flex-lg flex-gap20">
                             
-                            <div class="col-50">
-                                <label for="name">Il tuo nome:
-                                    <input class="clients-data" type="text" name="name" id="name" placeholder="Nome" autocomplete="name" required>
-                                </label>
-                                <label for="phone">Il tuo numero di Telefono:
-                                    <input class="clients-data" type="number" name="phone" id="phone" placeholder="Numero di Telefono" required>
-                                </label>
-                                <label for="mail">La tua Email:
-                                    <input class="clients-data" type="email" name="mail" id="mail" placeholder="Email" required >
-                                </label>
-                                <a href="https://www.iubenda.com/privacy-policy/29156312" class="iubenda-link mb-10" target
-                                ="_blank">
-                                    Normativa sull'utilizzo dei dati personali
-                                </a>
-                                <label for="norm-cb">                        
-                                    <input type="checkbox" name="norm-cb" id="norm-cb" required checked>
-                                    Ho letto e accetto la normativa sui dati personali <sup>*</sup>                            
-                                </label>
+                            <div class="col-50 p-20-lg d-flex flex-column justify-space-between mb-20">                            
+                                <input class="contact-info" type="text" name="name" id="name" placeholder="Nome" autocomplete="name" required>
+                                <input class="contact-info" type="number" name="phone" id="phone" placeholder="Numero di Telefono" required>
+                                <input class="contact-info" type="email" name="mail" id="mail" placeholder="Email" required>
                             </div>
-                            <div class="col-50">
-                                <textarea name="message" id="message" rows="15" placeholder="Come posso aiutarti?" required>placeholder</textarea>
-                                <label for="miele-cb">
-                                    <input type="checkbox" id="miele-cb" name="miele-cb">
-                                    sei sicuro di voler inviare il messaggio?
-                                </label>
-                                <input type="submit" class="btn" name="submit" value="invia il messaggio">
-                            </div>
+                            <div class="col-50 p-20-lg mb-20">
+                                <textarea  class="contact-info" name="message" id="message" rows="15" placeholder="Come posso aiutarti?" required></textarea>
+                                </div>
                         </div>
-                    </form>
+                            <div class="d-flex-lg flex-gap20">                                    
+                                <div class="col-50 p-20-lg">
+                                    <div>
+                                        <a href="https://www.iubenda.com/privacy-policy/29156312" class="iubenda-link mb-10" target="_blank">
+                                            Normativa sull'utilizzo dei dati personali
+                                        </a>                                                          
+                                    </div>
+                                    <input class="c-pointer" type="checkbox" name="norm-cb" id="norm-cb" required>
+                                        <label for="norm-cb" class="c-pointer"> Ho letto e accetto la normativa sui dati personali <sup>*</sup></label>
+                                    </div>
+                                <div class="col-50 p-20-lg">
+                                    <input type="checkbox" id="miele-cb" name="miele-cb">                            
+                                    <input type="submit" class="btn unclickable" name="submit" id="formButton" value="invia il messaggio">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <div id="response-anchor"></div>
-            <?php if(isset($_SESSION['status'])) : ?>
-                <script>
-                    document.getElementById('response-anchor').scrollIntoView(true);
-                </script>
+                <div id="response-anchor"></div>
+
+                <?php if(isset($_SESSION['status'])) : ?>
+                    <script>
+                        document.getElementById('response-anchor').scrollIntoView(true);
+                        </script>
                 <?php if ($_SESSION['status'] == 'success') : ?>
-                    <div class="response success" >Email inviata correttamente
+                    <div class="response success mt-20" >Email inviata correttamente
                         <i class="fa-solid fa-xmark fa-xl"></i>
                     </div>
-                <?php else : ?>
-                    <div class="response bad" ><?php echo $_SESSION['status'] ?>
-                    <i class="fa-solid fa-xmark fa-xl"></i></div>  
-                <?php endif; ?>
-            <?php endif; ?>  
-            <?php unset($_SESSION['status']); ?>
+                    <?php else : ?>
+                        <div class="response bad mt-20" ><?php echo $_SESSION['status'] ?>
+                        <i class="fa-solid fa-xmark fa-xl"></i></div>  
+                        <?php endif; ?>
+                    <?php endif; ?>  
+                <?php unset($_SESSION['status']); ?>
+
             </div>
         </section>
