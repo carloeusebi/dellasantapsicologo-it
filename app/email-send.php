@@ -25,10 +25,10 @@ use PHPMailer\PHPMailer\Exception;
 use \Verifalia\VerifaliaRestClient;
 
 //Load Composer's autoloader
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
-include 'assets/credentials.php';
-include 'assets/email-validation.php';
+include 'credentials.php';
+include 'email-validation.php';
 
 
 //Create an instance; passing `true` enables exceptions
