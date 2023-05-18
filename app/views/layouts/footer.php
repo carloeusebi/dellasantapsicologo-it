@@ -8,12 +8,12 @@
                 <div class="col-50 d-flex-lg">
                     <div class="col-50 mb-50">
                         <h4>Link Utili</h4>
-                        <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/chi-sono">Chi sono</a></li>
-                            <li><a href="/cosa-aspettarsi">Cosa aspettarsi dalla Terapia</a></li>
-                            <li><a href="/di-cosa-mi-occupo">Di cosa mi occupo</a></li>
-                            <li><a href="/contatti">Contatti</a></li>
+                        <ul class="fa-ul underline-on-hover">
+                            <li><span class="fa-li"><i class="fa-solid fa-caret-right"></i></span><a href="/">Home</a></li>
+                            <li><span class="fa-li"><i class="fa-solid fa-caret-right"></i></span><a href="/chi-sono">Chi sono</a></li>
+                            <li><span class="fa-li"><i class="fa-solid fa-caret-right"></i></span><a href="/cosa-aspettarsi">Cosa aspettarsi dalla Terapia</a></li>
+                            <li><span class="fa-li"><i class="fa-solid fa-caret-right"></i></span><a href="/di-cosa-mi-occupo">Di cosa mi occupo</a></li>
+                            <li><span class="fa-li"><i class="fa-solid fa-caret-right"></i></span><a href="/contatti">Contatti</a></li>
                         </ul>
                     </div>
                     <address class="col50">

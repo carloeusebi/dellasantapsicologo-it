@@ -60,19 +60,23 @@ a{
 h1{
     font-family: serif;
     color: var(--footer-clor);
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 20px;
+}
+
+h1 > div{
+    font-size: 2.5rem;
 }
 
 h2{
     font-family: serif;
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 20px;
 }
 
 h3{
     color: var(--btn-color);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: 10px;
     text-transform: uppercase;
 }
@@ -92,6 +96,9 @@ p{
     display: inline-block;
     padding: 17px 32px;
     background-color: var(--btn-color);
+    position: relative;
+
+    overflow: hidden;
     
     font-size: 13px;
     font-weight: bold;
@@ -101,11 +108,6 @@ p{
     text-transform: uppercase;
 
     transition: background-color 300ms;
-}
-
-.btn:not(.unclickable):hover,
-.btn:not(.unclickable):focus{
-    background-color: var(--footer-clor);
 }
 
 /* ! ****************************** */
@@ -444,7 +446,7 @@ label[for="norm-cb"]{
     margin-bottom: 2rem;
 }
 
-#contatti address i{
+#contatti i{
     color: var(--btn-color);
 }
 
@@ -452,6 +454,16 @@ label[for="norm-cb"]{
     margin-bottom: 1rem;
 }
 
+#contatti .underline-on-hover a{
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition: 300ms;
+}
+
+#contatti .underline-on-hover a:hover,
+#contatti .underline-on-hover a:focus{
+    border-color: black;
+}
 
 /* ! ****************************** */
 /* ! FOOTER *********************** */

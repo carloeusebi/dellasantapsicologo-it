@@ -1,3 +1,4 @@
+/* # HAMBURGER MENU */
 
 #hamburger-menu {
     width: 35px;
@@ -65,3 +66,26 @@
     -o-transform: rotate(-135deg);
     transform: rotate(-135deg);
 }
+
+/* # SHINE ON BUTTONS */
+
+.btn:after{
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    bottom: -50%;
+    left: -50%;
+    background: linear-gradient(to bottom, rgba(229, 172, 142, 0), rgba(255,255,255,0.5) 50%, rgba(229, 172, 142, 0));
+    transform: rotateZ(60deg) translate(-6em, 225%);
+  }
+  /*This activates the sheen once the button has been hovered*/
+  .btn:hover:not(.unclickable)::after,
+  .btn:focus:not(.unclickable)::after {
+    animation: sheen 1.3s forwards;
+  }
+  @keyframes sheen {
+    100% {
+      transform: rotateZ(60deg) translate(1em, -200%);
+    }
+  }

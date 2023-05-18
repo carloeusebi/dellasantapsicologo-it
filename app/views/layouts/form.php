@@ -56,7 +56,7 @@
                                     </div>
                                 <div class="col-50 p-20-lg">
                                     <input type="checkbox" id="miele-cb" name="miele-cb">                            
-                                    <input type="submit" class="btn unclickable mt-20" name="submit" id="formButton" value="invia il messaggio">
+                                    <button class="btn unclickable mt-20" name="submit" id="formButton">Invia il messaggio</i></button>
                                 </div>
                             </div>
                         </form>

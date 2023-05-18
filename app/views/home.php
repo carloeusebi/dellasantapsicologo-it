@@ -11,7 +11,7 @@
             <div class="container d-flex-lg flex-gap20">                
                 <div class="col-50">
                     <h3>DR. Dellasanta Federico</h3>
-                    <h1>Psicologo Psicoterapeuta Cognitivo Comportamentale</h1>
+                    <h1>Psicologo Psicoterapeuta <div>Cognitivo Comportamentale</div></h1>
                     <p class="mb-20">
                         Mi occupo di consulenze psicologiche, sostegno e propongo percorsi individualizzati a Fano e online.
                     </p>
