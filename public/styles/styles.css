@@ -47,6 +47,12 @@ body{
     font-family: sans-serif;
 }
 
+body.wait,
+body.wait *,
+body.wait *:hover{
+    cursor: wait !important;
+}
+
 .container{
     max-width: 550px;
     margin: 0 auto;
@@ -192,7 +198,8 @@ section, header{
 }
 
 #hero img{
-    border: 10px solid black;
+    border: 10px solid var(--footer-clor);
+    box-shadow: 0 0 10px 10px var(--footer-clor);
     border-radius: 50%;
     background-color: #fff;
     width: 75%;
@@ -427,7 +434,11 @@ label[for="norm-cb"]{
 }
 
 #contatti img{
-    width: 75%;    
+    width: 75%;
+}
+
+#contatti .map{
+    max-width: 100%;
 }
 
 #contatti > .col-50:first-child{

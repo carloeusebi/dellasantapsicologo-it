@@ -58,3 +58,31 @@ normativeCheckbox.addEventListener('click', () => {
         formButton.classList.add('unclickable');        
     }
 })
+
+// after button click changes cursor to loading
+const form = document.getElementById('contact-form');
+
+form.addEventListener('submit', () => {
+    document.body.classList.add('wait');
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// formButton.addEventListener('click', () => {
+//     if(!formButton.classList.contains('unclickable')){
+//         console.log('loading');
+//         document.body.classList.add('wait');
+//     }
+// })
