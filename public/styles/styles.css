@@ -177,62 +177,32 @@ p{
 /* ! MAIN ************************* */
 /* ! ****************************** */
 section, header{
-    min-height: 100px;
-    scroll-margin-top: var(--navbar-height);
     padding: 60px 20px;
-
-    z-index: 0;
-    position: relative;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: top;
     background-size: cover;
-    position: relative;
-}
-
-section::before,
-header::before{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--green-bg-color);
-    opacity: .95;
-    z-index: -1;
 }
 
 /* # HERO */
 #hero{
-    box-shadow: inset 0 0 100px 150px var(--green-bg-color);
-    background-image: url(../img/test.jpg);
-    padding-bottom: 150px;
-}
-
-#hero::before{
-    content: '';    
-    background-color: var(--green-bg-color);
+    background-image: url(../img/Hero-background-1024x533.webp);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
 }
 
 #hero img{
-    box-shadow: 20px 20px 5px gray;
-}
-
-#hero h5{
-    text-shadow: 1px 1px 1px darkgreen;
+    border: 10px solid black;
+    border-radius: 50%;
+    background-color: #fff;
+    width: 75%;
 }
 
 /* # CHI SONO */
 
 /* # COSA ASPETTARSI */
 #cosa-aspettarsi{
-    box-shadow: inset 0 0 100px 150px lightgray;
-    background-image: url(../img/test.jpg);
- 
-}
-
-#cosa-aspettarsi::before{
-    content: '';
-    background-color: #eee;
+    background-image: url(../img/cosa-aspettarsi-bg.jpg); 
 }
 
 #cosa-aspettarsi figure{
@@ -241,7 +211,25 @@ header::before{
 
 /* # DI COSA MI OCCUPO */
 #di-cosa-mi-occupo{
+    background-image: url(../img/h4_partern.png);
+    position: relative;
+    background-size: fill;
+}
+
+#di-cosa-mi-occupo:before{
+    content: '';
+    position: absolute;
+    inset: 0;
     background-color: var(--green-bg-color);
+    opacity: .85;
+}
+
+#di-cosa-mi-occupo > *{
+    position: relative;
+}
+
+#di-cosa-mi-occupo h2{
+    color: var(--footer-clor);
 }
 
 #di-cosa-mi-occupo .col{
@@ -424,6 +412,18 @@ label[for="norm-cb"]{
 /* # CONTATTI */
 #contatti{
     background-color: var(--green-bg-color);
+    position: relative;
+}
+
+#contatti::before{
+    position: absolute;
+    content: '';
+    inset: 0;
+    
+    background-image: url(../img/footer_right.png);
+    background-size: fill;
+    background-position: bottom right;
+    background-repeat: no-repeat;
 }
 
 #contatti img{

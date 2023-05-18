@@ -18,8 +18,8 @@
                     <a href="/contatti" class="btn mb-50">Prenota un appuntamento</a>
                 </div>
                 <div class="col-50">
-                    <figure>
-                        <img src="img/test.jpg" alt="Il Dottor Dellasanta">
+                    <figure class="d-flex justify-center">
+                        <img src="img/Hero_Dellasanta.webp" alt="Il Dottor Dellasanta">
                     </figure>
                 </div>
             </div>
