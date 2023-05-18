@@ -27,7 +27,7 @@ use \Verifalia\VerifaliaRestClient;
 //Load Composer's autoloader
 require '../vendor/autoload.php';
 
-include 'credentials.php';
+include 'config/credentials.php';
 include 'email-validation.php';
 
 

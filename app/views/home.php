@@ -1,7 +1,7 @@
     <?php
     session_start();
 
-    include 'head.php';?>
+    include 'layouts/head.php';?>
     
         <!-- ! MAIN -->
     <main>
@@ -137,7 +137,7 @@
         </section>
     </main>
     
-    <?php include "form.php" ?>    
-    <?php include "footer.php" ?>    
+    <?php include "layouts/form.php" ?>    
+    <?php include "layouts/footer.php" ?>    
 </body>
 </html>
