@@ -59,7 +59,7 @@
         <!-- # DI COSA MI OCCUPO -->
         <section id="di-cosa-mi-occupo" class="text-align-center">
             <h2>Di cosa mi occupo</h2>
-            <div class="container d-flex f-wrap flex-gap20">
+            <div class="container d-flex f-wrap flex-gap20 mb-50">
 
                 <!-- first column -->
                 <div class="col">
@@ -128,9 +128,9 @@
                     </div>
                 </div>
 
-                <a class="btn" href="/contatti">Richiedi un appuntamento</a>
-
+                
             </div>
+            <a class="btn" href="/contatti">Richiedi un appuntamento</a>
         </section>
     
     <?php include "layouts/form.php" ?>    

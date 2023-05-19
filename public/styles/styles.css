@@ -15,8 +15,8 @@
 :root{
     /* colors */
     --btn-color: #6ecc84;
-    --green-bg-color: #bed5c4;
-    --footer-clor: #264e32;
+    --green-bg-color: #e0ffe8;
+    --footer-color: #264e32;
 
     /* layout */
     --navbar-height: 100px;
@@ -54,7 +54,7 @@ a{
 
 h1{
     font-family: serif;
-    color: var(--footer-clor);
+    color: var(--footer-color);
     font-size: calc(2rem + 1.5vw);
     margin-bottom: 20px;
 }
@@ -67,6 +67,7 @@ h2{
     font-family: serif;
     font-size: 2rem;
     margin-bottom: 20px;
+    letter-spacing: .8px;
 }
 
 h3{
@@ -78,7 +79,12 @@ h3{
 
 h4{
     color: var(--btn-color);
-    font-size: 1.2rem;
+
+    font-size: 1.8rem;
+    font-family: serif;
+    font-weight: 500;
+    padding: 0 30px;
+
     margin-bottom: 20px;
 }
 
@@ -183,8 +189,8 @@ section, main header{
 }
 
 #hero img{
-    border: 10px solid var(--footer-clor);
-    box-shadow: 0 0 10px 10px var(--footer-clor);
+    border: 10px solid var(--footer-color);
+    box-shadow: 0 0 10px 10px var(--footer-color);
     border-radius: 50%;
     background-color: #fff;
     width: 75%;
@@ -221,7 +227,7 @@ section, main header{
 }
 
 #di-cosa-mi-occupo h2{
-    color: var(--footer-clor);
+    color: var(--footer-color);
 }
 
 #di-cosa-mi-occupo .col{
@@ -234,11 +240,24 @@ section, main header{
 }
 
 #di-cosa-mi-occupo .col-text p{
-    font-size: .9rem;
+    color: rgb(119,119,119);
+
+    font-size: 15px;
+    line-height: 24px;
 }
 
 #di-cosa-mi-occupo .btn{
     margin: 0 auto;
+}
+
+#di-cosa-mi-occupo h4{
+    min-height: 66px;
+    display: flex;
+    align-items: center;
+}
+
+#di-cosa-mi-occupo p{
+    font-size: .95rem;
 }
 
 /* # CONTATTAMI */
@@ -255,7 +274,7 @@ section, main header{
 #contattami hr{
     width: 80px;
     border: none;
-    background-color: var(--footer-clor);
+    background-color: var(--footer-color);
     height: 5px;
 }
 
@@ -437,7 +456,7 @@ label[for="norm-cb"]{
 
 #contatti h4{
     display: inline-block;
-    color: var(--footer-clor);
+    color: var(--footer-color);
     border-bottom: 2px solid var(--btn-color);
     padding-bottom: 1rem;
     margin-bottom: 2rem;
@@ -467,7 +486,7 @@ label[for="norm-cb"]{
 /* ! ****************************** */
 footer{
     height: var(--footer-height);
-    background-color: var(--footer-clor);
+    background-color: var(--footer-color);
     color: white;
 
     padding: 20px;
