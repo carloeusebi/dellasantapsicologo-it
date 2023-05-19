@@ -62,22 +62,18 @@
                         </form>
                     </div>
                 </div>
-                <div id="response-anchor"></div>
 
-                <?php if(isset($_SESSION['status'])) : ?>
-                    <script>
-                        document.getElementById('response-anchor').scrollIntoView(true);
-                        </script>
-                <?php if ($_SESSION['status'] == 'success') : ?>
-                    <div class="response success mt-20" >Email inviata correttamente
-                        <i class="fa-solid fa-xmark fa-xl"></i>
-                    </div>
+                <?php if(isset($_SESSION['status'])) : ?>    
+                    <?php if ($_SESSION['status'] == 'success') : ?>
+                        <div class="response success mt-20" >Email inviata correttamente
+                            <i class="fa-solid fa-xmark fa-xl"></i>
+                        </div>
                     <?php else : ?>
                         <div class="response bad mt-20" ><?php echo $_SESSION['status'] ?>
                         <i class="fa-solid fa-xmark fa-xl"></i></div>  
-                        <?php endif; ?>
-                    <?php endif; ?>  
-                <?php unset($_SESSION['status']); ?>
+                    <?php endif; ?>
+                <?php endif; ?>  
+                
 
             </div>
         </section>

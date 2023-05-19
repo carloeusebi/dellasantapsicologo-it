@@ -1,13 +1,11 @@
 <?php
-session_start();
-
 
 $name = $_POST['name'];
 $phone = $_POST['phone'];
 $emailFrom = $_POST['mail'];
 $message = $_POST['message'];
 
-$location = '/contatti';
+$location = parse_url($_SERVER["HTTP_REFERER"])['path'];
 
 // $honeypot = $_POST['miele-cb'];
 

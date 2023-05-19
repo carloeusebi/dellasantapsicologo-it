@@ -1,6 +1,4 @@
 <?php
-    session_start();
-
     include 'layouts/head.php'; ?>
 
     <h1>CHI SONO</h1>

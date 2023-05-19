@@ -1,5 +1,13 @@
        
         <!-- # CONTATTI -->
+        <div id="response-anchor"></div>
+        <?php if(isset($_SESSION['status'])) : ?>
+                <script>
+                    document.getElementById('response-anchor').scrollIntoView(true);
+                </script>
+        <?php unset($_SESSION['status']); ?>
+        <?php endif ?>
+
         <section id="contatti">
             <div class="container d-flex-lg">
                 <div class="col-50 tablet">
