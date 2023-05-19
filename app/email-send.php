@@ -7,8 +7,6 @@ $message = $_POST['message'];
 
 $location = parse_url($_SERVER["HTTP_REFERER"])['path'];
 
-// $honeypot = $_POST['miele-cb'];
-
 $emailTo = 'carloeusebi@gmail.com';
 $subject = 'Un cliente ti ha scritto';
 $body = "Da: $name <br>
@@ -22,27 +20,25 @@ use PHPMailer\PHPMailer\Exception;
 
 use \Verifalia\VerifaliaRestClient;
 
-//Load Composer's autoloader
 require '../vendor/autoload.php';
-
 include 'config/credentials.php';
 include 'email-validation.php';
 
-
-//Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
 $verifalia = new VerifaliaRestClient([
-    'username' => 'carloeusebi@gmail.com',
-    'password' => 'vGRY798h-!y8.Y@'
+    'username' => $verifaliaUsername,
+    'password' => $verifaliaPassword
 ]);
 
 if ($_POST['submit']){
 
-    $mail->Host = $credentialHost;
     $mail->SMTPAuth = true;
-    $mail->Username = $credentialUsername;
-    $mail->Password = $credentialPassword;
+    
+    $mail->Host = $mailHost;
+    $mail->Username = $mailUsername;
+    $mail->Password = $mailPassword;
+
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
     
@@ -54,8 +50,7 @@ if ($_POST['submit']){
     $mail->Body = $body;
 
     $mail->SMTPDebug = 1;
-    $mail->isSMTP();
-    
+    $mail->isSMTP();    
     
     $mail->SMTPOptions = [
         'ssl'=> [

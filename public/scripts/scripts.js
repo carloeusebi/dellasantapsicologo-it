@@ -4,7 +4,7 @@ const topNavbar = document.getElementById('top-navbar');
 
 let flag = false;
 
-hamburgerMenu.addEventListener('click', function() {
+hamburgerMenu.addEventListener('click', () => {
     if (flag){
         topNavbar.style.left = 'calc(var(--navbar-width) * -1)';
         hamburgerMenu.classList.remove('open');
@@ -22,7 +22,7 @@ const response = document.getElementsByClassName('response');
 
 if (closeResponse[0] != null){
 
-    closeResponse[0].addEventListener('click', async function() {
+    closeResponse[0].addEventListener('click', async () => {
         response[0].style.opacity = '0';
         
         // it waits for animation to complete, then it hides popup
