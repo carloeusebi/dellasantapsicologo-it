@@ -1,37 +1,22 @@
-
-// navbar script
+// ! navbar open and close
 const hamburgerMenu = document.getElementById('hamburger-menu');
-const mainNavbar = document.getElementById('main-navbar');
+const topNavbar = document.getElementById('top-navbar');
 
 let flag = false;
 
 hamburgerMenu.addEventListener('click', function() {
     if (flag){
-        mainNavbar.style.left = 'calc(var(--navbar-width) * -1)';
+        topNavbar.style.left = 'calc(var(--navbar-width) * -1)';
         hamburgerMenu.classList.remove('open');
         flag = false;                
     } else {
-        mainNavbar.style.left = 0;
+        topNavbar.style.left = 0;
         hamburgerMenu.classList.add('open');
         flag = true;
     }
 })
 
-
-// understands where we are in page and chooses which navbar item to color
-const url=location.href;
-const navbarToActivate = "navbar_" + url.substring(url.lastIndexOf('/')+1);
-
-const activeNav = document.getElementById(navbarToActivate);
-activeNav.classList.add('active');
-
-// allows tranitions effects on navbar items after loading
-setTimeout(function(){
-    mainNavbar.classList.remove('preload');
-}, 1000);
-
 // ! Closing email response popup
-
 const closeResponse = document.getElementsByClassName('fa-xmark');
 const response = document.getElementsByClassName('response');
 
@@ -47,7 +32,6 @@ if (closeResponse[0] != null){
 }
     
 // ! Button is greyed out if checkbox is not checked
-
 const normativeCheckbox = document.getElementById('norm-cb');
 const formButton = document.getElementById('formButton');
 
@@ -59,7 +43,7 @@ normativeCheckbox.addEventListener('click', () => {
     }
 })
 
-// after button click changes cursor to loading
+// ! after submit button click changes cursor to loading
 const form = document.getElementById('contact-form');
 
 form.addEventListener('submit', () => {

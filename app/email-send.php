@@ -7,7 +7,7 @@ $phone = $_POST['phone'];
 $emailFrom = $_POST['mail'];
 $message = $_POST['message'];
 
-$location = 'contatti';
+$location = '/contatti';
 
 // $honeypot = $_POST['miele-cb'];
 

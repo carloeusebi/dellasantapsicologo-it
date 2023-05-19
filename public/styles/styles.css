@@ -108,7 +108,7 @@ p{
 /* ! ****************************** */
 /* ! NAVBAR *********************** */
 /* ! ****************************** */
-#top-nav{
+#top-header{
     height: var(--navbar-height);
     background-color: #fff;
 
@@ -120,7 +120,7 @@ p{
     box-shadow: 0 0 2px black;
 }
 
-#top-nav .container{
+#top-header .container{
     height: 100%;
 }
 
@@ -130,7 +130,7 @@ p{
 }
 
 /* # NAVBAR */
-#main-navbar{
+#top-navbar{
     position: absolute;
     top: calc(var(--navbar-height) + 1px);
     left: calc(var(--navbar-width) * -1);
@@ -145,11 +145,7 @@ p{
     transition: left 300ms;
 }
 
-.preload * {
-    transition: none !important;
-}
-
-#main-navbar li a{
+#top-navbar li a{
     display: block;
     font-weight: bold;
     padding: 20px 0;
@@ -160,18 +156,18 @@ p{
     transition: color 300ms;
 }
 
-#main-navbar li a.active{
+#top-navbar li a.active{
     color: var(--btn-color);
 }
 
-#main-navbar li a:hover{
+#top-navbar li a:hover{
     color: var(--btn-color);
 }
 
 /* ! ****************************** */
 /* ! MAIN ************************* */
 /* ! ****************************** */
-section, header{
+section, main header{
     padding: 60px 20px;
     background-repeat: no-repeat;
     background-position: top;
@@ -497,12 +493,12 @@ footer{
         max-width: 1200px;
     }
     
-    #top-nav .container,
+    #top-header .container,
     footer .container{
         max-width: 1400px;
     }
     
-    #top-nav{
+    #top-header{
         padding: 0;
     }
     
@@ -511,7 +507,7 @@ footer{
         display: none;
     }
     
-    #main-navbar{
+    #top-navbar{
         position: static;
         width: auto;
         height: auto;
@@ -519,11 +515,11 @@ footer{
         padding: 0;
     }
     
-    #main-navbar ul{
+    #top-navbar ul{
         display: flex;
     }
     
-    #main-navbar li a{
+    #top-navbar li a{
         padding: 20px;
         border: none;
     }

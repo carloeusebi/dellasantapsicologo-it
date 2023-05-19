@@ -1,7 +1,4 @@
-    <?php
-    session_start();
-
-    include 'layouts/head.php';?>
+    <?php include 'layouts/head.php';?>
     
         <!-- ! MAIN -->
     <main>
@@ -135,7 +132,6 @@
 
             </div>
         </section>
-    </main>
     
     <?php include "layouts/form.php" ?>    
     <?php include "layouts/footer.php" ?>    

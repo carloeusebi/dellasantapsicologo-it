@@ -15,34 +15,8 @@
     <meta name="author" content="Carlo Eusebi">
     <meta name="description" content="Psicologo Cognitivo Comportamentale, mi occupo di consulenze psicologiche, sostegno e propongo percorsi individualizzati a Fano e online. Prenota la tua consulenza.">
 
+    <title>Dellasanta Psicologo Fano | <?= $pageTitle ?></title>
 
-    <?php
-        switch ($_SERVER['PHP_SELF']){
-            case '/index.php':
-                $pageTitle = 'Home';
-                break;
-
-            case '/index.php/chi-sono':
-                $pageTitle = 'Chi Sono';
-                break;
-
-            case '/index.php/cosa-aspettarsi':
-                $pageTitle = 'Cosa Aspettarsi';
-                break;
-
-            case '/index.php/di-cosa-mi-occupo':
-                $pageTitle = 'Di cosa mi Occupo';
-                break;
-
-            case '/index.php/contatti':
-                $pageTitle = 'Contatti';
-                break;
-            default:
-                $pageTitle = '';
-        }
-    ?>
-
-    <title>Dellasanta Psicologo Fano | <?php echo $pageTitle ?></title>
     <link rel="icon" href="img/Favicon.png" type="image/png">
     <!-- font awesome -->
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' integrity='sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==' crossorigin='anonymous'>
@@ -65,26 +39,26 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <nav id="top-nav">
-    <div class="container d-flex justify-space-between align-center">
-        <div id="hdr-logo">
-            <a href="https://www.dellasantapsicologo.it" target="_blank">
-                <img class="fluid-img" src="img/Logo.webp" alt="logo del sito">
-            </a>
+    <header id="top-header">
+        <div class="container d-flex justify-space-between align-center">
+            <div id="hdr-logo">
+                <a href="https://www.dellasantapsicologo.it" target="_blank">
+                    <img class="fluid-img" src="img/Logo.webp" alt="logo del sito">
+                </a>
+            </div>
+            <div id="hamburger-menu" class="m-20">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="top-navbar">
+                <ul>
+                    <li><a class="<?= urlIs('/') ? 'active' : '' ?>" href="/">Home</a></li>
+                    <li><a class="<?= urlIs('/chi-sono') ? 'active' : '' ?>" href="/chi-sono">Chi Sono</a></li>
+                    <li><a class="<?= urlIs('/cosa-aspettarsi') ? 'active' : '' ?>" href="/cosa-aspettarsi">Cosa aspettarsi dalla Terapia</a></li>
+                    <li><a class="<?= urlIs('/di-cosa-mi-occupo') ? 'active' : '' ?>" href="/di-cosa-mi-occupo">Di cosa mi Occupo</a></li>
+                    <li><a class="<?= urlIs('/contatti') ? 'active' : '' ?>" href="/contatti">Contatti</a></li>
+                </ul>
+            </nav>
         </div>
-        <div id="hamburger-menu" class="m-20">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div id="main-navbar" class="preload">
-            <ul>
-                <li><a id="navbar_" href="/">Home</a></li>
-                <li><a id="navbar_chi-sono" href="/chi-sono">Chi Sono</a></li>
-                <li><a id="navbar_cosa-aspettarsi" href="/cosa-aspettarsi">Cosa aspettarsi dalla Terapia</a></li>
-                <li><a id="navbar_di-cosa-mi-occupo" href="/di-cosa-mi-occupo">Di cosa mi Occupo</a></li>
-                <li><a id="navbar_contatti" href="/contatti">Contatti</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+    </header>

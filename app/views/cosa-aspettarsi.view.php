@@ -1,10 +1,7 @@
-<?php
-    session_start();
+<?php include 'layouts/head.php';?>
 
-    include 'layouts/head.php';?>
+    <h1>COSA ASPETTARSI</h1>
     
-    <h1>DI COSA MI OCCUPO</h1>
-
     <?php include "layouts/form.php";
     include "layouts/footer.php" ?>
 
