@@ -214,7 +214,7 @@ section, main header{
     border-radius: 50%;
     background-color: #fff;
     width: 75%;
-
+    box-shadow: 0 0 20px var(--footer-color);
 }
 
 #hero h3{
@@ -307,8 +307,7 @@ section, main header{
 
 /* # DR FEDERICO DELLASANTA */
 #dr-federico-dellasanta img{
-    height: 415px;
-    width: 415px;
+    max-height: 425px;
 }
 
 /* # IL MIO LAVORO */
@@ -611,9 +610,7 @@ label[for="norm-cb"]{
         margin-top: 0;
     }
 
-    /* # DOTTOR DELLASANTA */
-    #dr-federico-dellasanta .col-50.justify-center{
-        justify-content: flex-end;
+    #dr-federico-dellasanta .col-50.mb-50{
+        margin-bottom: 0 !important;
     }
-    
 }
