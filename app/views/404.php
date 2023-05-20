@@ -1,4 +1,7 @@
-<?php include 'layouts/head.php'; ?>
+<?php
+    include 'layouts/head.php'; 
+?>
+
 
 
 <div class="text-align-center mt-20">

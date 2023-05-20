@@ -1,3 +1,5 @@
+<?php require "../app/functions.php"; ?>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
