@@ -2,11 +2,11 @@
 
     <!-- # CONTATTI -->
     <div id="response-anchor"></div>
-    <?php if(isset($_SESSION['status'])) : ?>
-            <script>
-                document.getElementById('response-anchor').scrollIntoView(true);
-            </script>
-    <?php unset($_SESSION['status']); ?>
+    <?php if (isset($_SESSION['status'])) : ?>
+        <script>
+            document.getElementById('response-anchor').scrollIntoView(true);
+        </script>
+        <?php unset($_SESSION['status']); ?>
     <?php endif ?>
 
     <section id="contatti">
@@ -16,7 +16,7 @@
             </div>
             <div class="col-50 d-flex-lg">
                 <div class="col-50 mb-50">
-                    <h4>Link Utili</h4>
+                    <h4 class="text-align-start">Link Utili</h4>
                     <ul class="fa-ul underline-on-hover">
                         <li><span class="fa-li"><i class="fa-solid fa-caret-right"></i></span><a href="/">Home</a></li>
                         <li><span class="fa-li"><i class="fa-solid fa-caret-right"></i></span><a href="/chi-sono">Chi sono</a></li>
@@ -26,23 +26,23 @@
                     </ul>
                 </div>
                 <div class="col50">
-                    <h4>Contatti</h4>
-                    <address>                            
+                    <h4 class="text-align-start">Contatti</h4>
+                    <address>
                         <ul class="fa-ul">
                             <li><a href="https://www.google.it/maps/place/Via+Cavour,+8,+61032+Fano+PU/@43.8403484,13.0176242,17z/data=!3m1!4b1!4m5!3m4!1s0x132d1058e81f0963:0x77cf665ada2f3879!8m2!3d43.8403484!4d13.0198182?shorturl=1" target="_blank">
-                                <span class="fa-li"><i class="fa-solid fa-location-dot"></i></span>
-                                Via Cavour, 8 61032 Fano PU 
-                            </a></li>
+                                    <span class="fa-li"><i class="fa-solid fa-location-dot"></i></span>
+                                    Via Cavour, 8 61032 Fano PU
+                                </a></li>
                             <li><a href="mailto:dellasanta.federico@gmail.com ">
-                                <span class="fa-li"><i class="fa-solid fa-envelope"></i></span>
-                                dellasanta.federico@gmail.com 
-                            </a></li>
+                                    <span class="fa-li"><i class="fa-solid fa-envelope"></i></span>
+                                    dellasanta.federico@gmail.com
+                                </a></li>
                             <li><a href="tel:375-7345384">
-                                <span class="fa-li"><i class="fa-solid fa-phone"></i></span>
-                                375 7345384
-                            </a></li>
-                            <li>                            <span class="fa-li"><i class="fa-regular fa-clock"></i></span>
-                            Dalle 9:00 alle 19:00 <br>
+                                    <span class="fa-li"><i class="fa-solid fa-phone"></i></span>
+                                    375 7345384
+                                </a></li>
+                            <li> <span class="fa-li"><i class="fa-regular fa-clock"></i></span>
+                                Dalle 9:00 alle 19:00 <br>
                                 Lunedì - Venerdi
                             </li>
                         </ul>
@@ -53,9 +53,9 @@
     </section>
 
 
-<!-- ! FOOTER -->
+    <!-- ! FOOTER -->
     <div class="ftr-bottom">
-        <div class="container d-flex align-center">            
+        <div class="container d-flex align-center">
             <div class="copyright">Federico Dellasanta P.I. 02766970418 | © 2022 tutti i diritti riservati</div>
         </div>
     </div>

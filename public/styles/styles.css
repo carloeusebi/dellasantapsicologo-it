@@ -83,6 +83,7 @@ h3{
     color: var(--btn-color);
     font-size: 1.1rem;
     margin-bottom: 10px;
+    font-weight: 500;
     text-transform: uppercase;
 }
 
@@ -215,6 +216,12 @@ section, main header{
     width: 75%;
 
 }
+
+#hero h3{
+    font-weight: 600;
+}
+
+/* # SECOND HERO */
 
 .hero-secondary{
     background-image: url(../img/Immagini\ sito.webp);

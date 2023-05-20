@@ -1,5 +1,5 @@
-<?php
-include 'layouts/head.php'; ?>
+<?php include 'layouts/head.php';
+include 'layouts/hero-secondary.php' ?>
 
 <?php include "layouts/form.php"; ?>
 
