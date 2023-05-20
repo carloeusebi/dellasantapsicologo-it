@@ -2,13 +2,25 @@
 
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PPT73ZG');</script>
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PPT73ZG');
+    </script>
     <!-- End Google Tag Manager -->
 
     <meta charset="UTF-8">
@@ -29,14 +41,14 @@
     <!-- styles.css -->
     <link rel="stylesheet" href="styles/styles.css" type="text/css">
 
-    
+
     <!-- scripts -->
     <script defer src="scripts/scripts.js"></script>
 </head>
+
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PPT73ZG"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PPT73ZG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <header id="top-header">
@@ -56,8 +68,8 @@
                     <li><a href="/" <?= urlIs('/') ? 'class="active"' : '' ?>>Home</a></li>
                     <li><a href="/chi-sono" <?= urlIs('/chi-sono') ? 'class="active"' : '' ?>>Chi Sono</a></li>
                     <li><a href="/cosa-aspettarsi" <?= urlIs('/cosa-aspettarsi') ? 'class="active"' : '' ?>>Cosa aspettarsi dalla Terapia</a></li>
-                    <li><a href="/di-cosa-mi-occupo"<?= urlIs('/di-cosa-mi-occupo') ? 'class="active"' : '' ?>>Di cosa mi Occupo</a></li>
-                    <li><a href="/contatti"<?= urlIs('/contatti') ? 'class="active"' : '' ?>>Contatti</a></li>
+                    <li><a href="/di-cosa-mi-occupo" <?= urlIs('/di-cosa-mi-occupo') ? 'class="active"' : '' ?>>Di cosa mi Occupo</a></li>
+                    <li><a href="/contatti" <?= urlIs('/contatti') ? 'class="active"' : '' ?>>Contatti</a></li>
                 </ul>
             </nav>
         </div>
