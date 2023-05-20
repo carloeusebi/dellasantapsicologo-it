@@ -97,7 +97,6 @@ h4{
     margin-bottom: 20px;
 }
 
-
 p{
     line-height: 1.5;
 }
@@ -307,6 +306,11 @@ section, main header{
 
 /* # IL MIO LAVORO */
 #il-mio-lavoro{
+    background-color: var(--green-bg-color);
+}
+
+/* # CBT */
+#cbt{
     background-color: var(--green-bg-color);
 }
 
@@ -536,13 +540,21 @@ label[for="norm-cb"]{
 /* ! RESPONSIVE ******************* */
 /* ! ****************************** */
 /* # tablet */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 767px) {
     .container{
         max-width: 980px;
     }
     
     #di-cosa-mi-occupo .col{
         flex-basis: calc((100% - 40px) / 2);
+    }
+
+    #cbt .col-50:first-child{
+        order: 1;
+    }
+
+    #cbt figure{
+        padding: 0 20% 0 30%;
     }
 }
 

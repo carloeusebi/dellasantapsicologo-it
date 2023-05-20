@@ -15,6 +15,10 @@
     text-align: right;
 }
 
+.text-align-justify{
+    text-align: justify;
+}
+
 img{
     display: block;
     max-width: 100%;
@@ -74,6 +78,14 @@ img{
 }
 
 .d-flex.align-center{
+    align-items: center;
+}
+
+.d-flex-md.align-center{
+    align-items: center;
+}
+
+.d-flex-lg.align-center{
     align-items: center;
 }
 
@@ -191,7 +203,7 @@ a{
 }
 
 /* # tablet media */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
     .tablet,
     .smartphone.d-flex {
         display: block;
