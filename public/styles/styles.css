@@ -59,6 +59,14 @@ h1{
     margin-bottom: 20px;
 }
 
+header.hero-secondary h1{
+    font-family: sans-serif;
+    font-weight: 400;
+    color: white;
+    text-transform: uppercase;
+    position: relative;
+}
+
 h1 > span{
     display: block;
     font-size: calc(1.5rem + 1.5vw);
@@ -92,6 +100,18 @@ h4{
 
 p{
     line-height: 1.5;
+}
+
+
+hr{
+    width: 80px;
+    border: none;
+    background-color: var(--footer-color);
+    height: 5px;
+}
+
+address{
+    font-style: normal;
 }
 
 .btn{
@@ -190,11 +210,29 @@ section, main header{
 }
 
 #hero img{
-    border: 10px solid var(--footer-color);
-    box-shadow: 0 0 10px 10px var(--footer-color);
+    border: 10px solid var(--footer-color);    
     border-radius: 50%;
     background-color: #fff;
     width: 75%;
+
+}
+
+.hero-secondary{
+    background-image: url(../img/Immagini\ sito.webp);
+    height: 25vh;
+    background-position: 0 center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.hero-secondary::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(180deg, #ffffff00 0%,
+    #76be82 100%);
+    opacity: .5;
 }
 
 /* # CHI SONO */
@@ -240,7 +278,7 @@ section, main header{
     padding: 2rem 1rem;
 }
 
-#di-cosa-mi-occupo .col-text p{
+#di-cosa-mi-occupo p{
     color: rgb(119,119,119);
 
     font-size: 15px;
@@ -261,6 +299,17 @@ section, main header{
     font-size: .95rem;
 }
 
+/* # DR FEDERICO DELLASANTA */
+#dr-federico-dellasanta img{
+    height: 415px;
+    width: 415px;
+}
+
+/* # IL MIO LAVORO */
+#il-mio-lavoro{
+    background-color: var(--green-bg-color);
+}
+
 /* # CONTATTAMI */
 #contattami li{
     margin-bottom: 20px;
@@ -270,13 +319,6 @@ section, main header{
 #contattami .fa-li{
     color: var(--btn-color);
     font-size: 1.5rem;
-}
-
-#contattami hr{
-    width: 80px;
-    border: none;
-    background-color: var(--footer-color);
-    height: 5px;
 }
 
 /* * contattami form */
@@ -451,16 +493,13 @@ label[for="norm-cb"]{
     align-self: flex-start;
 }
 
-#contatti address{
-    font-style: normal;
-}
-
 #contatti h4{
     display: inline-block;
     color: var(--footer-color);
     border-bottom: 2px solid var(--btn-color);
     padding-bottom: 1rem;
     margin-bottom: 2rem;
+    padding-left: 0;
 }
 
 #contatti i{
@@ -551,6 +590,11 @@ label[for="norm-cb"]{
     
     #formButton{
         margin-top: 0;
+    }
+
+    /* # DOTTOR DELLASANTA */
+    #dr-federico-dellasanta .col-50.justify-center{
+        justify-content: flex-end;
     }
     
 }
