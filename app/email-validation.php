@@ -1,20 +1,26 @@
 <?php
 
-function validateEmail($emailFrom, $mail, $verifalia){
+use \Verifalia\VerifaliaRestClient;
 
-    $balance = $verifalia
-    ->credits
-    ->getBalance();
+require '../vendor/autoload.php';
+include 'config/credentials.php';
+
+function sendDebugEmail($mail, $message){
+    
+    $mail->addAddress('carloeusebi@gmail.com');
+    $mail->Subject = 'Debug email from dellasantapsicologo.it';
+    $mail->Body = $message;
+    $mail->send();    
+}
+
+
+function validateEmail($emailFrom, $mail){
 
     if (isset($_POST['miele-cb'])){
 
-        $_SESSION['status'] = 'sei un bot';
-        
-        // ? send an email to let know a bot tried to compile the form
-        $mail->addAddress('carloeusebi@gmail.com');
-        $mail->Subject = 'A bot tried to complie the form';
-        $mail->Body = 'A bot tried to complie the form';
-        $mail->send();
+        $_SESSION['status'] = 'Qualcosa è andato storto, riprovare';
+
+        sendDebugEmail($mail, 'Someone checked the honeybox and tried to send an email');  
 
         header("Location: $location");
 
@@ -26,17 +32,25 @@ function validateEmail($emailFrom, $mail, $verifalia){
 
         return false;
 
-    } else if ($balance->freeCredits > 0){
- 
-        $validation = $verifalia
-        ->emailValidations
-        ->submit($emailFrom, true);
+    } else {
         
+        include 'config/credentials.php';        
+
+        $verifalia = new VerifaliaRestClient([
+            'username' => $verifaliaUsername,
+            'password' => $verifaliaPassword
+        ]);
+        
+        //verify if the address is deliverable
+        $validation = $verifalia->emailValidations->submit($emailFrom, true);        
         $entry = $validation->entries[0];
 
         if ($entry->classification === 'Undeliverable'){
 
-            $_SESSION['status'] = 'Email non valida';
+            $_SESSION['status'] = 'Email non valida, per favore riprovare con un indirizzo valido';
+
+            sendDebugEmail($mail, 'Someone tried to send the form with an undeliverable email address');
+
             header("Location: $location");
             
             return false;

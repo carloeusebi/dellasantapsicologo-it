@@ -9,29 +9,25 @@ $location = parse_url($_SERVER["HTTP_REFERER"])['path'];
 
 $emailTo = 'carloeusebi@gmail.com';
 $subject = 'Un cliente ti ha scritto';
-$body = "Da: $name <br>
-Numero di telefono: $phone <br>
-Email: $emailFrom <br><br>
-Messaggio:<br> $message";
+$body = 
+    "Da: $name <br>
+    Numero di telefono: $phone <br>
+    Email: $emailFrom <br><br>
+    Messaggio:<br> $message";
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-use \Verifalia\VerifaliaRestClient;
-
 require '../vendor/autoload.php';
 include 'config/credentials.php';
 include 'email-validation.php';
 
-$mail = new PHPMailer(true);
 
-$verifalia = new VerifaliaRestClient([
-    'username' => $verifaliaUsername,
-    'password' => $verifaliaPassword
-]);
 
 if ($_POST['submit']){
+
+    $mail = new PHPMailer(true);
 
     $mail->SMTPAuth = true;
     
@@ -60,7 +56,7 @@ if ($_POST['submit']){
             ]
         ]; 
 
-    if (!validateEmail($emailFrom, $mail, $verifalia)){
+    if (!validateEmail($emailFrom, $mail)){
         header("Location: $location");
         exit();
     }
@@ -68,6 +64,9 @@ if ($_POST['submit']){
     try {
 
         $mail->send();
+
+        sendDebugEmail($mail, 'The form successfully sent an email');
+        
         $mail->ClearAllRecipients();
 
         $_SESSION['status'] = 'success';
