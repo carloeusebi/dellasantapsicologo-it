@@ -226,7 +226,7 @@ section, main header{
 .hero-secondary{
     background-image: url(../img/Immagini\ sito.webp);
     height: 25vh;
-    background-position: 0 center;
+    background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
