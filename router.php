@@ -14,19 +14,19 @@ $routes = [
     '/send-email' => 'app/email-send.php'
 ];
 
-function routeToController($request, $routes) {
-    if (array_key_exists($request, $routes)){
+function routeToController($request, $routes)
+{
+    if (array_key_exists($request, $routes)) {
 
         require $routes[$request];
-
     } else {
 
         abort();
-
     }
 }
 
-function abort($code = 404) {
+function abort($code = 404)
+{
 
     http_response_code($code);
 

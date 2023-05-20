@@ -1,10 +1,11 @@
-<?php include 'layouts/head.php';?>
+<?php include 'layouts/head.php'; ?>
 
-    <h1>COSA ASPETTARSI</h1>
-    
-    <?php include "layouts/form.php";
-    include "layouts/footer.php" ?>
+<h1>COSA ASPETTARSI</h1>
+
+<?php include "layouts/form.php";
+include "layouts/footer.php" ?>
 
 
 </body>
+
 </html>

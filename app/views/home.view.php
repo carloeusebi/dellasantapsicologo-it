@@ -1,14 +1,14 @@
-    <?php include 'layouts/head.php';?>
-    
-        <!-- ! MAIN -->
+    <?php include 'layouts/head.php'; ?>
+
+    <!-- ! MAIN -->
     <main>
 
         <!-- # HERO -->
         <header id="hero">
-            <div class="container d-flex-lg flex-gap20">                
+            <div class="container d-flex-lg flex-gap20">
                 <div class="col-50">
                     <h3>DR. Dellasanta Federico</h3>
-                    <h1>Psicologo Psicoterapeuta <div>Cognitivo Comportamentale</div></h1>
+                    <h1>Psicologo Psicoterapeuta <span>Cognitivo Comportamentale</span></h1>
                     <p class="mb-20">
                         Mi occupo di consulenze psicologiche, sostegno e propongo percorsi individualizzati a Fano e online.
                     </p>
@@ -128,12 +128,14 @@
                     </div>
                 </div>
 
-                
+
             </div>
             <a class="btn" href="/contatti">Richiedi un appuntamento</a>
         </section>
-    
-    <?php include "layouts/form.php" ?>    
-    <?php include "layouts/footer.php" ?>    
-</body>
-</html>
+    </main>
+
+    <?php include "layouts/form.php" ?>
+    <?php include "layouts/footer.php" ?>
+    </body>
+
+    </html>

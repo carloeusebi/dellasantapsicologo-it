@@ -3,8 +3,16 @@
     cursor: pointer;
 }
 
+.text-align-start{
+    text-align: left;
+}
+
 .text-align-center{
     text-align: center;
+}
+
+.text-align-end{
+    text-align: right;
 }
 
 img{

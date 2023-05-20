@@ -59,7 +59,8 @@ h1{
     margin-bottom: 20px;
 }
 
-h1 > div{
+h1 > span{
+    display: block;
     font-size: calc(1.5rem + 1.5vw);
 }
 
@@ -484,7 +485,7 @@ label[for="norm-cb"]{
 /* ! ****************************** */
 /* ! FOOTER *********************** */
 /* ! ****************************** */
-footer{
+.ftr-bottom{
     height: var(--footer-height);
     background-color: var(--footer-color);
     color: white;
@@ -513,7 +514,7 @@ footer{
     }
     
     #top-header .container,
-    footer .container{
+    .ftr-bottom .container{
         max-width: 1400px;
     }
     
