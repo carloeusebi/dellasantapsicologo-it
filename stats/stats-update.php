@@ -1,9 +1,25 @@
 <?php
 
+function statsFormInitialize($filePath)
+{
+    fopen($filePath, 'a+');
+
+    $lines = file($filePath);
+
+    $lines[0] = "# 1st row = email successfully sent; 2nd row = form submitted with honeybox checked; thirt row = 3rd submitted with undeliverable email; 4th row = errors while sending an email" . PHP_EOL;
+
+    $lines[1] = $lines[1] ?? '0' . PHP_EOL;
+    $lines[2] = $lines[2] ?? '0' . PHP_EOL;
+    $lines[3] = $lines[3] ?? '0' . PHP_EOL;
+
+    return $lines;
+}
+
 function statsFormUpdate($stat, $e = '')
 {
     $filePath = '../stats/stats-form.txt';
-    $lines = file($filePath);
+
+    $lines = statsFormInitialize($filePath);
 
     switch ($stat) {
 
@@ -32,5 +48,6 @@ function statsFormUpdate($stat, $e = '')
         default:
             break;
     }
+
     file_put_contents($filePath, implode('', $lines));
 }
