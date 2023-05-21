@@ -3,28 +3,18 @@
 use \Verifalia\VerifaliaRestClient;
 
 require '../vendor/autoload.php';
-include 'config/credentials.php';
+require '../stats/stats-update.php';
 
-function sendDebugEmail($mail, $message)
-{
-
-    $mail->addAddress('carloeusebi@gmail.com');
-    $mail->Subject = 'Debug email from dellasantapsicologo.it';
-    $mail->Body = $message;
-    $mail->send();
-}
-
-
-function validateEmail($emailFrom, $mail, $location)
+function validateEmail($emailFrom)
 {
 
     if (isset($_POST['miele-cb'])) {
 
         $_SESSION['status'] = 'Qualcosa è andato storto, riprovare';
 
-        sendDebugEmail($mail, 'Someone checked the honeybox and tried to send an email');
+        sendDebugEmail('Someone checked the honeybox and tried to send an email');
 
-        header("Location: $location");
+        statsFormUpdate(2);
 
         return false;
     } else if (filter_var($emailFrom, FILTER_VALIDATE_EMAIL) === false) {
@@ -34,29 +24,35 @@ function validateEmail($emailFrom, $mail, $location)
         return false;
     } else {
 
-        include 'config/credentials.php';
+        include 'config/config.php';
 
         $verifalia = new VerifaliaRestClient([
             'username' => $verifaliaUsername,
             'password' => $verifaliaPassword
         ]);
 
-        //verify if the address is deliverable
-        $validation = $verifalia->emailValidations->submit($emailFrom, true);
-        $entry = $validation->entries[0];
+        $balance = $verifalia->credits->getBalance();
 
-        if ($entry->classification === 'Undeliverable') {
+        // check verifalia only if account has credits
+        if ($balance->freeCredits > 0) {
 
-            $_SESSION['status'] = 'Email non valida, per favore riprovare con un indirizzo valido';
+            //verify if the address is deliverable
+            $validation = $verifalia->emailValidations->submit($emailFrom, true);
+            $entry = $validation->entries[0];
 
-            sendDebugEmail($mail, 'Someone tried to send the form with an undeliverable email address');
+            if ($entry->classification === 'Undeliverable') {
 
-            header("Location: $location");
+                $_SESSION['status'] = 'Email non valida, per favore riprovare con un indirizzo valido';
 
-            return false;
-        } else {
+                sendDebugEmail('Someone tried to send the form with an undeliverable email address');
 
-            return true;
+                statsFormUpdate(3);
+
+                return false;
+            } else {
+
+                return true;
+            }
         }
     }
 

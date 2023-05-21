@@ -1,0 +1,5 @@
+// 1st row = email successfully sent; 2nd row = form submitted with honeybox checked; thirt row = 3rd submitted with undeliverable email; 4th row = errors while sending an email
+3
+1
+0
+0

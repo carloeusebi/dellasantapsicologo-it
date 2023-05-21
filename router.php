@@ -11,7 +11,7 @@ $routes = [
     '/cosa-aspettarsi' => 'app/controllers/cosa-aspettarsi.php',
     '/di-cosa-mi-occupo' => 'app/controllers/di-cosa-mi-occupo.php',
     '/contatti' => 'app/controllers/contatti.php',
-    '/send-email' => 'app/email-send.php'
+    '/collect-form' => 'app/collect-form.php'
 ];
 
 function routeToController($request, $routes)

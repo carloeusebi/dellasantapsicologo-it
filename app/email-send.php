@@ -1,34 +1,16 @@
 <?php
 
-$name = $_POST['name'];
-$phone = $_POST['phone'];
-$emailFrom = $_POST['mail'];
-$message = $_POST['message'];
-
-$location = parse_url($_SERVER["HTTP_REFERER"])['path'];
-
-$emailTo = 'carloeusebi@gmail.com';
-$subject = 'Un cliente ti ha scritto';
-$body =
-    "Da: $name <br>
-    Numero di telefono: $phone <br>
-    Email: $emailFrom <br><br>
-    Messaggio:<br> $message";
-
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 require '../vendor/autoload.php';
-include 'config/credentials.php';
 include 'email-validation.php';
 
-
-
-if ($_POST['submit']) {
+function mailPrepare()
+{
+    include 'config/config.php';
 
     $mail = new PHPMailer(true);
-
     $mail->SMTPAuth = true;
 
     $mail->Host = $mailHost;
@@ -38,12 +20,7 @@ if ($_POST['submit']) {
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
-    $mail->setFrom($emailFrom);
-    $mail->addAddress($emailTo);
-
     $mail->isHTML(true);
-    $mail->Subject = $subject;
-    $mail->Body = $body;
 
     $mail->SMTPDebug = 1;
     $mail->isSMTP();
@@ -56,23 +33,32 @@ if ($_POST['submit']) {
         ]
     ];
 
-    if (!validateEmail($emailFrom, $mail, $location)) {
-        header("Location: $location");
-        exit();
-    }
+    return $mail;
+}
 
-    try {
+function mailSend(
+    $mail,
+    $emailTo,
+    $subject,
+    $message,
+    $emailFrom = ''
+) {
+    ($emailFrom !== '') ?? $mail->setFrom($emailFrom);
+    $mail->addAddress($emailTo);
+    $mail->Subject = $subject;
+    $mail->Body = $message;
 
-        $mail->send();
+    $mail->send();
 
-        sendDebugEmail($mail, 'The form successfully sent an email');
+    $mail->ClearAllRecipients();
+}
 
-        $mail->ClearAllRecipients();
+function sendDebugEmail($message)
+{
+    $mail = mailPrepare();
 
-        $_SESSION['status'] = 'success';
-    } catch (Exception $e) {
-        $_SESSION['status'] = $mail->ErrorInfo;
-    }
+    $emailTo = 'carloeusebi@gmail.com';
+    $subject = 'Debug email from dellasantapsicologo.it';
 
-    header("Location: $location");
+    mailSend($mail, $emailTo, $subject, $message);
 }
