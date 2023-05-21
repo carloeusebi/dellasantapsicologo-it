@@ -12,11 +12,11 @@
                     <p class="mb-20">
                         Mi occupo di consulenze psicologiche, sostegno e propongo percorsi individualizzati a Fano e online.
                     </p>
-                    <a href="/contatti" class="btn mb-50">Prenota un appuntamento</a>
+                    <a href="/contatti" class="btn">Prenota un appuntamento</a>
                 </div>
                 <div class="col-50">
                     <figure class="d-flex justify-center">
-                        <img src="img/Hero_Dellasanta.webp" alt="Il Dottor Dellasanta">
+                        <img src="img/new-hero-img.png" alt="Il Dottor Dellasanta">
                     </figure>
                 </div>
             </div>

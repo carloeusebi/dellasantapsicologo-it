@@ -207,17 +207,27 @@ section, main header{
     background-repeat: no-repeat;
     background-position: top;
     background-size: cover;
+
+    padding-top: 45px;
+
 }
 
 #hero img{
-    border: 10px solid var(--footer-color);    
+    position: relative;
+
+    bottom: -80px;
+    transform: scale(1.1);
+
+
+    /* border: 10px solid var(--footer-color);    
     border-radius: 50%;
     background-color: #fff;
     width: 75%;
-    box-shadow: 0 0 20px var(--footer-color);
+    box-shadow: 0 0 20px var(--footer-color); */
 }
 
 #hero h3{
+    font-family: 1.18rem;
     font-weight: 600;
 }
 
@@ -549,6 +559,11 @@ label[for="norm-cb"]{
 @media screen and (min-width: 767px) {
     .container{
         max-width: 980px;
+    }
+
+    #hero h3{
+        font-size: 1.8rem;
+        font-weight: 600;
     }
     
     #di-cosa-mi-occupo .col{
