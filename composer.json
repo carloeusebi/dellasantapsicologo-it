@@ -1,4 +1,16 @@
 {
+    "name": "carloeusebi/dellasantapsicologo",
+    "authors": [
+        {
+            "name": "Carlo Eusebi",
+            "email": "carloeusebi@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "."
+        }
+    },
     "require": {
         "phpmailer/phpmailer": "^6.8",
         "verifalia/sdk": "^2.1"

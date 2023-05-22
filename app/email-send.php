@@ -18,7 +18,8 @@ function mailPrepare()
     $mail->Username = $mailUsername;
     $mail->Password = $mailPassword;
 
-    $mail->SMTPSecure = 'tls';
+    // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    // $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
     $mail->isHTML(true);
@@ -49,6 +50,7 @@ function mailSend(
         $mail->AddReplyTo($emailFrom, $name);
     }
 
+    $mail->setFrom("contactme@dellasantapsicologo.it", "Dr Federico Dellasanta");
     $mail->addAddress($emailTo);
     $mail->Subject = $subject;
     $mail->Body = $message;
