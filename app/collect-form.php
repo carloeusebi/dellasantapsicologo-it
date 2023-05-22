@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include 'email-send.php';
 
 $name = htmlspecialchars($_POST['name']);

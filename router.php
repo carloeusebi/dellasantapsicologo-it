@@ -1,38 +1,40 @@
 <?php
 
-$uri = $_SERVER['REQUEST_URI'];
+namespace Root;
 
-$request = parse_url($uri)['path'];
-
-$routes = [
-    '' => 'app/controllers/home.php',
-    '/' => 'app/controllers/home.php',
-    '/chi-sono' => 'app/controllers/chi-sono.php',
-    '/cosa-aspettarsi' => 'app/controllers/cosa-aspettarsi.php',
-    '/di-cosa-mi-occupo' => 'app/controllers/di-cosa-mi-occupo.php',
-    '/contatti' => 'app/controllers/contatti.php',
-    '/collect-form' => 'app/collect-form.php'
-];
-
-function routeToController($request, $routes)
+class Router
 {
-    if (array_key_exists($request, $routes)) {
+    private function getUrl()
+    {
+        $uri = $_SERVER['REQUEST_URI'];
 
-        require $routes[$request];
-    } else {
+        $parsedUri = parse_url($uri);
 
-        abort();
+        if ($parsedUri['path'] === '/') : $request = '/home';
+        else : $request = $parsedUri['path'];
+        endif;
+
+        return $request;
+    }
+
+    private function abort($code = 404)
+    {
+        http_response_code($code);
+
+        require "app/views/{$code}.php";
+
+        die();
+    }
+
+    private function routeToController($request)
+    {
+        $controller = "../app/controllers{$request}.php";
+        (file_exists($controller)) ? require $controller : $this->abort();
+    }
+
+    public function loadController()
+    {
+        $url = $this->getUrl();
+        $this->routeToController($url);
     }
 }
-
-function abort($code = 404)
-{
-
-    http_response_code($code);
-
-    require "app/views/{$code}.php";
-
-    die();
-}
-
-routeToController($request, $routes);
