@@ -1,5 +1,3 @@
-    <?php include 'layouts/head.php'; ?>
-
     <!-- ! MAIN -->
     <main>
 
@@ -58,9 +56,3 @@
         <!-- # DI COSA MI OCCUPO -->
         <?php include "layouts/table.php" ?>
     </main>
-
-    <?php include "layouts/form.php" ?>
-    <?php include "layouts/footer.php" ?>
-    </body>
-
-    </html>

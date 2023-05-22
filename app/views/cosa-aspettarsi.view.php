@@ -1,6 +1,3 @@
-<?php include 'layouts/head.php';
-include 'layouts/hero-secondary.php' ?>
-
 <section id="approccio-congitivo">
     <div class="container">
 
@@ -39,11 +36,3 @@ include 'layouts/hero-secondary.php' ?>
         </div>
     </div>
 </section>
-
-<?php include "layouts/form.php";
-include "layouts/footer.php" ?>
-
-
-</body>
-
-</html>

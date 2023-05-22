@@ -2,9 +2,10 @@
 
 session_start();
 
-require "Router.php";
+require "../Router.php";
+require "../app/functions.php";
 
-use public\Router;
+use root\Router;
 
 $router = new Router();
 

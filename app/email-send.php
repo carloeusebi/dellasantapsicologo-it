@@ -4,6 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require '../vendor/autoload.php';
+include 'functions.php';
 include 'email-validation.php';
 
 function mailPrepare()
@@ -41,9 +42,13 @@ function mailSend(
     $emailTo,
     $subject,
     $message,
-    $emailFrom = ''
+    $emailFrom = '',
+    $name = ''
 ) {
-    ($emailFrom !== '') ?? $mail->setFrom($emailFrom);
+    if ($emailFrom !== '') {
+        $mail->AddReplyTo($emailFrom, $name);
+    }
+
     $mail->addAddress($emailTo);
     $mail->Subject = $subject;
     $mail->Body = $message;

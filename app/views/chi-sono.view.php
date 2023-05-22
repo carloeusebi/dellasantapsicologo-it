@@ -1,6 +1,3 @@
-<?php include 'layouts/head.php';
-include 'layouts/hero-secondary.php' ?>
-
 <main>
     <!-- # DR FEDERICO -->
     <section id="dr-federico-dellasanta">
@@ -49,12 +46,3 @@ include 'layouts/hero-secondary.php' ?>
     </section>
 
 </main>
-
-
-<?php include "layouts/form.php";
-include "layouts/footer.php" ?>
-
-
-</body>
-
-</html>

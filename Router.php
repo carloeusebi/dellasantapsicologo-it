@@ -1,6 +1,10 @@
 <?php
 
-namespace Public;
+namespace root;
+
+require "app/controllers/Controller.php";
+
+use root\app\Controllers\Controller;
 
 class Router
 {
@@ -8,11 +12,9 @@ class Router
     {
         $uri = $_SERVER['REQUEST_URI'];
 
-        $parsedUri = parse_url($uri);
+        $parsedUri = str_replace('/', '', parse_url($uri));
 
-        if ($parsedUri['path'] === '/') : $request = '/home';
-        else : $request = $parsedUri['path'];
-        endif;
+        $request = ($parsedUri['path'] === '') ? 'home' : $parsedUri['path'];
 
         return $request;
     }
@@ -28,8 +30,13 @@ class Router
 
     private function routeToController($request)
     {
-        $controller = "../app/controllers{$request}.php";
-        (file_exists($controller)) ? require $controller : $this->abort();
+        $path = "../app/controllers/{$request}.php";
+        if (!file_exists($path)) {
+            $this->abort();
+        }
+        $controller = new Controller;
+
+        $controller->renderView($request);
     }
 
     public function loadController()

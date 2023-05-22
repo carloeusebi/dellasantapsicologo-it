@@ -57,7 +57,7 @@
             </div>
         </div>
 
-        <!-- sixth columns -->
+        <!-- sixth column -->
         <div class="col">
             <div class="col-img">
                 <img src="img/Disturbo-personalita.webp" alt="Disturbi della personalità">

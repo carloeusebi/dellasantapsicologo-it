@@ -30,7 +30,7 @@ if ($_POST['submit']) {
 
         try {
 
-            mailSend($mail, $emailTo, $subject, $body, $name, $phone, $emailFrom);
+            mailSend($mail, $emailTo, $subject, $body, $emailFrom, $name);
 
             sendDebugEmail('The form successfully sent an email');
             statsFormUpdate(1);

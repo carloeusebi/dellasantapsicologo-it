@@ -1,6 +1,3 @@
-<?php include 'layouts/head.php';
-include 'layouts/hero-secondary.php' ?>
-
 <main>
     <section id="aree-intervento" class="text-align-center">
         <div class="container">
@@ -14,11 +11,3 @@ include 'layouts/hero-secondary.php' ?>
 
     <?php include "layouts/table.php" ?>
 </main>
-
-<?php include "layouts/form.php";
-include "layouts/footer.php" ?>
-
-
-</body>
-
-</html>
