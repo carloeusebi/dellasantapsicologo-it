@@ -6,11 +6,14 @@ function statsFormInitialize($filePath)
 
     $lines = file($filePath);
 
-    $lines[0] = "# 1st row = email successfully sent; 2nd row = form submitted with honeybox checked; thirt row = 3rd submitted with undeliverable email; 4th row = errors while sending an email" . PHP_EOL;
+    $date = date("d-m-y H:i:s ", time());
+
+    $lines[0] = "# Last update: $date; 1st row: email successfully sent; 2nd row: form submitted with honeybox checked; 3rd row: submitted with undeliverable email; 4th row: errors while sending an email" . PHP_EOL;
 
     $lines[1] = $lines[1] ?? '0' . PHP_EOL;
     $lines[2] = $lines[2] ?? '0' . PHP_EOL;
     $lines[3] = $lines[3] ?? '0' . PHP_EOL;
+    $lines[4] = $lines[4] ?? '0' . PHP_EOL;
 
     return $lines;
 }
