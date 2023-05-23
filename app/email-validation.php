@@ -3,7 +3,6 @@
 use \Verifalia\VerifaliaRestClient;
 
 require '../vendor/autoload.php';
-require '../stats/stats-update.php';
 
 function validateEmail($emailFrom)
 {
@@ -12,9 +11,7 @@ function validateEmail($emailFrom)
 
         $_SESSION['status'] = 'Qualcosa è andato storto, riprovare';
 
-        sendDebugEmail('Someone checked the honeybox and tried to send an email');
-
-        statsFormUpdate(2);
+        updateLog(2);
 
         return false;
     } else if (filter_var($emailFrom, FILTER_VALIDATE_EMAIL) === false) {
@@ -44,9 +41,7 @@ function validateEmail($emailFrom)
 
                 $_SESSION['status'] = 'Email non valida, per favore riprovare con un indirizzo valido';
 
-                sendDebugEmail('Someone tried to send the form with an undeliverable email address');
-
-                statsFormUpdate(3);
+                updateLog(3);
 
                 return false;
             }

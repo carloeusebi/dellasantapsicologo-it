@@ -26,28 +26,15 @@ if ($_POST['submit']) {
         $_SESSION['post'] = $_POST;
     } else {
 
-        $mail = mailPrepare();
+        if (mailSend($mail, $emailTo, $subject, $body, $emailFrom, $name)) {
 
-        try {
-
-            mailSend($mail, $emailTo, $subject, $body, $emailFrom, $name);
-
-            statsFormUpdate(1);
+            updateLog(1);
 
             $_SESSION['status'] = 'success';
-        } catch (Exception $e) {
-
-            $error = $mail->ErrorInfo;
-
-            $_SESSION['status'] = $error;
-            $_SESSION['post'] = $_POST;
-            statsFormUpdate(4, $error);
         }
     }
 
     // send a confirmation mail
-
-    $mail = mailPrepare();
 
     $subject = 'Ti ringraziamo per averci contattato';
     $body = 'Il Dr Dellasanta ha ricevuto la sua mail e la contatter&agrave; al pi&ugrave; presto';
