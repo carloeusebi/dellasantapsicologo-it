@@ -1,0 +1,4 @@
+Order Allow,Deny
+<FilesMatch "^collect-form.php$">
+    Allow from all
+</FilesMatch>
