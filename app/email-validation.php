@@ -1,26 +1,48 @@
 <?php
 
+namespace App;
+
 use \Verifalia\VerifaliaRestClient;
 
 require '../vendor/autoload.php';
 
-function validateEmail($emailFrom)
+class Validator
 {
 
-    if (isset($_POST['miele-cb'])) {
+    private function checkVerifalia($verifalia)
+    {
+        $balance = $verifalia->credits->getBalance();
 
-        $_SESSION['status'] = 'Qualcosa è andato storto, riprovare';
+        return ($balance->freeCredits > 0);
+    }
 
-        updateLog(2);
+    public function checkIfBot()
+    {
 
+        if (isset($_POST['miele-cb'])) {
+
+            $_SESSION['status'] = 'Qualcosa è andato storto, riprovare';
+
+            updateLog(2);
+
+            return true;
+        }
         return false;
-    } else if (filter_var($emailFrom, FILTER_VALIDATE_EMAIL) === false) {
+    }
 
-        $_SESSION['status'] = 'Formato Email non valido, deve contenere una @ e un .it o .com';
+    public function checkIfValid($emailFrom)
+    {
+        if (filter_var($emailFrom, FILTER_VALIDATE_EMAIL) === false) {
 
+            $_SESSION['status'] = 'Formato Email non valido, deve contenere una @ e un .it o .com';
+
+            return true;
+        }
         return false;
-    } else {
+    }
 
+    public function checkIfDeliverable($emailFrom)
+    {
         include 'config/config.php';
 
         $verifalia = new VerifaliaRestClient([
@@ -28,12 +50,8 @@ function validateEmail($emailFrom)
             'password' => $verifaliaPassword
         ]);
 
-        $balance = $verifalia->credits->getBalance();
+        if ($this->checkVerifalia($verifalia)) {
 
-        // check verifalia only if account has credits
-        if ($balance->freeCredits > 0) {
-
-            //verify if the address is deliverable
             $validation = $verifalia->emailValidations->submit($emailFrom, true);
             $entry = $validation->entries[0];
 
@@ -43,12 +61,10 @@ function validateEmail($emailFrom)
 
                 updateLog(3);
 
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
-        return true;
+        return false;
     }
-
-    return true;
 }

@@ -2,10 +2,11 @@
 
 session_start();
 
+require_once "../vendor/autoload.php";
 require "../Router.php";
 require "../app/functions.php";
 
-use root\Router;
+use app\Router;
 
 $router = new Router();
 
