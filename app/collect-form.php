@@ -25,10 +25,8 @@ if ($_POST['submit']) {
 
     $validator = new Validator;
 
-    if (!($validator->checkIfBot() ||
-        $validator->checkIfValid($emailFrom) ||
-        $validator->checkIfDeliverable($emailFrom)
-    )) {
+    if (!($validator->validateMail($emailFrom))) {
+
         if (mailSend($mail, $emailTo, $subject, $body, $emailFrom, $name)) {
 
             updateLog(1);
