@@ -34,15 +34,19 @@ if ($_POST['submit']) {
             updateLog(1);
 
             $_SESSION['status'] = 'success';
+
+            // send a confirmation mail
+
+            $subject = 'Ti ringraziamo per averci contattato';
+            $body = 'Il Dr Dellasanta ha ricevuto la sua mail e la contatter&agrave; al pi&ugrave; presto';
+
+            mailSend($mail, $emailFrom, $subject, $body);
         }
-
-        // send a confirmation mail
-
-        $subject = 'Ti ringraziamo per averci contattato';
-        $body = 'Il Dr Dellasanta ha ricevuto la sua mail e la contatter&agrave; al pi&ugrave; presto';
-
-        mailSend($mail, $emailFrom, $subject, $body);
+    } else {
+        // to refill form
+        $_SESSION['post'] = $_POST;
     }
+
 
     header("Location: $location");
 }

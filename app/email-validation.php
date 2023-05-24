@@ -1,6 +1,9 @@
 <?php
 
+
 namespace App;
+
+session_start();
 
 use \Verifalia\VerifaliaRestClient;
 
