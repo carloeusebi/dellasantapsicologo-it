@@ -41,7 +41,7 @@
 
 
     <!-- scripts -->
-    <script defer src="scripts/scripts.js"></script>
+    <script defer src="js/scripts.js"></script>
 </head>
 
 <body>
