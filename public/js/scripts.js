@@ -4,10 +4,8 @@ const topNavbar = document.getElementById('top-navbar');
 
 hamburgerMenu.addEventListener('click', () => {
     if (hamburgerMenu.classList.contains('open')){
-        topNavbar.style.left = 'calc(var(--navbar-width) * -1)';
         hamburgerMenu.classList.remove('open');
     } else {
-        topNavbar.style.left = 0;
         hamburgerMenu.classList.add('open');
     }
 })

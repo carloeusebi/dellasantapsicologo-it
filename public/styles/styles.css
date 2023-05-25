@@ -172,6 +172,10 @@ address{
     transition: left 300ms;
 }
 
+#top-navbar.open{
+    left: 0;
+}
+
 #top-navbar li a{
     display: block;
     font-weight: bold;
