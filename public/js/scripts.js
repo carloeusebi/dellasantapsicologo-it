@@ -2,17 +2,13 @@
 const hamburgerMenu = document.getElementById('hamburger-menu');
 const topNavbar = document.getElementById('top-navbar');
 
-let flag = false;
-
 hamburgerMenu.addEventListener('click', () => {
-    if (flag){
+    if (hamburgerMenu.classList.contains('open')){
         topNavbar.style.left = 'calc(var(--navbar-width) * -1)';
         hamburgerMenu.classList.remove('open');
-        flag = false;                
     } else {
         topNavbar.style.left = 0;
         hamburgerMenu.classList.add('open');
-        flag = true;
     }
 })
 
@@ -34,6 +30,10 @@ if (closeResponse[0] != null){
 // ! Button is greyed out if checkbox is not checked
 const normativeCheckbox = document.getElementById('norm-cb');
 const formButton = document.getElementById('formButton');
+
+if (normativeCheckbox.checked){
+    formButton.classList.add('clickable');
+}
 
 normativeCheckbox.addEventListener('click', () => {
     if(normativeCheckbox.checked){

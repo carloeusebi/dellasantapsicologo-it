@@ -63,7 +63,6 @@ function mailSend(
         updateLog(4, $error);
 
         $_SESSION['status'] = "Qualcosa è andato storto, per favore riprovare più tardi";
-        $_SESSION['post'] = $_POST;
 
         return false;
     }
