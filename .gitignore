@@ -2,3 +2,4 @@ app/config/config.php
 app/config/.htaccess
 log.txt
 bfg.jar
+.vscode/ftp-sync.json

@@ -172,7 +172,7 @@ address{
     transition: left 300ms;
 }
 
-#top-navbar.open{
+.open ~ #top-navbar{
     left: 0;
 }
 
