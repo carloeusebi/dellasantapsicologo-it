@@ -6,21 +6,40 @@ class Controller
 {
     public function renderView($page)
     {
-        require "$page.php";
+        $pageTitle = $this->getPageTitle($page);
 
-        require "../app/views/layouts/head.php";
+        $this->includeFile('layouts/head', $pageTitle);
+
         if ($page !== 'home') {
-            require "../app/views/layouts/hero-secondary.php";
+            $this->includeFile('layouts/hero-secondary', $pageTitle);
         }
 
         if ($page === 'contatti') {
-            require "../app/views/layouts/form.php";
-            require "../app/views/$page.view.php";
+            $this->includeFile('layouts/form');
+            $this->includeFile("$page.view");
         } else {
-            require "../app/views/$page.view.php";
-            require "../app/views/layouts/form.php";
+            $this->includeFile("$page.view");
+            $this->includeFile('layouts/form');
         }
 
-        require "../app/views/layouts/footer.php";
+        $this->includeFile('layouts/footer');
+    }
+
+    private function includeFile($file, $pageTitle = '')
+    {
+        require "../app/views/$file.php";
+    }
+
+    private function getPageTitle($page)
+    {
+        $pageTitle = match ($page) {
+            'home' => 'Home',
+            'chi-sono' => 'Chi Sono',
+            'cosa-aspettarsi' => 'Cosa Aspettarsi dalla Terapia',
+            'di-cosa-mi-occupo' => 'Di cosa mi Occupo',
+            'contatti' => 'Contatti',
+        };
+
+        return $pageTitle;
     }
 }

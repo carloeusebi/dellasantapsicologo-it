@@ -3,7 +3,7 @@
 session_start();
 
 require_once "../vendor/autoload.php";
-require "../Router.php";
+require "../app/Router.php";
 require "../app/functions.php";
 
 use app\Router;

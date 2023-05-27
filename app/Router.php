@@ -2,7 +2,7 @@
 
 namespace App;
 
-require "app/controllers/Controller.php";
+require "controllers/Controller.php";
 
 use app\Controllers\Controller;
 
@@ -23,14 +23,14 @@ class Router
     {
         http_response_code($code);
 
-        require "app/views/{$code}.php";
+        require "views/{$code}.php";
 
         die();
     }
 
     private function routeToController($request)
     {
-        $path = "../app/controllers/{$request}.php";
+        $path = "../app/views/{$request}.view.php";
         if (!file_exists($path)) {
             $this->abort();
         }
