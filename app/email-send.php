@@ -5,7 +5,6 @@ use PHPMailer\PHPMailer\Exception;
 
 require '../vendor/autoload.php';
 include 'functions.php';
-include 'email-validation.php';
 
 function mailSend(
     $mail,

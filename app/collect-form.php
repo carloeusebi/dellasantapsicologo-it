@@ -2,9 +2,10 @@
 
 session_start();
 
-use app\Validator;
-
 include 'email-send.php';
+include 'Validator.php';
+
+use app\Validator;
 
 $name = htmlspecialchars($_POST['name']);
 $phone = htmlspecialchars($_POST['phone']);
