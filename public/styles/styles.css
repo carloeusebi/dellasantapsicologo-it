@@ -1,18 +1,18 @@
 /* css reset */
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-*:focus{
-   outline: none;
+*:focus {
+    outline: none;
 }
 
 /* ! ****************************** */
 /* ! CUSTOM PROPERITES ************ */
 /* ! ****************************** */
-:root{
+:root {
     /* colors */
     --btn-color: #6ecc84;
     --green-bg-color: #e0ffe8;
@@ -27,39 +27,39 @@
 /* ! ****************************** */
 /* ! GENERALS ********************* */
 /* ! ****************************** */
-html{
+html {
     -webkit-tap-highlight-color: transparent;
     /* scroll-behavior: smooth; */
 }
 
-body{
+body {
     font-family: sans-serif;
 }
 
 body.wait,
 body.wait *,
-body.wait *:hover{
+body.wait *:hover {
     cursor: wait !important;
 }
 
-.container{
+.container {
     max-width: 550px;
     margin: 0 auto;
     height: 100%;
 }
 
-a{
+a {
     color: black;
 }
 
-h1{
+h1 {
     font-family: serif;
     color: var(--footer-color);
-    font-size: calc(2rem + 1.5vw);
+    font-size: min(calc(2rem + 1.5vw), 56px);
     margin-bottom: 20px;
 }
 
-header.hero-secondary h1{
+header.hero-secondary h1 {
     font-family: sans-serif;
     font-weight: 400;
     color: white;
@@ -67,19 +67,19 @@ header.hero-secondary h1{
     position: relative;
 }
 
-h1 > span{
+h1>span {
     display: block;
-    font-size: calc(1.5rem + 1.5vw);
+    font-size: min(calc(1.5rem + 1.5vw), 40px);
 }
 
-h2{
+h2 {
     font-family: serif;
     font-size: 2rem;
     margin-bottom: 20px;
     letter-spacing: .8px;
 }
 
-h3{
+h3 {
     color: var(--btn-color);
     font-size: 1.1rem;
     margin-bottom: 10px;
@@ -87,7 +87,7 @@ h3{
     text-transform: uppercase;
 }
 
-h4{
+h4 {
     color: var(--btn-color);
 
     font-size: 1.8rem;
@@ -98,30 +98,30 @@ h4{
     margin-bottom: 20px;
 }
 
-p{
+p {
     line-height: 1.5;
 }
 
 
-hr{
+hr {
     width: 80px;
     border: none;
     background-color: var(--footer-color);
     height: 5px;
 }
 
-address{
+address {
     font-style: normal;
 }
 
-.btn{
+.btn {
     display: inline-block;
     padding: 17px 32px;
     background-color: var(--btn-color);
     position: relative;
 
     overflow: hidden;
-    
+
     font-size: 13px;
     font-weight: bold;
     color: white;
@@ -135,7 +135,7 @@ address{
 /* ! ****************************** */
 /* ! NAVBAR *********************** */
 /* ! ****************************** */
-#top-header{
+#top-header {
     height: var(--navbar-height);
     background-color: #fff;
 
@@ -147,17 +147,17 @@ address{
     box-shadow: 0 0 2px black;
 }
 
-#top-header .container{
+#top-header .container {
     height: 100%;
 }
 
-#hdr-logo img{
+#hdr-logo img {
     max-width: 75%;
     max-height: var(--navbar-height);
 }
 
 /* # NAVBAR */
-#top-navbar{
+#top-navbar {
     position: absolute;
     top: calc(var(--navbar-height) + 1px);
     left: calc(var(--navbar-width) * -1);
@@ -172,33 +172,34 @@ address{
     transition: left 300ms;
 }
 
-.open ~ #top-navbar{
+.open~#top-navbar {
     left: 0;
 }
 
-#top-navbar li a{
+#top-navbar li a {
     display: block;
     font-weight: bold;
     padding: 20px 0;
-    
+
     border-bottom: 1px solid lightgray;
     color: black;
-    
+
     transition: color 300ms;
 }
 
-#top-navbar li a.active{
+#top-navbar li a.active {
     color: var(--btn-color);
 }
 
-#top-navbar li a:hover{
+#top-navbar li a:hover {
     color: var(--btn-color);
 }
 
 /* ! ****************************** */
 /* ! MAIN ************************* */
 /* ! ****************************** */
-section, main header{
+section,
+main header {
     padding: 60px 20px;
     background-repeat: no-repeat;
     background-position: top;
@@ -206,7 +207,7 @@ section, main header{
 }
 
 /* # HERO */
-#hero{
+#hero {
     background-image: url(../img/Hero-background-1024x533.webp);
     background-repeat: no-repeat;
     background-position: top;
@@ -216,7 +217,7 @@ section, main header{
 
 }
 
-#hero img{
+#hero img {
     position: relative;
 
     bottom: -80px;
@@ -230,14 +231,14 @@ section, main header{
     box-shadow: 0 0 20px var(--footer-color); */
 }
 
-#hero h3{
+#hero h3 {
     font-family: 1.18rem;
     font-weight: 600;
 }
 
 /* # SECOND HERO */
 
-.hero-secondary{
+.hero-secondary {
     background-image: url(../img/Immagini\ sito.webp);
     height: 25vh;
     background-position: center center;
@@ -246,34 +247,34 @@ section, main header{
     position: relative;
 }
 
-.hero-secondary::before{
+.hero-secondary::before {
     content: '';
     position: absolute;
     inset: 0;
     background-image: linear-gradient(180deg, #ffffff00 0%,
-    #76be82 100%);
+            #76be82 100%);
     opacity: .5;
 }
 
 /* # CHI SONO */
 
 /* # COSA ASPETTARSI */
-#cosa-aspettarsi{
-    background-image: url(../img/cosa-aspettarsi-bg.jpg); 
+#cosa-aspettarsi {
+    background-image: url(../img/cosa-aspettarsi-bg.jpg);
 }
 
-#cosa-aspettarsi figure{
+#cosa-aspettarsi figure {
     padding: 0 20% 0 30%;
 }
 
 /* # DI COSA MI OCCUPO */
-#di-cosa-mi-occupo{
+#di-cosa-mi-occupo {
     background-image: url(../img/h4_partern.png);
     position: relative;
     background-size: fill;
 }
 
-#di-cosa-mi-occupo:before{
+#di-cosa-mi-occupo:before {
     content: '';
     position: absolute;
     inset: 0;
@@ -281,76 +282,76 @@ section, main header{
     opacity: .85;
 }
 
-#di-cosa-mi-occupo > *{
+#di-cosa-mi-occupo>* {
     position: relative;
 }
 
-#di-cosa-mi-occupo h2{
+#di-cosa-mi-occupo h2 {
     color: var(--footer-color);
 }
 
-#di-cosa-mi-occupo .col{
+#di-cosa-mi-occupo .col {
     flex-basis: 100%;
     background-color: white;
 }
 
-#di-cosa-mi-occupo .col-text{
+#di-cosa-mi-occupo .col-text {
     padding: 2rem 1rem;
 }
 
-#di-cosa-mi-occupo p{
-    color: rgb(119,119,119);
+#di-cosa-mi-occupo p {
+    color: rgb(119, 119, 119);
 
     font-size: 15px;
     line-height: 24px;
 }
 
-#di-cosa-mi-occupo .btn{
+#di-cosa-mi-occupo .btn {
     margin: 0 auto;
 }
 
-#di-cosa-mi-occupo h4{
+#di-cosa-mi-occupo h4 {
     min-height: 66px;
     display: flex;
     align-items: center;
 }
 
-#di-cosa-mi-occupo p{
+#di-cosa-mi-occupo p {
     font-size: .95rem;
 }
 
 /* # DR FEDERICO DELLASANTA */
-#dr-federico-dellasanta img{
+#dr-federico-dellasanta img {
     max-height: 425px;
 }
 
 /* # IL MIO LAVORO */
-#il-mio-lavoro{
+#il-mio-lavoro {
     background-color: var(--green-bg-color);
 }
 
 /* # CBT */
-#cbt{
+#cbt {
     background-color: var(--green-bg-color);
 }
 
 /* # CONTATTAMI */
-#contattami li{
+#contattami li {
     margin-bottom: 20px;
     line-height: 1.5rem;
 }
 
-#contattami .fa-li{
+#contattami .fa-li {
     color: var(--btn-color);
     font-size: 1.5rem;
 }
 
 /* * contattami form */
-#contattami .col-50.flex-column{
+#contattami .col-50.flex-column {
     min-height: 150px;
 }
 
-.contact-info{
+.contact-info {
     display: block;
     border: 1px solid lightgray;
     outline: 0;
@@ -360,71 +361,71 @@ section, main header{
     resize: none;
     background-color: white;
     z-index: 0;
-    
+
     padding: 1rem;
     font-family: sans-serif;
 }
 
-.contact-info:focus{
+.contact-info:focus {
     border-color: var(--btn-color);
-    box-shadow: 0 2px 9px 2px rgba(0,0,0,.15);
+    box-shadow: 0 2px 9px 2px rgba(0, 0, 0, .15);
 }
 
-#contact-form input{
+#contact-form input {
     height: 18px;
 }
 
-#contact-form textarea{
+#contact-form textarea {
     height: 150px;
 }
 
-#contact-form .btn{
+#contact-form .btn {
     display: inline-block;
     width: 100%;
     height: 50px;
     border: none;
     cursor: pointer;
-    transition: opacity 300ms;    
+    transition: opacity 300ms;
 }
 
-#contact-form .btn.unclickable{
+#contact-form .btn.unclickable {
     cursor: not-allowed;
     opacity: .5;
 }
 
-.iubenda-link{
+.iubenda-link {
     display: inline-block;
     color: gray;
     transition: color 300ms
 }
 
 .iubenda-link:hover,
-.iubenda-link:focus{
+.iubenda-link:focus {
     color: orange;
 }
 
-#miele-cb{
+#miele-cb {
     visibility: hidden;
     display: none;
 }
 
-#contattami sup{
+#contattami sup {
     color: red;
 }
 
-input[type="checkbox"]{
+input[type="checkbox"] {
     appearance: none;
     vertical-align: middle;
 }
 
-input[type="checkbox"]::before{
+input[type="checkbox"]::before {
     content: '\f0c8';
     font: var(--fa-font-regular);
     font-size: 1rem;
     color: lightgray;
 }
 
-input[type="checkbox"]:checked::before{
+input[type="checkbox"]:checked::before {
     content: '\f14a';
     font: var(--fa-font-solid);
     color: var(--btn-color);
@@ -432,17 +433,17 @@ input[type="checkbox"]:checked::before{
 }
 
 input[type="checkbox"]:focus::before,
-input[type="checkbox"]:hover::before{
+input[type="checkbox"]:hover::before {
     color: var(--btn-color);
-    text-shadow: 0 2px 9px 2px rgba(0,0,0,.15);
+    text-shadow: 0 2px 9px 2px rgba(0, 0, 0, .15);
 }
 
-label[for="norm-cb"]{
+label[for="norm-cb"] {
     user-select: none;
 }
 
 /* # RISPOSTA */
-.response{
+.response {
     padding: 20px;
     border-width: 1px;
     border-style: solid;
@@ -454,12 +455,12 @@ label[for="norm-cb"]{
     transition: opacity 500ms;
 }
 
-.response::before{
+.response::before {
     font: var(--fa-font-solid);
     padding-right: 1rem;
 }
 
-.response .fa-xmark{
+.response .fa-xmark {
     cursor: pointer;
 
     position: absolute;
@@ -468,56 +469,56 @@ label[for="norm-cb"]{
     transform: translateY(-50%);
 }
 
-.response.success{
+.response.success {
     color: #0a3622;
     border-color: #a9d2bf;
     background-color: #d1e7dd;
 }
 
-.response.success::before{
+.response.success::before {
     content: '\f058';
 }
 
-.response.bad{
+.response.bad {
     color: #664d03;
     border-color: #ffecb2;
     background-color: #fff3cd;
 }
 
-.response.bad::before{
+.response.bad::before {
     content: '\f06a';
 }
 
 /* # CONTATTI */
-#contatti{
+#contatti {
     background-color: var(--green-bg-color);
     position: relative;
 }
 
-#contatti::before{
+#contatti::before {
     position: absolute;
     content: '';
     inset: 0;
-    
+
     background-image: url(../img/footer_right.png);
     background-size: fill;
     background-position: bottom right;
     background-repeat: no-repeat;
 }
 
-#contatti img{
+#contatti img {
     width: 75%;
 }
 
-#contatti .map{
+#contatti .map {
     max-width: 100%;
 }
 
-#contatti > .col-50:first-child{
+#contatti>.col-50:first-child {
     align-self: flex-start;
 }
 
-#contatti h4{
+#contatti h4 {
     display: inline-block;
     color: var(--footer-color);
     border-bottom: 2px solid var(--btn-color);
@@ -526,29 +527,29 @@ label[for="norm-cb"]{
     padding-left: 0;
 }
 
-#contatti i{
+#contatti i {
     color: var(--btn-color);
 }
 
-#contatti li{
+#contatti li {
     margin-bottom: 1rem;
 }
 
-#contatti .underline-on-hover a{
+#contatti .underline-on-hover a {
     padding-bottom: 2px;
     border-bottom: 1px solid transparent;
     transition: 300ms;
 }
 
 #contatti .underline-on-hover a:hover,
-#contatti .underline-on-hover a:focus{
+#contatti .underline-on-hover a:focus {
     border-color: black;
 }
 
 /* ! ****************************** */
 /* ! FOOTER *********************** */
 /* ! ****************************** */
-.ftr-bottom{
+.ftr-bottom {
     height: var(--footer-height);
     background-color: var(--footer-color);
     color: white;
@@ -561,75 +562,75 @@ label[for="norm-cb"]{
 /* ! ****************************** */
 /* # tablet */
 @media screen and (min-width: 767px) {
-    .container{
+    .container {
         max-width: 980px;
     }
 
-    #hero h3{
+    #hero h3 {
         font-size: 1.8rem;
         font-weight: 600;
     }
-    
-    #di-cosa-mi-occupo .col{
+
+    #di-cosa-mi-occupo .col {
         flex-basis: calc((100% - 40px) / 2);
     }
 
-    #cbt .col-50:first-child{
+    #cbt .col-50:first-child {
         order: 1;
     }
 
-    #cbt figure{
+    #cbt figure {
         padding: 0 20% 0 30%;
     }
 }
 
 /* # desktop */
 @media screen and (min-width: 992px) {
-    .container{
+    .container {
         max-width: 1200px;
     }
-    
+
     #top-header .container,
-    .ftr-bottom .container{
+    .ftr-bottom .container {
         max-width: 1400px;
     }
-    
-    #top-header{
+
+    #top-header {
         padding: 0;
     }
-    
+
     /* * navbar switch */
-    #hamburger-menu{
+    #hamburger-menu {
         display: none;
     }
-    
-    #top-navbar{
+
+    #top-navbar {
         position: static;
         width: auto;
         height: auto;
         box-shadow: none;
         padding: 0;
     }
-    
-    #top-navbar ul{
+
+    #top-navbar ul {
         display: flex;
     }
-    
-    #top-navbar li a{
+
+    #top-navbar li a {
         padding: 20px;
         border: none;
     }
-    
+
     /* # DI COSA MI OCCUPO */
-    #di-cosa-mi-occupo .col{
+    #di-cosa-mi-occupo .col {
         flex-basis: calc((100% - 40px) / 3);
     }
-    
-    #formButton{
+
+    #formButton {
         margin-top: 0;
     }
 
-    #dr-federico-dellasanta .col-50.mb-50{
+    #dr-federico-dellasanta .col-50.mb-50 {
         margin-bottom: 0 !important;
     }
 }
