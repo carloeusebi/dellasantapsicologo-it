@@ -2,46 +2,64 @@
 
 namespace App;
 
-require "controllers/Controller.php";
-
 use app\Controllers\Controller;
+
+include_once 'controllers/Controller.php';
 
 class Router
 {
-    private function getUrl()
+    public $routes;
+
+    public function get($path, $callback)
     {
-        $uri = $_SERVER['REQUEST_URI'];
-
-        $parsedUri = str_replace('/', '', parse_url($uri));
-
-        $request = ($parsedUri['path'] === '') ? 'home' : $parsedUri['path'];
-
-        return $request;
+        $this->routes['get'][$path] = $callback;
     }
 
-    private function abort($code = 404)
+    public function post($path, $callback)
     {
-        http_response_code($code);
-
-        require "views/{$code}.php";
-
-        die();
+        $this->routes['post'][$path] = $callback;
     }
 
-    private function routeToController($request)
+    public function resolve()
     {
-        $path = "../app/views/{$request}.view.php";
-        if (!file_exists($path)) {
-            $this->abort();
+        $path = $this->getPath();
+        $method = $this->getMethod();
+
+        $callback = $this->routes[$method][$path] ?? false;
+
+        if (!$callback) {
+            http_response_code('404');
+            $callback = '404';
         }
-        $controller = new Controller;
 
-        $controller->renderView($request);
+        $this->renderView($callback);
     }
 
-    public function loadController()
+    public function renderView($page)
     {
-        $url = $this->getUrl();
-        $this->routeToController($url);
+        $controller = new Controller;
+        $pageTitle = $controller->getPageTitle($page);
+        ob_start();
+
+        include_once(__DIR__ . "/views/$page.view.php");
+
+        $content = ob_get_clean();
+
+        include_once(__DIR__ . "/views/_layout.php");
+    }
+
+    private function getPath()
+    {
+        $path = $_SERVER['REQUEST_URI'] ?? '/';
+        $position = strpos($path, '?');
+        if (!$position) {
+            return $path;
+        }
+        return substr($path, 0, $position);
+    }
+
+    private function getMethod()
+    {
+        return strtolower($_SERVER['REQUEST_METHOD']);
     }
 }
