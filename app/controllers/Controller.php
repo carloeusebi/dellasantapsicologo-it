@@ -8,11 +8,6 @@ use app\Mailer;
 
 class Controller
 {
-    public static function admin(Router $router)
-    {
-        require __DIR__ . '/../views/admin.view.php';
-    }
-
     public static function loadPage(Router $router, $page)
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'GET') $router->renderView('404');
