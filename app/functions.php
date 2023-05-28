@@ -13,7 +13,7 @@ function dd($value)
 
 function updateLog($code, $error = '')
 {
-    $filePath = '../log.txt';
+    $filePath = '../public/log.txt';
 
     fopen($filePath, 'a+');
 
