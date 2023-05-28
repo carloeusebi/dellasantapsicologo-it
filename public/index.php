@@ -11,10 +11,16 @@ use app\Controllers\Controller;
 
 $router = new Router();
 
-$router->get('/', 'home');
-$router->get('/chi-sono', 'chi-sono');
-$router->get('/cosa-aspettarsi', 'cosa-aspettarsi');
-$router->get('/di-cosa-mi-occupo', 'di-cosa-mi-occupo');
-$router->get('/contatti', 'contatti');
+$router->get('/', [Controller::class, 'loadPage']);
+$router->get('/chi-sono', [Controller::class, 'loadPage']);
+$router->get('/cosa-aspettarsi', [Controller::class, 'loadPage']);
+$router->get('/di-cosa-mi-occupo', [Controller::class, 'loadPage']);
+$router->get('/contatti', [Controller::class, 'loadPage']);
+
+$router->post('/', [Controller::class, 'send']);
+$router->post('/chi-sono', [Controller::class, 'send']);
+$router->post('/cosa-aspettarsi', [Controller::class, 'send']);
+$router->post('/di-cosa-mi-occupo', [Controller::class, 'send']);
+$router->post('/contatti', [Controller::class, 'send']);
 
 $router->resolve();

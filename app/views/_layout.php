@@ -116,7 +116,7 @@
 
                 <!-- # FORM -->
                 <div class="col-66 mb-20">
-                    <form id="contact-form" method="post" action="collect-form.php">
+                    <form id="contact-form" method="post">
                         <div class="d-flex-lg flex-gap20">
 
                             <div class="col-50 p-20-lg d-flex flex-column justify-space-between mb-20">

@@ -2,9 +2,9 @@
 
 namespace App;
 
-use app\Controllers\Controller;
+require 'controllers/Controller.php';
 
-include_once 'controllers/Controller.php';
+use App\Controllers\Controller;
 
 class Router
 {
@@ -29,16 +29,16 @@ class Router
 
         if (!$callback) {
             http_response_code('404');
-            $callback = '404';
+            $this->renderView('404');
         }
 
-        $this->renderView($callback);
+        call_user_func($callback, $this, $path);
     }
 
-    public function renderView($page)
+    public function renderView($page, $pageTitle = '404')
     {
-        $controller = new Controller;
-        $pageTitle = $controller->getPageTitle($page);
+        if ($page === '/') $page = 'home';
+
         ob_start();
 
         include_once(__DIR__ . "/views/$page.view.php");
