@@ -8,6 +8,10 @@ use app\Mailer;
 
 class Controller
 {
+    public static function admin(Router $router)
+    {
+        require __DIR__ . '/../views/admin.view.php';
+    }
 
     public static function loadPage(Router $router, $page)
     {
@@ -66,7 +70,7 @@ class Controller
         }
     }
 
-    public function getPageTitle($page)
+    private function getPageTitle($page)
     {
         $pageTitle = match ($page) {
             '/' => 'Home',
