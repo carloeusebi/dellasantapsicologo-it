@@ -25,9 +25,9 @@ class AdminController
 
             if ($username === $adminUsername && $password === $adminPassword) {
                 $_SESSION['login'] = true;
+            } else {
+                $isInvalid = true;
             }
-
-            $isInvalid = true;
         }
 
         require $file;

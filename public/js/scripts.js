@@ -30,7 +30,7 @@ const normativeCheckbox = document.getElementById('norm-cb');
 const formButton = document.getElementById('formButton');
 
 if (normativeCheckbox.checked){
-    formButton.classList.add('clickable');
+    formButton.classList.remove('unclickable');
 }
 
 normativeCheckbox.addEventListener('click', () => {
@@ -47,24 +47,3 @@ const form = document.getElementById('contact-form');
 form.addEventListener('submit', () => {
     document.body.classList.add('wait');
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// formButton.addEventListener('click', () => {
-//     if(!formButton.classList.contains('unclickable')){
-//         console.log('loading');
-//         document.body.classList.add('wait');
-//     }
-// })
