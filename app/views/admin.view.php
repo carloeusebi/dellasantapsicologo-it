@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Carlo Eusebi">
     <meta name="description" content="Psicologo Cognitivo Comportamentale, mi occupo di consulenze psicologiche, sostegno e propongo percorsi individualizzati a Fano e online. Prenota la tua consulenza.">
     <title>Dellasanta Psicologo Fano | Admin</title>
@@ -24,9 +27,9 @@
             <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                 <form class="space-y-6 mb-6" method="POST">
                     <div>
-                        <label for="usuername" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
+                        <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
                         <div class="mt-2">
-                            <input id="text" name="username" type="username" autocomplete="username" required class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#6ecc84] sm:text-sm sm:leading-6">
+                            <input id="username" name="username" type="text" autocomplete="email" required class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#6ecc84] sm:text-sm sm:leading-6">
                         </div>
                     </div>
 
