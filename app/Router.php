@@ -28,6 +28,7 @@ class Router
         if (!$callback) {
             http_response_code('404');
             $this->renderView('404');
+            exit();
         }
 
         call_user_func($callback, $this, $path);
