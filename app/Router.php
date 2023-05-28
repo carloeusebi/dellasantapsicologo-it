@@ -1,10 +1,8 @@
 <?php
 
-namespace App;
+namespace app;
 
 require 'controllers/Controller.php';
-
-use App\Controllers\Controller;
 
 class Router
 {

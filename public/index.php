@@ -3,11 +3,10 @@
 session_start();
 
 require_once "../vendor/autoload.php";
-require "../app/Router.php";
 require "../app/functions.php";
 
 use app\Router;
-use app\Controllers\Controller;
+use app\controllers\Controller;
 
 $router = new Router();
 

@@ -3,7 +3,7 @@
         'name' => 'carloeusebi/dellasantapsicologo',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'b43c4a06cb5b400e2ec58f5958bdac219dde886f',
+        'reference' => 'a506f502bd173067b03b632984d0356772c221e8',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'carloeusebi/dellasantapsicologo' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'b43c4a06cb5b400e2ec58f5958bdac219dde886f',
+            'reference' => 'a506f502bd173067b03b632984d0356772c221e8',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -6,6 +6,7 @@ include '../app/email-send.php';
 include '../app/Validator.php';
 
 use app\Validator;
+use app\Mailer;
 
 $name = htmlspecialchars($_POST['name']);
 $phone = htmlspecialchars($_POST['phone']);
@@ -25,10 +26,11 @@ $body =
 if ($_POST['submit']) {
 
     $validator = new Validator;
+    $mailer = new Mailer;
 
     if (!($validator->validateMail($emailFrom))) {
 
-        if (mailSend($mail, $emailTo, $subject, $body, $emailFrom, $name)) {
+        if ($mailer->send($mail, $emailTo, $subject, $body, $emailFrom, $name)) {
 
             updateLog(1);
 
@@ -39,7 +41,7 @@ if ($_POST['submit']) {
             $subject = 'Ti ringraziamo per averci contattato';
             $body = 'Il Dr Dellasanta ha ricevuto la sua mail e la contatter&agrave; al pi&ugrave; presto';
 
-            mailSend($mail, $emailFrom, $subject, $body);
+            $mailer->send($mail, $emailFrom, $subject, $body);
         }
     } else {
         // to refill form

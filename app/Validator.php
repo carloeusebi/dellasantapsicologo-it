@@ -1,13 +1,9 @@
 <?php
 
 
-namespace App;
-
-session_start();
+namespace app;
 
 use \Verifalia\VerifaliaRestClient;
-
-require '../vendor/autoload.php';
 
 class Validator
 {
