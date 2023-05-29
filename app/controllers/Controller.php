@@ -10,32 +10,31 @@ class Controller
 {
     public static function loadPage(Router $router, $page)
     {
-        if ($_SERVER['REQUEST_METHOD'] !== 'GET') $router->renderView('404');
-
         $self = new self();
         $pageTitle = $self->getPageTitle($page);
 
-        $router->renderView($page, $pageTitle);
+        $router->renderView($page, ['pageTitle' => $pageTitle]);
     }
 
     public static function send(Router $router)
     {
-        $name = htmlspecialchars($_POST['name']);
-        $phone = htmlspecialchars($_POST['phone']);
-        $emailFrom = htmlspecialchars($_POST['mail']);
-        $message = htmlspecialchars($_POST['message']);
-
-        $location = parse_url($_SERVER["HTTP_REFERER"])['path'];
-
-        $emailTo = 'carloeusebi@gmail.com';
-        $subject = 'Un cliente ti ha scritto';
-        $body =
-            "Da: $name <br>
-            Numero di telefono: $phone <br>
-            Email: $emailFrom <br><br>
-            Messaggio:<br> $message";
-
         if ($_POST['submit']) {
+
+            $name = htmlspecialchars($_POST['name']);
+            $phone = htmlspecialchars($_POST['phone']);
+            $emailFrom = htmlspecialchars($_POST['mail']);
+            $message = htmlspecialchars($_POST['message']);
+
+            $location = parse_url($_SERVER["HTTP_REFERER"])['path'];
+
+            $emailTo = 'carloeusebi@gmail.com';
+            $subject = 'Un cliente ti ha scritto';
+            $body =
+                "Da: $name <br>
+                Numero di telefono: $phone <br>
+                Email: $emailFrom <br><br>
+                Messaggio:<br> $message";
+
 
             $validator = new Validator;
             $mailer = new Mailer;

@@ -4,16 +4,13 @@ namespace app;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
-require '../vendor/autoload.php';
+use app\config\Config;
 
 class Mailer
 {
 
     public function send($emailTo, $subject, $message, $emailFrom = '', $name = '')
     {
-
-        include 'config/config.php';
 
         $mail = new PHPMailer(true);
 
@@ -24,9 +21,9 @@ class Mailer
         try {
             $mail->SMTPAuth = true;
 
-            $mail->Host = $mailHost;
-            $mail->Username = $mailUsername;
-            $mail->Password = $mailPassword;
+            $mail->Host = Config::$mailHost;
+            $mail->Username = Config::$mailUsername;
+            $mail->Password = Config::$mailPassword;
 
             // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             // $mail->SMTPSecure = 'tls';

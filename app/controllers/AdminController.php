@@ -2,15 +2,16 @@
 
 namespace app\controllers;
 
+use app\Router;
+use app\config\Config;
+
 class AdminController
 {
-    public static function admin()
+    public static function admin(Router $router)
     {
         $isInvalid = false;
 
-        $file = __DIR__ . '/../views/admin.view.php';
-
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        if ($router->getMethod() === "post") {
 
             if (isset($_POST['logout'])) {
 
@@ -21,13 +22,11 @@ class AdminController
                 header("Location: /admin");
 
                 exit();
-            } else {
+            } elseif (isset($_POST['login'])) {
                 $username = $_POST["username"];
                 $password = $_POST["password"];
 
-                include __DIR__ . '/../config/config.php';
-
-                if ($username === $adminUsername && $password === $adminPassword) {
+                if ($username === Config::$adminUsername && $password === Config::$adminPassword) {
 
                     $_SESSION['login'] = true;
                 } else {
@@ -37,6 +36,6 @@ class AdminController
             }
         }
 
-        require $file;
+        $router->renderView('admin', ['layout' => 'admin', 'isInvalid' => $isInvalid]);
     }
 }

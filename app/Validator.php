@@ -4,6 +4,7 @@
 namespace app;
 
 use \Verifalia\VerifaliaRestClient;
+use app\config\Config;
 
 class Validator
 {
@@ -38,8 +39,8 @@ class Validator
         include 'config/config.php';
 
         $verifalia = new VerifaliaRestClient([
-            'username' => $verifaliaUsername,
-            'password' => $verifaliaPassword
+            'username' => Config::$verifaliaUsername,
+            'password' => Config::$verifaliaPassword
         ]);
 
         if (!$this->checkBalance($verifalia)) {
@@ -59,7 +60,7 @@ class Validator
 
     public function validateMail($emailFrom)
     {
-        // if any of the checks returns three means that something is wrong and we should not send the email
+        // if any of the checks returns TRUE it means that something is wrong and we should not send the email
         if ($this->checkIfBot() || $this->checkIfValid($emailFrom) || $this->checkIfDeliverable($emailFrom)) {
             return true;
         }

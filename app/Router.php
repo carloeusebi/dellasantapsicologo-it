@@ -27,15 +27,21 @@ class Router
 
         if (!$callback) {
             http_response_code('404');
-            $this->renderView('404');
+            require __DIR__ . '/views/404.view.php';
             exit();
         }
 
         call_user_func($callback, $this, $path);
     }
 
-    public function renderView($page, $pageTitle = '404')
+    public function renderView($page, $params = [])
     {
+        $layout = isset($params['layout']) ? $params['layout'] : 'main';
+
+        foreach ($params as $param => $value) {
+            $$param = $value;
+        }
+
         if ($page === '/') $page = 'home';
 
         ob_start();
@@ -44,10 +50,10 @@ class Router
 
         $content = ob_get_clean();
 
-        include_once(__DIR__ . "/views/_layout.php");
+        include_once(__DIR__ . "/views/layouts/$layout.php");
     }
 
-    private function getPath()
+    public function getPath()
     {
         $path = $_SERVER['REQUEST_URI'] ?? '/';
         $position = strpos($path, '?');
@@ -57,7 +63,7 @@ class Router
         return substr($path, 0, $position);
     }
 
-    private function getMethod()
+    public function getMethod()
     {
         return strtolower($_SERVER['REQUEST_METHOD']);
     }

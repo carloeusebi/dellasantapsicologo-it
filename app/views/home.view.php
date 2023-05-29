@@ -53,4 +53,4 @@
     </section>
 
     <!-- # DI COSA MI OCCUPO -->
-    <?php include "layouts/table.php" ?>
+    <?php include __DIR__ . "/components/table.php" ?>

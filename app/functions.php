@@ -29,7 +29,7 @@ function updateLog($code, $error = '')
         default => "Something went unexpected.",
     };
 
-    $message = $date . ' ' . $message . PHP_EOL;
+    $message = $code . ' - ' . $date . ' ' . $message . PHP_EOL;
 
     file_put_contents($filePath, $message, FILE_APPEND);
 }

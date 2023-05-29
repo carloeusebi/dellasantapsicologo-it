@@ -8,4 +8,4 @@
     </div>
 </section>
 
-<?php include "layouts/table.php" ?>
+<?php include __DIR__ . "/components/table.php" ?>
