@@ -19,11 +19,11 @@ $router->get('/contatti', [Controller::class, 'loadPage']);
 $router->get('/admin', [AdminController::class, 'admin']);
 
 
-$router->post('/', [Controller::class, 'send']);
-$router->post('/chi-sono', [Controller::class, 'send']);
-$router->post('/cosa-aspettarsi', [Controller::class, 'send']);
-$router->post('/di-cosa-mi-occupo', [Controller::class, 'send']);
-$router->post('/contatti', [Controller::class, 'send']);
+$router->post('/', [Controller::class, 'sendMail']);
+$router->post('/chi-sono', [Controller::class, 'sendMail']);
+$router->post('/cosa-aspettarsi', [Controller::class, 'sendMail']);
+$router->post('/di-cosa-mi-occupo', [Controller::class, 'sendMail']);
+$router->post('/contatti', [Controller::class, 'sendMail']);
 $router->post('/admin', [AdminController::class, 'admin']);
 
 $router->resolve();

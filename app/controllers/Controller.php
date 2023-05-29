@@ -16,7 +16,7 @@ class Controller
         $router->renderView($page, ['pageTitle' => $pageTitle]);
     }
 
-    public static function send(Router $router)
+    public static function sendMail(Router $router)
     {
         if ($_POST['submit']) {
 
@@ -58,7 +58,6 @@ class Controller
                 // to refill form
                 $_SESSION['post'] = $_POST;
             }
-
 
             header("Location: $location");
         }
