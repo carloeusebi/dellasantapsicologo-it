@@ -3,7 +3,7 @@
     <!-- LOGIN -->
     <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-            <img class="mx-auto h-15 w-auto" src="img/Favicon.png" alt="Your Company">
+            <img class="mx-auto h-24 w-auto" src="img/Favicon.png" alt="Your Company">
             <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Accedi al tuo account</h2>
         </div>
 
@@ -30,7 +30,7 @@
                 </div>
             </form>
 
-            <a href="/" class="flex w-full justify-center rounded-md bg-transparent border border-[#6ecc84] hover:bg-[#264e32] hover:border-[#264e32] px-3 py-1.5 text-sm font-semibold leading-6 text-[#6ecc84] hover:text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Torna alla homepage</a>
+            <a href="/" class="mb-6 flex w-full justify-center rounded-md bg-transparent border border-[#6ecc84] hover:bg-[#264e32] hover:border-[#264e32] px-3 py-1.5 text-sm font-semibold leading-6 text-[#6ecc84] hover:text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Torna alla homepage</a>
 
             <?php if ($isInvalid) : ?>
                 <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
