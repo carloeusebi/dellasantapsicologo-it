@@ -3,11 +3,7 @@ const hamburgerMenu = document.getElementById('hamburger-menu');
 const topNavbar = document.getElementById('top-navbar');
 
 hamburgerMenu.addEventListener('click', () => {
-    if (hamburgerMenu.classList.contains('open')){
-        hamburgerMenu.classList.remove('open');
-    } else {
-        hamburgerMenu.classList.add('open');
-    }
+    hamburgerMenu.classList.toggle('open');
 })
 
 // ! Closing email response popup
