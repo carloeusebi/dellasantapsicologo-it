@@ -39,8 +39,8 @@ class Validator
         include 'config/config.php';
 
         $verifalia = new VerifaliaRestClient([
-            'username' => Config::$verifaliaUsername,
-            'password' => Config::$verifaliaPassword
+            'username' => Config::VERIFALIA_USERNAME,
+            'password' => Config::VERIFALIA_PASSWORD
         ]);
 
         if (!$this->checkBalance($verifalia)) {

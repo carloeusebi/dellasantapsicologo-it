@@ -21,9 +21,9 @@ class Mailer
         try {
             $mail->SMTPAuth = true;
 
-            $mail->Host = Config::$mailHost;
-            $mail->Username = Config::$mailUsername;
-            $mail->Password = Config::$mailPassword;
+            $mail->Host = Config::MAIL_HOST;
+            $mail->Username = Config::MAIL_USERNAME;
+            $mail->Password = Config::MAIL_PASSWORD;
 
             // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             // $mail->SMTPSecure = 'tls';

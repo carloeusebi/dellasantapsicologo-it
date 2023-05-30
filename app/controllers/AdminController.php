@@ -40,7 +40,7 @@ class AdminController
         $username = $_POST["username"];
         $password = $_POST["password"];
 
-        if ($username === Config::$adminUsername && $password === Config::$adminPassword) {
+        if ($username === Config::ADMIN_USERNAME && $password === Config::ADMIN_PASSWORD) {
 
             $_SESSION['login'] = true;
         } else {
