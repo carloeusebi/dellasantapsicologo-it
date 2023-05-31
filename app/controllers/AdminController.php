@@ -7,23 +7,38 @@ use app\config\Config;
 
 class AdminController
 {
+    const LAYOUT = 'admin';
+    const ADMIN_VIEW = 'admin';
+    const LOGIN_VIEW = 'login';
+    private $isInvalid;
+
     public static function admin(Router $router)
     {
         session_set_cookie_params(3600);
 
         session_start();
 
-        $isInvalid = false;
-
         $admin = new self();
 
-        if ($router->getMethod() === "post") {
+        if ($router->getMethod() === 'post') $admin->adminPost($admin);
 
-            if (isset($_POST['logout'])) $admin->logout();
-            elseif (isset($_POST['login'])) $isInvalid = $admin->login();
-        }
+        $params = ['layout' => self::LAYOUT, 'isInvalid' => $admin->isInvalid];
 
-        $router->renderView('admin', ['layout' => 'admin', 'isInvalid' => $isInvalid]);
+        $loggedIn = $admin->checkIfLogged();
+
+        if ($loggedIn) $admin->renderAdmin($router, $params);
+        else $admin->renderLogin($router, $params);
+    }
+
+    private function adminGet()
+    {
+    }
+
+    private function adminPost(AdminController $admin)
+    {
+        if (isset($_POST['logout'])) $admin->logout();
+
+        elseif (isset($_POST['login'])) $admin->login();
     }
 
     private function logout()
@@ -39,8 +54,6 @@ class AdminController
 
     private function login()
     {
-        $isInvalid = false;
-
         $username = $_POST["username"];
         $password = $_POST["password"];
 
@@ -49,9 +62,22 @@ class AdminController
             $_SESSION['login'] = true;
         } else {
 
-            $isInvalid = true;
+            $this->isInvalid = true;
         }
+    }
 
-        return $isInvalid;
+    private function checkIfLogged()
+    {
+        return isset($_SESSION['login']);
+    }
+
+    private function renderAdmin(Router $router, $params = [])
+    {
+        $router->renderView(self::ADMIN_VIEW, $params);
+    }
+
+    private function renderLogin(Router $router, $params = [])
+    {
+        $router->renderView(self::LOGIN_VIEW, $params);
     }
 }
