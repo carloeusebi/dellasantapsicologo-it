@@ -10,10 +10,7 @@ class Controller
 {
     public static function loadPage(Router $router, $page)
     {
-        $self = new self();
-        $pageTitle = $self->getPageTitle($page);
-
-        $router->renderView($page, ['pageTitle' => $pageTitle]);
+        $router->renderView($page);
     }
 
     public static function sendMail(Router $router)
@@ -39,13 +36,17 @@ class Controller
             $validator = new Validator;
             $mailer = new Mailer;
 
-            if (!($validator->validateMail($emailFrom))) {
+            $status = $validator->validateMail($emailFrom);
 
-                if ($mailer->send($emailTo, $subject, $body, $emailFrom, $name)) {
+            if (!$status) {
+
+                $status = $mailer->send($emailTo, $subject, $body, $emailFrom, $name);
+
+                if (!$status) {
 
                     updateLog(1);
 
-                    $_SESSION['status'] = 'success';
+                    $status = 'success';
 
                     // send a confirmation mail
 
@@ -54,26 +55,11 @@ class Controller
 
                     $mailer->send($emailFrom, $subject, $body);
                 }
-            } else {
-                // to refill form
-                $_SESSION['post'] = $_POST;
             }
-
-            header("Location: $location");
         }
-    }
 
-    private function getPageTitle($page)
-    {
-        $pageTitle = match ($page) {
-            '/' => 'Home',
-            '/chi-sono' => 'Chi Sono',
-            '/cosa-aspettarsi' => 'Cosa Aspettarsi dalla Terapia',
-            '/di-cosa-mi-occupo' => 'Di cosa mi Occupo',
-            '/contatti' => 'Contatti',
-            default => '404',
-        };
+        $formRefill = ($status !== 'success') ? $_POST : [];
 
-        return $pageTitle;
+        $router->renderView($location, ['status' => $status, 'formRefill' => $formRefill]);
     }
 }

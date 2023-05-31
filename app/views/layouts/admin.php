@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Carlo Eusebi">
     <meta name="description" content="Psicologo Cognitivo Comportamentale, mi occupo di consulenze psicologiche, sostegno e propongo percorsi individualizzati a Fano e online. Prenota la tua consulenza.">
-    <title>Dellasanta Psicologo Fano | Admin</title>
+    <title>Dellasanta Psicologo | Admin</title>
     <link rel="icon" href="img/Favicon.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
 

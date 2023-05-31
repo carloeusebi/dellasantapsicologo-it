@@ -1,4 +1,4 @@
-<?php if (!isset($_SESSION['login'])) : ?>
+<?php if (!isset($_SESSION['login']) || $_SESSION['login'] === false) : ?>
 
     <!-- LOGIN -->
     <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">

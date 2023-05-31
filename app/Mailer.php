@@ -50,17 +50,15 @@ class Mailer
 
             $mail->send();
 
-            return true;
+            $mail->ClearAllRecipients();
+
+            return false;
         } catch (Exception) {
 
             $error = $mail->ErrorInfo;
             updateLog(4, $error);
 
-            $_SESSION['status'] = "Qualcosa è andato storto, per favore riprovare più tardi";
-
-            return false;
+            return "Qualcosa è andato storto, per favore riprovare più tardi";
         }
-
-        $mail->ClearAllRecipients();
     }
 }

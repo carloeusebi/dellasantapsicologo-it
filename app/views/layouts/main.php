@@ -46,16 +46,16 @@
                     <div class="d-flex-lg flex-gap20">
 
                         <div class="col-50 p-20-lg d-flex flex-column justify-space-between mb-20">
-                            <input class="contact-info" type="text" name="name" id="name" placeholder="Nome" autocomplete="name" <?= (isset($_SESSION['post'])) ? "value='{$_SESSION['post']['name']}'" : '' ?> required>
+                            <input class="contact-info" type="text" name="name" id="name" placeholder="Nome" autocomplete="name" <?= (isset($formRefill['name'])) ? "value='{$formRefill['name']}'" : '' ?> equired>
 
-                            <input class="contact-info" type="tel" minlength="7" name="phone" id="phone" placeholder="Numero di Telefono" <?= (isset($_SESSION['post'])) ? "value='{$_SESSION['post']['phone']}'" : '' ?> required>
+                            <input class="contact-info" type="tel" minlength="7" name="phone" id="phone" placeholder="Numero di Telefono" <?= (isset($formRefill['phone'])) ? "value='{$formRefill['phone']}'" : '' ?> required>
 
-                            <input class="contact-info" type="email" name="mail" id="mail" placeholder="Email" <?= (isset($_SESSION['post'])) ? "value='{$_SESSION['post']['mail']}'" : '' ?> required>
+                            <input class="contact-info" type="email" name="mail" id="mail" placeholder="Email" <?= (isset($formRefill['mail'])) ? "value='{$formRefill['mail']}'" : '' ?> required>
 
 
                         </div>
                         <div class="col-50 p-20-lg mb-20">
-                            <textarea class="contact-info" name="message" id="message" rows="15" placeholder="Come posso aiutarti?" required><?= (isset($_SESSION['post'])) ? $_SESSION['post']['message'] : '' ?></textarea>
+                            <textarea class="contact-info" name="message" id="message" rows="15" placeholder="Come posso aiutarti?" required><?= (isset($formRefill['message'])) ? ($formRefill)['message'] : '' ?></textarea>
                         </div>
                     </div>
                     <div class="d-flex-lg flex-gap20">
@@ -77,15 +77,15 @@
             </div>
         </div>
 
-        <?php unset($_SESSION['post']); ?>
+        <?php unset($formRefill); ?>
 
-        <?php if (isset($_SESSION['status'])) : ?>
-            <?php if ($_SESSION['status'] == 'success') : ?>
+        <?php if (isset($status)) : ?>
+            <?php if ($status == 'success') : ?>
                 <div class="response success mt-20">Email inviata correttamente
                     <i class="fa-solid fa-xmark fa-xl"></i>
                 </div>
             <?php else : ?>
-                <div class="response bad mt-20"><?php echo $_SESSION['status'] ?>
+                <div class="response bad mt-20"><?php echo $status ?>
                     <i class="fa-solid fa-xmark fa-xl"></i>
                 </div>
             <?php endif; ?>
@@ -100,11 +100,11 @@
 
     <!-- # CONTATTI -->
     <div id="response-anchor"></div>
-    <?php if (isset($_SESSION['status'])) : ?>
+    <?php if (isset($status)) : ?>
         <script>
             document.getElementById('response-anchor').scrollIntoView(true);
         </script>
-        <?php unset($_SESSION['status']); ?>
+        <?php unset($status); ?>
     <?php endif ?>
 
     <section id="contatti">

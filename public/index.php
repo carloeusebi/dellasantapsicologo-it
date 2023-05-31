@@ -1,9 +1,7 @@
 <?php
-session_set_cookie_params(0);
-session_start();
 
 require_once "../vendor/autoload.php";
-require "../app/functions.php";
+require_once "../app/functions.php";
 
 use app\Router;
 use app\controllers\Controller;

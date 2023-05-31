@@ -2,8 +2,6 @@
 
 namespace app;
 
-require 'controllers/Controller.php';
-
 class Router
 {
     public $routes;
@@ -44,6 +42,8 @@ class Router
 
         if ($page === '/') $page = 'home';
 
+        $pageTitle = $this->getPageTitle($page);
+
         ob_start();
 
         include_once(__DIR__ . "/views/$page.view.php");
@@ -66,5 +66,19 @@ class Router
     public function getMethod()
     {
         return strtolower($_SERVER['REQUEST_METHOD']);
+    }
+
+    private function getPageTitle($page)
+    {
+        $pageTitle = match ($page) {
+            'home' => 'Home',
+            '/chi-sono' => 'Chi Sono',
+            '/cosa-aspettarsi' => 'Cosa Aspettarsi dalla Terapia',
+            '/di-cosa-mi-occupo' => 'Di cosa mi Occupo',
+            '/contatti' => 'Contatti',
+            default => '',
+        };
+
+        return $pageTitle;
     }
 }

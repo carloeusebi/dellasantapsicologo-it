@@ -9,6 +9,10 @@ class AdminController
 {
     public static function admin(Router $router)
     {
+        session_set_cookie_params(3600);
+
+        session_start();
+
         $isInvalid = false;
 
         $admin = new self();
@@ -24,7 +28,7 @@ class AdminController
 
     private function logout()
     {
-        $_SESSION = array();
+        session_start();
 
         session_destroy();
 
