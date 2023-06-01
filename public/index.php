@@ -24,3 +24,13 @@ $router->post('/contatti', [Controller::class, 'sendMail']);
 $router->post('/admin', [AdminController::class, 'index']);
 
 $router->resolve();
+
+
+function dd($value){
+
+    echo '<pre>';
+    var_dump($value);
+    echo '</pre>';
+
+    die();
+}
