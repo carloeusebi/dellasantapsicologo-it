@@ -28,9 +28,7 @@ class Router
         if (!$callback) {
             http_response_code('404');
 
-            $pageTitle = 'Pagina non trovata';
-
-            require __DIR__ . '/views/404.view.php';
+            $this->renderView('404');
 
             exit();
         }
