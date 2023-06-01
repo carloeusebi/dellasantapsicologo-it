@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary mb-5">
     <div class="container-fluid">
         <img class="logo me-4" src="img/Logo.webp" alt="logo">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,67 @@
 </nav>
 
 <main>
+    <div class="container">
+        <div class="card p-5">
 
-    <?= var_dump($questions) ?>
 
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">question</th>
+                        <th scope="col">test</th>
+                        <th scope="col">type</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <?php foreach ($questions as $question) : ?>
+
+                        <tr>
+                            <td><?= $question['id'] ?></td>
+                            <td><?= $question['question'] ?></td>
+                            <td><?= $question['test'] ?></td>
+                            <td><?= $question['type'] ?></td>
+                            <td class="text-end">
+                                <button type="submit" class="btn btn-outline-secondary">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+
+                                <!-- DELETE BUTTON -->
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal<?= $question['id'] ?>">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+
+                                <!-- DELTE BUTTON MODAL -->
+                                <div class="modal fade" id="modal<?= $question['id'] ?>" tabindex="-1">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Sei sicuro di voler eliminare <?= $question['question'] ?>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ANNULLA</button>
+                                                <button type="button" class="btn btn-danger">ELIMINA</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END OF MODAL -->
+
+                            </td>
+                        </tr>
+
+                    <?php endforeach ?>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
 </main>
