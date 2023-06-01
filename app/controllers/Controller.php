@@ -44,7 +44,7 @@ class Controller
 
                 if (!$status) {
 
-                    updateLog(1);
+                    self::updateLog(1);
 
                     $status = 'success';
 
@@ -61,5 +61,26 @@ class Controller
         $formRefill = ($status !== 'success') ? $_POST : [];
 
         $router->renderView($location, ['status' => $status, 'formRefill' => $formRefill]);
+    }
+
+    public static function updateLog($code, $error = '')
+    {
+        $filePath = __DIR__ . '/../../public/log.txt';
+
+        fopen($filePath, 'a+');
+
+        $date = date("d-m-y H:i:s", time());
+
+        $message = match ($code) {
+            1 => "An email was succesfully sent.",
+            2 => "Form was submitted with honeybox checked.",
+            3 => "Form was submitted with an undeliverable email.",
+            4 => $error,
+            default => "Something went unexpected.",
+        };
+
+        $message = $code . ' - ' . $date . ' - ' . $message . PHP_EOL;
+
+        file_put_contents($filePath, $message, FILE_APPEND);
     }
 }

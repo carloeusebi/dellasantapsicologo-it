@@ -5,6 +5,7 @@ namespace app;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use app\config\Config;
+use app\controllers\Controller;
 
 class Mailer
 {
@@ -56,7 +57,7 @@ class Mailer
         } catch (Exception) {
 
             $error = $mail->ErrorInfo;
-            updateLog(4, $error);
+            Controller::updateLog(4, $error);
 
             return "Qualcosa è andato storto, per favore riprovare più tardi";
         }

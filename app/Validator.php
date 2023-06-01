@@ -5,6 +5,7 @@ namespace app;
 
 use \Verifalia\VerifaliaRestClient;
 use app\config\Config;
+use app\controllers\Controller;
 
 class Validator
 {
@@ -18,7 +19,7 @@ class Validator
     private function checkIfBot()
     {
         if (isset($_POST['miele-cb'])) {
-            updateLog(2);
+            Controller::updateLog(2);
             return 'Qualcosa è andato storto, riprovare';
         }
         return false;
@@ -47,7 +48,7 @@ class Validator
         $entry = $validation->entries[0];
 
         if ($entry->classification === 'Undeliverable') {
-            updateLog(3);
+            Controller::updateLog(3);
             return 'Email non valida, per favore riprovare con un indirizzo valido';
         }
         return false;

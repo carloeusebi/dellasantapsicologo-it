@@ -27,7 +27,10 @@ class Database
             $this->pdo = new PDO($dsn, $user, $password);
         } catch (Exception $e) {
 
-            dd($e);
+            echo '<pre>';
+            var_dump($e->getMessage());
+            echo '</pre>';
+            exit;
         }
 
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

@@ -61,11 +61,11 @@
             </div>
             <nav id="top-navbar">
                 <ul>
-                    <li><a href="/" <?= urlIs('/') ? 'class="active"' : '' ?>>Home</a></li>
-                    <li><a href="/chi-sono" <?= urlIs('/chi-sono') ? 'class="active"' : '' ?>>Chi Sono</a></li>
-                    <li><a href="/cosa-aspettarsi" <?= urlIs('/cosa-aspettarsi') ? 'class="active"' : '' ?>>Cosa aspettarsi dalla Terapia</a></li>
-                    <li><a href="/di-cosa-mi-occupo" <?= urlIs('/di-cosa-mi-occupo') ? 'class="active"' : '' ?>>Di cosa mi Occupo</a></li>
-                    <li><a href="/contatti" <?= urlIs('/contatti') ? 'class="active"' : '' ?>>Contatti</a></li>
+                    <li><a href="/" <?= $this->urlIs('/') ? 'class="active"' : '' ?>>Home</a></li>
+                    <li><a href="/chi-sono" <?= $this->urlIs('/chi-sono') ? 'class="active"' : '' ?>>Chi Sono</a></li>
+                    <li><a href="/cosa-aspettarsi" <?= $this->urlIs('/cosa-aspettarsi') ? 'class="active"' : '' ?>>Cosa aspettarsi dalla Terapia</a></li>
+                    <li><a href="/di-cosa-mi-occupo" <?= $this->urlIs('/di-cosa-mi-occupo') ? 'class="active"' : '' ?>>Di cosa mi Occupo</a></li>
+                    <li><a href="/contatti" <?= $this->urlIs('/contatti') ? 'class="active"' : '' ?>>Contatti</a></li>
                 </ul>
             </nav>
         </div>
