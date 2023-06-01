@@ -27,6 +27,49 @@
 
 <main>
     <div class="container">
+
+        <div class="d-flex justify-content-end mb-3">
+
+            <!-- ADD BUTTON -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-modal">
+                <i class="fa-solid fa-plus me-2"></i>Aggiungi una nuova domanda
+            </button>
+
+            <!-- ADD BUTTON MODAL -->
+            <div class="modal fade" id="add-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="add-question">Aggiungi una nuova domanda</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <!-- MODAL BODY -->
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1">
+                            </div>
+                        </div>
+                        <!-- BUTTONS -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ANNULLA</button>
+                            <button type="button" class="btn btn-primary">AGGIUNGI</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END OF MODAL -->
+
+        </div>
+
+
+
+        <!-- TABLE -->
         <div class="card p-5">
 
 
@@ -50,17 +93,47 @@
                             <td><?= $question['test'] ?></td>
                             <td><?= $question['type'] ?></td>
                             <td class="text-end">
-                                <button type="submit" class="btn btn-outline-secondary">
+                                <!-- EDIT BUTTON -->
+                                <button type="submit" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#edit-modal<?= $question['id'] ?>">
                                     <i class="fa-solid fa-pen"></i>
                                 </button>
+                                <!-- EDIT BUTTON MODAL -->
+                                <div class="modal fade" id="edit-modal<?= $question['id'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="add-question">Modifica questa domanda</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            </div>
+                                            <!-- MODAL BODY -->
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                                    <input type="text" class="form-control" id="exampleInputEmail1" value="<?= $question['question'] ?>">
+                                                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                                                    <input type="text" class="form-control" id="exampleInputPassword1" value="<?= $question['test'] ?>">
+                                                </div>
+                                            </div>
+                                            <!-- BUTTONS -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ANNULLA</button>
+                                                <button type="button" class="btn btn-primary">MODIFICA</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END OF MODAL -->
 
                                 <!-- DELETE BUTTON -->
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal<?= $question['id'] ?>">
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal<?= $question['id'] ?>">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </button>
 
                                 <!-- DELTE BUTTON MODAL -->
-                                <div class="modal fade" id="modal<?= $question['id'] ?>" tabindex="-1">
+                                <div class="modal fade" id="delete-modal<?= $question['id'] ?>" tabindex="-1">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
