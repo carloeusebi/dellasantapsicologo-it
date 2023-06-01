@@ -5,7 +5,7 @@
         <div class="col-10 col-md-8 col-lg-4">
 
             <figure class="text-center mb-5">
-                <img src="img/favicon.png" alt="logo">
+                <img src="img/Favicon.png" alt="logo">
             </figure>
 
             <h1 class="mb-5 h2 text-center">Accedi al tuo account</h1>
@@ -24,10 +24,10 @@
             </form>
 
             <?php if ($isInvalid) : ?>
-                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <div class="callout callout-danger d-flex align-items-center" role="alert">
                     <i class="fa-solid fa-triangle-exclamation me-3"></i>
                     <div>
-                        Username o Password errati
+                        Username o Password non validi
                     </div>
                 </div>
             <?php endif ?>
