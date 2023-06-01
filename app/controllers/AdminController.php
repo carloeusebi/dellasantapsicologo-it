@@ -10,9 +10,11 @@ class AdminController
     const LAYOUT = 'admin';
     const ADMIN_VIEW = 'admin';
     const LOGIN_VIEW = 'login';
-    private $isInvalid;
 
-    public static function admin(Router $router)
+    private $isInvalid = false;
+
+
+    public static function index(Router $router)
     {
         session_set_cookie_params(3600);
 
@@ -21,16 +23,12 @@ class AdminController
         $admin = new self();
 
         if ($router->getMethod() === 'post') $admin->adminPost($admin);
+        else $admin->adminGet($admin);
 
-        $params = ['layout' => self::LAYOUT, 'isInvalid' => $admin->isInvalid];
-
-        $loggedIn = $admin->checkIfLogged();
-
-        if ($loggedIn) $admin->renderAdmin($router, $params);
-        else $admin->renderLogin($router, $params);
+        $admin->renderPage($router, $admin);
     }
 
-    private function adminGet()
+    private function adminGet(AdminController $admin)
     {
     }
 
@@ -64,6 +62,17 @@ class AdminController
 
             $this->isInvalid = true;
         }
+    }
+
+    private function renderPage(Router $router, AdminController $admin){
+                
+        $loggedIn = $admin->checkIfLogged();
+        
+        $params = ['layout' => self::LAYOUT];
+
+        if ($loggedIn) $admin->renderAdmin($router, $params);
+        else $admin->renderLogin($router, $params = $params += ['isInvalid' => $admin->isInvalid]);
+
     }
 
     private function checkIfLogged()
