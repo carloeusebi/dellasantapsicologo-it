@@ -63,7 +63,7 @@ class Controller
         $router->renderView($location, ['status' => $status, 'formRefill' => $formRefill]);
     }
 
-    public static function updateLog($code, $error = '')
+    public function updateLog($code, $error = '')
     {
         $filePath = __DIR__ . '/../../public/log.txt';
 
