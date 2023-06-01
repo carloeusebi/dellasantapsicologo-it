@@ -27,4 +27,6 @@
 
 <main>
 
+    <?= var_dump($questions) ?>
+
 </main>

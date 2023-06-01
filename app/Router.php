@@ -2,8 +2,10 @@
 
 namespace app;
 
+
 class Router
 {
+    public $db;
     public $routes;
 
     public function get($path, $callback)

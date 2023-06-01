@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\Router;
 use app\config\Config;
+use app\db\Database;
 
 class AdminController
 {
@@ -12,6 +13,7 @@ class AdminController
     const LOGIN_VIEW = 'login';
 
     private $isInvalid = false;
+    private $db;
 
 
     public static function index(Router $router)
@@ -64,15 +66,17 @@ class AdminController
         }
     }
 
-    private function renderPage(Router $router, AdminController $admin){
-                
+    private function renderPage(Router $router, AdminController $admin)
+    {
+
         $loggedIn = $admin->checkIfLogged();
-        
+
         $params = ['layout' => self::LAYOUT];
 
-        if ($loggedIn) $admin->renderAdmin($router, $params);
-        else $admin->renderLogin($router, $params = $params += ['isInvalid' => $admin->isInvalid]);
 
+        if ($loggedIn) $admin->renderAdmin($router, $params);
+
+        else $admin->renderLogin($router, $params = $params += ['isInvalid' => $admin->isInvalid]);
     }
 
     private function checkIfLogged()
@@ -82,7 +86,11 @@ class AdminController
 
     private function renderAdmin(Router $router, $params = [])
     {
-        $router->renderView(self::ADMIN_VIEW, $params);
+        $this->db = new DATABASE();
+
+        $questions = $this->db->getQuestions();
+
+        $router->renderView(self::ADMIN_VIEW, $params += ['questions' => $questions]);
     }
 
     private function renderLogin(Router $router, $params = [])
