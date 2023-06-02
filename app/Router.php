@@ -5,8 +5,7 @@ namespace app;
 
 class Router
 {
-    public $db;
-    public $routes;
+    private $routes;
 
     public function get($path, $callback)
     {
@@ -26,6 +25,7 @@ class Router
         $callback = $this->routes[$method][$path] ?? false;
 
         if (!$callback) {
+
             http_response_code('404');
 
             $this->renderView('404');
@@ -44,7 +44,7 @@ class Router
             $$param = $value;
         }
 
-        if ($page === '/') $page = 'home';
+        $page = ($page === '/') ? '/home' : $page;
 
         $pageTitle = $this->getPageTitle($page);
 
@@ -59,12 +59,7 @@ class Router
 
     public function getPath()
     {
-        $path = $_SERVER['REQUEST_URI'] ?? '/';
-        $position = strpos($path, '?');
-        if (!$position) {
-            return $path;
-        }
-        return substr($path, 0, $position);
+        return parse_url($_SERVER['REQUEST_URI'])['path'];
     }
 
     public function getMethod()
@@ -74,16 +69,14 @@ class Router
 
     private function getPageTitle($page)
     {
-        $pageTitle = match ($page) {
-            'home' => 'Home',
+        return match ($page) {
+            '/home' => 'Home',
             '/chi-sono' => 'Chi Sono',
             '/cosa-aspettarsi' => 'Cosa Aspettarsi dalla Terapia',
             '/di-cosa-mi-occupo' => 'Di cosa mi Occupo',
             '/contatti' => 'Contatti',
-            default => '404'
+            default => 'Pagina non trovata'
         };
-
-        return $pageTitle;
     }
 
     public function urlIs($value)

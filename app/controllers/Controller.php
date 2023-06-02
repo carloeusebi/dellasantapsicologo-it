@@ -13,7 +13,7 @@ class Controller
         $router->renderView($page);
     }
 
-    public static function sendMail(Router $router)
+    public static function sendMail(Router $router, $page)
     {
         if ($_POST['submit']) {
 
@@ -21,8 +21,6 @@ class Controller
             $phone = htmlspecialchars($_POST['phone']);
             $emailFrom = htmlspecialchars($_POST['mail']);
             $message = htmlspecialchars($_POST['message']);
-
-            $location = parse_url($_SERVER["HTTP_REFERER"])['path'];
 
             $emailTo = 'carloeusebi@gmail.com';
             $subject = 'Un cliente ti ha scritto';
@@ -60,7 +58,7 @@ class Controller
 
         $formRefill = ($status !== 'success') ? $_POST : [];
 
-        $router->renderView($location, ['status' => $status, 'formRefill' => $formRefill]);
+        $router->renderView($page, ['status' => $status, 'formRefill' => $formRefill]);
     }
 
     public static function updateLog($code, $error = '')

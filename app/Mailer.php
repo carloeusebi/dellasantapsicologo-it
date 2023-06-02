@@ -9,6 +9,8 @@ use app\controllers\Controller;
 
 class Mailer
 {
+    private const EMAIL_FROM = "contactme@dellasantapsicologo.it";
+    private const EMAIL_NAME = "Dr Federico Dellasanta";
 
     public function send($emailTo, $subject, $message, $emailFrom = '', $name = '')
     {
@@ -28,13 +30,12 @@ class Mailer
 
             // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             // $mail->SMTPSecure = 'tls';
+            // $mail->SMTPDebug = 2;
 
             $mail->Port = 587;
 
             $mail->isSMTP();
             $mail->isHTML(true);
-
-            // $mail->SMTPDebug = 2;
 
             $mail->SMTPOptions = [
                 'ssl' => [
@@ -44,7 +45,7 @@ class Mailer
                 ]
             ];
 
-            $mail->setFrom("contactme@dellasantapsicologo.it", "Dr Federico Dellasanta");
+            $mail->setFrom(Mailer::EMAIL_FROM, Mailer::EMAIL_NAME);
             $mail->addAddress($emailTo);
             $mail->Subject = $subject;
             $mail->Body = $message;
