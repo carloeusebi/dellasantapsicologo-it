@@ -130,7 +130,7 @@
                         <?php foreach ($answers as $answer) : ?>
                             <div class="mb-2 d-flex">
                                 <input type="email" class="form-control p-1 me-1" value="<?= $answer ?>">
-                                <button class="btn btn-outline-danger border-0">
+                                <button class="btn btn-outline-danger border-0 no-hover">
                                     <i class="fa-solid fa-trash-can fa-xs"></i>
                                 </button>
                             </div>

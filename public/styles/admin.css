@@ -34,3 +34,8 @@
     background-color: #f8d7da;
     border-left: .25rem solid #f1aeb5;
 }
+
+.btn.no-hover:hover{
+    background-color: white;
+    color: red;
+}
