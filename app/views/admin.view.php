@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary mb-5">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <img class="logo me-4" src="img/Logo.webp" alt="logo">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,10 +25,16 @@
     </div>
 </nav>
 
-<main>
+<main class="bg-body-secondary py-5">
     <div class="container">
 
-        <div class="d-flex justify-content-end mb-5">
+        <!-- HEADER -->
+        <header class="d-flex justify-content-between mb-5">
+
+            <form class="d-flex col-8" role="search">
+                <input class="form-control me-2" type="search" placeholder="Cerca" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
 
             <!-- ADD BUTTON -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-modal">
@@ -65,7 +71,7 @@
             </div>
             <!-- END OF MODAL -->
 
-        </div>
+        </header>
 
 
 
@@ -79,7 +85,8 @@
                         <h5 class="card-title"><?= $question['id'] ?>. <?= $question['question'] ?></h5>
 
                         <!-- DELETE BUTTON -->
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal<?= $question['id'] ?>">
+                        <button type="button" class="btn btn-outline-danger border-0" data-bs-toggle="modal" data-bs-target="#delete-modal<?= $question['id'] ?>">
+                            <i class="fa-solid fa-trash-can me-2"></i>
                             Elimina Domanda
                         </button>
 
@@ -123,7 +130,7 @@
                     <?php if ($question['type'] !== 'textarea') : ?>
                         <div class="d-flex justify-content-between align-items-center">
                             <p>Risposte:</p>
-                            <button class="btn btn-secondary mb-3">
+                            <button class="btn btn-secondary rounded-0 mb-3">
                                 <i class="fa-solid fa-plus me-2"></i> Aggiungi risposte
                             </button>
                         </div>
@@ -138,7 +145,7 @@
                     <?php endif ?>
                 </div>
                 <div class="d-flex justify-content-end me-3 mb-3">
-                    <button class="btn btn-primary col-3">Salva</button>
+                    <button class="btn btn-primary col-2 rounded-0">Salva</button>
                 </div>
             </div>
         <?php endforeach ?>
