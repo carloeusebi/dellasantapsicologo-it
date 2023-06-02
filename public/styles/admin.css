@@ -9,8 +9,7 @@
 }
 
 .btn.btn-login:hover,
-.btn.btn-login:active,
-.btn.btn-login:focus {
+.btn.btn-login:active {
     background-color: #254d32;
 }
 
@@ -21,8 +20,7 @@
 }
 
 .btn.btn-home:hover,
-.btn.btn-home:active,
-.btn.btn-home:focus {
+.btn.btn-home:active {
     color: white;
     background-color: #6ecc84;
 }

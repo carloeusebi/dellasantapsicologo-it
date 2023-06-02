@@ -20,7 +20,7 @@ class Database
         $host = Config::DB_HOST;
         $db_name = Config::DB_NAME;
 
-        $dsn = "mysql:host=$host;dbname=$db_name";
+        $dsn = "mysql:host=$host;dbname=$db_name;charset=utf8mb4";
 
         try {
 

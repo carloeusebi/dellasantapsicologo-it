@@ -28,7 +28,7 @@
 <main>
     <div class="container">
 
-        <div class="d-flex justify-content-end mb-3">
+        <div class="d-flex justify-content-end mb-5">
 
             <!-- ADD BUTTON -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-modal">
@@ -70,96 +70,78 @@
 
 
         <!-- TABLE -->
-        <div class="card p-5">
+        <?php foreach ($questions as $question) : ?>
 
+            <div class="card mb-5">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
 
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">question</th>
-                        <th scope="col">test</th>
-                        <th scope="col">type</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
+                        <h5 class="card-title"><?= $question['id'] ?>. <?= $question['question'] ?></h5>
 
-                    <?php foreach ($questions as $question) : ?>
+                        <!-- DELETE BUTTON -->
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal<?= $question['id'] ?>">
+                            Elimina Domanda
+                        </button>
 
-                        <tr>
-                            <td><?= $question['id'] ?></td>
-                            <td><?= $question['question'] ?></td>
-                            <td><?= $question['test'] ?></td>
-                            <td><?= $question['type'] ?></td>
-                            <td class="text-end">
-                                <!-- EDIT BUTTON -->
-                                <button type="submit" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#edit-modal<?= $question['id'] ?>">
-                                    <i class="fa-solid fa-pen"></i>
-                                </button>
-                                <!-- EDIT BUTTON MODAL -->
-                                <div class="modal fade" id="edit-modal<?= $question['id'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="add-question">Modifica questa domanda</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                            </div>
-                                            <!-- MODAL BODY -->
-                                            <div class="modal-body">
-                                                <div class="mb-3">
-                                                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                                    <input type="text" class="form-control" id="exampleInputEmail1" value="<?= $question['question'] ?>">
-                                                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                                                    <input type="text" class="form-control" id="exampleInputPassword1" value="<?= $question['test'] ?>">
-                                                </div>
-                                            </div>
-                                            <!-- BUTTONS -->
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ANNULLA</button>
-                                                <button type="button" class="btn btn-primary">MODIFICA</button>
-                                            </div>
-                                        </div>
+                        <!-- DELTE BUTTON MODAL -->
+                        <div class="modal fade" id="delete-modal<?= $question['id'] ?>" tabindex="-1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Sei sicuro?</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Sei sicuro di voler eliminare "<?= $question['question'] ?>"
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ANNULLA</button>
+                                        <button type="button" class="btn btn-danger">ELIMINA</button>
                                     </div>
                                 </div>
-                                <!-- END OF MODAL -->
-
-                                <!-- DELETE BUTTON -->
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal<?= $question['id'] ?>">
-                                    <i class="fa-solid fa-trash-can"></i>
+                            </div>
+                        </div>
+                        <!-- END OF MODAL -->
+                        <!-- END OF BUTTONS -->
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col-12 col-md-8">
+                            <label for="question-<?= $question['id'] ?>">Testo della domanda</label>
+                            <input type="text" id="question-<?= $question['id'] ?>" name="question-<?= $question['id'] ?>" value="<?= $question['question'] ?>" class="form-control">
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label for=" select-<?= $question['id'] ?>">Tipo della risposta:</label>
+                            <select class="form-select d-inline-block" id="select-<?= $question['id'] ?>" name="select-<?= $question['id'] ?>">
+                                <option value="select" <?= $question['type'] === 'select' ? 'selected' : '' ?>>Select</option>
+                                <option value="radio" <?= $question['type'] === 'radio' ? 'selected' : '' ?>>Radio</option>
+                                <option value="check"><?= $question['type'] === 'check' ? 'selected' : '' ?>Check</option>
+                                <option value="textarea" <?= $question['type'] === 'textarea' ? 'selected' : '' ?>>Textarea</option>
+                            </select>
+                        </div>
+                    </div>
+                    <?php $answers = explode(',', $question['answers']); ?>
+                    <?php if ($question['type'] !== 'textarea') : ?>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p>Risposte:</p>
+                            <button class="btn btn-secondary mb-3">
+                                <i class="fa-solid fa-plus me-2"></i> Aggiungi risposte
+                            </button>
+                        </div>
+                        <?php foreach ($answers as $answer) : ?>
+                            <div class="mb-2 d-flex">
+                                <input type="email" class="form-control p-1 me-1" value="<?= $answer ?>">
+                                <button class="btn btn-outline-danger border-0">
+                                    <i class="fa-solid fa-trash-can fa-xs"></i>
                                 </button>
+                            </div>
+                        <?php endforeach ?>
+                    <?php endif ?>
+                </div>
+                <div class="d-flex justify-content-end me-3 mb-3">
+                    <button class="btn btn-primary col-3">Salva</button>
+                </div>
+            </div>
+        <?php endforeach ?>
 
-                                <!-- DELTE BUTTON MODAL -->
-                                <div class="modal fade" id="delete-modal<?= $question['id'] ?>" tabindex="-1">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Sei sicuro di voler eliminare <?= $question['question'] ?>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ANNULLA</button>
-                                                <button type="button" class="btn btn-danger">ELIMINA</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- END OF MODAL -->
-
-                            </td>
-                        </tr>
-
-                    <?php endforeach ?>
-
-                </tbody>
-            </table>
-
-        </div>
     </div>
 </main>
