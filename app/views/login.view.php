@@ -19,8 +19,8 @@
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password">
                 </div>
-                <button type="submit" class="btn btn-success d-block w-100 mb-3" name="login">Submit</button>
-                <a href="/" class="btn btn-outline-success d-block w-100 mb-3">Torna alla homepage</a>
+                <button type="submit" class="btn btn-login d-block w-100 mb-3" name="login">Accedi</button>
+                <a href="/" class="btn btn-home d-block w-100 mb-3">Torna alla homepage</a>
             </form>
 
             <?php if ($isInvalid) : ?>

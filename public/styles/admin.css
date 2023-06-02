@@ -2,6 +2,31 @@
     width: 250px;
 }
 
+.btn.btn-login {
+    background-color: #6ecc84;
+    color: white;
+    font-weight: bold;
+}
+
+.btn.btn-login:hover,
+.btn.btn-login:active,
+.btn.btn-login:focus {
+    background-color: #254d32;
+}
+
+.btn.btn-home {
+    color: #6ecc84;
+    border: 1px solid #6ecc84;
+    font-weight: bold;
+}
+
+.btn.btn-home:hover,
+.btn.btn-home:active,
+.btn.btn-home:focus {
+    color: white;
+    background-color: #6ecc84;
+}
+
 .callout {
     padding: 1.25rem;
 }
