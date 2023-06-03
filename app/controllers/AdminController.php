@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\Router;
 use app\config\Config;
+use app\models\Patient;
 
 class AdminController
 {
@@ -13,7 +14,7 @@ class AdminController
 
     private $isInvalid = false;
 
-    public static function index(Router $router)
+    public static function index(Router $router, $page)
     {
         session_set_cookie_params(3600);
 
@@ -21,21 +22,23 @@ class AdminController
 
         $admin = new self();
 
-        if ($router->getMethod() === 'post') $admin->adminPost($admin);
+        if ($router->getMethod() === 'post') $admin->adminPost($admin, $router);
         else $admin->adminGet($admin);
 
-        $admin->renderPage($router, $admin);
+        $admin->renderPage($router, $admin, $page);
     }
 
     private function adminGet(AdminController $admin)
     {
     }
 
-    private function adminPost(AdminController $admin)
+    private function adminPost(AdminController $admin, Router $router)
     {
         if (isset($_POST['logout'])) $admin->logout();
 
         elseif (isset($_POST['login'])) $admin->login();
+
+        elseif (isset($_POST['patient-create'])) $admin->createPatient($router);
     }
 
     private function logout()
@@ -63,17 +66,16 @@ class AdminController
         }
     }
 
-    private function renderPage(Router $router, AdminController $admin)
+    private function renderPage(Router $router, AdminController $admin, $page)
     {
 
         $loggedIn = $admin->checkIfLogged();
 
         $params = ['layout' => self::LAYOUT];
 
+        if ($loggedIn) $admin->renderAdmin($router, $params, $page);
 
-        if ($loggedIn) $admin->renderAdmin($router, $params);
-
-        else $admin->renderLogin($router, $params = $params += ['isInvalid' => $admin->isInvalid]);
+        else $admin->renderLogin($router, $params += ['isInvalid' => $admin->isInvalid]);
     }
 
     private function checkIfLogged()
@@ -81,13 +83,13 @@ class AdminController
         return isset($_SESSION['login']);
     }
 
-    private function renderAdmin(Router $router, $params = [])
+    private function renderAdmin(Router $router, $params = [], $page)
     {
         $search = $_GET['search'] ?? null;
 
-        $questions = $router->db->getQuestions($search);
+        $questions = $router->db->getPatients($search);
 
-        $router->renderView(self::ADMIN_VIEW, $params += ['questions' => $questions]);
+        $router->renderView($page, $params + ['questions' => $questions]);
     }
 
     private function renderLogin(Router $router, $params = [])
@@ -95,29 +97,24 @@ class AdminController
         $router->renderView(self::LOGIN_VIEW, $params);
     }
 
-    public static function addQuestion(Router $router)
+    public static function createPatient(Router $router)
     {
+        $patient = [];
+        $errors = [];
+
         if ($router->getMethod() !== 'post') $router->renderView('404');
 
         extract($_POST);
+        $data['fname'] = $fname;
+        $data['lname'] = $lname;
 
-        $data['question'] = $question;
-        $data['type'] = $type;
+        // TODO REST OF FIELDS
 
-        $admin = new AdminController;
+        $patient = new Patient();
+        $patient->load($data);
+        $errors = $patient->save();
 
-        $router->db->createQuestion($data);
-
-        header('Location: /admin?success=aggiunta');
-    }
-
-    public static function deleteQuestion(Router $router)
-    {
-
-        if ($router->getMethod() !== 'post') $router->renderView('404');
-
-        $router->db->deleteQuestion($_POST['id']);
-
-        header('Location: /admin?success=eliminata');
+        if (empty($errors)) header('Location: /admin/pazienti?success=creato');
+        else $router->renderView('/admin/pazienti', ['layout' => self::LAYOUT, 'patient' => $patient, 'errors' => $errors]);
     }
 }

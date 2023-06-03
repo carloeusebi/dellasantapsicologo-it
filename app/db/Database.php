@@ -3,6 +3,7 @@
 namespace app\db;
 
 use app\config\Config;
+use app\models\Patient;
 use PDO;
 use Exception;
 
@@ -35,10 +36,10 @@ class Database
         self::$db = $this;
     }
 
-    public function getQuestions($search)
+    public function getPatients($search)
     {
 
-        $query = 'SELECT * FROM test ';
+        $query = 'SELECT * FROM patients ';
 
         if ($search) $query .= 'WHERE question LIKE :search ';
 
@@ -52,36 +53,25 @@ class Database
 
             $statement->execute();
 
-            $questions = $statement->fetchAll(PDO::FETCH_ASSOC);
+            $patients = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-            return $questions;
+            return $patients;
         } catch (Exception $e) {
 
             dd($e);
         }
     }
 
-    public function createQuestion($data)
+    public function updatePatient(Patient $patient)
     {
-        $statement = $this->pdo->prepare('INSERT INTO test (question, type) VALUES (:question, :type)');
-
-        $statement->bindValue('question', $data['question']);
-        $statement->bindValue('type', $data['type']);
-
-        try {
-
-            $statement->execute();
-        } catch (Exception $e) {
-
-            dd($e);
-        }
     }
 
-    public function deleteQuestion($id)
+    public function createPatient(Patient $patient)
     {
-        $statement = $this->pdo->prepare('DELETE FROM test WHERE id = :id');
+        $statement = $this->pdo->prepare('INSERT INTO patients (fname, lname) VALUES (:fname, :lname)');
 
-        $statement->bindValue('id', $id);
+        $statement->bindValue('fname', $patient->fname);
+        $statement->bindValue('lname', $patient->lname);
 
         try {
 
