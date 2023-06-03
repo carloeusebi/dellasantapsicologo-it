@@ -23,6 +23,7 @@ $router->post('/di-cosa-mi-occupo', [Controller::class, 'sendMail']);
 $router->post('/contatti', [Controller::class, 'sendMail']);
 $router->post('/admin', [AdminController::class, 'index']);
 $router->post('/admin/add', [AdminController::class, 'addQuestion']);
+$router->post('/admin/delete', [AdminController::class, 'deleteQuestion']);
 
 $router->resolve();
 

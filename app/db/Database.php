@@ -27,10 +27,7 @@ class Database
             $this->pdo = new PDO($dsn, $user, $password);
         } catch (Exception $e) {
 
-            echo '<pre>';
-            var_dump($e->getMessage());
-            echo '</pre>';
-            exit;
+            dd($e);
         }
 
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -59,10 +56,8 @@ class Database
 
             return $questions;
         } catch (Exception $e) {
-            echo '<pre>';
-            var_dump($e->getMessage());
-            echo '</pre>';
-            exit;
+
+            dd($e);
         }
     }
 
@@ -72,6 +67,21 @@ class Database
 
         $statement->bindValue('question', $data['question']);
         $statement->bindValue('type', $data['type']);
+
+        try {
+
+            $statement->execute();
+        } catch (Exception $e) {
+
+            dd($e);
+        }
+    }
+
+    public function deleteQuestion($id)
+    {
+        $statement = $this->pdo->prepare('DELETE FROM test WHERE id = :id');
+
+        $statement->bindValue('id', $id);
 
         try {
 

@@ -2,10 +2,17 @@
 
 namespace app;
 
+use app\db\Database;
 
 class Router
 {
     private $routes;
+    public $db;
+
+    public function __construct()
+    {
+        $this->db = new DATABASE();
+    }
 
     public function get($path, $callback)
     {

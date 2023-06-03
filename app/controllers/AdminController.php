@@ -4,7 +4,6 @@ namespace app\controllers;
 
 use app\Router;
 use app\config\Config;
-use app\db\Database;
 
 class AdminController
 {
@@ -13,12 +12,6 @@ class AdminController
     const LOGIN_VIEW = 'login';
 
     private $isInvalid = false;
-    private $db;
-
-    public function __construct()
-    {
-        $this->db = new DATABASE();
-    }
 
     public static function index(Router $router)
     {
@@ -92,7 +85,7 @@ class AdminController
     {
         $search = $_GET['search'] ?? null;
 
-        $questions = $this->db->getQuestions($search);
+        $questions = $router->db->getQuestions($search);
 
         $router->renderView(self::ADMIN_VIEW, $params += ['questions' => $questions]);
     }
@@ -113,8 +106,18 @@ class AdminController
 
         $admin = new AdminController;
 
-        $admin->db->createQuestion($data);
+        $router->db->createQuestion($data);
 
-        header('Location: /admin');
+        header('Location: /admin?success=aggiunta');
+    }
+
+    public static function deleteQuestion(Router $router)
+    {
+
+        if ($router->getMethod() !== 'post') $router->renderView('404');
+
+        $router->db->deleteQuestion($_POST['id']);
+
+        header('Location: /admin?success=eliminata');
     }
 }

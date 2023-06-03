@@ -62,7 +62,7 @@
                             <div class="modal-body">
                                 <div class="col-12">
                                     <label for="add-question-name">Testo della domanda</label>
-                                    <input type="text" id="add-question-name" name="question" value="" class="form-control mb-3">
+                                    <input type="text" id="add-question-name" name="question" value="" class="form-control mb-3" autofocus>
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <label for="add-question-type">Tipo della risposta:</label>
@@ -90,13 +90,14 @@
 
 
         <!-- TABLE -->
-        <?php foreach ($questions as $question) : ?>
+        <?php for ($i = 0; $i < count($questions); $i++) : ?>
+            <?php $question = $questions[$i]; ?>
 
             <div class="card mb-5">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-3">
 
-                        <h5 class="card-title flex-grow-1 mb-0"><?= $question['id'] ?>. <?= $question['question'] ?></h5>
+                        <h5 class="card-title flex-grow-1 mb-0"><?= $i + 1 ?>. <?= $question['question'] ?></h5>
 
                         <!-- DELETE BUTTON -->
 
@@ -118,7 +119,10 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ANNULLA</button>
-                                        <button type="button" class="btn btn-danger">ELIMINA</button>
+                                        <form action="/admin/delete" method="POST">
+                                            <input type="hidden" value=<?= $question['id'] ?> name="id">
+                                            <button type="submit" class="btn btn-danger">ELIMINA</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -163,7 +167,7 @@
                     <button class="btn btn-primary col-4 col-md-2 rounded-0">Salva</button>
                 </div>
             </div>
-        <?php endforeach ?>
+        <?php endfor ?>
 
     </div>
 </main>
