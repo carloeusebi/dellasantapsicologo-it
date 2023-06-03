@@ -1,8 +1,18 @@
 <div class="container">
 
-    <?php if (isset($success)) : ?>
+    <?php if (isset($success) && $success) : ?>
         <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
-            Paziente <strong><?= $success ?></strong> con successo
+            <i class="fa-solid fa-circle-check me-2"></i>Paziente <strong><?= isset($success) ? $success : '' ?></strong> con successo
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif ?>
+
+    <?php if (isset($errors) && $errors) : ?>
+        <div class="alert alert-warning alert-dismissible fade show mt-5" role="alert">
+            <p><strong><i class="fa-solid fa-triangle-exclamation me-2"></i>Ci sono stati uno o più errori:</strong></p>
+            <?php foreach ($errors as $error) : ?>
+                <p><?= $error ?></p>
+            <?php endforeach; ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php endif ?>
@@ -29,7 +39,7 @@
 
         <!-- ADD BUTTON MODAL -->
         <div class="modal fade" id="add-patient-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-xl">
                 <form action="" method="POST" class="needs-validation" novalidate>
                     <div class="modal-content">
 

@@ -101,14 +101,27 @@ class AdminController
     {
         $patient = [];
         $errors = [];
+        $success = '';
 
         if ($router->getMethod() !== 'post') $router->renderView('404');
 
         extract($_POST);
         $data['fname'] = $fname;
         $data['lname'] = $lname;
-
-        // TODO REST OF FIELDS
+        $data['age'] = $age;
+        $data['birthday'] = $birthday;
+        $data['birthplace'] = $birthplace;
+        $data['address'] = $address;
+        $data['fiscalcode'] = $fiscalcode;
+        $data['begin'] = $begin;
+        $data['email'] = $email;
+        $data['phone'] = $phone;
+        $data['consent'] = $consent;
+        $data['weight'] = $weight;
+        $data['height'] = $height;
+        $data['job'] = $job;
+        $data['sex'] = $sex;
+        $data['cohabitants'] = $cohabitants;
 
         $patient = new Patient();
         $patient->load($data);
@@ -116,6 +129,10 @@ class AdminController
 
         if (empty($errors)) $success = 'creato';
 
-        $router->renderView('/admin/pazienti', ['layout' => self::LAYOUT, 'patients' => $patients, 'errors' => $errors, 'success' => $success]);
+        $patients = $router->db->getPatients();
+
+        $fillForm = $data;
+
+        $router->renderView('/admin/pazienti', ['layout' => self::LAYOUT, 'patients' => $patients, 'errors' => $errors, 'success' => $success, 'fillForm' => $fillForm]);
     }
 }

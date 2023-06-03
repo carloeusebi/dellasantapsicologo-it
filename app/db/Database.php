@@ -36,7 +36,7 @@ class Database
         self::$db = $this;
     }
 
-    public function getPatients($search)
+    public function getPatients($search = '')
     {
 
         $query = 'SELECT * FROM patients ';
@@ -68,10 +68,23 @@ class Database
 
     public function createPatient(Patient $patient)
     {
-        $statement = $this->pdo->prepare('INSERT INTO patients (fname, lname) VALUES (:fname, :lname)');
+        $statement = $this->pdo->prepare('INSERT INTO patients (fname, lname, age, birthday, birthplace, address, fiscalcode, begin, email, phone, weight, height, job, sex, cohabitants) VALUES (:fname, :lname, :age, :birthday, :birthplace, :address, :fiscalcode, :begin, :email, :phone, :weight, :height, :job, :sex, :cohabitants)');
 
         $statement->bindValue('fname', $patient->fname);
         $statement->bindValue('lname', $patient->lname);
+        $statement->bindValue('age', $patient->age);
+        $statement->bindValue('birthday', $patient->birthday);
+        $statement->bindValue('birthplace', $patient->birthplace);
+        $statement->bindValue('address', $patient->address);
+        $statement->bindValue('fiscalcode', $patient->fiscalcode);
+        $statement->bindValue('begin', $patient->begin);
+        $statement->bindValue('email', $patient->email);
+        $statement->bindValue('phone', $patient->phone);
+        $statement->bindValue('weight', $patient->weight);
+        $statement->bindValue('height', $patient->height);
+        $statement->bindValue('job', $patient->job);
+        $statement->bindValue('sex', $patient->sex);
+        $statement->bindValue('cohabitants', $patient->cohabitants);
 
         try {
 
