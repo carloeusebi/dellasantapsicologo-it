@@ -99,9 +99,14 @@ class AdminController
 
         $patients = $router->db->getPatients($search);
 
-        if ($page === '/admin/paziente') $fillForm = $this->patient($patients, $router);
+        if ($page === '/admin/paziente') {
 
-        $router->renderView($page, $params + ['patients' => $patients, 'fillForm' => $fillForm]);
+            $fillForm = $this->patient($patients, $router);
+            $params += ['fillForm' => $fillForm];
+        }
+
+
+        $router->renderView($page, $params + ['patients' => $patients]);
     }
 
 
