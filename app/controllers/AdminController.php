@@ -101,8 +101,7 @@ class AdminController
 
         if ($page === '/admin/paziente') {
 
-            $fillForm = $this->patient($patients, $router);
-            $params += ['fillForm' => $fillForm];
+            $_SESSION['form'] = $this->patient($patients, $router);
         }
 
 
@@ -129,11 +128,12 @@ class AdminController
 
     public static function createPatient(Router $router)
     {
+        session_start();
+
         $patient = [];
         $errors = [];
-        $success = '';
 
-        if ($router->getMethod() !== 'post') $router->renderView('404');
+        if ($router->getMethod() !== 'post') AdminController::render404($router);
 
         extract($_POST);
         $data['fname'] = $fname;
@@ -157,19 +157,23 @@ class AdminController
         $patient->load($data);
         $errors = $patient->save();
 
-        if (empty($errors)) header('Location: /admin/pazienti?success=creato');
+        if (empty($errors)) {
 
-        else {
+            $_SESSION['success'] = 'creato';
+        } else {
 
-            $fillForm = $data;
-            $patients = $router->db->getPatients();
-            $router->renderView('/admin/pazienti', ['layout' => self::LAYOUT, 'patients' => $patients, 'errors' => $errors, 'success' => $success, 'fillForm' => $fillForm]);
+            $_SESSION['form'] = $data;
+            $_SESSION['errors'] = $errors;
         }
+
+        header('Location: /admin/pazienti');
     }
 
 
     public static function updatePatient(Router $router)
     {
+        session_start();
+
         $errors = [];
 
         $id = $_POST['id'];
@@ -185,17 +189,31 @@ class AdminController
 
         $errors = $patient->save();
 
-        if (empty($errors)) header('Location: /admin/pazienti?success=modificato');
+        if (empty($errors)) {
+
+            $_SESSION['success'] = 'modificato';
+            header('Location: /admin/pazienti');
+        } else {
+
+            $_SESSION['form'] = $data;
+            $_SESSION['errors'] = $errors;
+        }
+
+        header('Location: /admin/pazienti');
     }
 
 
     public static function deletePatient(Router $router)
     {
+        session_start();
+
         if ($router->getMethod() !== 'post') $router->renderView('404');
 
         $router->db->deletePatient($_POST['id']);
 
-        header('Location: /admin/pazienti?success=eliminato');
+        $_SESSION['success'] = 'cancellato';
+
+        header('Location: /admin/pazienti');
     }
 
     public static function render404(Router $router)
