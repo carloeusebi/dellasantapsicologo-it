@@ -1,8 +1,8 @@
 <div class="container">
 
-    <?php if (isset($_GET['success'])) : ?>
+    <?php if (isset($success)) : ?>
         <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
-            Paziente <strong><?= $_GET['success'] ?></strong> con successo
+            Paziente <strong><?= $success ?></strong> con successo
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php endif ?>
@@ -56,4 +56,44 @@
 
 </header>
 
+<!-- PATIENTS -->
+<div class="card p-3">
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Cognome</th>
+                <th scope="col" class="d-none d-md-table-cell">Età</th>
+                <th scope="col" class="d-none d-md-table-cell">Email</th>
+                <th scope="col">Data di inizio</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <?php foreach ($patients as $patient) : ?>
+                <tr class="clickable-row" data-href="/admin/paziente?id=<?= $patient['id'] ?>">
+                    <td><?= $patient['fname'] ?></td>
+                    <td><?= $patient['lname'] ?></td>
+                    <td class="d-none d-md-table-cell"><?= $patient['age'] ?></td>
+                    <td class="d-none d-md-table-cell"><?= $patient['email'] ?></td>
+                    <td><?= $patient['begin'] ?></td>
+                </tr>
+            <?php endforeach ?>
+        </tbody>
+    </table>
+
 </div>
+
+</div>
+
+<script>
+    const rows = document.getElementsByClassName('clickable-row');
+
+    for (let i = 0; i < rows.length; i++) {
+        rows[i].addEventListener('click', () => {
+
+            window.location = rows[i].getAttribute('data-href');
+        })
+
+    }
+</script>

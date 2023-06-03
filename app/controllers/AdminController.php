@@ -87,9 +87,9 @@ class AdminController
     {
         $search = $_GET['search'] ?? null;
 
-        $questions = $router->db->getPatients($search);
+        $patients = $router->db->getPatients($search);
 
-        $router->renderView($page, $params + ['questions' => $questions]);
+        $router->renderView($page, $params + ['patients' => $patients]);
     }
 
     private function renderLogin(Router $router, $params = [])
@@ -114,7 +114,8 @@ class AdminController
         $patient->load($data);
         $errors = $patient->save();
 
-        if (empty($errors)) header('Location: /admin/pazienti?success=creato');
-        else $router->renderView('/admin/pazienti', ['layout' => self::LAYOUT, 'patient' => $patient, 'errors' => $errors]);
+        if (empty($errors)) $success = 'creato';
+
+        $router->renderView('/admin/pazienti', ['layout' => self::LAYOUT, 'patients' => $patients, 'errors' => $errors, 'success' => $success]);
     }
 }

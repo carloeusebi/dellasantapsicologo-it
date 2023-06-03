@@ -28,7 +28,7 @@
         <div class="col-10 col-md-8 col-lg-4">
 
             <figure class="text-center mb-5">
-                <img src="img/Favicon.png" alt="logo">
+                <img src="/img/Favicon.png" alt="logo">
             </figure>
 
             <h1 class="mb-5 h2 text-center">Accedi al tuo account</h1>
