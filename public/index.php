@@ -27,6 +27,7 @@ $router->post('/contatti', [Controller::class, 'sendMail']);
 $router->post('/admin', [AdminController::class, 'index']);
 $router->post('/admin/pazienti', [AdminController::class, 'index']);
 $router->post('/admin/paziente', [AdminController::class, 'index']);
+$router->post('/admin/paziente/update', [AdminController::class, 'updatePatient']);
 $router->post('/admin/paziente/delete', [AdminController::class, 'deletePatient']);
 
 $router->resolve();

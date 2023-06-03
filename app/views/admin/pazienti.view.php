@@ -20,7 +20,7 @@
     <!-- HEADER -->
     <header class="d-flex justify-content-between my-5">
 
-        <form class="d-flex flex-grow-1 me-3" role="search">
+        <form class="d-flex flex-grow-1 me-3 mb-0" role="search">
             <div class="input-group-append flex-grow-1">
                 <div class="input-group">
                     <input class="form-control " type="search" placeholder="Cerca" name="search">

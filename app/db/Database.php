@@ -41,7 +41,7 @@ class Database
 
         $query = 'SELECT * FROM patients ';
 
-        if ($search) $query .= 'WHERE question LIKE :search ';
+        if ($search) $query .= 'WHERE fname LIKE :search OR lname LIKE :search ';
 
         $query .= "ORDER BY id";
 
@@ -64,28 +64,28 @@ class Database
 
     public function updatePatient(Patient $patient)
     {
+        $query = 'UPDATE patients SET fname=:fname, lname=:lname, age=:age, birthday=:birthday, birthplace=:birthplace, address=:address, fiscalcode=:fiscalcode, begin=:begin, email=:email, phone=:phone, weight=:weight, height=:height, job=:job, sex=:sex, cohabitants=:cohabitants, username=:username';
+
+        $statement = $this->pdo->prepare($query);
+
+        $this->bindStatement($statement, $patient);
+
+        try {
+
+            $statement->execute();
+        } catch (Exception $e) {
+
+            dd($e);
+        }
     }
 
     public function createPatient(Patient $patient)
     {
-        $statement = $this->pdo->prepare('INSERT INTO patients (fname, lname, age, birthday, birthplace, address, fiscalcode, begin, email, phone, weight, height, job, sex, cohabitants, username) VALUES (:fname, :lname, :age, :birthday, :birthplace, :address, :fiscalcode, :begin, :email, :phone, :weight, :height, :job, :sex, :cohabitants, :username)');
+        $query = 'INSERT INTO patients (fname, lname, age, birthday, birthplace, address, fiscalcode, begin, email, phone, weight, height, job, sex, cohabitants, username) VALUES (:fname, :lname, :age, :birthday, :birthplace, :address, :fiscalcode, :begin, :email, :phone, :weight, :height, :job, :sex, :cohabitants, :username)';
 
-        $statement->bindValue('fname', $patient->fname);
-        $statement->bindValue('lname', $patient->lname);
-        $statement->bindValue('age', $patient->age);
-        $statement->bindValue('birthday', $patient->birthday);
-        $statement->bindValue('birthplace', $patient->birthplace);
-        $statement->bindValue('address', $patient->address);
-        $statement->bindValue('fiscalcode', $patient->fiscalcode);
-        $statement->bindValue('begin', $patient->begin);
-        $statement->bindValue('email', $patient->email);
-        $statement->bindValue('phone', $patient->phone);
-        $statement->bindValue('weight', $patient->weight);
-        $statement->bindValue('height', $patient->height);
-        $statement->bindValue('job', $patient->job);
-        $statement->bindValue('sex', $patient->sex);
-        $statement->bindValue('cohabitants', $patient->cohabitants);
-        $statement->bindValue('username', $patient->username);
+        $statement = $this->pdo->prepare($query);
+
+        $this->bindStatement($statement, $patient);
 
         try {
 
@@ -110,5 +110,25 @@ class Database
 
             dd($e);
         }
+    }
+
+    private function bindStatement($statement, Patient $patient)
+    {
+        $statement->bindValue('fname', $patient->fname);
+        $statement->bindValue('lname', $patient->lname);
+        $statement->bindValue('age', $patient->age);
+        $statement->bindValue('birthday', $patient->birthday);
+        $statement->bindValue('birthplace', $patient->birthplace);
+        $statement->bindValue('address', $patient->address);
+        $statement->bindValue('fiscalcode', $patient->fiscalcode);
+        $statement->bindValue('begin', $patient->begin);
+        $statement->bindValue('email', $patient->email);
+        $statement->bindValue('phone', $patient->phone);
+        $statement->bindValue('weight', $patient->weight);
+        $statement->bindValue('height', $patient->height);
+        $statement->bindValue('job', $patient->job);
+        $statement->bindValue('sex', $patient->sex);
+        $statement->bindValue('cohabitants', $patient->cohabitants);
+        $statement->bindValue('username', $patient->username);
     }
 }
