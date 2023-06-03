@@ -25,6 +25,7 @@ class Patient
     public $job;
     public $sex;
     public $cohabitants;
+    public $username;
 
     public function load($data)
     {
@@ -40,10 +41,15 @@ class Patient
 
         $errors = [];
 
+        $usernameFirst = strtolower(preg_replace('/\s+/', '', $this->fname));
+        $usernameLast = strtolower(preg_replace('/\s+/', '', $this->lname));
+
+        $this->username = $usernameFirst . '.' . $usernameLast;
+
         if (!$this->fname) $errors['fname'] = "Il nome è obbligatorio";
         if (!$this->lname) $errors['lname'] = "Il cognome è obbligatorio";
-        if (!$this->email) $errors['email'] = "L'email è obbligatiora";
-        if (!$this->fiscalcode) $errors['fiscalcode'] = "Il CF è obbligatorio";
+        // if (!$this->email) $errors['email'] = "L'email è obbligatiora";
+        // if (!$this->fiscalcode) $errors['fiscalcode'] = "Il CF è obbligatorio";
 
         if (empty($errors)) {
 

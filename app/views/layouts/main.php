@@ -33,11 +33,11 @@
     <!-- font awesome -->
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' integrity='sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==' crossorigin='anonymous'>
     <!--  my library -->
-    <link rel="stylesheet" href="styles/mylibrary.css" type="text/css">
+    <link rel="stylesheet" href="/styles/mylibrary.css" type="text/css">
     <!-- animations -->
-    <link rel="stylesheet" href="styles/animations.css" type="text/css">
+    <link rel="stylesheet" href="/styles/animations.css" type="text/css">
     <!-- styles.css -->
-    <link rel="stylesheet" href="styles/styles.css" type="text/css">
+    <link rel="stylesheet" href="/styles/styles.css" type="text/css">
     <!-- scripts -->
     <script defer src="js/scripts.js"></script>
 </head>
@@ -51,7 +51,7 @@
         <div class="container d-flex justify-space-between align-center">
             <div id="hdr-logo">
                 <a href="https://www.dellasantapsicologo.it" target="_blank">
-                    <img class="fluid-img" src="img/Logo.webp" alt="logo del sito">
+                    <img class="fluid-img" src="/img/Logo.webp" alt="logo del sito">
                 </a>
             </div>
             <div id="hamburger-menu" class="m-20">

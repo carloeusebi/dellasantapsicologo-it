@@ -68,7 +68,7 @@ class Database
 
     public function createPatient(Patient $patient)
     {
-        $statement = $this->pdo->prepare('INSERT INTO patients (fname, lname, age, birthday, birthplace, address, fiscalcode, begin, email, phone, weight, height, job, sex, cohabitants) VALUES (:fname, :lname, :age, :birthday, :birthplace, :address, :fiscalcode, :begin, :email, :phone, :weight, :height, :job, :sex, :cohabitants)');
+        $statement = $this->pdo->prepare('INSERT INTO patients (fname, lname, age, birthday, birthplace, address, fiscalcode, begin, email, phone, weight, height, job, sex, cohabitants, username) VALUES (:fname, :lname, :age, :birthday, :birthplace, :address, :fiscalcode, :begin, :email, :phone, :weight, :height, :job, :sex, :cohabitants, :username)');
 
         $statement->bindValue('fname', $patient->fname);
         $statement->bindValue('lname', $patient->lname);
@@ -85,6 +85,23 @@ class Database
         $statement->bindValue('job', $patient->job);
         $statement->bindValue('sex', $patient->sex);
         $statement->bindValue('cohabitants', $patient->cohabitants);
+        $statement->bindValue('username', $patient->username);
+
+        try {
+
+            $statement->execute();
+        } catch (Exception $e) {
+
+            dd($e);
+        }
+    }
+
+    public function deletePatient($id)
+    {
+
+        $statement = $this->pdo->prepare('DELETE FROM patients WHERE id = :id');
+
+        $statement->bindValue('id', $id);
 
         try {
 

@@ -11,6 +11,7 @@ class AdminController
     const LAYOUT = 'admin';
     const ADMIN_VIEW = 'admin';
     const LOGIN_VIEW = 'login';
+    const ADMIN_404 = '/admin/404';
 
     private $isInvalid = false;
 
@@ -23,13 +24,14 @@ class AdminController
         $admin = new self();
 
         if ($router->getMethod() === 'post') $admin->adminPost($admin, $router);
-        else $admin->adminGet($admin);
+        else $admin->adminGet($admin, $router, $page);
 
         $admin->renderPage($router, $admin, $page);
     }
 
-    private function adminGet(AdminController $admin)
+    private function adminGet(AdminController $admin, Router $router, $page)
     {
+        if ($page === '/admin/paziente' && (!isset($_GET['id']))) $router->renderView(self::ADMIN_404, ['layout' => self::LAYOUT]);
     }
 
     private function adminPost(AdminController $admin, Router $router)
@@ -128,11 +130,23 @@ class AdminController
         $errors = $patient->save();
 
         if (empty($errors)) $success = 'creato';
+        else $fillForm = $data;
 
         $patients = $router->db->getPatients();
 
-        $fillForm = $data;
-
         $router->renderView('/admin/pazienti', ['layout' => self::LAYOUT, 'patients' => $patients, 'errors' => $errors, 'success' => $success, 'fillForm' => $fillForm]);
+    }
+
+    public static function deletePatient(Router $router)
+    {
+        if ($router->getMethod() !== 'post') $router->renderView('404');
+
+        $router->db->deletePatient($_POST['id']);
+
+        $success = 'eliminato';
+
+        $patients = $router->db->getPatients();
+
+        $router->renderView('/admin/pazienti', ['layout' => self::LAYOUT, 'patients' => $patients, 'success' => $success]);
     }
 }
