@@ -38,17 +38,26 @@ class Database
         self::$db = $this;
     }
 
-    public function getQuestions()
+    public function getQuestions($search)
     {
 
-        $query = 'SELECT * FROM test ORDER BY id';
+        $query = 'SELECT * FROM test ';
+
+        if ($search) $query .= 'WHERE question LIKE :search ';
+
+        $query .= "ORDER BY id";
 
         $statement = $this->pdo->prepare($query);
 
+        if ($search) $statement->bindValue('search', "%$search%");
+
         try {
+
             $statement->execute();
-            $teams = $statement->fetchAll(PDO::FETCH_ASSOC);
-            return $teams;
+
+            $questions = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            return $questions;
         } catch (Exception $e) {
             echo '<pre>';
             var_dump($e->getMessage());

@@ -88,7 +88,9 @@ class AdminController
     {
         $this->db = new DATABASE();
 
-        $questions = $this->db->getQuestions();
+        $search = $_GET['search'] ?? null;
+
+        $questions = $this->db->getQuestions($search);
 
         $router->renderView(self::ADMIN_VIEW, $params += ['questions' => $questions]);
     }

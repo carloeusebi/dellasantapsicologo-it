@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="styles/admin.css">
 </head>
 
-<body>
+<body class="min-vh-100 bg-body-secondary">
 
 
     <?= $content ?>
