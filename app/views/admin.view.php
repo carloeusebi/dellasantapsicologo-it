@@ -52,31 +52,34 @@
             <div class="modal fade" id="add-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="add-question">Aggiungi una nuova domanda</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <!-- MODAL BODY -->
-                        <div class="modal-body">
-                            <div class="col-12">
-                                <label for="add-question-name">Testo della domanda</label>
-                                <input type="text" id="add-question-name" name="add-question-name" value="" class="form-control mb-3">
+                        <form action="admin/add" method="POST">
+
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="add-question">Aggiungi una nuova domanda</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
-                            <div class="col-12 col-md-4">
-                                <label for="add-question-type">Tipo della risposta:</label>
-                                <select class="form-select d-inline-block" id="add-question-type" name="add-question-type">
-                                    <option value="select">Select</option>
-                                    <option value="radio">Radio</option>
-                                    <option value="check">Check</option>
-                                    <option value="textarea">Textarea</option>
-                                </select>
+                            <!-- MODAL BODY -->
+                            <div class="modal-body">
+                                <div class="col-12">
+                                    <label for="add-question-name">Testo della domanda</label>
+                                    <input type="text" id="add-question-name" name="question" value="" class="form-control mb-3">
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <label for="add-question-type">Tipo della risposta:</label>
+                                    <select class="form-select d-inline-block" id="add-question-type" name="type">
+                                        <option value="select">Select</option>
+                                        <option value="radio">Radio</option>
+                                        <option value="check">Check</option>
+                                        <option value="textarea">Textarea</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <!-- BUTTONS -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ANNULLA</button>
-                            <button type="button" class="btn btn-primary">AGGIUNGI</button>
-                        </div>
+                            <!-- BUTTONS -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ANNULLA</button>
+                                <button type="submit" class="btn btn-primary">AGGIUNGI</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

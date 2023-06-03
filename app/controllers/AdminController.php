@@ -15,6 +15,10 @@ class AdminController
     private $isInvalid = false;
     private $db;
 
+    public function __construct()
+    {
+        $this->db = new DATABASE();
+    }
 
     public static function index(Router $router)
     {
@@ -86,8 +90,6 @@ class AdminController
 
     private function renderAdmin(Router $router, $params = [])
     {
-        $this->db = new DATABASE();
-
         $search = $_GET['search'] ?? null;
 
         $questions = $this->db->getQuestions($search);
@@ -98,5 +100,21 @@ class AdminController
     private function renderLogin(Router $router, $params = [])
     {
         $router->renderView(self::LOGIN_VIEW, $params);
+    }
+
+    public static function addQuestion(Router $router)
+    {
+        if ($router->getMethod() !== 'post') $router->renderView('404');
+
+        extract($_POST);
+
+        $data['question'] = $question;
+        $data['type'] = $type;
+
+        $admin = new AdminController;
+
+        $admin->db->createQuestion($data);
+
+        header('Location: /admin');
     }
 }

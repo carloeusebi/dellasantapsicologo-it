@@ -65,4 +65,20 @@ class Database
             exit;
         }
     }
+
+    public function createQuestion($data)
+    {
+        $statement = $this->pdo->prepare('INSERT INTO test (question, type) VALUES (:question, :type)');
+
+        $statement->bindValue('question', $data['question']);
+        $statement->bindValue('type', $data['type']);
+
+        try {
+
+            $statement->execute();
+        } catch (Exception $e) {
+
+            dd($e);
+        }
+    }
 }
