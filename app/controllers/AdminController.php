@@ -101,7 +101,8 @@ class AdminController
 
         if ($page === '/admin/paziente') {
 
-            $_SESSION['form'] = $this->patient($patients, $router);
+            $patient = $_SESSION['form'] = $this->patient($patients, $router);
+            $params += ['patient' => $patient];
         }
 
 
