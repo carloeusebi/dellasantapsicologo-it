@@ -82,3 +82,5 @@
     <label for="cohabitants" class="form-label">Altri conviventi (separati da una virgola)</label>
     <input type="text" class="form-control" id="cohabitants" name="cohabitants" value="<?= isset($_SESSION['form']['cohabitants']) ?  $_SESSION['form']['cohabitants'] : '' ?>">
 </div>
+
+<?php unset($_SESSION['form']) ?>
