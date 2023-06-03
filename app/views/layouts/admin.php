@@ -8,7 +8,7 @@
     <meta name="author" content="Carlo Eusebi">
     <meta name="description" content="Psicologo Cognitivo Comportamentale, mi occupo di consulenze psicologiche, sostegno e propongo percorsi individualizzati a Fano e online. Prenota la tua consulenza.">
     <title>Dellasanta Psicologo | Admin</title>
-    <link rel="icon" href="f/img/Favicon.png" type="image/png">
+    <link rel="icon" href="/img/Favicon.png" type="image/png">
     <!-- fontawaseome -->
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' integrity='sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==' crossorigin='anonymous'>
     <!-- bootstrap -->
@@ -18,7 +18,7 @@
 
 <body>
     <?php if ($page !== 'login') : ?>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary position-fixed top-0 start-0 end-0 z-2">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary position-fixed top-0 start-0 end-0 z-3">
             <div class="container-fluid">
                 <img class="logo me-4" src="/img/Logo.webp" alt="logo">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
