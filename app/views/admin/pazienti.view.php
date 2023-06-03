@@ -1,8 +1,8 @@
 <div class="container">
 
-    <?php if (isset($success) && $success) : ?>
+    <?php if (isset($_GET['success'])) : ?>
         <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
-            <i class="fa-solid fa-circle-check me-2"></i>Paziente <strong><?= isset($success) ? $success : '' ?></strong> con successo
+            <i class="fa-solid fa-circle-check me-2"></i>Paziente <strong><?= isset($_GET['success']) ? $_GET['success'] : '' ?></strong> con successo
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php endif ?>
@@ -23,7 +23,7 @@
         <form class="d-flex flex-grow-1 me-3 mb-0" role="search">
             <div class="input-group-append flex-grow-1">
                 <div class="input-group">
-                    <input class="form-control " type="search" placeholder="Cerca" name="search">
+                    <input class="form-control " type="search" placeholder="Cerca" name="search" value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>">
                     <button class="btn btn-secondary border-0">
                         <i class="fa fa-search"></i>
                     </button>
@@ -69,28 +69,35 @@
 <!-- PATIENTS -->
 <div class="card p-3">
 
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">Cognome</th>
-                <th scope="col" class="d-none d-md-table-cell">Età</th>
-                <th scope="col" class="d-none d-md-table-cell">Email</th>
-                <th scope="col">Data di inizio</th>
-            </tr>
-        </thead>
-        <tbody class="table-group-divider">
-            <?php foreach ($patients as $patient) : ?>
-                <tr class="clickable-row" data-href="/admin/paziente?id=<?= $patient['id'] ?>">
-                    <td><?= $patient['fname'] ?></td>
-                    <td><?= $patient['lname'] ?></td>
-                    <td class="d-none d-md-table-cell"><?= $patient['age'] ?></td>
-                    <td class="d-none d-md-table-cell"><?= $patient['email'] ?></td>
-                    <td><?= $patient['begin'] ?></td>
+    <?php if (empty($patients)) : ?>
+        <div class="alert alert-primary" role="alert">
+            <i class="fa-solid fa-circle-info me-2"></i>
+            Nessun paziente trovato
+        </div>
+    <?php else : ?>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Cognome</th>
+                    <th scope="col" class="d-none d-md-table-cell">Età</th>
+                    <th scope="col" class="d-none d-md-table-cell">Email</th>
+                    <th scope="col">Data di inizio</th>
                 </tr>
-            <?php endforeach ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody class="table-group-divider">
+                <?php foreach ($patients as $patient) : ?>
+                    <tr class="clickable-row" data-href="/admin/paziente?id=<?= $patient['id'] ?>">
+                        <td><?= $patient['fname'] ?></td>
+                        <td><?= $patient['lname'] ?></td>
+                        <td class="d-none d-md-table-cell"><?= $patient['age'] ?></td>
+                        <td class="d-none d-md-table-cell"><?= $patient['email'] ?></td>
+                        <td><?= $patient['begin'] ?></td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+        <?php endif ?>
+        </table>
 
 </div>
 

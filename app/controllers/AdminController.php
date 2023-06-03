@@ -157,12 +157,14 @@ class AdminController
         $patient->load($data);
         $errors = $patient->save();
 
-        if (empty($errors)) $success = 'creato';
-        else $fillForm = $data;
+        if (empty($errors)) header('Location: /admin/pazienti?success=creato');
 
-        $patients = $router->db->getPatients();
+        else {
 
-        $router->renderView('/admin/pazienti', ['layout' => self::LAYOUT, 'patients' => $patients, 'errors' => $errors, 'success' => $success, 'fillForm' => $fillForm]);
+            $fillForm = $data;
+            $patients = $router->db->getPatients();
+            $router->renderView('/admin/pazienti', ['layout' => self::LAYOUT, 'patients' => $patients, 'errors' => $errors, 'success' => $success, 'fillForm' => $fillForm]);
+        }
     }
 
 
@@ -183,11 +185,7 @@ class AdminController
 
         $errors = $patient->save();
 
-        if (empty($errors)) $success = 'modificato';
-
-        $patients = $router->db->getPatients();
-
-        $router->renderView('/admin/pazienti', ['layout' => self::LAYOUT, 'patients' => $patients, 'errors' => $errors, 'success' => $success]);
+        if (empty($errors)) header('Location: /admin/pazienti?success=modificato');
     }
 
 
@@ -197,11 +195,7 @@ class AdminController
 
         $router->db->deletePatient($_POST['id']);
 
-        $success = 'eliminato';
-
-        $patients = $router->db->getPatients();
-
-        $router->renderView('/admin/pazienti', ['layout' => self::LAYOUT, 'patients' => $patients, 'success' => $success]);
+        header('Location: /admin/pazienti?success=eliminato');
     }
 
     public static function render404(Router $router)

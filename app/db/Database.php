@@ -64,11 +64,12 @@ class Database
 
     public function updatePatient(Patient $patient)
     {
-        $query = 'UPDATE patients SET fname=:fname, lname=:lname, age=:age, birthday=:birthday, birthplace=:birthplace, address=:address, fiscalcode=:fiscalcode, begin=:begin, email=:email, phone=:phone, weight=:weight, height=:height, job=:job, sex=:sex, cohabitants=:cohabitants, username=:username';
+        $query = 'UPDATE patients SET fname=:fname, lname=:lname, age=:age, birthday=:birthday, birthplace=:birthplace, address=:address, fiscalcode=:fiscalcode, begin=:begin, email=:email, phone=:phone, weight=:weight, height=:height, job=:job, sex=:sex, cohabitants=:cohabitants, username=:username WHERE id=:id';
 
         $statement = $this->pdo->prepare($query);
 
         $this->bindStatement($statement, $patient);
+        $statement->bindValue('id', $patient->id);
 
         try {
 
