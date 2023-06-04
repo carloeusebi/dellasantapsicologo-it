@@ -64,50 +64,60 @@
                     <!-- FIRST NAME -->
                     <th scope="col">
                         <form class="w-100" action="" method="GET">
-                            <button type="submit" class="btn w-100 no-hover text-start border-0">
+                            <input type="hidden" name="search" value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>">
+                            <button type="submit" class="btn w-100 no-hover text-start border-0 d-flex align-items-center">
                                 <input type="hidden" name="order" value="fname">
-                                <input type="hidden" name="type" value="<?= isset($type) ? ($type === 'asc' ? 'desc' : 'asc') : 'asc' ?>">
+                                <input type="hidden" name="type" value="asc">
                                 <strong>Nome</strong>
+                                <i class="fa-solid fa-chevron-up ms-2 invisible"></i>
                             </button>
                         </form>
                     </th>
                     <!-- LAST NAME -->
                     <th scope="col">
                         <form class="w-100" action="" method="GET">
+                            <input type="hidden" name="search" value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>">
                             <button type="submit" class="btn w-100 no-hover text-start border-0">
                                 <input type="hidden" name="order" value="lname">
-                                <input type="hidden" name="type" value="<?= isset($type) ? ($type === 'asc' ? 'desc' : 'asc') : 'asc' ?>">
+                                <input type="hidden" name="type" value="asc">
                                 <strong>Cognome</strong>
+                                <i class="fa-solid fa-chevron-up ms-2 invisible"></i>
                             </button>
                         </form>
                     </th>
                     <!-- AGE -->
                     <th scope="col d-none d-md-table-cell">
                         <form class="w-100" action="" method="GET">
+                            <input type="hidden" name="search" value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>">
                             <button type="submit" class="btn w-100 no-hover text-start border-0">
                                 <input type="hidden" name="order" value="age">
-                                <input type="hidden" name="type" value="<?= isset($type) ? ($type === 'asc' ? 'desc' : 'asc') : 'asc' ?>">
+                                <input type="hidden" name="type" value="asc">
                                 <strong>Età</strong>
+                                <i class="fa-solid fa-chevron-up ms-2 invisible"></i>
                             </button>
                         </form>
                     </th>
                     <!-- EMAIL -->
                     <th scope="col d-none d-md-table-cell">
                         <form class="w-100" action="" method="GET">
+                            <input type="hidden" name="search" value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>">
                             <button type="submit" class="btn w-100 no-hover text-start border-0">
                                 <input type="hidden" name="order" value="email">
-                                <input type="hidden" name="type" value="<?= isset($type) ? ($type === 'asc' ? 'desc' : 'asc') : 'asc' ?>">
+                                <input type="hidden" name="type" value="asc">
                                 <strong>Email</strong>
+                                <i class="fa-solid fa-chevron-up ms-2 invisible"></i>
                             </button>
                         </form>
                     </th>
                     <!-- BEGIN -->
                     <th scope="col">
                         <form class="w-100" action="" method="GET">
+                            <input type="hidden" name="search" value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>">
                             <button type="submit" class="btn w-100 no-hover text-start border-0">
                                 <input type="hidden" name="order" value="begin">
-                                <input type="hidden" name="type" value="<?= isset($type) ? ($type === 'asc' ? 'desc' : 'asc') : 'asc' ?>">
+                                <input type="hidden" name="type" value="asc">
                                 <strong>Data di inizio</strong>
+                                <i class="fa-solid fa-chevron-up ms-2 invisible"></i>
                             </button>
                         </form>
                     </th>

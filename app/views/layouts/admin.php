@@ -47,7 +47,7 @@
 
         <main class="min-vh-100 bg-body-secondary py-5">
 
-            <div class="container-fluid">
+            <div class="container">
 
                 <?php if (isset($_SESSION['success'])) : ?>
                     <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
