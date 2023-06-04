@@ -45,12 +45,12 @@
             </div>
         </nav>
 
-        <main class="vh-100 bg-body-secondary py-5">
+        <main class="min-vh-100 bg-body-secondary py-5">
 
             <div class="container-fluid">
 
                 <?php if (isset($_SESSION['success'])) : ?>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
                         <i class="fa-solid fa-circle-check me-2"></i>
                         Paziente <strong><?= isset($_SESSION['success']) ? $_SESSION['success'] : '' ?></strong> con successo
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

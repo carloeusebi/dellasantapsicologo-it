@@ -37,6 +37,8 @@ class PatientsController extends AdminController
 
         $patients = $admin->getPatients($router);
 
+        $patient = [];
+
         $params = ['labels' => $admin->labels, 'patients' => $patients];
 
         if ($page === '/admin/paziente') $patient = $admin->getPatient($router, $patients);
