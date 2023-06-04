@@ -1,24 +1,5 @@
 <div class="container">
 
-    <?php if (isset($_SESSION['success'])) : ?>
-        <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
-            <i class="fa-solid fa-circle-check me-2"></i>Paziente <strong><?= isset($_SESSION['success']) ? $_SESSION['success'] : '' ?></strong> con successo
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <?php endif ?>
-    <?php unset($_SESSION['success']) ?>
-
-    <?php if (isset($_SESSION['errors'])) : ?>
-        <div class="alert alert-warning alert-dismissible fade show mt-5" role="alert">
-            <p><strong><i class="fa-solid fa-triangle-exclamation me-2"></i>Ci sono stati uno o più errori:</strong></p>
-            <?php foreach ($_SESSION['errors'] as $error) : ?>
-                <p><?= $error ?></p>
-            <?php endforeach; ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <?php endif ?>
-    <?php unset($_SESSION['errors']) ?>
-
     <!-- HEADER -->
     <header class="d-flex justify-content-between my-5">
 
@@ -72,7 +53,7 @@
 <div class="card p-3">
 
     <?php if (empty($patients)) : ?>
-        <div class="alert alert-primary" role="alert">
+        <div class="alert alert-primary mb-0" role="alert">
             <i class="fa-solid fa-circle-info me-2"></i>
             Nessun paziente trovato
         </div>

@@ -46,10 +46,39 @@
         </nav>
 
         <main class="vh-100 bg-body-secondary py-5">
+
+            <div class="container-fluid">
+
+                <?php if (isset($_SESSION['success'])) : ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-circle-check me-2"></i>
+                        Paziente <strong><?= isset($_SESSION['success']) ? $_SESSION['success'] : '' ?></strong> con successo
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php endif ?>
+                <?php unset($_SESSION['success']) ?>
+
+                <?php if (isset($_SESSION['errors'])) : ?>
+                    <div class="alert alert-warning alert-dismissible fade show mt-5" role="alert">
+                        <p><strong><i class="fa-solid fa-triangle-exclamation me-2"></i>
+                                Ci sono stati uno o più errori:</strong></p>
+                        <?php foreach ($_SESSION['errors'] as $error) : ?>
+                            <p><?= $error ?></p>
+                        <?php endforeach; ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php endif ?>
+                <?php unset($_SESSION['errors']) ?>
+            </div>
+
             <?= $content ?>
+
         </main>
+
     <?php else : ?>
+
         <?= $content ?>
+
     <?php endif; ?>
 
 

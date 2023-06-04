@@ -128,7 +128,7 @@ class Database
         $statement->bindValue('weight', $patient->weight);
         $statement->bindValue('height', $patient->height);
         $statement->bindValue('job', $patient->job);
-        $statement->bindValue('sex', $patient->sex);
+        $statement->bindValue('sex', strtoupper($patient->sex));
         $statement->bindValue('cohabitants', $patient->cohabitants);
         $statement->bindValue('username', $patient->username);
     }

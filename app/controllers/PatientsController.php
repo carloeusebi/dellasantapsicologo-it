@@ -10,6 +10,7 @@ class PatientsController extends AdminController
     private const PATIENT_NOT_FOUND = 'Paziente non trovato';
 
     private $labels = [
+        'id' => 'ID',
         'fname' => 'Nome',
         'lname' => 'Cognome',
         'age' => 'Età',
@@ -25,7 +26,8 @@ class PatientsController extends AdminController
         'height' => 'Altezza',
         'job' => 'Occupazione',
         'sex' => 'Sesso',
-        'cohabitants' => 'Abitanti',
+        'cohabitants' => 'Conviventi',
+        'username' => 'Username'
     ];
 
 
@@ -37,7 +39,7 @@ class PatientsController extends AdminController
 
         $params = ['labels' => $admin->labels, 'patients' => $patients];
 
-        $patient = $admin->getPatient($router, $patients);
+        if ($page === '/admin/paziente') $patient = $admin->getPatient($router, $patients);
 
         if ($patient) $params += ['patient' => $patient];
 
@@ -53,20 +55,18 @@ class PatientsController extends AdminController
 
     private function getPatient(Router $router, $patients)
     {
-        if (isset($_GET['id'])) {
 
-            foreach ($patients as $patient) {
+        foreach ($patients as $patient) {
 
-                if ($patient['id'] == $_GET['id']) {
+            if ($patient['id'] == $_GET['id']) {
 
-                    $_SESSION['form'] = $patient;
+                $_SESSION['form'] = $patient;
 
-                    return $patient;
-                }
+                return $patient;
             }
-
-            AdminController::render404($router, self::PATIENT_NOT_FOUND);
         }
+
+        AdminController::render404($router, self::PATIENT_NOT_FOUND);
     }
 
 
@@ -136,14 +136,13 @@ class PatientsController extends AdminController
         if (empty($errors)) {
 
             $_SESSION['success'] = 'modificato';
-            header('Location: /admin/pazienti');
         } else {
 
             $_SESSION['form'] = $data;
             $_SESSION['errors'] = $errors;
         }
 
-        header('Location: /admin/pazienti');
+        header("Location: /admin/paziente?id=$id");
     }
 
     public static function delete(Router $router, $page)
