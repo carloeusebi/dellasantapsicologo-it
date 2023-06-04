@@ -2,17 +2,9 @@
 
 namespace app;
 
-use app\db\Database;
-
 class Router
 {
     private $routes;
-    public $db;
-
-    public function __construct()
-    {
-        $this->db = new DATABASE();
-    }
 
     public function get($path, $callback)
     {
@@ -40,7 +32,7 @@ class Router
             exit();
         }
 
-        call_user_func($callback, $this, $path);
+        call_user_func($callback, $path);
     }
 
     public function renderView($page, $params = [])

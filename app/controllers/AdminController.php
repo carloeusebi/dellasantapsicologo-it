@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\Router;
+use app\App;
 use app\config\Config;
 
 class AdminController
@@ -12,39 +12,42 @@ class AdminController
     const LOGIN_VIEW = 'login';
     const ADMIN_404 = '/admin/404';
 
+    private AdminController $admin;
     private $isInvalid = false;
 
-    public function __construct(Router $router)
+    public function __construct()
     {
         session_set_cookie_params(3600);
 
         session_start();
+
+        $this->admin = $this;
     }
 
-    public static function index(Router $router, $page)
+    public static function index($page)
     {
-        $admin = new self($router);
+        $admin = new self();
 
-        if ($router->getMethod() === 'post') $admin->adminPost($admin, $router);
-        else $admin->adminGet($admin, $router, $page);
+        if (App::$app->router->getMethod() === 'post') $admin->adminPost();
+        else $admin->adminGet($admin, $page);
 
-        $admin->renderPage($router, $admin, $page);
+        $admin->renderPage($page);
     }
 
 
-    private function adminGet(AdminController $admin, Router $router, $page)
+    private function adminGet($page)
     {
     }
 
 
-    private function adminPost(AdminController $admin, Router $router)
+    private function adminPost()
     {
         if (isset($_POST['logout'])) {
 
-            $admin->logout();
+            $this->admin->logout();
         } elseif (isset($_POST['login'])) {
 
-            $admin->login();
+            $this->admin->login();
         };
     }
 
@@ -80,38 +83,38 @@ class AdminController
     }
 
 
-    public function renderPage(Router $router, AdminController $admin, $page, $params = [])
+    public function renderPage($page, $params = [])
     {
 
-        $loggedIn = $admin->checkIfLogged();
+        $loggedIn = AdminController::checkIfLogged();
 
         $params += ['layout' => self::LAYOUT];
 
-        if ($loggedIn) $admin->renderAdmin($router, $params, $page);
+        if ($loggedIn) AdminController::renderAdmin($page, $params);
 
-        else $admin->renderLogin($router, $params += ['isInvalid' => $admin->isInvalid]);
+        else AdminController::renderLogin($params += ['isInvalid' => $this->isInvalid]);
     }
 
 
-    private function checkIfLogged()
+    public static function checkIfLogged()
     {
         return $_SESSION['login'] ?? false;
     }
 
 
-    private function renderAdmin(Router $router, $params = [], $page)
+    private static function renderAdmin($page, $params = [])
     {
-        $router->renderView($page, $params);
+        App::$app->router->renderView($page, $params);
     }
 
 
-    private function renderLogin(Router $router, $params = [])
+    private static function renderLogin($params = [])
     {
-        $router->renderView(self::LOGIN_VIEW, $params);
+        App::$app->router->renderView(self::LOGIN_VIEW, $params);
     }
 
-    public static function render404(Router $router, $notFound)
+    public static function render404($notFound)
     {
-        $router->renderView(self::ADMIN_404, ['layout' => self::LAYOUT, 'notFound' => $notFound]);
+        App::$app->router->renderView(self::ADMIN_404, ['layout' => self::LAYOUT, 'notFound' => $notFound]);
     }
 }

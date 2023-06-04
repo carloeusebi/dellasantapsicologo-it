@@ -2,18 +2,18 @@
 
 namespace app\controllers;
 
-use app\Router;
+use app\App;
 use app\Validator;
 use app\Mailer;
 
 class Controller
 {
-    public static function loadPage(Router $router, $page)
+    public static function loadPage($page)
     {
-        $router->renderView($page);
+        App::$app->router->renderView($page);
     }
 
-    public static function sendMail(Router $router, $page)
+    public static function sendMail($page)
     {
         if ($_POST['submit']) {
 
@@ -58,7 +58,7 @@ class Controller
 
         $formRefill = ($status !== 'success') ? $_POST : [];
 
-        $router->renderView($page, ['status' => $status, 'formRefill' => $formRefill]);
+        App::$app->router->renderView($page, ['status' => $status, 'formRefill' => $formRefill]);
     }
 
     public static function updateLog($code, $error = '')

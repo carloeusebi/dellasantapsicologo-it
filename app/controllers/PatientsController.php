@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\Router;
+use app\App;
 use app\models\Patient;
 
 class PatientsController extends AdminController
@@ -34,30 +34,31 @@ class PatientsController extends AdminController
     {
         session_start();
 
-        if (!isset($_SESSION['login']) || !$_SESSION['login']) header('Location: /admin');
+        if (!AdminController::checkIfLogged()) header('Location: /admin');
     }
 
 
-    public static function index(Router $router, $page)
+    public static function index($page)
     {
-        $admin = new self($router);
+        $admin = new self();
 
-        $patients = $admin->getPatients($router);
+        $patients = $admin->getPatients();
 
         $patient = [];
 
         $params = ['labels' => $admin->labels, 'patients' => $patients];
 
-        if ($page === '/admin/paziente') $patient = $admin->getPatient($router, $patients);
+        if ($page === '/admin/paziente') $patient = $admin->getPatient($patients);
 
         if ($patient) $params += ['patient' => $patient];
 
         if (isset($_GET['type'])) $params += ['type' => $_GET['type']];
 
-        $admin->renderPage($router, $admin, $page, $params);
+        $admin->renderPage($page, $params);
     }
 
-    private function getPatients(Router $router)
+
+    private function getPatients()
     {
         $search = $_GET['search'] ?? null;
 
@@ -65,10 +66,11 @@ class PatientsController extends AdminController
 
         $type = $_GET['type'] ?? 'asc';
 
-        return $router->db->getPatients($search, $order, $type);
+        return App::$app->db->getPatients($search, $order, $type);
     }
 
-    private function getPatient(Router $router, $patients)
+
+    private function getPatient($patients)
     {
         if ($_GET['id']) {
 
@@ -83,18 +85,18 @@ class PatientsController extends AdminController
             }
         }
 
-        AdminController::render404($router, self::PATIENT_NOT_FOUND);
+        AdminController::render404(self::PATIENT_NOT_FOUND);
     }
 
 
-    public static function create(Router $router, $page)
+    public static function create()
     {
         session_start();
 
         $patient = [];
         $errors = [];
 
-        if ($router->getMethod() !== 'post') AdminController::render404($router, self::PATIENT_NOT_FOUND);
+        if (App::$app->router->getMethod() !== 'post') AdminController::render404(self::PATIENT_NOT_FOUND);
 
         extract($_POST);
         $data['fname'] = $fname;
@@ -131,7 +133,7 @@ class PatientsController extends AdminController
     }
 
 
-    public static function update(Router $router, $page)
+    public static function update($page)
     {
         session_start();
 
@@ -139,7 +141,7 @@ class PatientsController extends AdminController
 
         $id = $_POST['id'];
 
-        if (!$id) AdminController::render404($router, self::PATIENT_NOT_FOUND);
+        if (!$id) AdminController::render404(self::PATIENT_NOT_FOUND);
 
         foreach ($_POST as $key => $value) {
             $data[$key] = $value;
@@ -162,13 +164,13 @@ class PatientsController extends AdminController
         header("Location: /admin/paziente?id=$id");
     }
 
-    public static function delete(Router $router, $page)
+    public static function delete($page)
     {
         session_start();
 
-        if ($router->getMethod() !== 'post') $router->renderView('404');
+        if (App::$app->router->getMethod() !== 'post') App::$app->router->renderView('404');
 
-        $router->db->deletePatient($_POST['id']);
+        App::$app->db->deletePatient($_POST['id']);
 
         $_SESSION['success'] = 'cancellato';
 
