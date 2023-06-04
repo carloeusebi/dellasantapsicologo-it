@@ -76,7 +76,7 @@ class Patient
         $patients = Database::$db->getPatients();
 
         foreach ($patients as $patient) {
-            if ($this->fname === $patient['fname'] && $this->lname === $patient['lname']) return true;
+            if ($this->fname === $patient['fname'] && $this->lname === $patient['lname'] && $this->id != $patient['id']) return true;
         }
 
         return false;
