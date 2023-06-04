@@ -47,8 +47,8 @@
 .flash-alerts .alert {
     position: fixed;
     top: 25px;
-    left: 275px;
-    right: 275px;
+    left: 10%;
+    right: 10%;
     z-index: 3;
     animation: alert-animation 300ms linear 1 forwards;
 }
