@@ -72,7 +72,7 @@ class AdminController
 
             $_SESSION['login'] = true;
 
-            header("Location /admin");
+            header("Location: /admin");
         } else {
 
             $this->isInvalid = true;
