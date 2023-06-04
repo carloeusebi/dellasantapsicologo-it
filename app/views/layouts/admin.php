@@ -1,3 +1,7 @@
+<?php
+
+use app\App; ?>
+
 <!DOCTYPE html>
 <html lang="it">
 
@@ -49,26 +53,24 @@
 
             <div class="container">
 
-                <?php if (isset($_SESSION['success'])) : ?>
+                <?php if (App::$app->session->getFlash('success')) : ?>
                     <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
                         <i class="fa-solid fa-circle-check me-2"></i>
-                        Paziente <strong><?= isset($_SESSION['success']) ? $_SESSION['success'] : '' ?></strong> con successo
+                        <?= App::$app->session->getFlash('success') ?>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 <?php endif ?>
-                <?php unset($_SESSION['success']) ?>
 
-                <?php if (isset($_SESSION['errors'])) : ?>
+                <?php if (App::$app->session->getFlash('errors')) : ?>
                     <div class="alert alert-warning alert-dismissible fade show mt-5" role="alert">
                         <p><strong><i class="fa-solid fa-triangle-exclamation me-2"></i>
                                 Ci sono stati uno o più errori:</strong></p>
-                        <?php foreach ($_SESSION['errors'] as $error) : ?>
+                        <?php foreach (App::$app->session->getFlash('errors') as $error) : ?>
                             <p><?= $error ?></p>
                         <?php endforeach; ?>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 <?php endif ?>
-                <?php unset($_SESSION['errors']) ?>
             </div>
 
             <?= $content ?>

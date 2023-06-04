@@ -32,8 +32,6 @@ class PatientsController extends AdminController
 
     public function __construct()
     {
-        session_start();
-
         if (!AdminController::checkIfLogged()) header('Location: /admin');
     }
 
@@ -44,17 +42,16 @@ class PatientsController extends AdminController
 
         $patients = $admin->getPatients();
 
-        $patient = [];
-
         $params = ['labels' => $admin->labels, 'patients' => $patients];
 
-        if ($page === '/admin/paziente') $patient = $admin->getPatient($patients);
+        if ($page === '/admin/paziente') {
 
-        if ($patient) $params += ['patient' => $patient];
-
-        if (isset($_GET['type'])) $params += ['type' => $_GET['type']];
+            $params  += $admin->getPatient($patients);
+        }
 
         $admin->renderPage($page, $params);
+
+        App::$app->session->remove('form');
     }
 
 
@@ -78,9 +75,11 @@ class PatientsController extends AdminController
 
                 if ($patient['id'] == $_GET['id']) {
 
-                    $_SESSION['form'] = $patient;
+                    App::$app->session->setFlash('form', $patient);
 
-                    return $patient;
+                    $params = ['patient' => $patient];
+
+                    return $params;
                 }
             }
         }
@@ -91,8 +90,6 @@ class PatientsController extends AdminController
 
     public static function create()
     {
-        session_start();
-
         $patient = [];
         $errors = [];
 
@@ -122,21 +119,19 @@ class PatientsController extends AdminController
 
         if (empty($errors)) {
 
-            $_SESSION['success'] = 'creato';
+            App::$app->session->setFlash('success', 'Paziente creato con successo');
         } else {
 
-            $_SESSION['form'] = $data;
-            $_SESSION['errors'] = $errors;
+            App::$app->session->setFlash('form', $data);
+            App::$app->session->setFlash('errors', $errors);
         }
 
         header('Location: /admin/pazienti');
     }
 
 
-    public static function update($page)
+    public static function update()
     {
-        session_start();
-
         $errors = [];
 
         $id = $_POST['id'];
@@ -154,11 +149,11 @@ class PatientsController extends AdminController
 
         if (empty($errors)) {
 
-            $_SESSION['success'] = 'modificato';
+            App::$app->session->setFlash('success', 'Paziente modificato con successo');
         } else {
 
-            $_SESSION['form'] = $data;
-            $_SESSION['errors'] = $errors;
+            App::$app->session->setFlash('form', $data);
+            App::$app->session->setFlash('errors', $errors);
         }
 
         header("Location: /admin/paziente?id=$id");
@@ -166,13 +161,11 @@ class PatientsController extends AdminController
 
     public static function delete($page)
     {
-        session_start();
-
         if (App::$app->router->getMethod() !== 'post') App::$app->router->renderView('404');
 
         App::$app->db->deletePatient($_POST['id']);
 
-        $_SESSION['success'] = 'cancellato';
+        App::$app->session->setFlash('success', 'Paziente eliminato con successo');
 
         header('Location: /admin/pazienti');
     }
