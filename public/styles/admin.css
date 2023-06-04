@@ -39,3 +39,7 @@
     background-color: transparent;
     color: currentColor;
 }
+
+.clickable-row {
+    cursor: pointer;
+}
