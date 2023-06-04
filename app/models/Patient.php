@@ -48,8 +48,8 @@ class Patient
 
         if (!$this->fname) $errors['fname'] = "Il nome è obbligatorio";
         if (!$this->lname) $errors['lname'] = "Il cognome è obbligatorio";
-        // if (!$this->email) $errors['email'] = "L'email è obbligatiora";
-        // if (!$this->fiscalcode) $errors['fiscalcode'] = "Il CF è obbligatorio";
+        if (!$this->birthday) $errors['birthday'] = "La data di nascita è obbligatiora";
+        if (!$this->begin) $errors['begin'] = "La data di inizio terapia è obbligatorio";
 
         if (empty($errors)) {
 

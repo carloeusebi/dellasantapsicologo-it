@@ -2,16 +2,9 @@
     <div class="d-flex justify-content-between align-items-center mt-5">
 
         <h1>Sono
+            <?= $patient['fname'] . ' ' . $patient['lname'] . ' '; ?>
 
-            <?php foreach ($patients as $patient) :
-                if ($patient['id'] == $_GET['id']) :
-
-                    echo $patient['fname'] . ' ' . $patient['lname'] . ' '; ?>
-
-                    ed il mio username è <?= $patient['username'] ?>
-                <?php endif ?>
-
-            <?php endforeach ?>
+            ed il mio username è <?= $patient['username'] ?>
         </h1>
 
         <div class="d-flex">
