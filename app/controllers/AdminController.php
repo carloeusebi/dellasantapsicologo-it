@@ -14,9 +14,8 @@ class AdminController
 
     private $isInvalid = false;
 
-    public function __construct()
+    public function __construct(Router $router)
     {
-
         session_set_cookie_params(3600);
 
         session_start();
@@ -24,7 +23,7 @@ class AdminController
 
     public static function index(Router $router, $page)
     {
-        $admin = new self();
+        $admin = new self($router);
 
         if ($router->getMethod() === 'post') $admin->adminPost($admin, $router);
         else $admin->adminGet($admin, $router, $page);
@@ -46,7 +45,6 @@ class AdminController
         } elseif (isset($_POST['login'])) {
 
             $admin->login();
-            header('Locatoin: /admin');
         };
     }
 
@@ -68,9 +66,13 @@ class AdminController
         $username = $_POST["username"];
         $password = $_POST["password"];
 
+        // $_SESSION['login'] = false;
+
         if ($username === Config::ADMIN_USERNAME && $password === Config::ADMIN_PASSWORD) {
 
             $_SESSION['login'] = true;
+
+            header("Location /admin");
         } else {
 
             $this->isInvalid = true;
@@ -93,7 +95,7 @@ class AdminController
 
     private function checkIfLogged()
     {
-        return isset($_SESSION['login']);
+        return $_SESSION['login'] ?? false;
     }
 
 

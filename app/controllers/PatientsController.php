@@ -30,10 +30,17 @@ class PatientsController extends AdminController
         'username' => 'Username'
     ];
 
+    public function __construct()
+    {
+        session_start();
+
+        if (!isset($_SESSION['login']) || !$_SESSION['login']) header('Location: /admin');
+    }
+
 
     public static function index(Router $router, $page)
     {
-        $admin = new self();
+        $admin = new self($router);
 
         $patients = $admin->getPatients($router);
 
