@@ -61,11 +61,56 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Cognome</th>
-                    <th scope="col" class="d-none d-md-table-cell">Età</th>
-                    <th scope="col" class="d-none d-md-table-cell">Email</th>
-                    <th scope="col">Data di inizio</th>
+                    <!-- FIRST NAME -->
+                    <th scope="col">
+                        <form class="w-100" action="" method="GET">
+                            <button type="submit" class="btn w-100 no-hover text-start border-0">
+                                <input type="hidden" name="order" value="fname">
+                                <input type="hidden" name="type" value="<?= isset($type) ? ($type === 'asc' ? 'desc' : 'asc') : 'asc' ?>">
+                                <strong>Nome</strong>
+                            </button>
+                        </form>
+                    </th>
+                    <!-- LAST NAME -->
+                    <th scope="col">
+                        <form class="w-100" action="" method="GET">
+                            <button type="submit" class="btn w-100 no-hover text-start border-0">
+                                <input type="hidden" name="order" value="lname">
+                                <input type="hidden" name="type" value="<?= isset($type) ? ($type === 'asc' ? 'desc' : 'asc') : 'asc' ?>">
+                                <strong>Cognome</strong>
+                            </button>
+                        </form>
+                    </th>
+                    <!-- AGE -->
+                    <th scope="col d-none d-md-table-cell">
+                        <form class="w-100" action="" method="GET">
+                            <button type="submit" class="btn w-100 no-hover text-start border-0">
+                                <input type="hidden" name="order" value="age">
+                                <input type="hidden" name="type" value="<?= isset($type) ? ($type === 'asc' ? 'desc' : 'asc') : 'asc' ?>">
+                                <strong>Età</strong>
+                            </button>
+                        </form>
+                    </th>
+                    <!-- EMAIL -->
+                    <th scope="col d-none d-md-table-cell">
+                        <form class="w-100" action="" method="GET">
+                            <button type="submit" class="btn w-100 no-hover text-start border-0">
+                                <input type="hidden" name="order" value="email">
+                                <input type="hidden" name="type" value="<?= isset($type) ? ($type === 'asc' ? 'desc' : 'asc') : 'asc' ?>">
+                                <strong>Email</strong>
+                            </button>
+                        </form>
+                    </th>
+                    <!-- BEGIN -->
+                    <th scope="col">
+                        <form class="w-100" action="" method="GET">
+                            <button type="submit" class="btn w-100 no-hover text-start border-0">
+                                <input type="hidden" name="order" value="begin">
+                                <input type="hidden" name="type" value="<?= isset($type) ? ($type === 'asc' ? 'desc' : 'asc') : 'asc' ?>">
+                                <strong>Data di inizio</strong>
+                            </button>
+                        </form>
+                    </th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -86,14 +131,4 @@
 
 </div>
 
-<script>
-    const rows = document.getElementsByClassName('clickable-row');
-
-    for (let i = 0; i < rows.length; i++) {
-        rows[i].addEventListener('click', () => {
-
-            window.location = rows[i].getAttribute('data-href');
-        })
-
-    }
-</script>
+<script src="/js/patients.js"></script>

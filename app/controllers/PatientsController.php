@@ -45,6 +45,8 @@ class PatientsController extends AdminController
 
         if ($patient) $params += ['patient' => $patient];
 
+        if (isset($_GET['type'])) $params += ['type' => $_GET['type']];
+
         $admin->renderPage($router, $admin, $page, $params);
     }
 
@@ -54,7 +56,9 @@ class PatientsController extends AdminController
 
         $order = $_GET['order'] ?? 'id';
 
-        return $router->db->getPatients($search, $order);
+        $type = $_GET['type'] ?? 'asc';
+
+        return $router->db->getPatients($search, $order, $type);
     }
 
     private function getPatient(Router $router, $patients)

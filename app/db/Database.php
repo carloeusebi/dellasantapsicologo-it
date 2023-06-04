@@ -36,14 +36,14 @@ class Database
         self::$db = $this;
     }
 
-    public function getPatients($search = '')
+    public function getPatients($search = '', $order = "id", $type = 'ASC')
     {
 
         $query = 'SELECT * FROM patients ';
 
         if ($search) $query .= 'WHERE fname LIKE :search OR lname LIKE :search ';
 
-        $query .= "ORDER BY id";
+        $query .= "ORDER BY $order $type";
 
         $statement = $this->pdo->prepare($query);
 
