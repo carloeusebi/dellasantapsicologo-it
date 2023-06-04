@@ -44,7 +44,7 @@
     cursor: pointer;
 }
 
-.alert {
+.flash-alerts .alert {
     position: fixed;
     top: 25px;
     left: 275px;
