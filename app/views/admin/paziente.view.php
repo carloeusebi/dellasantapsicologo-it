@@ -86,11 +86,13 @@
 </div>
 <ul class="list-unstyled">
     <?php foreach ($labels as $key => $value) : ?>
-        <li>
-            <strong><?= $value ?>:</strong>
-            <?= $patient[$key] ?>
-            <?php if ($key === 'weight' && $patient[$key]) echo 'kg' ?>
-            <?php if ($key === 'height' && $patient[$key]) echo 'cm' ?>
-        </li>
+        <?php if ($key !== 'id') : ?>
+            <li>
+                <strong><?= $value ?>:</strong>
+                <?= $patient[$key] ?>
+                <?php if ($key === 'weight' && $patient[$key]) echo 'kg' ?>
+                <?php if ($key === 'height' && $patient[$key]) echo 'cm' ?>
+            </li>
+        <?php endif ?>
     <?php endforeach ?>
 </ul>
