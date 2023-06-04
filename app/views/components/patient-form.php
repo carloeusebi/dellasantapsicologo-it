@@ -1,12 +1,12 @@
 <!-- FIRSTNAME -->
 <div class="col-12 col-md-5">
     <label for="fname" class="form-label">Nome</label>
-    <input type="text" class="form-control" id="fname" name="fname" value="<?= isset($_SESSION['form']['fname']) ?  $_SESSION['form']['fname'] : '' ?>">
+    <input type="text" class="form-control" id="fname" name="fname" value="<?= isset($_SESSION['form']['fname']) ?  $_SESSION['form']['fname'] : '' ?>" required>
 </div>
 <!-- LASTNAME -->
 <div class="col-12 col-md-5">
     <label for="lname" class="form-label">Cognome</label>
-    <input type="text" class="form-control" id="lname" name="lname" value="<?= isset($_SESSION['form']['lname']) ?  $_SESSION['form']['lname'] : '' ?>">
+    <input type="text" class="form-control" id="lname" name="lname" value="<?= isset($_SESSION['form']['lname']) ?  $_SESSION['form']['lname'] : '' ?>" required>
 </div>
 <!-- SEX -->
 <div class="col-12 col-md-2">
@@ -30,12 +30,12 @@
 <!-- BEGIN -->
 <div class="col-12 col-md-3 col-lg-2">
     <label for="begin" class="form-label">Paziente dal</label>
-    <input type="date" class="form-control" id="begin" name="begin" value="<?= isset($_SESSION['form']['begin']) ?  $_SESSION['form']['begin'] : '' ?>">
+    <input type="date" class="form-control" id="begin" name="begin" value="<?= isset($_SESSION['form']['begin']) ?  $_SESSION['form']['begin'] : '' ?>" required>
 </div>
 <!-- BIRTHDAY -->
 <div class="col-12 col-md-3">
     <label for="birthday" class="form-label">Nato il</label>
-    <input type="date" class="form-control" id="birthday" name="birthday" value="<?= isset($_SESSION['form']['birthday']) ?  $_SESSION['form']['birthday'] : '' ?>">
+    <input type="date" class="form-control" id="birthday" name="birthday" value="<?= isset($_SESSION['form']['birthday']) ?  $_SESSION['form']['birthday'] : '' ?>" required>
 </div>
 <!-- BIRTHPLACE -->
 <div class="col-12 col-md-6">

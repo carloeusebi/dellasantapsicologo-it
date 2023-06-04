@@ -23,7 +23,7 @@
         <!-- ADD BUTTON MODAL -->
         <div class="modal fade" id="add-patient-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
             <div class="modal-dialog modal-xl">
-                <form action="/admin/paziente/create" method="POST" class="needs-validation" novalidate>
+                <form action="/admin/paziente/create" method="POST" class="needs-validation">
                     <div class="modal-content">
 
                         <div class="modal-header">

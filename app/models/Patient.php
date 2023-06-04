@@ -32,7 +32,7 @@ class Patient
 
         foreach ($data as $key => $value) {
 
-            $this->$key = $value ?? null;
+            $this->$key = trim($value) ?? null;
         }
     }
 
@@ -46,10 +46,15 @@ class Patient
 
         $this->username = $usernameFirst . '.' . $usernameLast;
 
-        if (!$this->fname) $errors['fname'] = "Il nome è obbligatorio";
-        if (!$this->lname) $errors['lname'] = "Il cognome è obbligatorio";
-        if (!$this->birthday) $errors['birthday'] = "La data di nascita è obbligatiora";
-        if (!$this->begin) $errors['begin'] = "La data di inizio terapia è obbligatorio";
+        if ($this->checkIfExists()) $errors['exists'] = '<em>Un Paziente con questno nome esiste già!!</em>';
+
+        else {
+            if (!$this->fname) $errors['fname'] = "Il nome è obbligatorio";
+            if (!$this->lname) $errors['lname'] = "Il cognome è obbligatorio";
+            if (!$this->birthday) $errors['birthday'] = "La data di nascita è obbligatiora";
+            if (!$this->begin) $errors['begin'] = "La data di inizio terapia è obbligatorio";
+        }
+
 
         if (empty($errors)) {
 
@@ -64,5 +69,16 @@ class Patient
         }
 
         return $errors;
+    }
+
+    private function checkIfExists()
+    {
+        $patients = Database::$db->getPatients();
+
+        foreach ($patients as $patient) {
+            if ($this->fname === $patient['fname'] && $this->lname === $patient['lname']) return true;
+        }
+
+        return false;
     }
 }
