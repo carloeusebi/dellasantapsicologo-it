@@ -25,26 +25,22 @@ class AdminController
         $admin = new self();
 
         if (App::$app->router->getMethod() === 'post') $admin->adminPost();
-        else $admin->adminGet($admin, $page);
+        else $admin->adminGet();
 
         $admin->renderPage($page);
     }
 
 
-    private function adminGet($page)
+    private function adminGet()
     {
     }
 
 
     private function adminPost()
     {
-        if (isset($_POST['logout'])) {
+        if (isset($_POST['logout']))  $this->admin->logout();
 
-            $this->admin->logout();
-        } elseif (isset($_POST['login'])) {
-
-            $this->admin->login();
-        };
+        elseif (isset($_POST['login'])) $this->admin->login();
     }
 
 

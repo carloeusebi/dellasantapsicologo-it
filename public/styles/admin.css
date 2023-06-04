@@ -44,9 +44,29 @@
     cursor: pointer;
 }
 
+.alert {
+    position: fixed;
+    top: 25px;
+    left: 275px;
+    right: 275px;
+    z-index: 3;
+    animation: alert-animation 300ms linear 1 forwards;
+}
+
 @media screen and (min-width: 400px) {
 
     .logo {
         width: 250px;
     }
+}
+
+@keyframes alert-animation {
+    from {
+        top: -100px;
+    }
+
+    to {
+        top: 25px;
+    }
+
 }
