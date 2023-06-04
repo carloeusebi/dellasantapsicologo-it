@@ -65,7 +65,7 @@
                     <th scope="col">
                         <form class="w-100" action="" method="GET">
                             <input type="hidden" name="search" value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>">
-                            <button type="submit" class="btn w-100 no-hover text-start border-0 d-flex align-items-center">
+                            <button type="submit" class="btn w-100 no-hover text-start border-0 p-0">
                                 <input type="hidden" name="order" value="fname">
                                 <input type="hidden" name="type" value="asc">
                                 <strong>Nome</strong>
@@ -77,7 +77,7 @@
                     <th scope="col">
                         <form class="w-100" action="" method="GET">
                             <input type="hidden" name="search" value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>">
-                            <button type="submit" class="btn w-100 no-hover text-start border-0">
+                            <button type="submit" class="btn w-100 no-hover text-start border-0 p-0">
                                 <input type="hidden" name="order" value="lname">
                                 <input type="hidden" name="type" value="asc">
                                 <strong>Cognome</strong>
@@ -86,10 +86,10 @@
                         </form>
                     </th>
                     <!-- AGE -->
-                    <th scope="col d-none d-md-table-cell">
-                        <form class="w-100" action="" method="GET">
+                    <th scope="col" class="d-none d-md-table-cell">
+                        <form class=" w-100" action="" method="GET">
                             <input type="hidden" name="search" value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>">
-                            <button type="submit" class="btn w-100 no-hover text-start border-0">
+                            <button type="submit" class="btn w-100 no-hover text-start border-0 p-0">
                                 <input type="hidden" name="order" value="age">
                                 <input type="hidden" name="type" value="asc">
                                 <strong>Età</strong>
@@ -98,10 +98,10 @@
                         </form>
                     </th>
                     <!-- EMAIL -->
-                    <th scope="col d-none d-md-table-cell">
-                        <form class="w-100" action="" method="GET">
+                    <th scope="col" class="d-none d-lg-table-cell">
+                        <form class=" w-100" action="" method="GET">
                             <input type="hidden" name="search" value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>">
-                            <button type="submit" class="btn w-100 no-hover text-start border-0">
+                            <button type="submit" class="btn w-100 no-hover text-start border-0 p-0">
                                 <input type="hidden" name="order" value="email">
                                 <input type="hidden" name="type" value="asc">
                                 <strong>Email</strong>
@@ -110,10 +110,10 @@
                         </form>
                     </th>
                     <!-- BEGIN -->
-                    <th scope="col">
+                    <th scope="col" class="d-none d-sm-table-cell">
                         <form class="w-100" action="" method="GET">
                             <input type="hidden" name="search" value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>">
-                            <button type="submit" class="btn w-100 no-hover text-start border-0">
+                            <button type="submit" class="btn w-100 no-hover text-start border-0 p-0">
                                 <input type="hidden" name="order" value="begin">
                                 <input type="hidden" name="type" value="asc">
                                 <strong>Data di inizio</strong>
@@ -129,8 +129,8 @@
                         <td><?= $patient['fname'] ?></td>
                         <td><?= $patient['lname'] ?></td>
                         <td class="d-none d-md-table-cell"><?= $patient['age'] ?></td>
-                        <td class="d-none d-md-table-cell"><?= $patient['email'] ?></td>
-                        <td><?= $patient['begin'] ?></td>
+                        <td class="d-none d-lg-table-cell"><?= $patient['email'] ?></td>
+                        <td class="d-none d-sm-table-cell"><?= $patient['begin'] ?></td>
                     </tr>
                 <?php endforeach ?>
             </tbody>

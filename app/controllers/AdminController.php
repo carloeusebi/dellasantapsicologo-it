@@ -40,9 +40,14 @@ class AdminController
 
     private function adminPost(AdminController $admin, Router $router)
     {
-        if (isset($_POST['logout'])) $admin->logout();
+        if (isset($_POST['logout'])) {
 
-        elseif (isset($_POST['login'])) $admin->login();
+            $admin->logout();
+        } elseif (isset($_POST['login'])) {
+
+            $admin->login();
+            header('Locatoin: /admin');
+        };
     }
 
 

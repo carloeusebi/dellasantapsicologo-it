@@ -17,7 +17,7 @@ class PatientsController extends AdminController
         'birthday' => 'Data di nascita',
         'birthplace' => 'Luogo di nascita',
         'address' => 'Indirizzo',
-        'fiscalcode' => 'Codice Fisca',
+        'fiscalcode' => 'Codice Fiscale',
         'begin' => 'Data di inizio Terapia',
         'email' => 'Email',
         'phone' => 'Numero di Telefono',

@@ -1,5 +1,5 @@
 .logo {
-    width: 250px;
+    width: 150px;
 }
 
 .btn.btn-login {
@@ -42,4 +42,11 @@
 
 .clickable-row {
     cursor: pointer;
+}
+
+@media screen and (min-width: 400px) {
+
+    .logo {
+        width: 250px;
+    }
 }
