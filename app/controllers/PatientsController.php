@@ -52,19 +52,23 @@ class PatientsController extends AdminController
     {
         $search = $_GET['search'] ?? null;
 
-        return $router->db->getPatients($search);
+        $order = $_GET['order'] ?? 'id';
+
+        return $router->db->getPatients($search, $order);
     }
 
     private function getPatient(Router $router, $patients)
     {
+        if ($_GET['id']) {
 
-        foreach ($patients as $patient) {
+            foreach ($patients as $patient) {
 
-            if ($patient['id'] == $_GET['id']) {
+                if ($patient['id'] == $_GET['id']) {
 
-                $_SESSION['form'] = $patient;
+                    $_SESSION['form'] = $patient;
 
-                return $patient;
+                    return $patient;
+                }
             }
         }
 
