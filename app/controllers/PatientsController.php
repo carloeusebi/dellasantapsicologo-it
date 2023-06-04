@@ -9,7 +9,7 @@ class PatientsController extends AdminController
 {
     private const PATIENT_NOT_FOUND = 'Paziente non trovato';
 
-    private static $labels = [
+    private $labels = [
         'fname' => 'Nome',
         'lname' => 'Cognome',
         'age' => 'Età',
@@ -33,25 +33,40 @@ class PatientsController extends AdminController
     {
         $admin = new self();
 
-        $search = $_GET['search'] ?? null;
+        $patients = $admin->getPatients($router);
 
-        $patients = $router->db->getPatients($search);
+        $params = ['labels' => $admin->labels, 'patients' => $patients];
 
-        $params = ['patients' => $patients];
+        $patient = $admin->getPatient($router, $patients);
+
+        if ($patient) $params += ['patient' => $patient];
 
         $admin->renderPage($router, $admin, $page, $params);
     }
 
-    private function getPatient($patients, $router)
+    private function getPatients(Router $router)
     {
-        foreach ($patients as $patient) {
+        $search = $_GET['search'] ?? null;
 
-            if ($patient['id'] == $_GET['id']) return $patient;
+        return $router->db->getPatients($search);
+    }
 
-            $_SESSION['form'] = $patient;
+    private function getPatient(Router $router, $patients)
+    {
+        if (isset($_GET['id'])) {
+
+            foreach ($patients as $patient) {
+
+                if ($patient['id'] == $_GET['id']) {
+
+                    $_SESSION['form'] = $patient;
+
+                    return $patient;
+                }
+            }
+
+            AdminController::render404($router, self::PATIENT_NOT_FOUND);
         }
-
-        AdminController::render404($router, self::PATIENT_NOT_FOUND);
     }
 
 
