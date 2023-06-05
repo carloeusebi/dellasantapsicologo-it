@@ -8,6 +8,17 @@ class PatientsController extends AdminController
 {
     private const PATIENT_NOT_FOUND = 'Paziente non trovato';
 
+    public static function index($page)
+    {
+        $admin = new AdminController($page);
+
+        $patient = App::$app->patient;
+
+        $admin->adminGetPatients($patient);
+
+        $admin->renderPage();
+    }
+
     public static function getPatient($patients)
     {
         foreach ($patients as $patient) {
@@ -28,7 +39,6 @@ class PatientsController extends AdminController
 
     public static function create()
     {
-        $patient = [];
         $errors = [];
 
         if (App::$app->router->getMethod() !== 'post') AdminController::render404(self::PATIENT_NOT_FOUND);

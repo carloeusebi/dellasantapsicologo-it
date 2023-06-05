@@ -40,26 +40,26 @@ class AdminController
         $admin = new self($page);
 
         if (App::$app->router->getMethod() === 'post') $admin->adminPost();
-        else $admin->adminGet();
 
         $admin->renderPage();
+
+        return $admin;
     }
 
 
-    private function adminGet()
+    public function adminGetPatients()
     {
         $search = $_GET['search'] ?? null;
         $order = $_GET['order'] ?? 'id';
         $type = $_GET['type'] ?? 'asc';
 
         $this->patients = App::$app->patient->get($search, $order, $type);
-        $this->questions = App::$app->question->get($search, $order, $type);
 
         if (isset($_GET['id'])) $this->getFromId();
     }
 
 
-    private function adminPost()
+    public function adminPost()
     {
         if (isset($_POST['logout']))  $this->admin->logout();
 

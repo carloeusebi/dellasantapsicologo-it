@@ -18,6 +18,7 @@ abstract class DbModel
         $tableName = $this->tableName();
         $attributes = $this->attributes();
 
+
         $query = "SELECT * FROM $tableName ";
 
         if ($search) {
