@@ -134,23 +134,23 @@
                         <!-- answers -->
                         <div>
                             <p class="h6">Lista delle domande</p>
-                            <ul class="list-unstyled">
+                            <ul class="list-unstyled" data-list="<?php $question['id'] ?>">
                                 <?php $answers = isset($question['answers']) ? explode(';', $question['answers']) : [];
 
                                 for ($i = 0; $i < count($answers); $i++) : ?>
 
-                                    <div class="d-flex align-items-center my-1">
+                                    <li class="d-flex align-items-center my-1">
                                         <input type="text" class="form-control" data-answer="<?= $question['id'] . '-' . $i ?>" value="<?= $answers[$i] ?>">
                                         <button type="button" class="btn btn-outline-danger border-0 no-hover" data-delete="<?= $question['id'] . '-' . $i ?>">
                                             <i class="fa-solid fa-trash-can fa-sm ms-2"></i>
                                         </button>
-                                    </div>
+                                    </li>
 
                                 <?php endfor ?>
 
                                 <div class="d-flex align-items-center my-1">
                                     <input type="text" class="form-control" data-answer="<?= $question['id'] . '-' . $i ?>" value="">
-                                    <button type="button" class="btn btn-outline-primary border-0 no-hover" data-delete="<?= $question['id'] . '-' . $i ?>">
+                                    <button type="button" class="btn btn-outline-primary border-0 no-hover" data-add="<?= $question['id'] . '-' . $i ?>">
                                         <i class=" fa-solid fa-plus fa-sm ms-2"></i>
                                     </button>
                                 </div>
@@ -169,4 +169,4 @@
     <?php endif ?>
 </div>
 
-<script src="/js/questions.js"></script>
+<script src="/js/questions/questions.js"></script>
