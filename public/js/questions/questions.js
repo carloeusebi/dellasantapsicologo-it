@@ -4,6 +4,7 @@ const deleteButtons = [];
 const addButtons = []
 const answersList = []
 const answers = [];
+const lists = [];
 
 for (let i = 0; i < forms.length; i++) {
 
@@ -12,6 +13,7 @@ for (let i = 0; i < forms.length; i++) {
     addButtons[i] = forms[i].querySelector('[data-add]');
     answers[i] = forms[i].querySelectorAll('[data-answer]');
     answersList[i] = forms[i].querySelector('[data-list]');
+    lists[i] = forms[i].querySelectorAll('li');
 
     forms[i].addEventListener('submit', (e) => {
         e.preventDefault();
@@ -24,7 +26,7 @@ for (let i = 0; i < deleteButtons.length; i++) {
 
         deleteButtons[i][j].addEventListener('click', () => {
 
-            answers[i][j].remove();
+            lists[i][j].remove();
             deleteButtons[i][j].remove();
 
         });
