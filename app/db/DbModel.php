@@ -19,8 +19,13 @@ abstract class DbModel
         $tableName = $this->tableName();
         $attributes = $this->attributes();
 
+
+        // validate query parameters
         if (!in_array($order, $attributes) || ($type !== 'asc' && $type !== 'desc')) {
-            return [];
+
+            $location = App::$app->router->getPath();
+            header("Location: $location");
+            exit();
         }
 
         $query = "SELECT * FROM $tableName ";
