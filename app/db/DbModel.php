@@ -19,6 +19,10 @@ abstract class DbModel
         $tableName = $this->tableName();
         $attributes = $this->attributes();
 
+        if (!in_array($order, $attributes) || ($type !== 'asc' && $type !== 'desc')) {
+            return [];
+        }
+
         $query = "SELECT * FROM $tableName ";
 
         if ($search) {
