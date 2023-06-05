@@ -8,53 +8,17 @@ class PatientsController extends AdminController
 {
     private const PATIENT_NOT_FOUND = 'Paziente non trovato';
 
-    public function __construct()
+    public static function getPatient($patients)
     {
-        if (!AdminController::checkIfLogged()) header('Location: /admin');
-    }
+        foreach ($patients as $patient) {
 
+            if ($patient['id'] == $_GET['id']) {
 
-    public static function index($page)
-    {
-        $admin = new self();
+                App::$app->session->setFlash('form', $patient);
 
-        $patients = $admin->loadPatients();
+                $params = ['patient' => $patient];
 
-        $params = ['patients' => $patients];
-
-        if ($page === '/admin/paziente') {
-
-            $params  += $admin->getPatient($patients);
-        }
-
-        $admin->renderPage($page, $params);
-
-        App::$app->session->remove('form');
-    }
-
-    private function loadPatients()
-    {
-        $search = $_GET['search'] ?? null;
-        $order = $_GET['order'] ?? 'id';
-        $type = $_GET['type'] ?? 'asc';
-
-        return App::$app->patient->get($search, $order, $type);
-    }
-
-    private function getPatient($patients)
-    {
-        if ($_GET['id']) {
-
-            foreach ($patients as $patient) {
-
-                if ($patient['id'] == $_GET['id']) {
-
-                    App::$app->session->setFlash('form', $patient);
-
-                    $params = ['patient' => $patient];
-
-                    return $params;
-                }
+                return $params;
             }
         }
 

@@ -13,26 +13,49 @@ class AdminController
     const ADMIN_404 = '/admin/404';
 
     private AdminController $admin;
-    private $isInvalid = false;
+    private $patients;
+    private $questions;
+    private array $params = ['layout' => self::LAYOUT];
+    private string $page;
 
     public function __construct()
     {
         $this->admin = $this;
+
+        $loggedIn = $this->checkIfLogged();
+
+        if (!$loggedIn) {
+
+            if (isset($_POST['login'])) $this->login();
+            else $this->renderLogin();
+        }
+
+        App::$app->connect();
     }
 
     public static function index($page)
     {
         $admin = new self();
 
+        $admin->page = $page;
+
         if (App::$app->router->getMethod() === 'post') $admin->adminPost();
         else $admin->adminGet();
 
-        $admin->renderPage($page);
+        $admin->renderPage();
     }
 
 
     private function adminGet()
     {
+        $search = $_GET['search'] ?? null;
+        $order = $_GET['order'] ?? 'id';
+        $type = $_GET['type'] ?? 'asc';
+
+        $this->patients = App::$app->patient->get($search, $order, $type);
+        $this->questions = App::$app->question->get($search, $order, $type);
+
+        if (isset($_GET['id'])) $this->getFromId();
     }
 
 
@@ -61,30 +84,30 @@ class AdminController
         $username = $_POST["username"];
         $password = $_POST["password"];
 
-        // $_SESSION['login'] = false;
-
         if ($username === Config::ADMIN_USERNAME && $password === Config::ADMIN_PASSWORD) {
 
             $_SESSION['login'] = true;
-
-            header("Location: /admin");
         } else {
 
-            $this->isInvalid = true;
+            App::$app->session->setFlash('isInvalid', true);
+        }
+
+        header("Location: /admin");
+    }
+
+    private function getFromId()
+    {
+        if ($this->page === '/admin/paziente') {
+            $this->params += PatientsController::getPatient($this->patients);
         }
     }
 
-
-    public function renderPage($page, $params = [])
+    public function renderPage()
     {
+        $this->params += ['patients' => $this->admin->patients];
+        $this->params += ['question' => $this->admin->questions];
 
-        $loggedIn = AdminController::checkIfLogged();
-
-        $params += ['layout' => self::LAYOUT];
-
-        if ($loggedIn) AdminController::renderAdmin($page, $params);
-
-        else AdminController::renderLogin($params += ['isInvalid' => $this->isInvalid]);
+        App::$app->router->renderView($this->page, $this->params);
     }
 
 
@@ -94,16 +117,12 @@ class AdminController
     }
 
 
-    private static function renderAdmin($page, $params = [])
+    private function renderLogin()
     {
-        App::$app->router->renderView($page, $params);
+        if (App::$app->router->getPath() !== '/admin') header('Location: /admin');
+        App::$app->router->renderView(self::LOGIN_VIEW, $this->params);
     }
 
-
-    private static function renderLogin($params = [])
-    {
-        App::$app->router->renderView(self::LOGIN_VIEW, $params);
-    }
 
     public static function render404($notFound)
     {

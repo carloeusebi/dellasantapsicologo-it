@@ -23,6 +23,7 @@ $app->router->get('/admin/paziente', [PatientsController::class, 'index']);
 $app->router->get('/admin/questionari', [AdminController::class, 'index']);
 
 
+
 $app->router->post('/', [Controller::class, 'sendMail']);
 $app->router->post('/chi-sono', [Controller::class, 'sendMail']);
 $app->router->post('/cosa-aspettarsi', [Controller::class, 'sendMail']);

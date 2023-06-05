@@ -46,7 +46,11 @@
                 <a href="/" class="btn btn-home d-block w-100 mb-3">Torna alla homepage</a>
             </form>
 
-            <?php if ($isInvalid) : ?>
+            <?php
+
+            use app\App;
+
+            if (App::$app->session->getFlash('isInvalid')) : ?>
                 <div class="callout callout-danger d-flex align-items-center" role="alert">
                     <i class="fa-solid fa-triangle-exclamation me-3"></i>
                     <div>
@@ -55,6 +59,5 @@
                 </div>
             <?php endif ?>
         </div>
-
 
     </div>

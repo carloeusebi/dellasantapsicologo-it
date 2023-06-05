@@ -4,6 +4,7 @@ namespace app;
 
 use app\db\Database;
 use app\models\Patient;
+use app\models\Question;
 
 class App
 {
@@ -13,15 +14,21 @@ class App
     public Database $db;
     public Session $session;
     public Patient $patient;
+    public Question $question;
 
     public function __construct()
     {
         $this->router = new Router();
-        $this->db = new Database();
         $this->session = new Session();
-        $this->patient = new Patient();
 
         self::$app = $this;
+    }
+
+    public function connect()
+    {
+        $this->db = new Database();
+        $this->patient = new Patient();
+        $this->question = new Question();
     }
 
     public function run()
