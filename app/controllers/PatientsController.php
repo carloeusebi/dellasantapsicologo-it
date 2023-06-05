@@ -37,6 +37,7 @@ class PatientsController extends AdminController
             $data[$key] = $value;
         }
 
+        App::$app->connect();
         App::$app->patient->load($data);
         $errors = App::$app->patient->save();
 
@@ -65,9 +66,8 @@ class PatientsController extends AdminController
             $data[$key] = $value;
         }
 
-
+        App::$app->connect();
         App::$app->patient->load($data);
-
         $errors = App::$app->patient->save();
 
         if (empty($errors)) {
@@ -86,8 +86,8 @@ class PatientsController extends AdminController
     {
         if (App::$app->router->getMethod() !== 'post') App::$app->router->renderView('404');
 
+        App::$app->connect();
         App::$app->patient->delete($_POST['id']);
-
         App::$app->session->setFlash('success', 'Paziente eliminato con successo');
 
         header('Location: /admin/pazienti');

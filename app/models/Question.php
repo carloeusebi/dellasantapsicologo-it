@@ -41,6 +41,7 @@ class Question extends DbModel
 
     public function get($search = '', $order = 'id', $type = 'asc')
     {
+
         return parent::get($search, $order, $type);
     }
 

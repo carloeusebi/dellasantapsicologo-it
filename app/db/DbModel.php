@@ -3,6 +3,7 @@
 namespace app\db;
 
 use app\App;
+use Exception;
 use PDO;
 
 abstract class DbModel
@@ -12,7 +13,7 @@ abstract class DbModel
 
     abstract public function attributes(): array;
 
-    public function get($search, $order, $type)
+    public function get($search, $order, $type,)
     {
         $tableName = $this->tableName();
         $attributes = $this->attributes();
@@ -30,12 +31,11 @@ abstract class DbModel
 
         if ($search) $statement->bindValue('search', "%$search%");
 
+        $statement = $this->execute($statement);
 
-        $statement->execute();
+        $entries = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        $patients = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        return $patients;
+        return $entries;
     }
 
 
@@ -53,7 +53,7 @@ abstract class DbModel
             $statement->bindValue(":$attribute", $this->{$attribute});
         }
 
-        $statement->execute();
+        $statement = $this->execute($statement);
 
         return true;
     }
@@ -84,7 +84,7 @@ abstract class DbModel
             $statement->bindValue(":$attribute", $this->$attribute);
         }
 
-        $statement->execute();
+        $statement = $this->execute($statement);
 
         return true;
     }
@@ -100,7 +100,7 @@ abstract class DbModel
 
         $statement->bindValue('id', $id);
 
-        $statement->execute();
+        $statement = $this->execute($statement);
     }
 
     public function load($data)
@@ -116,5 +116,16 @@ abstract class DbModel
     public static function prepare($query)
     {
         return App::$app->db->prepare($query);
+    }
+
+    private function execute($statement)
+    {
+        try {
+            $statement->execute();
+        } catch (Exception $e) {
+            dd($e);
+        }
+
+        return $statement;
     }
 }
