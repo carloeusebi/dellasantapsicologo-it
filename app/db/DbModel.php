@@ -103,6 +103,14 @@ abstract class DbModel
         $statement->execute();
     }
 
+    public function load($data)
+    {
+
+        foreach ($data as $key => $value) {
+
+            $this->$key = trim($value) ?? null;
+        }
+    }
 
 
     public static function prepare($query)

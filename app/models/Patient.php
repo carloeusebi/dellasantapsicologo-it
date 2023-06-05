@@ -2,9 +2,7 @@
 
 namespace app\models;
 
-use app\db\Database;
 use app\db\DbModel;
-use Exception;
 
 class Patient extends DbModel
 {
@@ -63,19 +61,12 @@ class Patient extends DbModel
         ];
     }
 
-    public function load($data)
-    {
-
-        foreach ($data as $key => $value) {
-
-            $this->$key = trim($value) ?? null;
-        }
-    }
 
     public function get($search = '', $order = 'id', $type = 'asc')
     {
         return parent::get($search, $order, $type);
     }
+
 
     public function save()
     {
@@ -104,10 +95,12 @@ class Patient extends DbModel
         return $errors;
     }
 
+
     public function delete($id)
     {
         parent::delete($id);
     }
+
 
     private function checkIfExists()
     {
