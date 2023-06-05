@@ -18,9 +18,11 @@ class AdminController
     private array $params = ['layout' => self::LAYOUT];
     private string $page;
 
-    public function __construct()
+    public function __construct(string $page)
     {
         $this->admin = $this;
+
+        $this->page = $page;
 
         $loggedIn = $this->checkIfLogged();
 
@@ -35,9 +37,7 @@ class AdminController
 
     public static function index($page)
     {
-        $admin = new self();
-
-        $admin->page = $page;
+        $admin = new self($page);
 
         if (App::$app->router->getMethod() === 'post') $admin->adminPost();
         else $admin->adminGet();
@@ -105,7 +105,7 @@ class AdminController
     public function renderPage()
     {
         $this->params += ['patients' => $this->admin->patients];
-        $this->params += ['question' => $this->admin->questions];
+        $this->params += ['questions' => $this->admin->questions];
 
         App::$app->router->renderView($this->page, $this->params);
     }
@@ -119,7 +119,7 @@ class AdminController
 
     private function renderLogin()
     {
-        if (App::$app->router->getPath() !== '/admin') header('Location: /admin');
+        if ($this->page !== '/admin') header('Location: /admin');
         App::$app->router->renderView(self::LOGIN_VIEW, $this->params);
     }
 
