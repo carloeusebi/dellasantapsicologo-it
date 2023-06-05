@@ -8,12 +8,7 @@ const lists = [];
 
 for (let i = 0; i < forms.length; i++) {
 
-    legends[i] = forms[i].querySelectorAll('[data-legend]');
-    deleteButtons[i] = forms[i].querySelectorAll('[data-delete]');
-    addButtons[i] = forms[i].querySelector('[data-add]');
-    answers[i] = forms[i].querySelectorAll('[data-answer]');
-    answersList[i] = forms[i].querySelector('[data-list]');
-    lists[i] = forms[i].querySelectorAll('li');
+    getElements(i);
 
     forms[i].addEventListener('submit', (e) => {
         e.preventDefault();
@@ -45,31 +40,72 @@ function createElement(i) {
 
     const newAnswer = answers[i][answers[i].length - 1].value;
 
-    console.log(newAnswer);
-
     answers[i][answers[i].length - 1].value = newAnswer;
 
-    const newDiv = document.createElement('div');
+    const thisButton = addButtons[i];
+
+    const index = parseInt(thisButton.getAttribute('data-add'));
+    const nextIndex = index + 1;
+
+    thisButton.removeAttribute('data-add');
+
+    const newLi = document.createElement('li');
     const newInput = document.createElement('input');
     const newButton = document.createElement('button');
     const newIcon = document.createElement('i');
 
     newButton.appendChild(newIcon);
 
-    newDiv.appendChild(newInput);
-    newDiv.appendChild(newButton);
+    newLi.appendChild(newInput);
+    newLi.appendChild(newButton);
 
-    newDiv.classList.add('d-flex', 'align-items-center', 'my-1');
+    newLi.classList.add('d-flex', 'align-items-center', 'my-1');
     newInput.classList.add('form-control');
     newButton.classList.add('btn', 'btn-outline-primary', 'border-0', 'no-hover');
     newIcon.classList.add('fa-solid', 'fa-plus', 'fa-sm', 'ms-2');
 
-    newInput.setAttribute('data-answer', i);
-    newButton.setAttribute('data-add', i);
+    newInput.setAttribute('data-answer', nextIndex);
+    newButton.setAttribute('data-add', nextIndex);
+    newLi.setAttribute('data-li', nextIndex);
 
-    answersList[i].appendChild(newDiv);
+    answersList[i].appendChild(newLi);
 
+    //this button
+    thisButton.innerHTML = ' <i class="fa-solid fa-trash-can fa-sm ms-2"></i>';
+    thisButton.classList.replace('btn-outline-primary', 'btn-outline-danger');
+    let clone = thisButton.cloneNode(true);
+    thisButton.replaceWith(clone);
+
+    clone.setAttribute('data-delete', index);
+    clone.tabIndex = -1;
+
+    getElements(i);
+
+    clone.addEventListener('click', () => {
+
+        const remove = clone.getAttribute('data-delete');
+        const actualList = lists[i];
+
+        actualList.forEach(list => {
+            console.log(list);
+            if (list.getAttribute('data-li') === remove) list.remove();
+        });
+
+    })
+
+    //next button
     newButton.addEventListener('click', () => {
         createElement(i);
     })
+
+}
+
+function getElements(i) {
+
+    legends[i] = forms[i].querySelectorAll('[data-legend]');
+    deleteButtons[i] = forms[i].querySelectorAll('[data-delete]');
+    addButtons[i] = forms[i].querySelector('[data-add]');
+    answers[i] = forms[i].querySelectorAll('[data-answer]');
+    answersList[i] = forms[i].querySelector('[data-list]');
+    lists[i] = forms[i].querySelectorAll('[data-li]');
 }

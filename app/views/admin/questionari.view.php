@@ -139,27 +139,27 @@
 
                                 for ($i = 0; $i < count($answers); $i++) : ?>
 
-                                    <li class="d-flex align-items-center my-1">
-                                        <input type="text" class="form-control" data-answer="<?= $question['id'] . '-' . $i ?>" value="<?= $answers[$i] ?>">
-                                        <button type="button" class="btn btn-outline-danger border-0 no-hover" data-delete="<?= $question['id'] . '-' . $i ?>">
+                                    <li class="d-flex align-items-center my-1" data-li=<?= $i ?>>
+                                        <input type="text" class="form-control" data-answer="<?= $i ?>" value="<?= $answers[$i] ?>">
+                                        <button type="button" class="btn btn-outline-danger border-0 no-hover" data-delete="<?= $i ?>" tabindex="-1">
                                             <i class="fa-solid fa-trash-can fa-sm ms-2"></i>
                                         </button>
                                     </li>
 
                                 <?php endfor ?>
 
-                                <div class="d-flex align-items-center my-1">
-                                    <input type="text" class="form-control" data-answer="<?= $question['id'] . '-' . $i ?>" value="">
-                                    <button type="button" class="btn btn-outline-primary border-0 no-hover" data-add="<?= $question['id'] . '-' . $i ?>">
+                                <li class="d-flex align-items-center my-1" data-li="<?= $i ?>">
+                                    <input type="text" class="form-control" data-answer="<?= $i ?>" value="">
+                                    <button type="button" class="btn btn-outline-primary border-0 no-hover" data-add="<?= $i ?>">
                                         <i class=" fa-solid fa-plus fa-sm ms-2"></i>
                                     </button>
-                                </div>
+                                </li>
                             </ul>
                         </div>
 
                         <!-- SUBMIT BUTTON -->
                         <div class="text-end">
-                            <button type="submit" class="btn btn-primary col-3">Salva le modifiche</button>
+                            <button type="submit" class="btn btn-primary">Salva le modifiche</button>
                         </div>
 
                     </form>
