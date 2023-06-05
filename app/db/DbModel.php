@@ -13,11 +13,11 @@ abstract class DbModel
 
     abstract public function attributes(): array;
 
-    public function get($search, $order, $type,)
+
+    public function get($search = '', $order = 'id', $type = 'asc')
     {
         $tableName = $this->tableName();
         $attributes = $this->attributes();
-
 
         $query = "SELECT * FROM $tableName ";
 
@@ -32,11 +32,22 @@ abstract class DbModel
 
         if ($search) $statement->bindValue('search', "%$search%");
 
-        $statement = $this->execute($statement);
+        $statement = self::execute($statement);
 
-        $entries = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 
-        return $entries;
+    public function getById($id)
+    {
+        $tableName = $this->tableName();
+
+        $statement = self::prepare("SELECT * FROM $tableName WHERE id = :id");
+
+        $statement->bindValue('id', $id);
+
+        $statement = self::execute($statement);
+
+        return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
 
@@ -44,6 +55,7 @@ abstract class DbModel
     {
         $tableName = $this->tableName();
         $attributes = $this->attributes();
+
         $params = array_map(fn ($attr) => ":$attr", $attributes);
         $query = "INSERT INTO $tableName (" . implode(',', $attributes) . ') VALUES (' . implode(',', $params) . ')';
 
@@ -54,7 +66,7 @@ abstract class DbModel
             $statement->bindValue(":$attribute", $this->{$attribute});
         }
 
-        $statement = $this->execute($statement);
+        $statement = self::execute($statement);
 
         return true;
     }
@@ -68,14 +80,8 @@ abstract class DbModel
 
         $query = '';
 
-        for ($i = 0; $i < count($attributes) - 1; $i++) {
-
-            $query .= $attributes[$i] . '=' . $params[$i] . ', ';
-        }
-
-        $query = mb_substr($query, 0, -2);
-
-        $query = "UPDATE $tableName SET " . $query . " WHERE id=:id";
+        $query = implode(', ', array_map(fn ($attr, $param) => "$attr = $param", $attributes, $params));
+        $query = "UPDATE $tableName SET $query WHERE id = :id";
 
 
         $statement = self::prepare($query);
@@ -85,7 +91,7 @@ abstract class DbModel
             $statement->bindValue(":$attribute", $this->$attribute);
         }
 
-        $statement = $this->execute($statement);
+        $statement = self::execute($statement);
 
         return true;
     }
@@ -104,20 +110,12 @@ abstract class DbModel
         $statement = $this->execute($statement);
     }
 
-    public function load($data)
-    {
-
-        foreach ($data as $key => $value) {
-
-            $this->$key = trim($value) ?? null;
-        }
-    }
-
 
     public static function prepare($query)
     {
         return App::$app->db->prepare($query);
     }
+
 
     private function execute($statement)
     {

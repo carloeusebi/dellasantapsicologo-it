@@ -15,6 +15,7 @@ class AdminController
     private AdminController $admin;
     private $patients;
     private $questions;
+    private $gotById;
     private array $params = ['layout' => self::LAYOUT];
     private string $page;
 
@@ -46,19 +47,6 @@ class AdminController
         return $admin;
     }
 
-
-    public function adminGetPatients()
-    {
-        $search = $_GET['search'] ?? null;
-        $order = $_GET['order'] ?? 'id';
-        $type = $_GET['type'] ?? 'asc';
-
-        $this->patients = App::$app->patient->get($search, $order, $type);
-
-        if (isset($_GET['id'])) $this->getFromId();
-    }
-
-
     public function adminPost()
     {
         if (isset($_POST['logout']))  $this->admin->logout();
@@ -66,6 +54,30 @@ class AdminController
         elseif (isset($_POST['login'])) $this->admin->login();
     }
 
+
+    public function GetPatients()
+    {
+        if (isset($_GET['id'])) {
+
+            $this->gotById = App::$app->patient->getById($_GET['id']);
+            App::$app->session->setFlash('form', $this->gotById);
+        }
+
+        $search = $_GET['search'] ?? null;
+        $order = $_GET['order'] ?? 'id';
+        $type = $_GET['type'] ?? 'asc';
+
+        $this->patients = App::$app->patient->get($search, $order, $type);
+    }
+
+    public function GetQuestions()
+    {
+        $search = $_GET['search'] ?? null;
+        $order = $_GET['order'] ?? 'id';
+        $type = $_GET['type'] ?? 'asc';
+
+        $this->questions = App::$app->question->get($search, $order, $type);
+    }
 
     private function logout()
     {
@@ -95,17 +107,11 @@ class AdminController
         header("Location: /admin");
     }
 
-    private function getFromId()
-    {
-        if ($this->page === '/admin/paziente') {
-            $this->params += PatientsController::getPatient($this->patients);
-        }
-    }
-
     public function renderPage()
     {
         $this->params += ['patients' => $this->admin->patients];
         $this->params += ['questions' => $this->admin->questions];
+        $this->params += ['patient' => $this->gotById];
 
         App::$app->router->renderView($this->page, $this->params);
     }

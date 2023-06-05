@@ -6,6 +6,7 @@ use app\App;
 use app\controllers\Controller;
 use app\controllers\AdminController;
 use app\controllers\PatientsController;
+use app\controllers\QuestionsController;
 
 $app = new App();
 
@@ -20,7 +21,7 @@ $app->router->get('/admin', [AdminController::class, 'index']);
 $app->router->get('/admin/pazienti', [PatientsController::class, 'index']);
 $app->router->get('/admin/paziente', [PatientsController::class, 'index']);
 
-$app->router->get('/admin/questionari', [AdminController::class, 'index']);
+$app->router->get('/admin/questionari', [QuestionsController::class, 'index']);
 
 
 
@@ -37,6 +38,11 @@ $app->router->post('/admin/paziente', [PatientsController::class, 'index']);
 $app->router->post('/admin/paziente/create', [PatientsController::class, 'create']);
 $app->router->post('/admin/paziente/update', [PatientsController::class, 'update']);
 $app->router->post('/admin/paziente/delete', [PatientsController::class, 'delete']);
+
+$app->router->get('/admin/questionari/create', [QuestionsController::class, 'create']);
+$app->router->get('/admin/questionari/update', [QuestionsController::class, 'update']);
+$app->router->get('/admin/questionari/delete', [QuestionsController::class, 'delete']);
+
 
 $app->run();
 

@@ -1,13 +1,4 @@
 <div class="container-fluid">
-
-    <?php if (isset($_SESSION['success'])) : ?>
-        <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
-            <i class="fa-solid fa-circle-check me-2"></i>Paziente <strong><?= isset($_SESSION['success']) ? $_SESSION['success'] : '' ?></strong> con successo
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <?php endif ?>
-    <?php unset($_SESSION['success']) ?>
-
     <div class="d-flex justify-content-between align-items-center my-5">
         <a href="/admin/pazienti" class="btn btn-outline-primary border-0 no-hover">
             <i class="fa-solid fa-circle-chevron-left me-2"></i>
