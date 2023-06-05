@@ -88,7 +88,7 @@
                     </div>
 
                     <!-- FORM -->
-                    <form class="row g-3">
+                    <form class="row g-3 question-form">
                         <!-- title -->
                         <div class="col-12 col-md-8">
                             <label for="question" class="form-label h6">Titolo</label>
@@ -113,6 +113,7 @@
                             <textarea class="form-control" id="description" rows="3" name="description"><?= $question['description'] ?></textarea>
                         </div>
 
+                        <!-- legends -->
                         <?php $legends = isset($question['legend']) ? explode(';', $question['legend']) : [];
 
                         $fistChar = substr($question['type'], 0, 1);
@@ -123,31 +124,34 @@
                             <?php foreach ($legends as $legend) : ?>
                                 <div class="d-flex my-1 align-items-center">
                                     <span class="me-3"><?= $counter ?>.</span>
-                                    <input type="text" class="form-control" data-legend="<?= $counter ?>" value="<?= $legend ?>">
+                                    <input type="text" class="form-control" data-legend="<?= $counter ?>" name="legend-<?= $counter ?>" value="<?= $legend ?>">
                                 </div>
                             <?php
                                 $counter++;
                             endforeach ?>
                         </div>
+
+                        <!-- answers -->
                         <div>
                             <p class="h6">Lista delle domande</p>
                             <ul class="list-unstyled">
                                 <?php $answers = isset($question['answers']) ? explode(';', $question['answers']) : [];
 
-                                foreach ($answers as $answer) : ?>
+                                for ($i = 0; $i < count($answers); $i++) : ?>
 
                                     <div class="d-flex align-items-center my-1">
-                                        <input type="text" class="form-control" data-legend="<?= $counter ?>" value="<?= $answer ?>">
-                                        <button type="button" class="btn btn-outline-danger border-0 no-hover">
+                                        <input type="text" class="form-control" data-answer="<?= $question['id'] . '-' . $i ?>" value="<?= $answers[$i] ?>">
+                                        <button type="button" class="btn btn-outline-danger border-0 no-hover" data-delete="<?= $question['id'] . '-' . $i ?>">
                                             <i class="fa-solid fa-trash-can fa-sm ms-2"></i>
                                         </button>
                                     </div>
 
-                                <?php endforeach ?>
+                                <?php endfor ?>
+
                                 <div class="d-flex align-items-center my-1">
-                                    <input type="text" class="form-control" data-legend="<?= $counter ?>" value="">
-                                    <button type="button" class="btn btn-outline-primary border-0 no-hover">
-                                        <i class="fa-solid fa-plus fa-sm ms-2"></i>
+                                    <input type="text" class="form-control" data-answer="<?= $question['id'] . '-' . $i ?>" value="">
+                                    <button type="button" class="btn btn-outline-primary border-0 no-hover" data-delete="<?= $question['id'] . '-' . $i ?>">
+                                        <i class=" fa-solid fa-plus fa-sm ms-2"></i>
                                     </button>
                                 </div>
                             </ul>
@@ -164,3 +168,5 @@
         <?php endforeach ?>
     <?php endif ?>
 </div>
+
+<script src="/js/questions.js"></script>
