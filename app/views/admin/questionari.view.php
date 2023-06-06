@@ -69,5 +69,3 @@
         <?php endforeach ?>
     <?php endif ?>
 </div>
-
-<script src="/js/question.js"></script>

@@ -130,12 +130,12 @@
                 <!-- answers -->
                 <div>
                     <p class="h6">Lista delle domande</p>
-                    <ul class="list-unstyled">
+                    <ul class="list-unstyled mb-1">
                         <?php $answers = isset($element['answers']) ? explode(';', $element['answers']) : [];
 
                         for ($i = 0; $i < count($answers); $i++) : ?>
 
-                            <li class="d-flex align-items-center my-1" data-list=<?= $i ?>>
+                            <li class="d-flex align-items-center my-1" data-list="<?= $i ?>">
                                 <input type="text" class="form-control" data-answer="<?= $i ?>" value="<?= $answers[$i] ?>">
                                 <button type="button" class="btn btn-outline-danger border-0 no-hover" data-delete="<?= $i ?>" tabindex="-1">
                                     <i class="fa-solid fa-trash-can fa-sm ms-2"></i>
@@ -143,14 +143,14 @@
                             </li>
 
                         <?php endfor ?>
-
-                        <div class="d-flex align-items-center my-1">
-                            <input type="text" class="form-control">
-                            <button type="button" class="btn btn-outline-primary border-0 no-hover">
-                                <i class=" fa-solid fa-plus fa-sm ms-2"></i>
-                            </button>
-                        </div>
                     </ul>
+
+                    <div class="d-flex align-items-center my-1">
+                        <input type="text" class="form-control" id="add-answer">
+                        <button type="button" class="btn btn-outline-primary border-0 no-hover" id="add-button">
+                            <i class=" fa-solid fa-plus fa-sm ms-2"></i>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- SUBMIT BUTTON -->
