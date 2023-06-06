@@ -23,14 +23,6 @@ abstract class DbModel
         $order = self::getOrder();
         $type = self::getType();
 
-        $order = $_GET['order'] ?? 'id';
-        $type = $_GET['type'] ?? 'asc';
-
-        // validate query parameters
-        $order = in_array($order, $attributes) ? $order : 'id';
-
-        $type = ($type === 'asc' || $type === 'desc') ? $type : 'asc';
-
         $query = "SELECT * FROM $tableName ";
 
         if ($search) {
