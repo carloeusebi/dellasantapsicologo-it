@@ -21,7 +21,9 @@ $app->router->get('/admin', [AdminController::class, 'index']);
 $app->router->get('/admin/pazienti', [PatientsController::class, 'index']);
 $app->router->get('/admin/paziente', [PatientsController::class, 'index']);
 
+$app->router->get('/admin/sondaggi', [QuestionsController::class, 'index']);
 $app->router->get('/admin/questionari', [QuestionsController::class, 'index']);
+$app->router->get('/admin/questionario', [QuestionsController::class, 'index']);
 
 
 
@@ -39,9 +41,9 @@ $app->router->post('/admin/paziente/create', [PatientsController::class, 'create
 $app->router->post('/admin/paziente/update', [PatientsController::class, 'update']);
 $app->router->post('/admin/paziente/delete', [PatientsController::class, 'delete']);
 
-$app->router->get('/admin/questionari/create', [QuestionsController::class, 'create']);
-$app->router->get('/admin/questionari/update', [QuestionsController::class, 'update']);
-$app->router->get('/admin/questionari/delete', [QuestionsController::class, 'delete']);
+$app->router->post('/admin/sondaggi', [QuestionsController::class, 'index']);
+$app->router->post('/admin/questionari', [QuestionsController::class, 'index']);
+$app->router->post('/admin/questionario', [QuestionsController::class, 'index']);
 
 
 $app->run();

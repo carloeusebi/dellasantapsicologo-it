@@ -22,7 +22,7 @@
                             <div class="modal-content">
 
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="add-patient">Modifica <strong><?= $patient['fname'] . ' ' . $patient['lname'] ?></strong></h1>
+                                    <h1 class="modal-title fs-5" id="add-patient">Modifica <strong><?= $element['fname'] . ' ' . $element['lname'] ?></strong></h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                                 <!-- MODAL BODY -->
@@ -33,7 +33,7 @@
                                 </div>
                                 <!-- BUTTONS -->
                                 <div class="modal-footer">
-                                    <input type="hidden" name="id" value="<?= $patient['id'] ?>">
+                                    <input type="hidden" name="id" value="<?= $element['id'] ?>">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ANNULLA</button>
                                     <button type="submit" class="btn btn-primary" name="patient-update">MODIFICA</button>
                                 </div>
@@ -58,13 +58,13 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <p>Sei sicuro di voler eliminare <strong><?= $patient['fname'] . ' ' . $patient['lname'] ?></strong></p>
+                            <p>Sei sicuro di voler eliminare <strong><?= $element['fname'] . ' ' . $element['lname'] ?></strong></p>
                         </div>
                         <!-- BUTTONS -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ANNULLA</button>
                             <form action="paziente/delete" method="POST">
-                                <input type="hidden" value="<?= $patient['id'] ?>" name="id">
+                                <input type="hidden" value="<?= $element['id'] ?>" name="id">
                                 <button type="submit" class="btn btn-danger">ELIMINA</button>
                             </form>
                         </div>
@@ -84,9 +84,9 @@
     foreach ($labels as $key => $value) : ?>
         <li>
             <strong><?= $value ?>:</strong>
-            <?= $patient[$key] ?>
-            <?php if ($key === 'weight' && $patient[$key]) echo 'kg' ?>
-            <?php if ($key === 'height' && $patient[$key]) echo 'cm' ?>
+            <?= $element[$key] ?>
+            <?php if ($key === 'weight' && $element[$key]) echo 'kg' ?>
+            <?php if ($key === 'height' && $element[$key]) echo 'cm' ?>
         </li>
     <?php endforeach ?>
 </ul>

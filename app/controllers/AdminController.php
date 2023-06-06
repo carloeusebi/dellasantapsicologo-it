@@ -102,7 +102,7 @@ class AdminController
     {
         $this->params += ['patients' => $this->admin->patients];
         $this->params += ['questions' => $this->admin->questions];
-        $this->params += ['patient' => $this->gotById];
+        $this->params += ['element' => $this->gotById];
 
         App::$app->router->renderView($this->page, $this->params);
     }

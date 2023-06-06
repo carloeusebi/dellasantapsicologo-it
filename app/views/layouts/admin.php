@@ -37,7 +37,7 @@ use app\App; ?>
                             <a class="nav-link <?= $this->urlIs('/admin/pazienti') ? ' active' : '' ?>" href="/admin/pazienti">Pazienti</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?= $this->urlIs('/admin/questionari') ? ' active' : '' ?>" href="/admin/questionari">Questionari</a>
+                            <a class="nav-link <?= $this->urlIs('/admin/sondaggi') ? ' active' : '' ?>" href="/admin/sondaggi">Sondaggi</a>
                         </li>
                     </ul>
                     <form action="/admin" method="POST">
