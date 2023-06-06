@@ -33,6 +33,7 @@ for (let i = 0; i < addButtons.length; i++) {
     addButtons[i].addEventListener('click', () => {
         createElement(i);
     });
+
 }
 
 
@@ -87,7 +88,6 @@ function createElement(i) {
         const actualList = lists[i];
 
         actualList.forEach(list => {
-            console.log(list);
             if (list.getAttribute('data-li') === remove) list.remove();
         });
 

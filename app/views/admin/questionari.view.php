@@ -169,4 +169,4 @@
     <?php endif ?>
 </div>
 
-<script src="/js/questions/questions.js"></script>
+<script src="/js/question.js"></script>
