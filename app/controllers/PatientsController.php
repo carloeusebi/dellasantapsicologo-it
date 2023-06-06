@@ -7,7 +7,7 @@ use app\App;
 class PatientsController extends AdminController
 {
     public const NOT_FOUND = 'Paziente non trovato';
-
+    private AdminController $admin;
 
     public static function index($page)
     {
@@ -22,7 +22,7 @@ class PatientsController extends AdminController
     public static function create()
     {
 
-        if (App::$app->router->getMethod() !== 'post') parent::render404(self::NOT_FOUND);
+        if (!App::$app->router->isPost()) parent::render404(self::NOT_FOUND);
 
         self::save('creato');
 
@@ -66,7 +66,7 @@ class PatientsController extends AdminController
 
     public static function delete()
     {
-        if (App::$app->router->getMethod() !== 'post') parent::render404(self::NOT_FOUND);
+        if (!App::$app->router->isPost()) parent::render404(self::NOT_FOUND);
 
         App::$app->connect();
         App::$app->patient->delete($_POST['id']);

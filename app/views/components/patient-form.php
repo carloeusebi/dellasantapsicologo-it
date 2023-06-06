@@ -1,13 +1,3 @@
-<?php
-
-use app\App;
-
-$isFilled = false;
-
-if (App::$app->session->getFlash('form')) : (extract(App::$app->session->getFlash('form')));
-    $isFilled = true;
-endif; ?>
-
 <!-- FIRSTNAME -->
 <div class="col-12 col-md-5">
     <label for="fname" class="form-label">Nome</label>
@@ -92,5 +82,3 @@ endif; ?>
     <label for="cohabitants" class="form-label">Altri conviventi (separati da una virgola)</label>
     <input type="text" class="form-control" id="cohabitants" name="cohabitants" value="<?= $isFilled ? $cohabitants : '' ?>">
 </div>
-
-<?php App::$app->session->remove('form'); ?>

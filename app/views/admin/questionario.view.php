@@ -2,7 +2,7 @@
 
     <header class="d-flex justify-content-between my-5">
 
-        <a href="/admin/sondaggi" class="btn btn-secondary me-3">
+        <a href="/admin/questionari" class="btn btn-secondary me-3">
             <i class="fa-solid fa-circle-chevron-left me-2"></i>
             Indietro
         </a>

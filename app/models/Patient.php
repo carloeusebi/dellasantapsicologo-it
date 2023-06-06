@@ -80,7 +80,7 @@ class Patient extends DbModel
 
         $this->username = $usernameFirst . '.' . $usernameLast;
 
-        if ($this->checkIfExists()) $errors['exists'] = '<em>Un Paziente con questno nome esiste già!!</em>';
+        if ($this->checkIfExists()) $errors['exists'] = '<em>Un Paziente con questo nome esiste già!!</em>';
 
 
         if (!$this->fname) $errors['fname'] = "Il nome è obbligatorio";

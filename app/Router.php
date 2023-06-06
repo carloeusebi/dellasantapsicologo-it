@@ -66,6 +66,16 @@ class Router
         return strtolower($_SERVER['REQUEST_METHOD']);
     }
 
+    public function isPost()
+    {
+        return $this->getMethod() === 'post';
+    }
+
+    public function isGet()
+    {
+        return $this->getMethod() === 'get';
+    }
+
     private function getPageTitle($page)
     {
         return match ($page) {

@@ -40,7 +40,7 @@ class AdminController
     {
         $admin = new self($page);
 
-        if (App::$app->router->getMethod() === 'post') $admin->adminPost();
+        if (App::$app->router->isPost()) $admin->adminPost();
 
         $admin->renderPage();
 
@@ -50,7 +50,6 @@ class AdminController
     public function adminPost()
     {
         if (isset($_POST['logout']))  $this->admin->logout();
-
         elseif (isset($_POST['login'])) $this->admin->login();
     }
 
@@ -60,14 +59,18 @@ class AdminController
         if (isset($_GET['id'])) {
             $this->gotById = App::$app->patient->getById($_GET['id']);
             App::$app->session->setFlash('form', $this->gotById);
-        } else $this->patients = App::$app->patient->get();
+        } else {
+            $this->patients = App::$app->patient->get();
+        }
     }
 
     public function GetQuestions()
     {
         if (isset($_GET['id'])) {
             $this->gotById = App::$app->question->getById($_GET['id']);
-        } else $this->questions = App::$app->question->get();
+        } else {
+            $this->questions = App::$app->question->get();
+        }
     }
 
     private function logout()
@@ -98,19 +101,33 @@ class AdminController
         header("Location: /admin");
     }
 
+    public static function checkIfLogged()
+    {
+        return $_SESSION['login'] ?? false;
+    }
+
+
     public function renderPage()
     {
         $this->params += ['patients' => $this->admin->patients];
         $this->params += ['questions' => $this->admin->questions];
         $this->params += ['element' => $this->gotById];
 
+        $isFilled = false;
+
+        if (App::$app->session->getFlash('form')) {
+            $data = App::$app->session->getFlash('form');
+            App::$app->session->remove('form');
+            $isFilled = true;
+
+            foreach ($data as $key => $value) {
+                $this->params += [$key => $value];
+            }
+        }
+
+        $this->params += ['isFilled' => $isFilled];
+
         App::$app->router->renderView($this->page, $this->params);
-    }
-
-
-    public static function checkIfLogged()
-    {
-        return $_SESSION['login'] ?? false;
     }
 
 
