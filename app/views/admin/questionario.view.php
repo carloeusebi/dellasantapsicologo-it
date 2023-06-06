@@ -110,21 +110,14 @@
                 </div>
 
                 <!-- legends -->
-                <?php $legends = isset($element['legend']) ? explode(';', $element['legend']) : [];
+                <?php $legends = isset($element['legend']) ? explode(';', $element['legend']) : [] ?>
 
-                $fistChar = substr($element['type'], 0, 1);
-
-                $counter = $fistChar === '1' ? 1 : 0; ?>
                 <p class="h6">Legenda</p>
-                <div class="row row-cols-1 row-cols-md-2 mt-0">
+                <div class="row row-cols-1 row-cols-md-2 mt-0" id="legend-container">
+
                     <?php foreach ($legends as $legend) : ?>
-                        <div class="d-flex my-1 align-items-center">
-                            <span class="me-3"><?= $counter ?>.</span>
-                            <input type="text" class="form-control" data-legend="<?= $counter ?>" name="legend-<?= $counter ?>" value="<?= $legend ?>">
-                        </div>
-                    <?php
-                        $counter++;
-                    endforeach ?>
+                        <input type="hidden" data-legend value="<?= $legend ?>">
+                    <?php endforeach ?>
                 </div>
 
                 <!-- answers -->
