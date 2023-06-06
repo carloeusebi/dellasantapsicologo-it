@@ -58,25 +58,16 @@ class AdminController
     public function GetPatients()
     {
         if (isset($_GET['id'])) {
-
             $this->gotById = App::$app->patient->getById($_GET['id']);
             App::$app->session->setFlash('form', $this->gotById);
-        }
-
-        $search = $_GET['search'] ?? null;
-        $order = $_GET['order'] ?? 'id';
-        $type = $_GET['type'] ?? 'asc';
-
-        $this->patients = App::$app->patient->get($search, $order, $type);
+        } else $this->patients = App::$app->patient->get();
     }
 
     public function GetQuestions()
     {
-        $search = $_GET['search'] ?? null;
-        $order = $_GET['order'] ?? 'id';
-        $type = $_GET['type'] ?? 'asc';
-
-        $this->questions = App::$app->question->get($search, $order, $type);
+        if (isset($_GET['id'])) {
+            $this->gotById = App::$app->question->getById($_GET['id']);
+        } else $this->questions = App::$app->question->get();
     }
 
     private function logout()

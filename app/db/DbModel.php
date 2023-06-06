@@ -14,19 +14,22 @@ abstract class DbModel
     abstract public function attributes(): array;
 
 
-    public function get($search = '', $order = 'id', $type = 'asc')
+    public function get()
     {
         $tableName = $this->tableName();
         $attributes = $this->attributes();
 
+        $search = $_GET['search'] ?? null;
+        $order = self::getOrder();
+        $type = self::getType();
+
+        $order = $_GET['order'] ?? 'id';
+        $type = $_GET['type'] ?? 'asc';
 
         // validate query parameters
-        if (!in_array($order, $attributes) || ($type !== 'asc' && $type !== 'desc')) {
+        $order = in_array($order, $attributes) ? $order : 'id';
 
-            $location = App::$app->router->getPath();
-            header("Location: $location");
-            exit();
-        }
+        $type = ($type === 'asc' || $type === 'desc') ? $type : 'asc';
 
         $query = "SELECT * FROM $tableName ";
 
@@ -135,5 +138,17 @@ abstract class DbModel
         }
 
         return $statement;
+    }
+
+    private function getOrder()
+    {
+        $order = $_GET['order'] ?? 'id';
+        return in_array($order, $this->attributes()) ? $order : 'id';
+    }
+
+    private function getType()
+    {
+        $type = $_GET['type'] ?? 'asc';
+        return $type === 'asc' || $type === 'desc' ? $type : 'asc';
     }
 }
