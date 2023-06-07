@@ -20,7 +20,9 @@ class QuestionsController extends AdminController
     {
         $admin = new parent($page);
 
-        $admin->GetQuestions();
+        parent::$model = self::MODEL;
+
+        $admin->get();
 
         $admin->renderPage();
     }

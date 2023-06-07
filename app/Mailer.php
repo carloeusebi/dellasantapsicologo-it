@@ -5,21 +5,48 @@ namespace app;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use app\config\Config;
-use app\controllers\Controller;
 
 class Mailer
 {
     private const EMAIL_FROM = "contactme@dellasantapsicologo.it";
     private const EMAIL_NAME = "Dr Federico Dellasanta";
 
-    public function send($emailTo, $subject, $message, $emailFrom = '', $name = '')
-    {
+    private $name;
+    private $phone;
+    private $emailFrom;
+    private $message;
+    private $emailTo;
+    private $subject;
+    private $body;
 
+
+    public function prepare()
+    {
+        $this->name = htmlspecialchars($_POST['name']);
+        $this->phone = htmlspecialchars($_POST['phone']);
+        $this->emailFrom = htmlspecialchars($_POST['mail']);
+        $this->message = htmlspecialchars($_POST['message']);
+
+        $this->emailTo = 'carloeusebi@gmail.com';
+        $this->subject = 'Un cliente ti ha scritto';
+        $this->body =
+            "Da: $this->name <br>
+            Numero di telefono: $this->phone <br>
+            Email: $this->emailFrom <br><br>
+            Messaggio:<br> $this->message";
+
+        $validator = new Validator;
+
+        return $validator->validateMail($this->emailFrom);
+    }
+
+
+    public function send()
+    {
         $mail = new PHPMailer(true);
 
-        if ($emailFrom !== '') {
-            $mail->AddReplyTo($emailFrom, $name);
-        }
+        $mail->AddReplyTo($this->emailFrom, $this->name);
+
 
         try {
             $mail->SMTPAuth = true;
@@ -45,10 +72,10 @@ class Mailer
                 ]
             ];
 
-            $mail->setFrom(Mailer::EMAIL_FROM, Mailer::EMAIL_NAME);
-            $mail->addAddress($emailTo);
-            $mail->Subject = $subject;
-            $mail->Body = $message;
+            $mail->setFrom(self::EMAIL_FROM, self::EMAIL_NAME);
+            $mail->addAddress($this->emailTo);
+            $mail->Subject = $this->subject;
+            $mail->Body = $this->body;
 
             $mail->send();
 
@@ -58,9 +85,32 @@ class Mailer
         } catch (Exception) {
 
             $error = $mail->ErrorInfo;
-            Controller::updateLog(4, $error);
+            $this->updateLog(4, $error);
 
             return "Qualcosa è andato storto, per favore riprovare più tardi";
         }
+    }
+
+
+
+    public static function updateLog($code, $error = '')
+    {
+        $filePath = __DIR__ . '/../public/log.txt';
+
+        fopen($filePath, 'a+');
+
+        $date = date("d-m-y H:i:s", time());
+
+        $message = match ($code) {
+            1 => "An email was succesfully sent.",
+            2 => "Form was submitted with honeybox checked.",
+            3 => "Form was submitted with an undeliverable email.",
+            4 => $error,
+            default => "Something went unexpected.",
+        };
+
+        $message = $code . ' - ' . $date . ' - ' . $message . PHP_EOL;
+
+        file_put_contents($filePath, $message, FILE_APPEND);
     }
 }

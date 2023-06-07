@@ -55,7 +55,7 @@
         <!-- PATIENTS -->
         <div class="card p-3">
 
-            <?php if (empty($patients)) : ?>
+            <?php if (empty($entries)) : ?>
                 <div class="alert alert-primary mb-0" role="alert">
                     <i class="fa-solid fa-circle-info me-2"></i>
                     Nessun paziente trovato
@@ -127,7 +127,7 @@
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
-                        <?php foreach ($patients as $patient) : ?>
+                        <?php foreach ($entries as $patient) : ?>
                             <tr class="clickable-row" data-href="/admin/pazienti?id=<?= $patient['id'] ?>">
                                 <td><?= $patient['fname'] ?></td>
                                 <td><?= $patient['lname'] ?></td>

@@ -5,7 +5,7 @@ namespace app\controllers;
 use app\App;
 use app\config\Config;
 
-class AdminController
+class AdminController extends Controller
 {
     const LAYOUT = 'admin';
     const ADMIN_VIEW = 'admin';
@@ -13,8 +13,7 @@ class AdminController
     const ADMIN_404 = '/admin/404';
 
     private AdminController $admin;
-    private $patients;
-    private $questions;
+    private $entries;
     private $gotById;
     private array $params = ['layout' => self::LAYOUT];
     private string $page;
@@ -27,7 +26,7 @@ class AdminController
 
     protected static $header;
 
-    protected static $model;
+    protected static $model = '';
 
 
     public function __construct(string $page)
@@ -65,22 +64,17 @@ class AdminController
     }
 
 
-    public function GetPatients()
+    public function get()
     {
         if (isset($_GET['id'])) {
-            $this->gotById = App::$app->patient->getById($_GET['id']);
-            App::$app->session->setFlash('form', $this->gotById);
-        } else {
-            $this->patients = App::$app->patient->get();
-        }
-    }
 
-    public function GetQuestions()
-    {
-        if (isset($_GET['id'])) {
-            $this->gotById = App::$app->question->getById($_GET['id']);
+            $this->gotById = App::$app->{self::$model}->getById($_GET['id']);
+            App::$app->session->setFlash('form', $this->gotById);
+            $labels = App::$app->{self::$model}->labels();
+            $this->params += ['labels' => $labels];
         } else {
-            $this->questions = App::$app->question->get();
+
+            $this->entries = App::$app->{self::$model}->get();
         }
     }
 
@@ -120,8 +114,7 @@ class AdminController
 
     public function renderPage()
     {
-        $this->params += ['patients' => $this->admin->patients];
-        $this->params += ['questions' => $this->admin->questions];
+        $this->params += ['entries' => $this->entries];
         $this->params += ['element' => $this->gotById];
 
         $isFilled = false;

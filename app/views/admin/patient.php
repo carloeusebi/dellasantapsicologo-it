@@ -76,12 +76,7 @@
 
 </div>
 <ul class="list-unstyled">
-    <?php
-
-    use app\App;
-
-    $labels = App::$app->patient->labels();
-    foreach ($labels as $key => $value) : ?>
+    <?php foreach ($labels as $key => $value) : ?>
         <li>
             <strong><?= $value ?>:</strong>
             <?= $element[$key] ?>

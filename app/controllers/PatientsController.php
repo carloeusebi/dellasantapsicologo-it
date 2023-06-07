@@ -20,7 +20,9 @@ class PatientsController extends AdminController
     {
         $admin = new parent($page);
 
-        $admin->GetPatients();
+        parent::$model = self::MODEL;
+
+        $admin->get();
 
         $admin->renderPage();
     }

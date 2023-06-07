@@ -50,14 +50,14 @@
             </div>
         </header>
 
-        <?php if (empty($questions)) : ?>
+        <?php if (empty($entries)) : ?>
             <div class="alert alert-primary mb-0" role="alert">
                 <i class="fa-solid fa-circle-info me-2"></i>
                 Nessun questionario trovato
             </div>
         <?php else : ?>
 
-            <?php foreach ($questions as $question) : ?>
+            <?php foreach ($entries as $question) : ?>
                 <div class="card mb-4">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
