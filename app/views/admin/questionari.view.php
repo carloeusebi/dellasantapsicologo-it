@@ -1,13 +1,13 @@
 <?php if (isset($_GET['id'])) :
-    require_once __DIR__ . '/question.php'; ?>
+    require_once __DIR__ . '/questionario.view.php'; ?>
 <?php else : ?>
     <div class="container">
 
-        <header class="d-flex justify-content-between my-5">
+        <header class="d-flex justify-content-between align-items-center my-5">
 
             <a href="/admin/sondaggi" class="btn btn-secondary me-3">
-                <i class="fa-solid fa-circle-chevron-left me-2"></i>
-                Indietro
+                <i class="fa-solid fa-circle-chevron-left me-md-2"></i>
+                <span class="d-none d-md-inline">Indietro</span>
             </a>
 
             <form class="d-flex flex-grow-1 me-3 mb-0" role="search">
@@ -24,7 +24,7 @@
             <!-- ADD BUTTON -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-question-modal">
                 <i class="fa-solid fa-plus me-md-2"></i>
-                <span class="d-none d-md-inline">Aggiungi un nuovo questionario</span>
+                <span class="d-none d-md-inline">Aggiungi <span class="d-none d-lg-inline">un nuovo questionario</span></span>
             </button>
 
             <!-- ADD BUTTON MODAL -->

@@ -4,11 +4,11 @@
         <div>
             <button class="btn btn-success">
                 <i class="fa-solid fa-plus me-md-2"></i>
-                Crea nuovo sondaggio
+                <span class="d-none d-md-inline">Crea nuovo sondaggio</span>
             </button>
             <a href="/admin/questionari" class="btn btn-primary">
-                <i class="fa-solid fa-pen me-2"></i>
-                Modifica questionari
+                <i class="fa-solid fa-pen me-0 me-md-2"></i>
+                <span class="d-none d-md-inline">Modifica questionari</span>
             </a>
         </div>
     </div>

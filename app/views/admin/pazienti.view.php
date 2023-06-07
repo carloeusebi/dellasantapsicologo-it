@@ -1,5 +1,5 @@
 <?php if (isset($_GET['id'])) :
-    require_once __DIR__ . '/patient.php'; ?>
+    require_once __DIR__ . '/paziente.view.php'; ?>
 <?php else : ?>
     <div class="container">
 
