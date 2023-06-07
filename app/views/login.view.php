@@ -33,7 +33,7 @@
 
             <h1 class="mb-5 h2 text-center">Accedi al tuo account</h1>
 
-            <form method="post">
+            <form method="post" action="\login">
                 <div class="mb-3">
                     <label for="email" class="form-label">Username</label>
                     <input type="email" class="form-control" id="email" name="username">

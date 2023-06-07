@@ -34,6 +34,9 @@ $app->router->post('/contatti', [SiteController::class, 'post']);
 
 $app->router->post('/admin', [AdminController::class, 'index']);
 
+$app->router->post('/login', [AdminController::class, 'login']);
+$app->router->post('/logout', [AdminController::class, 'logout']);
+
 $app->router->post('/admin/pazienti', [PatientsController::class, 'index']);
 $app->router->post('/admin/pazienti/create', [PatientsController::class, 'create']);
 $app->router->post('/admin/pazienti/update', [PatientsController::class, 'update']);

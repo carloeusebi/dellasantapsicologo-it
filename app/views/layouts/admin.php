@@ -40,7 +40,7 @@ use app\App; ?>
                             <a class="nav-link <?= $this->urlIs('/admin/sondaggi') ? ' active' : '' ?>" href="/admin/sondaggi">Sondaggi</a>
                         </li>
                     </ul>
-                    <form action="/admin" method="POST">
+                    <form action="/logout" method="POST">
                         <div>
                             <button type="submit" name="logout" class="btn btn-danger">Esci</button>
                         </div>
