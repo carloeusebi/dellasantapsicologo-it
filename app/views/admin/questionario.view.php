@@ -6,45 +6,6 @@
             <i class="fa-solid fa-circle-chevron-left me-2"></i>
             Indietro
         </a>
-
-        <form class="d-flex flex-grow-1 me-3 mb-0" role="search">
-            <div class="input-group-append flex-grow-1">
-                <div class="input-group">
-                    <input class="form-control " type="search" placeholder="Cerca" name="search" value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>">
-                    <button class="btn btn-secondary border-0">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
-
-        <!-- ADD BUTTON -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-question-modal">
-            <i class="fa-solid fa-plus me-md-2"></i>
-            <span class="d-none d-md-inline">Aggiungi un nuovo questionario</span>
-        </button>
-
-        <!-- ADD BUTTON MODAL -->
-        <div class="modal fade" id="add-question-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
-            <div class="modal-dialog modal-xl">
-                <form action="/admin/questionari/create" method="POST" class="needs-validation">
-                    <div class="modal-content">
-
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="add-question">Aggiungi un nuovo questionario</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <!-- MODAL BODY -->
-                        <div class="modal-body row g-3">
-                        </div>
-                        <!-- BUTTONS -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ANNULLA</button>
-                            <button type="submit" class="btn btn-primary" name="question-create">AGGIUNGI</button>
-                        </div>
-                </form>
-            </div>
-        </div>
     </header>
     <div class="card">
         <div class="card-body">
@@ -84,7 +45,7 @@
             </div>
 
             <!-- FORM -->
-            <form class="row g-3 question-form">
+            <form class="row g-3 question-form" action="/admin/questionari/update" method="POST">
                 <!-- title -->
                 <div class="col-12 col-md-8">
                     <label for="question" class="form-label h6">Titolo</label>

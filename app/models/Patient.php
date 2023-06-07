@@ -61,15 +61,6 @@ class Patient extends DbModel
         ];
     }
 
-    public function load($data)
-    {
-
-        foreach ($data as $key => $value) {
-
-            $this->$key = trim($value) ?? null;
-        }
-    }
-
     public function save()
     {
 

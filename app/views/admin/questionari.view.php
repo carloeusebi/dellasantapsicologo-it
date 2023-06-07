@@ -30,7 +30,8 @@
             <!-- ADD BUTTON MODAL -->
             <div class="modal fade" id="add-question-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
                 <div class="modal-dialog modal-xl">
-                    <form action="/admin/questionario/create" method="POST" class="needs-validation">
+                    <!-- form -->
+                    <form action="/admin/questionari/create" method="POST" class="needs-validation" novalidate>
                         <div class="modal-content">
 
                             <div class="modal-header">
@@ -39,6 +40,30 @@
                             </div>
                             <!-- MODAL BODY -->
                             <div class="modal-body row g-3">
+                                <div class="row g-3">
+                                    <div class="col-12 col-md-8">
+                                        <label for="question" class="form-label">
+                                            Titolo
+                                        </label>
+                                        <input type="text" name="question" id="question" class="form-control" value="<?= $isFilled ? $question : '' ?>" required>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <label for="type" class="form-label h6">Tipo di risposte</label>
+                                        <select class="form-select" name="type" id="type" required>
+                                            <option <?= $isFilled && $type === '1-4' ? 'selected' : '' ?>>1-4</option>
+                                            <option <?= $isFilled && $type === '1-6' ? 'selected' : '' ?>>1-6</option>
+                                            <option <?= $isFilled && $type === '0-5' ? 'selected' : '' ?>>0-5</option>
+                                            <option <?= $isFilled && $type === '0-3' ? 'selected' : '' ?>>0-3</option>
+                                            <option <?= $isFilled && $type === '1-7' ? 'selected' : '' ?>>1-7</option>
+                                            <option <?= $isFilled && $type === '0-4' ? 'selected' : '' ?>>0-4</option>
+                                            <option <?= $isFilled && $type === '1-5' ? 'selected' : '' ?>>1-5</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="description" class="form-label h6">Descrizione</label>
+                                        <textarea class="form-control" id="description" rows="3" name="description"><?= $isFilled ? $description : '' ?></textarea>
+                                    </div>
+                                </div>
                             </div>
                             <!-- BUTTONS -->
                             <div class="modal-footer">

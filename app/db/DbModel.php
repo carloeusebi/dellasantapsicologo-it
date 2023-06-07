@@ -143,4 +143,13 @@ abstract class DbModel
         $type = $_GET['type'] ?? 'asc';
         return $type === 'asc' || $type === 'desc' ? $type : 'asc';
     }
+
+
+    public function load($data)
+    {
+        foreach ($data as $key => $value) {
+
+            $this->$key = trim($value) ?? null;
+        }
+    }
 }
