@@ -7,7 +7,7 @@ use app\Mailer;
 
 class SiteController extends Controller
 {
-    public static function get($page)
+    public static function getPage($page)
     {
         app::$app->router->renderView($page);
     }

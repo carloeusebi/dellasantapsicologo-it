@@ -2,61 +2,55 @@
 
 namespace app\controllers;
 
-use app\App;
-
 class QuestionsController extends AdminController
 {
-    private const NOT_FOUND = 'Questionario non trovato';
+    protected const NOT_FOUND = 'Questionario non trovato';
 
-    private const CREATED = 'Questionario creato con successo';
-    private const UPDATED = 'Questionario modificato con successo';
-    private const DELETED = 'Questionario cancellato con successo';
+    protected const CREATED = 'Questionario creato con successo';
+    protected const UPDATED = 'Questionario modificato con successo';
+    protected const DELETED = 'Questionario cancellato con successo';
 
-    private const HEADER = 'Location: /admin/questionari';
+    protected const HEADER = 'Location: /admin/questionari';
 
-    private const MODEL = 'question';
-
+    protected const MODEL = 'question';
     public static function index($page)
     {
-        $admin = new parent($page);
+        $admin = new Controller($page);
 
-        parent::$model = self::MODEL;
+        $admin::$model = self::MODEL;
 
         $admin->get();
 
         $admin->renderPage();
     }
 
+    public static function update()
+    {
+        $admin = self::initController();
+        $admin->update();
+    }
 
     public static function create()
     {
-        parent::$notFound = self::NOT_FOUND;
-        parent::$created = self::CREATED;
-        parent::$model = self::MODEL;
-        parent::$header = self::HEADER;
-
-        parent::create();
+        $admin = self::initController();
+        $admin->create();
     }
-
-
-    public static function update()
-    {
-        parent::$updated = self::UPDATED;
-        parent::$notFound = self::NOT_FOUND;
-        parent::$model = self::MODEL;
-        parent::$header = self::HEADER;
-
-        parent::update();
-    }
-
 
     public static function delete()
     {
-        parent::$deleted = self::DELETED;
-        parent::$notFound = self::NOT_FOUND;
-        parent::$model = self::MODEL;
-        parent::$header = self::HEADER;
+        $admin = self::initController();
+        $admin->delete();
+    }
 
-        parent::delete();
+    private static function initController()
+    {
+        $admin = new AdminController();
+        $admin::$created = self::CREATED;
+        $admin::$updated = self::UPDATED;
+        $admin::$deleted = self::DELETED;
+        $admin::$model = self::MODEL;
+        $admin::$header = self::HEADER;
+
+        return $admin;
     }
 }

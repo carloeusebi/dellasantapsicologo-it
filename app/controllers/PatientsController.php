@@ -2,8 +2,6 @@
 
 namespace app\controllers;
 
-use app\App;
-
 class PatientsController extends AdminController
 {
     protected const NOT_FOUND = 'Paziente non trovato';
@@ -18,45 +16,42 @@ class PatientsController extends AdminController
 
     public static function index($page)
     {
-        $admin = new parent($page);
+        $admin = new Controller($page);
 
-        parent::$model = self::MODEL;
+        $admin::$model = self::MODEL;
 
         $admin->get();
 
         $admin->renderPage();
     }
 
+    public static function update()
+    {
+        $admin = self::initController();
+        $admin->update();
+    }
 
     public static function create()
     {
-        parent::$notFound = self::NOT_FOUND;
-        parent::$created = self::CREATED;
-        parent::$model = self::MODEL;
-        parent::$header = self::HEADER;
-
-        parent::create();
+        $admin = self::initController();
+        $admin->create();
     }
-
-
-    public static function update()
-    {
-        parent::$updated = self::UPDATED;
-        parent::$notFound = self::NOT_FOUND;
-        parent::$model = self::MODEL;
-        parent::$header = self::HEADER;
-
-        parent::update();
-    }
-
 
     public static function delete()
     {
-        parent::$deleted = self::DELETED;
-        parent::$notFound = self::NOT_FOUND;
-        parent::$model = self::MODEL;
-        parent::$header = self::HEADER;
+        $admin = self::initController();
+        $admin->delete();
+    }
 
-        parent::delete();
+    private static function initController()
+    {
+        $admin = new AdminController();
+        $admin::$created = self::CREATED;
+        $admin::$updated = self::UPDATED;
+        $admin::$deleted = self::DELETED;
+        $admin::$model = self::MODEL;
+        $admin::$header = self::HEADER;
+
+        return $admin;
     }
 }
