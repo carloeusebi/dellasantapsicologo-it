@@ -6,8 +6,15 @@ use app\App;
 
 class PatientsController extends AdminController
 {
-    public const NOT_FOUND = 'Paziente non trovato';
-    private AdminController $admin;
+    protected const NOT_FOUND = 'Paziente non trovato';
+
+    protected const CREATED = 'Paziente creato con successo';
+    protected const UPDATED = 'Paziente modificato con successo';
+    protected const DELETED = 'Paziente cancellato con successo';
+
+    protected const HEADER = 'Location: /admin/pazienti';
+
+    protected const MODEL = 'patient';
 
     public static function index($page)
     {
@@ -21,57 +28,33 @@ class PatientsController extends AdminController
 
     public static function create()
     {
+        parent::$notFound = self::NOT_FOUND;
+        parent::$created = self::CREATED;
+        parent::$model = self::MODEL;
+        parent::$header = self::HEADER;
 
-        if (!App::$app->router->isPost()) parent::render404(self::NOT_FOUND);
-
-        self::save('creato');
-
-        header("Location: /admin/pazienti");
+        parent::create();
     }
 
 
     public static function update()
     {
-        $id = $_POST['id'];
+        parent::$updated = self::UPDATED;
+        parent::$notFound = self::NOT_FOUND;
+        parent::$model = self::MODEL;
+        parent::$header = self::HEADER;
 
-        if (!$id) parent::render404(self::NOT_FOUND);
-
-        self::save('modificato');
-
-        header("Location: /admin/paziente?id=$id");
-    }
-
-    private static function save($message)
-    {
-        $errors = [];
-
-        foreach ($_POST as $key => $value) {
-            $data[$key] = $value;
-        }
-
-        App::$app->connect();
-        App::$app->patient->load($data);
-        $errors = App::$app->patient->save();
-
-        if (empty($errors)) {
-
-            App::$app->session->setFlash('success', "Paziente <strong>$message</strong> con successo");
-        } else {
-
-            App::$app->session->setFlash('form', $data);
-            App::$app->session->setFlash('errors', $errors);
-        }
+        parent::update();
     }
 
 
     public static function delete()
     {
-        if (!App::$app->router->isPost()) parent::render404(self::NOT_FOUND);
+        parent::$deleted = self::DELETED;
+        parent::$notFound = self::NOT_FOUND;
+        parent::$model = self::MODEL;
+        parent::$header = self::HEADER;
 
-        App::$app->connect();
-        App::$app->patient->delete($_POST['id']);
-        App::$app->session->setFlash('success', 'Paziente <strong>eliminato</strong> con successo');
-
-        header('Location: /admin/pazienti');
+        parent::delete();
     }
 }

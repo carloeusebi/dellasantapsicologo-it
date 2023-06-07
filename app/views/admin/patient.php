@@ -18,7 +18,7 @@
                 <!-- EDIT MODAL -->
                 <div class="modal fade" id="edit-patient-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
                     <div class="modal-dialog modal-xl">
-                        <form action="/admin/paziente/update" method="POST" class="needs-validation">
+                        <form action="/admin/pazienti/update" method="POST" class="needs-validation">
                             <div class="modal-content">
 
                                 <div class="modal-header">
@@ -63,7 +63,7 @@
                         <!-- BUTTONS -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ANNULLA</button>
-                            <form action="paziente/delete" method="POST">
+                            <form action="pazienti/delete" method="POST">
                                 <input type="hidden" value="<?= $element['id'] ?>" name="id">
                                 <button type="submit" class="btn btn-danger">ELIMINA</button>
                             </form>
