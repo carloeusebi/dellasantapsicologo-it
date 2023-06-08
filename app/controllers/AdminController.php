@@ -34,7 +34,7 @@ class AdminController extends Controller
 
         self::save(self::$updated);
 
-        header(self::$header . '?id=' . $id);
+        header(self::$header);
     }
 
 

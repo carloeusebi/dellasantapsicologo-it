@@ -11,7 +11,7 @@ class Question extends DbModel
     public $question;
     public $description;
     public $type;
-    public $answer;
+    public $answers;
     public $legend;
 
     public static function tableName(): string
@@ -51,8 +51,18 @@ class Question extends DbModel
 
         $errors = [];
 
-        if ($this->checkIfExists()) $errors['exists'] = '<em>Una Domanda con questno nome esiste già!!</em>';
+        if ($this->checkIfExists()) $errors['exists'] = '<em>Una Domanda con questo nome esiste già!!</em>';
 
+        if ($this->legend) {
+            $this->legend = implode(';', $this->legend);
+        }
+
+        if ($this->answers) {
+            $this->answers = array_filter($this->answers, function ($value) {
+                return $value !== '';
+            });
+            $this->answers = implode(';', $this->answers);
+        }
 
         if (!$this->question) $errors['question'] = "Il nome del questionario obbligatorio";
         if (!$this->description) $errors['description'] = "La descrizione è obbligatoria";

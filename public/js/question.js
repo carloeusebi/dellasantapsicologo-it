@@ -38,7 +38,7 @@ function createListElement() {
 
     ul.innerHTML += `
     <li class="d-flex align-items-center my-1" data-list="${newIndex}">
-        <input type="text" class="form-control" data-answer="${newIndex}" value="${newAnswer}">
+        <input type="text" class="form-control" data-answer="${newIndex}" value="${newAnswer}" name="answers[]">
             <button type="button" class="btn btn-outline-danger border-0 no-hover" data-delete="${newIndex}" tabindex="-1">
                 <i class="fa-solid fa-trash-can fa-sm ms-2"></i>
             </button>
@@ -64,7 +64,7 @@ function printLegends() {
         elementsToAdd += `
         <div class="d-flex my-1 align-items-center">
             <span class="me-3">${from + i}.</span>
-            <input type="text" class="form-control" data-legend="${i}" name="legend-${i}" value="${legend}">
+            <input type="text" class="form-control" data-legend="${i}" name="legend[]" value="${legend}">
         </div>`
     }
 
@@ -78,8 +78,8 @@ printLegends();
 
 // ! EVENT LISTENERS
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
+form.addEventListener('keypress', e => {
+    if (e.key === 'Enter') e.preventDefault();
 })
 
 
@@ -91,7 +91,8 @@ for (let i = 0; i < deleteButtons.length; i++) {
 
 
 addButton.addEventListener('click', createListElement);
-newAnswerInput.addEventListener('keypress', (e) => {
+newAnswerInput.addEventListener('keypress', e => {
+    console.log(e.type);
     if (e.key === 'Enter') {
         createListElement();
     }
