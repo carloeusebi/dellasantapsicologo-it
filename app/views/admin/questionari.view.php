@@ -77,7 +77,7 @@
 
         <?php if (empty($entries)) : ?>
             <div class="alert alert-primary mb-0" role="alert">
-                <i class="fa-solid fa-circle-info me-2"></i>
+                <i class="fa-solid fa-circle-info me-md-2"></i>
                 Nessun questionario trovato
             </div>
         <?php else : ?>
@@ -89,7 +89,9 @@
                             <h5 class="card-title"><?= $question['question'] ?></h5>
                             <a href="/admin/questionari?id=<?= $question['id'] ?>" class="btn btn-outline-success border-0 no-hover">
                                 <i class="fa-solid fa-pen me-2"></i>
-                                Modifica
+                                <span class="d-none d-md-inline">
+                                    Modifica
+                                </span>
                             </a>
                         </div>
                     </div>

@@ -15,8 +15,8 @@
 
                 <!-- DELETE BUTTON -->
                 <button class="btn btn-outline-danger border-0 no-hover" data-bs-toggle="modal" data-bs-target="#delete-question-modal">
-                    <i class="fa-solid fa-trash-can me-2"></i>
-                    Elimina
+                    <i class="fa-solid fa-trash-can me-md-2"></i>
+                    <span class="d-none d-md-inline">Elimina</span>
                 </button>
 
                 <!-- DELTE MODAL -->
