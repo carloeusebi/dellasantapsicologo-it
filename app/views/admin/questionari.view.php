@@ -31,7 +31,7 @@
             <div class="modal fade" id="add-question-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
                 <div class="modal-dialog modal-xl">
                     <!-- form -->
-                    <form action="/admin/questionari/create" method="POST" class="needs-validation" novalidate>
+                    <form action="/admin/questionari/create" method="POST" class="needs-validation">
                         <div class="modal-content">
 
                             <div class="modal-header">
