@@ -82,7 +82,7 @@
         <li>
             <strong><?= $value ?>:</strong>
             <?php if ($key === 'consent') : ?>
-                <a href="<?= $element[$key] ?>">Consenso</a>
+                <a href="<?= $element[$key] ?>"><?php if ($element[$key]) echo 'Consenso' ?></a>
             <?php else : ?>
                 <?= $element[$key] ?>
             <?php endif ?>
