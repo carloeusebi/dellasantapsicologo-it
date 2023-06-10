@@ -59,8 +59,9 @@
 </div>
 <!-- CONSENT -->
 <div class="col-12">
+    <input type="hidden" name="MAX_FILE_SIZE" value="2097152">
     <label for="consent" class="form-label">Firma per il consenso</label>
-    <input type="file" class="form-control" id="consent" name="consent" value="<?= $isFilled ? $consent : '' ?>">
+    <input type="file" class="form-control" id="consent" name="consent" accept="application/pdf" value="<?= $isFilled ? $consent : '' ?>">
 </div>
 <!-- WEIGHT -->
 <div class="col-6 col-md-3 col-lg-2">

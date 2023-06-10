@@ -3,3 +3,4 @@ app/config/.htaccess
 public/log.txt
 bfg.jar
 .vscode/ftp-sync.json
+public/uploads

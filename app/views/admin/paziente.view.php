@@ -20,7 +20,7 @@
                 <!-- EDIT MODAL -->
                 <div class="modal fade" id="edit-patient-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
                     <div class="modal-dialog modal-xl">
-                        <form action="/admin/pazienti/update" method="POST" class="needs-validation">
+                        <form action="/admin/pazienti/update" method="POST" class="needs-validation" enctype="multipart/form-data">
                             <div class="modal-content">
 
                                 <div class="modal-header">
@@ -81,7 +81,11 @@
     <?php foreach ($labels as $key => $value) : ?>
         <li>
             <strong><?= $value ?>:</strong>
-            <?= $element[$key] ?>
+            <?php if ($key === 'consent') : ?>
+                <a href="<?= $element[$key] ?>">Consenso</a>
+            <?php else : ?>
+                <?= $element[$key] ?>
+            <?php endif ?>
             <?php if ($key === 'weight' && $element[$key]) echo 'kg' ?>
             <?php if ($key === 'height' && $element[$key]) echo 'cm' ?>
         </li>

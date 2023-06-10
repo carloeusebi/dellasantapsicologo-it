@@ -25,6 +25,7 @@ class Patient extends DbModel
     public $sex;
     public $cohabitants;
     public $username;
+    public $MAX_FILE_SIZE;
 
     public static function tableName(): string
     {
@@ -63,8 +64,9 @@ class Patient extends DbModel
 
     public function save()
     {
-
         $errors = [];
+
+        // dd($_FILES['consent']);
 
         $usernameFirst = strtolower(preg_replace('/\s+/', '', $this->fname));
         $usernameLast = strtolower(preg_replace('/\s+/', '', $this->lname));
@@ -73,13 +75,29 @@ class Patient extends DbModel
 
         if ($this->checkIfExists()) $errors['exists'] = '<em>Un Paziente con questo nome esiste già!!</em>';
 
+        // obligatory fields
+        if (!$this->fname) $errors['fname'] = "Il nome è obbligatorio.";
+        if (!$this->lname) $errors['lname'] = "Il cognome è obbligatorio.";
+        if (!$this->birthday) $errors['birthday'] = "La data di nascita è obbligatiora.";
+        if (!$this->begin) $errors['begin'] = "La data di inizio terapia è obbligatorio.";
 
-        if (!$this->fname) $errors['fname'] = "Il nome è obbligatorio";
-        if (!$this->lname) $errors['lname'] = "Il cognome è obbligatorio";
-        if (!$this->birthday) $errors['birthday'] = "La data di nascita è obbligatiora";
-        if (!$this->begin) $errors['begin'] = "La data di inizio terapia è obbligatorio";
+        // errors with file upload
+        if ($_FILES['consent']['type'] !== 'application/pdf' && $_FILES['consent']['type'] !== '') $errors['not-pdf'] = 'Si possono caricare solamente files in formato PDF.';
+        if ($_FILES['consent']['error'] === 2) $errors['max-size'] = 'La dimensione del file non può superare i 2MB.';
+
+
+        $this->sex = strtoupper($this->sex);
 
         if (empty($errors)) {
+
+            // file upload
+            $filename = preg_replace("/\s+/", "_", $_FILES['consent']['name']);
+            $filename = '/uploads/' . rand(1000, 10000) . "-" . $filename;
+            $filepath = __DIR__ . '/../../public' .  $filename;
+
+            move_uploaded_file($_FILES['consent']['tmp_name'], $filepath);
+
+            $this->consent = $filename;
 
             if ($this->id) parent::update();
             else parent::create();
