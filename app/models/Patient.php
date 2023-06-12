@@ -82,8 +82,8 @@ class Patient extends DbModel
         if (!$this->begin) $errors['begin'] = "La data di inizio terapia è obbligatorio.";
 
         // errors with file upload
-        if ($_FILES['consent']['type'] !== 'application/pdf' && isset($_FILES['consent']['type'])) $errors['not-pdf'] = 'Si possono caricare solamente files in formato PDF.';
-        if ($_FILES['consent']['error'] === 2) $errors['max-size'] = 'La dimensione del file non può superare i 2MB.';
+        if ($this->checkFileType()) $errors['not-pdf'] = 'Si possono caricare solamente files in formato PDF.';
+        if ($_FILES['consent']['error'] === 2) $errors['max-size'] = 'La dimensione del file non può superare 1MB.';
 
 
         $this->sex = strtoupper($this->sex);
@@ -91,13 +91,13 @@ class Patient extends DbModel
         if (empty($errors)) {
 
             // file upload
-            if (isset($_FILES['consent'])){
+            if (isset($_FILES['consent'])) {
                 $filename = preg_replace("/\s+/", "_", $_FILES['consent']['name']);
                 $filename = '/uploads/' . rand(1000, 10000) . "-" . $filename;
                 $filepath = __DIR__ . '/../../public' .  $filename;
-                
+
                 move_uploaded_file($_FILES['consent']['tmp_name'], $filepath);
-                
+
                 $this->consent = $filename;
             }
 
@@ -118,5 +118,11 @@ class Patient extends DbModel
         }
 
         return false;
+    }
+
+
+    private function checkFileType()
+    {
+        return isset($_FILES['consent']['type']) && $_FILES['consent']['type'] !== 'application/pdf' && ($_FILES['consent']['type']) !== '';
     }
 }
