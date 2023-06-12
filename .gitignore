@@ -1,4 +1,4 @@
-app/config/config.php
+app/config/Config.php
 app/config/.htaccess
 public/log.txt
 bfg.jar
