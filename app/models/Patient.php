@@ -73,6 +73,8 @@ class Patient extends DbModel
 
         $this->username = $usernameFirst . '.' . $usernameLast;
 
+        if (!$this->age) $this->age = $this->getAge();
+
         if ($this->checkIfExists()) $errors['exists'] = '<em>Un Paziente con questo nome esiste già!!</em>';
 
         // obligatory fields
@@ -82,8 +84,10 @@ class Patient extends DbModel
         if (!$this->begin) $errors['begin'] = "La data di inizio terapia è obbligatorio.";
 
         // errors with file upload
-        if ($this->checkFileType()) $errors['not-pdf'] = 'Si possono caricare solamente files in formato PDF.';
-        if ($_FILES['consent']['error'] === 2) $errors['max-size'] = 'La dimensione del file non può superare 1MB.';
+        if (isset($_FILES['consent'])) {
+            if ($this->checkFileType()) $errors['not-pdf'] = 'Si possono caricare solamente files in formato PDF.';
+            if ($_FILES['consent']['error'] === 2) $errors['max-size'] = 'La dimensione del file non può superare 1MB.';
+        }
 
 
         $this->sex = strtoupper($this->sex);
@@ -124,5 +128,12 @@ class Patient extends DbModel
     private function checkFileType()
     {
         return isset($_FILES['consent']['type']) && $_FILES['consent']['type'] !== 'application/pdf' && ($_FILES['consent']['type']) !== '';
+    }
+
+    private function getAge()
+    {
+        $birthyear = date_parse_from_format('Y', $this->birthday)['year'];
+        $currentYear = date("Y", time());
+        return $currentYear - $birthyear;
     }
 }
