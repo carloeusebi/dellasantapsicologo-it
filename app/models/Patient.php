@@ -66,14 +66,13 @@ class Patient extends DbModel
     {
         $errors = [];
 
-        // dd($_FILES['consent']);
-
         $usernameFirst = strtolower(preg_replace('/\s+/', '', $this->fname));
         $usernameLast = strtolower(preg_replace('/\s+/', '', $this->lname));
 
         $this->username = $usernameFirst . '.' . $usernameLast;
 
         if (!$this->age) $this->age = $this->getAge();
+        if (!$this->begin) $this->begin = $this->getDate();
 
         if ($this->checkIfExists()) $errors['exists'] = '<em>Un Paziente con questo nome esiste già!!</em>';
 
@@ -130,10 +129,17 @@ class Patient extends DbModel
         return isset($_FILES['consent']['type']) && $_FILES['consent']['type'] !== 'application/pdf' && ($_FILES['consent']['type']) !== '';
     }
 
+
     private function getAge()
     {
         $birthyear = date_parse_from_format('Y', $this->birthday)['year'];
         $currentYear = date("Y", time());
         return $currentYear - $birthyear;
+    }
+
+
+    private function getDate()
+    {
+        return date("Y-m-d", time());
     }
 }

@@ -30,7 +30,7 @@
 <!-- BEGIN -->
 <div class="col-12 col-md-3 col-lg-2">
     <label for="begin" class="form-label">Paziente dal</label>
-    <input type="date" class="form-control" id="begin" name="begin" value="<?= $isFilled ? $begin : '' ?>" required>
+    <input type="date" class="form-control" id="begin" name="begin" value="<?= $isFilled ? $begin : '' ?>">
 </div>
 <!-- BIRTHDAY -->
 <div class="col-12 col-md-3">
