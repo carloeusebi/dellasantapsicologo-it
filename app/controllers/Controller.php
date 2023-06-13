@@ -18,6 +18,8 @@ class Controller
     private array $params = ['layout' => self::LAYOUT];
     private string $page;
 
+    protected static $header;
+    protected static $notFound;
     protected static $model = '';
 
 
@@ -52,16 +54,17 @@ class Controller
 
     public function get()
     {
+
         if (self::$model) {
 
             if (isset($_GET['id'])) {
 
                 $this->gotById = App::$app->{self::$model}->getById($_GET['id']);
+                if (!$this->gotById) $this->render404(self::$notFound);
                 App::$app->session->setFlash('form', $this->gotById);
                 $labels = App::$app->{self::$model}->labels();
                 $this->params += ['labels' => $labels];
             } else {
-
                 $this->entries = App::$app->{self::$model}->get();
             }
         }

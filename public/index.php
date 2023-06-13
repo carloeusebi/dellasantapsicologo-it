@@ -40,14 +40,14 @@ $app->router->post('/login', [Controller::class, 'login']);
 $app->router->post('/logout', [Controller::class, 'logout']);
 
 $app->router->post('/admin/pazienti', [PatientsController::class, 'index']);
-$app->router->post('/admin/pazienti/create', [PatientsController::class, 'create']);
-$app->router->post('/admin/pazienti/update', [PatientsController::class, 'update']);
+$app->router->post('/admin/pazienti/create', [PatientsController::class, 'save']);
+$app->router->post('/admin/pazienti/update', [PatientsController::class, 'save']);
 $app->router->post('/admin/pazienti/delete', [PatientsController::class, 'delete']);
 
 $app->router->post('/admin/sondaggi', [Controller::class, 'index']);
 $app->router->post('/admin/questionari', [QuestionsController::class, 'index']);
-$app->router->post('/admin/questionari/create', [QuestionsController::class, 'create']);
-$app->router->post('/admin/questionari/update', [QuestionsController::class, 'update']);
+$app->router->post('/admin/questionari/create', [QuestionsController::class, 'save']);
+$app->router->post('/admin/questionari/update', [QuestionsController::class, 'save']);
 $app->router->post('/admin/questionari/delete', [QuestionsController::class, 'delete']);
 
 

@@ -24,16 +24,10 @@ class QuestionsController extends AdminController
         $admin->renderPage();
     }
 
-    public static function update()
+    public static function save()
     {
         $admin = self::initController();
-        $admin->update();
-    }
-
-    public static function create()
-    {
-        $admin = self::initController();
-        $admin->create();
+        $admin->save();
     }
 
     public static function delete()
@@ -49,7 +43,7 @@ class QuestionsController extends AdminController
         $admin::$updated = self::UPDATED;
         $admin::$deleted = self::DELETED;
         $admin::$model = self::MODEL;
-        $admin::$header = self::HEADER;
+        $admin::$notFound = self::NOT_FOUND;
 
         return $admin;
     }

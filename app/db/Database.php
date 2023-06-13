@@ -8,7 +8,7 @@ use Exception;
 
 class Database
 {
-    private $pdo;
+    public $pdo;
 
     public static $db;
 

@@ -16,31 +16,13 @@ class AdminController extends Controller
 
     protected static $model;
 
-    public static function create()
-    {
-        if (!App::$app->router->isPost()) self::render404(self::$notFound);
-
-        self::save(self::$created);
-
-        header(self::$header);
-    }
-
-
-    public static function update()
-    {
-        $id = $_POST['id'];
-
-        if (!$id) self::render404(self::$notFound);
-
-        self::save(self::$updated);
-
-        header(self::$header);
-    }
-
-
-    private static function save($message)
+    public static function save()
     {
         $errors = [];
+
+        $id = $_POST['id'];
+
+        $message = $id ? self::$updated : self::$created;
 
         foreach ($_POST as $key => $value) {
             $data[$key] = $value;
@@ -58,6 +40,12 @@ class AdminController extends Controller
             App::$app->session->setFlash('form', $data);
             App::$app->session->setFlash('errors', $errors);
         }
+
+        $id = $id ?? App::$app->db->pdo->lastInsertId();
+
+        $location = $id === '0' ? self::$header : self::$header . '?id=' . $id;
+
+        header($location);
     }
 
 
