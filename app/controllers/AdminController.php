@@ -41,7 +41,7 @@ class AdminController extends Controller
             App::$app->session->setFlash('errors', $errors);
         }
 
-        $id = $id ?? App::$app->db->pdo->lastInsertId();
+        $id = $id ?? App::$app->db->getLastInsertId();
 
         $location = $id === '0' ? self::$header : self::$header . '?id=' . $id;
 

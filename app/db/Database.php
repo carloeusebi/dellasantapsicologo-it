@@ -8,7 +8,7 @@ use Exception;
 
 class Database
 {
-    public $pdo;
+    private $pdo;
 
     public static $db;
 
@@ -37,5 +37,11 @@ class Database
     public function prepare($query)
     {
         return $this->pdo->prepare($query);
+    }
+
+
+    public function getLastInsertId()
+    {
+        return $this->pdo->lastInsertId();
     }
 }
