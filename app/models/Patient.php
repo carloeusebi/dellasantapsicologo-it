@@ -19,6 +19,7 @@ class Patient extends DbModel
     public $email;
     public $phone;
     public $consent;
+    public $oldConsent;
     public $weight;
     public $height;
     public $job;
@@ -102,7 +103,7 @@ class Patient extends DbModel
                 move_uploaded_file($_FILES['consent']['tmp_name'], $filepath);
 
                 $this->consent = $filename;
-            }
+            } else ($this->consent = $this->oldConsent); // if consent was already uploaded and not overwritten it rewrite old path
 
             if ($this->id) parent::update();
             else parent::create();
