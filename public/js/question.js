@@ -36,14 +36,17 @@ function createListElement() {
     newAnswerInput.value = '';
     const newIndex = answers.length;
 
-    ul.innerHTML += `
-    <li class="d-flex align-items-center my-1" data-list="${newIndex}">
+    const newLi = document.createElement('li')
+    newLi.className = `d-flex align-items-center my-1`;
+    newLi.dataset.list = newIndex;
+    newLi.innerHTML = `
         <input type="text" class="form-control" data-answer="${newIndex}" value="${newAnswer}" name="answers[]">
-            <button type="button" class="btn btn-outline-danger border-0 no-hover" data-delete="${newIndex}" tabindex="-1">
-                <i class="fa-solid fa-trash-can fa-sm ms-2"></i>
-            </button>
-        </li>`;
+        <button type="button" class="btn btn-outline-danger border-0 no-hover" data-delete="${newIndex}" tabindex="-1">
+            <i class="fa-solid fa-trash-can fa-sm ms-2"></i>
+        </button>
+    `;
 
+    ul.appendChild(newLi);
     getElements();
 }
 
@@ -92,7 +95,6 @@ for (let i = 0; i < deleteButtons.length; i++) {
 
 addButton.addEventListener('click', createListElement);
 newAnswerInput.addEventListener('keypress', e => {
-    console.log(e.type);
     if (e.key === 'Enter') {
         createListElement();
     }
