@@ -95,7 +95,7 @@ class Patient extends DbModel
         if (empty($errors)) {
 
             // file upload
-            if ($_FILES['consent']['name'] !== '') {
+            if (isset($_FILES['consent']['name']) && $_FILES['consent']['name'] !== "") {
                 $filename = preg_replace("/\s+/", "_", $_FILES['consent']['name']);
                 $filename = '/uploads/' . rand(1000, 10000) . "-" . $filename;
                 $filepath = __DIR__ . '/../../public' .  $filename;
@@ -103,7 +103,7 @@ class Patient extends DbModel
                 move_uploaded_file($_FILES['consent']['tmp_name'], $filepath);
 
                 $this->consent = $filename;
-            } else ($this->consent = $this->oldConsent); // if consent was already uploaded and not overwritten it rewrite old path
+            } else $this->consent = $this->oldConsent; // if consent was already uploaded and not overwritten it rewrite old path
 
             if ($this->id) parent::update();
             else parent::create();
