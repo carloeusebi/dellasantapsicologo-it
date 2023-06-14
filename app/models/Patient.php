@@ -94,7 +94,7 @@ class Patient extends DbModel
         if (empty($errors)) {
 
             // file upload
-            if (isset($_FILES['consent'])) {
+            if ($_FILES['consent']['name'] !== '') {
                 $filename = preg_replace("/\s+/", "_", $_FILES['consent']['name']);
                 $filename = '/uploads/' . rand(1000, 10000) . "-" . $filename;
                 $filepath = __DIR__ . '/../../public' .  $filename;
