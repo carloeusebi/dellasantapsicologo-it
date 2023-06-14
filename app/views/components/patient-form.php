@@ -39,7 +39,7 @@
 </div>
 <!-- BIRTHPLACE -->
 <div class="col-12 col-md-6">
-    <label for="birthplace" class="form-label">Luogo</label>
+    <label for="birthplace" class="form-label">Luogo di nascita</label>
     <input type="text" class="form-control" id="birthplace" name="birthplace" value="<?= $isFilled ? $birthplace : '' ?>">
 </div>
 <!-- AGE -->
