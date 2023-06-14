@@ -43,7 +43,7 @@ class QuestionsController extends AdminController
         $admin::$updated = self::UPDATED;
         $admin::$deleted = self::DELETED;
         $admin::$model = self::MODEL;
-        $admin::$notFound = self::NOT_FOUND;
+        $admin::$header = self::HEADER;
 
         return $admin;
     }
