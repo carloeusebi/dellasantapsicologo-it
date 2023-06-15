@@ -13,6 +13,7 @@ class QuestionsController extends AdminController
     protected const HEADER = 'Location: /admin/questionari';
 
     protected const MODEL = 'question';
+
     public static function index($page)
     {
         $admin = new Controller($page);

@@ -1,4 +1,5 @@
 const form = document.getElementById('survey-form');
+const realForm = document.getElementById('real-form');
 
 const checkboxes = document.querySelectorAll('[type="checkbox"]');
 const selectAllBtn = document.getElementById('select-all');
@@ -61,7 +62,10 @@ form.addEventListener('submit', e => {
 
     const questionsJson = JSON.stringify(selectedQuestions);
 
-    console.log(questionsJson);
+    realForm.innerHTML = `
+        <input type="hidden" name="patient_id" value="${patient}">
+        <input type="hidden" name="survey" value="${encodeURIComponent(questionsJson)}">
+    `
 
-    console.log(JSON.parse(questionsJson));
+    realForm.submit();
 });

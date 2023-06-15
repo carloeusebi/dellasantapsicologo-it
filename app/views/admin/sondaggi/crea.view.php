@@ -119,6 +119,7 @@
                 </button>
             </div>
         </form>
+        <form action="/admin/sondaggi/crea" method="post" id="real-form" class="d-none"></form>
     </div>
 
     <script src="/js/create-survey.js"></script>
