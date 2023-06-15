@@ -76,7 +76,23 @@
                 </div>
             <?php else : ?>
 
+                <script>
+                    const questionsData = [];
+                    let entry;
+                </script>
+
                 <?php foreach ($entries as $question) : ?>
+                    <script>
+                        entry = {
+                            id: `<?= $question['id'] ?>`,
+                            question: `<?= $question['question'] ?>`,
+                            legend: `<?= $question['legend'] ?>`,
+                            answers: `<?= $question['answers'] ?>`,
+                            type: `<?= $question['type'] ?>`,
+                            description: `<?= $question['description'] ?>`
+                        }
+                        questionsData.push(entry);
+                    </script>
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">

@@ -1,7 +1,9 @@
+const form = document.getElementById('survey-form');
+
 const checkboxes = document.querySelectorAll('[type="checkbox"]');
 const selectAllBtn = document.getElementById('select-all');
 const deselectAllBtn = document.getElementById('deselect-all');
-const form = document.getElementById('survey-form');
+
 const patientSelect = document.getElementById('patient-select');
 const patientSelectError = document.getElementById('patient-select-error');
 
@@ -29,6 +31,7 @@ form.addEventListener('submit', e => {
 
     const patient = patientSelect.value;
 
+    // checks if patient is inserted
     if (!patient) {
         patientSelect.classList.add('is-invalid');
         patientSelectError.classList.remove('d-none');
@@ -43,7 +46,22 @@ form.addEventListener('submit', e => {
         }
     })
 
+    // checks if at least one checkbox is checked
     if (!checkedQuestions.length) {
-        alert('NON HAI SELEZIONATO NESSUN QUESTIONARIO!')
+        alert('ATTENZIONE!!\nNON HAI SELEZIONATO NESSUN QUESTIONARIO!')
+        return;
     }
+
+    const selectedQuestions = questionsData.reduce((acc, question) => {
+        if (checkedQuestions.includes(question.id)) {
+            acc.push(question);
+        }
+        return acc;
+    }, []);
+
+    const questionsJson = JSON.stringify(selectedQuestions);
+
+    console.log(questionsJson);
+
+    console.log(JSON.parse(questionsJson));
 });
