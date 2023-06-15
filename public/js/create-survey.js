@@ -19,8 +19,6 @@ deselectAllBtn.addEventListener('click', () => {
     })
 });
 
-console.log(checkboxes);
-
 
 // form submit
 form.addEventListener('submit', e => {

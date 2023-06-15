@@ -2,11 +2,13 @@
 
         <header class="d-flex justify-content-between align-items-center my-5">
 
+            <!-- BACK -->
             <a href="/admin/sondaggi" class="btn btn-secondary me-3">
                 <i class="fa-solid fa-circle-chevron-left me-md-2"></i>
                 <span class="d-none d-md-inline">Indietro</span>
             </a>
 
+            <!-- SEARCHBAR -->
             <form class="d-flex flex-grow-1 me-3 mb-0" role="search">
                 <div class="input-group-append flex-grow-1">
                     <div class="input-group">
@@ -20,25 +22,45 @@
         </header>
 
         <!-- SELECT PATIENT -->
-
-        <?php
-        $_GET['order'] = 'lname'; // to order by last name
-        $patients = app\App::$app->patient->get();
-        ?>
-
         <form id="survey-form" action="">
 
-            <label for="patient-select">Seleziona un paziente</label>
-            <!-- select -->
-            <select class="form-select mb-3" name="patient-select" id="patient-select" required>
-                <option selected disabled value=''>Scegli un paziente</option>
-                <?php foreach ($patients as $patient) : ?>
-                    <option value="<?= $patient['id'] ?>"><?= $patient['fname'] . ' ' . $patient['lname'] ?></option>
-                <?php endforeach ?>
-            </select>
-            <div class="invalid-feedback d-none text-end" id="patient-select-error">
-                Devi selezionare un paziente per procedere!
-            </div>
+            <?php if (isset($_GET['patient-id'])) : ?>
+
+                <?php $id = $_GET['patient-id'];
+                $patient = app\App::$app->patient->getById($id);
+                ?>
+                <div class="d-flex justify-content-between">
+                    <p>Sondaggio per:</p>
+                    <a class="h3 d-block" href="/admin/pazienti?id=<?= $id ?>">
+                        <?= $patient['fname'] . ' ' . $patient['lname'] ?>
+                    </a>
+                </div>
+                <input type="hidden" id="patient-select" name="patient-select" value="<?= $id ?>">
+                <div class="invalid-feedback d-none text-end" id="patient-select-error">
+                    Devi selezionare un paziente per procedere!
+                </div>
+
+            <?php else : ?>
+
+                <?php
+                $_GET['order'] = 'lname'; // to order by last name
+                $patients = app\App::$app->patient->get();
+                ?>
+
+
+                <label for="patient-select">Seleziona un paziente</label>
+                <!-- select -->
+                <select class="form-select mb-3" name="patient-select" id="patient-select" required>
+                    <option selected disabled value=''>Scegli un paziente</option>
+                    <?php foreach ($patients as $patient) : ?>
+                        <option value="<?= $patient['id'] ?>"><?= $patient['fname'] . ' ' . $patient['lname'] ?></option>
+                    <?php endforeach ?>
+                </select>
+                <div class="invalid-feedback d-none text-end" id="patient-select-error">
+                    Devi selezionare un paziente per procedere!
+                </div>
+
+            <?php endif ?>
 
             <div class="d-flex mb-3">
                 <button type="button" id="select-all" class="btn border-0 btn-outline-primary no-hover">Seleziona tutti</button>

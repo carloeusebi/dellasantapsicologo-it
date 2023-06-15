@@ -51,7 +51,7 @@
                 Elimina
             </button>
 
-            <!-- DELTE MODAL -->
+            <!-- DELETE MODAL -->
             <div class="modal fade" id="delete-patient-modal" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -91,3 +91,4 @@
         </li>
     <?php endforeach ?>
 </ul>
+<a href="/admin/sondaggi/crea?patient-id=<?= $element['id'] ?>">Crea sondaggio</a>
