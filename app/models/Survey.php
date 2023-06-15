@@ -13,6 +13,7 @@ class Survey extends DbModel
     public $answers;
     public $created_at;
     public $last_update;
+    public $completed;
 
     public static function tableName(): string
     {
@@ -22,7 +23,7 @@ class Survey extends DbModel
     public function attributes(): array
     {
         return [
-            'patient_id', 'survey', 'answers', 'created_at', 'last_update', 'id'
+            'patient_id', 'survey', 'answers', 'created_at', 'last_update', 'completed', 'id'
         ];
     }
 

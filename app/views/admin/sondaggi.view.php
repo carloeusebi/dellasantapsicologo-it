@@ -13,3 +13,7 @@
         </div>
     </div>
 </div>
+
+<pre>
+    <?php var_dump($entries) ?>
+</pre>
