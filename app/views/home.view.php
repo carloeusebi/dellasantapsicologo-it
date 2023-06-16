@@ -13,7 +13,7 @@
             </div>
             <div class="col-50">
                 <figure class="d-flex justify-center">
-                    <img src="img/new-hero-img.jpg" alt="Il Dottor Dellasanta">
+                    <img src="img/new-hero-img.png" alt="Il Dottor Dellasanta">
                 </figure>
             </div>
         </div>
