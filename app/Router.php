@@ -76,6 +76,11 @@ class Router
         return $this->getMethod() === 'get';
     }
 
+    public function getPreviousPage()
+    {
+        return $_SERVER['HTTP_REFERER'];
+    }
+
     private function getPageTitle($page)
     {
         return match ($page) {

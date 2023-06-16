@@ -2,7 +2,7 @@
 
     <header class="d-flex justify-content-between my-5">
 
-        <a href="/admin/questionari" class="btn btn-secondary me-3">
+        <a href="<?= app\App::$app->router->getPreviousPage() ?>" class="btn btn-secondary me-3">
             <i class="fa-solid fa-circle-chevron-left me-2"></i>
             Indietro
         </a>
@@ -19,7 +19,7 @@
                     <span class="d-none d-md-inline">Elimina</span>
                 </button>
 
-                <!-- DELTE MODAL -->
+                <!-- DELETE MODAL -->
                 <div class="modal fade" id="delete-question-modal" tabindex="-1">
                     <div class="modal-dialog">
                         <div class="modal-content">
