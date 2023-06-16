@@ -9,7 +9,7 @@
             </a>
 
             <!-- SEARCHBAR -->
-            <form class="d-flex flex-grow-1 me-3 mb-0" role="search">
+            <!-- <form class="d-flex flex-grow-1 me-3 mb-0" role="search">
                 <div class="input-group-append flex-grow-1">
                     <div class="input-group">
                         <input class="form-control " type="search" placeholder="Cerca" name="search" value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>">
@@ -18,7 +18,7 @@
                         </button>
                     </div>
                 </div>
-            </form>
+            </form> -->
         </header>
 
         <!-- SELECT PATIENT -->
@@ -62,6 +62,7 @@
 
             <?php endif ?>
 
+            <!-- SELECT/DESELECT ALL -->
             <div class="d-flex mb-3">
                 <button type="button" id="select-all" class="btn border-0 btn-outline-primary no-hover">Seleziona tutti</button>
                 <button type="button" id="deselect-all" class="btn border-0 btn-outline-secondary no-hover">Deseleziona tutti</button>
@@ -82,6 +83,7 @@
                 </script>
 
                 <?php foreach ($entries as $question) : ?>
+                    <!-- pass data to JS -->
                     <script>
                         entry = {
                             id: `<?= $question['id'] ?>`,
@@ -93,33 +95,27 @@
                         }
                         questionsData.push(entry);
                     </script>
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex">
-                                    <input type="checkbox" class="form-check-input me-3" name="questions[]>" data-id="<?= $question['id'] ?>">
-                                    <h5 class="card-title"><?= $question['question'] ?></h5>
-                                </div>
-                                <a href="/admin/questionari?id=<?= $question['id'] ?>" class="btn btn-outline-success border-0 no-hover">
-                                    <i class="fa-solid fa-pen me-2"></i>
-                                    <span class="d-none d-md-inline">
-                                        Modifica
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
+
+                    <!-- QUESTION -->
+
+                    <div class="d-flex align-items-center user-select-none">
+                        <input type="checkbox" class="form-check-input me-3" name="questions[]>" data-id="<?= $question['id'] ?>" id="question-<?= $question['id'] ?>">
+                        <label for="question-<?= $question['id'] ?>" class="h5"><?= $question['question'] ?></label>
+                        <a href="/admin/questionari?id=<?= $question['id'] ?>" class="btn border-0 btn-outline-primary no-hover"><i class="fa-regular fa-eye"></i></a>
                     </div>
+
+
                 <?php endforeach ?>
             <?php endif ?>
             <!-- SUBMIT BUTTON -->
             <div class="text-end">
-                <button type="submit" class="btn btn-success">
-                    <i class="fa-solid fa-plus me-md-2"></i>
-                    <span class="d-none d-md-inline">Crea nuovo sondaggio</span>
+                <button type="submit" class="btn btn-success mt-3">
+                    <i class="fa-solid fa-plus me-2"></i>
+                    <span>Crea nuovo sondaggio</span>
                 </button>
             </div>
         </form>
         <form action="/admin/sondaggi/crea" method="post" id="real-form" class="d-none"></form>
     </div>
 
-    <script src="/js/create-survey.js"></script>
+    <script src="/js/survey-create.js"></script>

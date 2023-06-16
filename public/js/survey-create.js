@@ -49,7 +49,7 @@ form.addEventListener('submit', e => {
 
     // checks if at least one checkbox is checked
     if (!checkedQuestions.length) {
-        alert('ATTENZIONE!!\nNON HAI SELEZIONATO NESSUN QUESTIONARIO!')
+        alert('ATTENZIONE!!\nNon hai selezionato nessun questionario!')
         return;
     }
 
