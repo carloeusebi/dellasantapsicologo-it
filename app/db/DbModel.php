@@ -23,11 +23,18 @@ abstract class DbModel
         $order = self::getOrder();
         $type = self::getType();
 
+        $join = $_GET['join'] ?? null;
+
         $query = "SELECT * FROM $tableName ";
 
         if ($search) {
 
             $query .= " WHERE " . $attributes[0] . " LIKE :search OR " . $attributes[1] . " LIKE :search ";
+        }
+
+        // to order by a joined table
+        if ($join) {
+            $query .= " JOIN $join" . "s ON $tableName.$join" . "_id = $join" . "s.id ";
         }
 
         $query .= " ORDER BY $order $type";
@@ -135,7 +142,7 @@ abstract class DbModel
     private function getOrder()
     {
         $order = $_GET['order'] ?? 'id';
-        return in_array($order, $this->attributes()) ? $order : 'id';
+        return in_array($order, $this->attributes()) || $order === 'lname' ? $order : 'id';
     }
 
     private function getType()
