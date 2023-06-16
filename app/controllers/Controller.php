@@ -108,8 +108,8 @@ class Controller
 
     public function renderPage()
     {
-        $this->params += ['entries' => $this->entries];
-        $this->params += ['element' => $this->gotById];
+        $this->addToParams('entries', $this->entries);
+        $this->addToParams('element', $this->gotById);
 
         $isFilled = false;
 
@@ -119,7 +119,7 @@ class Controller
             $isFilled = true;
 
             foreach ($data as $key => $value) {
-                $this->params += [$key => $value];
+                $this->addToParams($key, $value);
             }
         }
 
