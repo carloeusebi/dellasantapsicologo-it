@@ -12,11 +12,9 @@
         <h1>Sondaggio di <?= $patient['fname'] . ' ' . $patient['lname'] ?></h1>
     </header>
 
-    <script>
-        const encodedSurveyJson = "<?= $element['survey'] ?>";
-    </script>
-
     <section id="survey">
+
+        <?= var_dump($surveys) ?>
 
     </section>
 

@@ -14,6 +14,7 @@ class SurveysController extends AdminController
 
     protected const MODEL = 'survey';
 
+
     public static function index($page)
     {
         $admin = new Controller($page);
@@ -22,8 +23,14 @@ class SurveysController extends AdminController
 
         $admin->get();
 
+        if (isset($admin->gotById['survey'])) {
+            $surveys = json_decode($admin->gotById['survey']);
+        }
+        $admin->addToParams('surveys', $surveys);
+
         $admin->renderPage();
     }
+
 
     public static function save()
     {
@@ -31,11 +38,13 @@ class SurveysController extends AdminController
         $admin->save();
     }
 
+
     public static function delete()
     {
         $admin = self::initController();
         $admin->delete();
     }
+
 
     private static function initController()
     {

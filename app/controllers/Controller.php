@@ -140,4 +140,9 @@ class Controller
     {
         App::$app->router->renderView(self::ADMIN_404, ['layout' => self::LAYOUT, 'notFound' => $notFound]);
     }
+
+    public function addToParams(string $param, $value)
+    {
+        $this->params += [$param => $value];
+    }
 }
