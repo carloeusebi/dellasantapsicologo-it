@@ -22,41 +22,36 @@
             <!-- SELECT PATIENT -->
             <?php if (isset($_GET['patient-id'])) : ?>
 
-                <?php $id = $_GET['patient-id'];
-                $patient = app\App::$app->patient->getById($id);
-                ?>
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center mb-3">
                     <p class="m-0 me-2">Sondaggio per:</p>
-                    <a class="h3 d-block m-0" href="/admin/pazienti?id=<?= $id ?>">
+                    <a class="h3 d-block m-0" href="/admin/pazienti?id=<?= $patient['id'] ?>">
                         <?= $patient['fname'] . ' ' . $patient['lname'] ?>
                     </a>
                 </div>
-                <input type="hidden" id="patient_id" name="patient_id" value="<?= $id ?>">
+                <input type="hidden" id="patient_id" name="patient_id" value="<?= $patient['id'] ?>">
                 <div class="invalid-feedback d-none text-end" id="patient_id-error">
                     Devi selezionare un paziente per procedere!
                 </div>
 
             <?php else : ?>
 
-                <?php
-                $_GET['order'] = 'lname'; // to order by last name
-                $patients = app\App::$app->patient->get();
-                ?>
-
-
                 <label for="patient_id">Seleziona un paziente</label>
                 <!-- select -->
                 <select class="form-select mb-3" name="patient_id" id="patient_id" required>
                     <option selected disabled value=''>Scegli un paziente</option>
+
                     <?php foreach ($patients as $patient) : ?>
                         <option value="<?= $patient['id'] ?>"><?= $patient['fname'] . ' ' . $patient['lname'] ?></option>
                     <?php endforeach ?>
+
                 </select>
                 <div class="invalid-feedback d-none text-end" id="patient_id-error">
                     Devi selezionare un paziente per procedere!
                 </div>
 
             <?php endif ?>
+
+            <p class="h5">Seleziona i questionari da inserire nel sondaggio:</p>
 
             <!-- SELECT/DESELECT ALL -->
             <div class="d-flex mb-3">
@@ -66,19 +61,14 @@
 
             <!-- QUESTIONS -->
 
-            <?php if (empty($entries)) : ?>
+            <?php if (empty($questions)) : ?>
                 <div class="alert alert-primary mb-0" role="alert">
                     <i class="fa-solid fa-circle-info me-md-2"></i>
                     Nessun questionario trovato
                 </div>
             <?php else : ?>
 
-                <script>
-                    const questionsData = [];
-                    let entry;
-                </script>
-
-                <?php foreach ($entries as $question) : ?>
+                <?php foreach ($questions as $question) : ?>
                     <!-- QUESTION -->
 
                     <div class="d-flex align-items-center user-select-none">

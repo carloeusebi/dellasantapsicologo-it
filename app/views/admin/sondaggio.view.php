@@ -12,11 +12,6 @@
 
         <div>
 
-            <!-- EDIT BUTTON -->
-            <a href="/admin/sondaggi/crea?id=<?= $element['id'] ?>" class="btn btn-outline-secondary border-0 no-hover">
-                <i class="fa-solid fa-pen me-2"></i>
-                Modifica
-            </a>
             <!-- DELETE BUTTON -->
             <button class="btn btn-outline-danger border-0 no-hover" data-bs-toggle="modal" data-bs-target="#delete-patient-modal">
                 <i class="fa-solid fa-trash-can me-2"></i>

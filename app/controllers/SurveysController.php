@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\App;
+
 class SurveysController extends AdminController
 {
     protected const NOT_FOUND = 'Sondaggio non trovato';
@@ -25,8 +27,22 @@ class SurveysController extends AdminController
 
         if (isset($admin->gotById['survey'])) {
             $surveys = json_decode($admin->gotById['survey']);
+            $admin->addToParams('surveys', $surveys);
         }
-        $admin->addToParams('surveys', $surveys);
+
+        if (isset($_GET['patient-id'])) {
+            $patient = self::getPatient($_GET['patient-id']);
+            $admin->addToParams('patient', $patient);
+        }
+
+        if (self::needQuestions()) {
+            $questions = self::getQuestions();
+            $admin->addToParams('questions', $questions);
+
+            $_GET['order'] = 'lname'; // to order by last name
+            $patients = self::getPatients();
+            $admin->addToParams('patients', $patients);
+        }
 
         $admin->renderPage();
     }
@@ -56,5 +72,25 @@ class SurveysController extends AdminController
         $admin::$header = self::HEADER;
 
         return $admin;
+    }
+
+    private static function needQuestions()
+    {
+        return App::$app->router->getPath() === '/admin/sondaggi/crea';
+    }
+
+    private static function getQuestions()
+    {
+        return App::$app->question->get();
+    }
+
+    private static function getPatients()
+    {
+        return App::$app->patient->get();
+    }
+
+    private static function getPatient($id)
+    {
+        return App::$app->patient->getById($id);
     }
 }

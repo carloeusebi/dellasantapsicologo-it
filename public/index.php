@@ -23,7 +23,7 @@ $app->router->get('/admin/pazienti', [PatientsController::class, 'index']);
 $app->router->get('/admin/pazienti', [PatientsController::class, 'index']);
 
 $app->router->get('/admin/sondaggi', [SurveysController::class, 'index']);
-$app->router->get('/admin/sondaggi/crea', [QuestionsController::class, 'index']);
+$app->router->get('/admin/sondaggi/crea', [SurveysController::class, 'index']);
 
 $app->router->get('/admin/questionari', [QuestionsController::class, 'index']);
 
