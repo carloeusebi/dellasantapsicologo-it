@@ -99,6 +99,7 @@ class Mailer
 
         fopen($filePath, 'a+');
 
+        $date = date("d-m-y H:i:s", time());
 
         $message = match ($code) {
             1 => "An email was succesfully sent.",
