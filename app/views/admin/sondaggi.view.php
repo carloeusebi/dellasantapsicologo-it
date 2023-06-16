@@ -9,7 +9,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <h1>Sondaggi</h1>
                 <div>
-                    <a class="btn btn-success" href="sondaggi/crea">
+                    <a class="btn btn-success me-2" href="sondaggi/crea">
                         <i class="fa-solid fa-plus me-md-2"></i>
                         <span class="d-none d-md-inline">Crea nuovo sondaggio</span>
                     </a>
