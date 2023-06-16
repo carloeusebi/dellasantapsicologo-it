@@ -10,7 +10,7 @@
 }
 
 /* ! ****************************** */
-/* ! CUSTOM PROPERITES ************ */
+/* ! CUSTOM PROPERTIES ************ */
 /* ! ****************************** */
 :root {
     /* colors */
@@ -33,7 +33,7 @@ html {
 }
 
 body {
-    font-family: sans-serif;
+    font-family: 'roboto', sans-serif;
 }
 
 body.wait,
@@ -200,7 +200,7 @@ address {
 /* ! ****************************** */
 section,
 main header {
-    padding: 60px 20px;
+    padding: 100px 20px;
     background-repeat: no-repeat;
     background-position: top;
     background-size: cover;
@@ -213,22 +213,19 @@ main header {
     background-position: top;
     background-size: cover;
 
-    padding-top: 45px;
+    padding: 0;
 
 }
 
+#hero .col-50:first-of-type {
+    padding: 75px 20px 75px;
+}
+
+
 #hero img {
-    position: relative;
-
-    bottom: -80px;
-    transform: scale(1.1);
-
-
-    /* border: 10px solid var(--footer-color);    
-    border-radius: 50%;
-    background-color: #fff;
-    width: 75%;
-    box-shadow: 0 0 20px var(--footer-color); */
+    height: 550px;
+    max-width: 100%;
+    object-fit: cover;
 }
 
 #hero h3 {
@@ -288,6 +285,7 @@ main header {
 
 #di-cosa-mi-occupo h2 {
     color: var(--footer-color);
+    margin-bottom: 75px;
 }
 
 #di-cosa-mi-occupo .col {
@@ -492,6 +490,8 @@ label[for="norm-cb"] {
 /* # CONTATTI */
 #contatti {
     background-color: var(--green-bg-color);
+    padding-top: 75px;
+    padding-bottom: 75px;
     position: relative;
 }
 
@@ -566,6 +566,10 @@ label[for="norm-cb"] {
         max-width: 980px;
     }
 
+    #hero img {
+        height: 650px;
+    }
+
     #hero h3 {
         font-size: 1.8rem;
         font-weight: 600;
@@ -619,6 +623,11 @@ label[for="norm-cb"] {
     #top-navbar li a {
         padding: 20px;
         border: none;
+    }
+
+    /*  HERO */
+    #hero .col-50:first-of-type {
+        padding-left: 250px;
     }
 
     /* # DI COSA MI OCCUPO */
