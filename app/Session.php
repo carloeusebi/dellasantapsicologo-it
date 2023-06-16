@@ -13,6 +13,8 @@ class Session
 
         session_start();
 
+        setcookie(session_name(), session_id(), time() + 3600);
+
         $flashMessages = $_SESSION[self::FLASH] ??  [];
 
         foreach ($flashMessages as $key => &$flashMessage) {
