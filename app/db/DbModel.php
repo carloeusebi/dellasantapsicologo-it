@@ -157,8 +157,8 @@ abstract class DbModel
         foreach ($data as $key => $value) {
 
             if ($value) {
-                if (is_array($value)) $value = array_map('trim', $value);
-                else $value = trim($value);
+                if (!is_array($value))
+                    $value = trim($value);
             }
 
             $this->$key = $value ?? null;

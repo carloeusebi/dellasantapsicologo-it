@@ -1,12 +1,12 @@
 const form = document.getElementById('survey-form');
-const realForm = document.getElementById('real-form');
 
 const checkboxes = document.querySelectorAll('[type="checkbox"]');
 const selectAllBtn = document.getElementById('select-all');
 const deselectAllBtn = document.getElementById('deselect-all');
 
-const patientSelect = document.getElementById('patient-select');
-const patientSelectError = document.getElementById('patient-select-error');
+const patientSelect = document.getElementById('patient_id');
+const patientSelectError = document.getElementById('patient_id-error');
+const titleInput = document.getElementById('survey-title');
 
 // select all checkboxes
 selectAllBtn.addEventListener('click', () => {
@@ -53,19 +53,5 @@ form.addEventListener('submit', e => {
         return;
     }
 
-    const selectedQuestions = questionsData.reduce((acc, question) => {
-        if (checkedQuestions.includes(question.id)) {
-            acc.push(question);
-        }
-        return acc;
-    }, []);
-
-    const questionsJson = JSON.stringify(selectedQuestions);
-
-    realForm.innerHTML = `
-        <input type="hidden" name="patient_id" value="${patient}">
-        <input type="hidden" name="survey" value="${encodeURIComponent(questionsJson)}">
-    `
-
-    realForm.submit();
+    form.submit();
 });

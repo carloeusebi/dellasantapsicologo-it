@@ -29,7 +29,7 @@
                 <?php if (empty($entries)) : ?>
                     <div class="alert alert-primary mb-0" role="alert">
                         <i class="fa-solid fa-circle-info me-2"></i>
-                        Nessun paziente trovato
+                        Nessun sondaggio trovato
                     </div>
 
                 <?php else : ?>
@@ -48,6 +48,17 @@
                                             <input type="hidden" name="type" value="asc">
                                             <input type="hidden" name="join" value="patient">
                                             <strong>Paziente</strong>
+                                            <i class="fa-solid fa-chevron-up ms-2 invisible"></i>
+                                        </button>
+                                    </form>
+                                </th>
+                                <!-- SURVEY NAME -->
+                                <th scope="col">
+                                    <form class="w-100" action="" method="GET">
+                                        <button type="submit" class="btn w-100 no-hover text-start border-0 p-0">
+                                            <input type="hidden" name="order" value="title">
+                                            <input type="hidden" name="type" value="asc">
+                                            <strong>Titolo</strong>
                                             <i class="fa-solid fa-chevron-up ms-2 invisible"></i>
                                         </button>
                                     </form>
@@ -96,6 +107,7 @@
 
                                 <tr class="clickable-row" data-href="/admin/sondaggi?id=<?= $survey['id'] ?>">
                                     <td><?= $patient['fname'] . ' ' . $patient['lname'] ?></td>
+                                    <td><?= $survey['title'] ?></td>
                                     <td><?= $survey['created_at'] ?></td>
                                     <td class="d-none d-md-table-cell"><?= $survey['last_update'] ?></td>
                                     <td class="d-none d-lg-table-cell"><?= $survey['completed'] ?></td>

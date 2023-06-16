@@ -8,35 +8,31 @@
                 <span class="d-none d-md-inline">Indietro</span>
             </a>
 
-            <!-- SEARCHBAR -->
-            <!-- <form class="d-flex flex-grow-1 me-3 mb-0" role="search">
-                <div class="input-group-append flex-grow-1">
-                    <div class="input-group">
-                        <input class="form-control " type="search" placeholder="Cerca" name="search" value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>">
-                        <button class="btn btn-secondary border-0">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </form> -->
         </header>
 
-        <!-- SELECT PATIENT -->
-        <form id="survey-form" action="">
+        <form id="survey-form" action="/admin/sondaggi/crea" method="POST">
 
+            <!-- TITLE -->
+            <div class="mb-3">
+                <label for="title" class="form-label h4">Titolo del sondaggio:</label>
+                <input type="text" class="form-control" id="title" name="title">
+            </div>
+
+
+            <!-- SELECT PATIENT -->
             <?php if (isset($_GET['patient-id'])) : ?>
 
                 <?php $id = $_GET['patient-id'];
                 $patient = app\App::$app->patient->getById($id);
                 ?>
-                <div class="d-flex justify-content-between">
-                    <p>Sondaggio per:</p>
-                    <a class="h3 d-block" href="/admin/pazienti?id=<?= $id ?>">
+                <div class="d-flex align-items-center">
+                    <p class="m-0 me-2">Sondaggio per:</p>
+                    <a class="h3 d-block m-0" href="/admin/pazienti?id=<?= $id ?>">
                         <?= $patient['fname'] . ' ' . $patient['lname'] ?>
                     </a>
                 </div>
-                <input type="hidden" id="patient-select" name="patient-select" value="<?= $id ?>">
-                <div class="invalid-feedback d-none text-end" id="patient-select-error">
+                <input type="hidden" id="patient_id" name="patient_id" value="<?= $id ?>">
+                <div class="invalid-feedback d-none text-end" id="patient_id-error">
                     Devi selezionare un paziente per procedere!
                 </div>
 
@@ -48,15 +44,15 @@
                 ?>
 
 
-                <label for="patient-select">Seleziona un paziente</label>
+                <label for="patient_id">Seleziona un paziente</label>
                 <!-- select -->
-                <select class="form-select mb-3" name="patient-select" id="patient-select" required>
+                <select class="form-select mb-3" name="patient_id" id="patient_id" required>
                     <option selected disabled value=''>Scegli un paziente</option>
                     <?php foreach ($patients as $patient) : ?>
                         <option value="<?= $patient['id'] ?>"><?= $patient['fname'] . ' ' . $patient['lname'] ?></option>
                     <?php endforeach ?>
                 </select>
-                <div class="invalid-feedback d-none text-end" id="patient-select-error">
+                <div class="invalid-feedback d-none text-end" id="patient_id-error">
                     Devi selezionare un paziente per procedere!
                 </div>
 
@@ -83,39 +79,32 @@
                 </script>
 
                 <?php foreach ($entries as $question) : ?>
-                    <!-- pass data to JS -->
-                    <script>
-                        entry = {
-                            id: `<?= $question['id'] ?>`,
-                            question: `<?= $question['question'] ?>`,
-                            legend: `<?= $question['legend'] ?>`,
-                            answers: `<?= $question['answers'] ?>`,
-                            type: `<?= $question['type'] ?>`,
-                            description: `<?= $question['description'] ?>`
-                        }
-                        questionsData.push(entry);
-                    </script>
-
                     <!-- QUESTION -->
 
                     <div class="d-flex align-items-center user-select-none">
-                        <input type="checkbox" class="form-check-input me-3" name="questions[]>" data-id="<?= $question['id'] ?>" id="question-<?= $question['id'] ?>">
+                        <input type="checkbox" class="form-check-input me-3" name="checkboxes[]>" value="<?= $question['id'] ?>" id="question-<?= $question['id'] ?>">
                         <label for="question-<?= $question['id'] ?>" class="h5"><?= $question['question'] ?></label>
                         <a href="/admin/questionari?id=<?= $question['id'] ?>" class="btn border-0 btn-outline-primary no-hover"><i class="fa-regular fa-eye"></i></a>
                     </div>
+
+                    <input type="hidden" name="questions[<?= $question['id'] ?>][id]" value="<?= $question['id'] ?>">
+                    <input type="hidden" name="questions[<?= $question['id'] ?>][question]" value="<?= $question['question'] ?>">
+                    <input type="hidden" name="questions[<?= $question['id'] ?>][description]" value="<?= $question['description'] ?>">
+                    <input type="hidden" name="questions[<?= $question['id'] ?>][type]" value="<?= $question['type'] ?>">
+                    <input type="hidden" name="questions[<?= $question['id'] ?>][answers]" value="<?= $question['answers'] ?>">
+                    <input type="hidden" name="questions[<?= $question['id'] ?>][legend]" value="<?= $question['legend'] ?>">
 
 
                 <?php endforeach ?>
             <?php endif ?>
             <!-- SUBMIT BUTTON -->
-            <div class="text-end">
+            <div class=" text-end">
                 <button type="submit" class="btn btn-success mt-3">
                     <i class="fa-solid fa-plus me-2"></i>
                     <span>Crea nuovo sondaggio</span>
                 </button>
             </div>
         </form>
-        <form action="/admin/sondaggi/crea" method="post" id="real-form" class="d-none"></form>
     </div>
 
     <script src="/js/survey-create.js"></script>
