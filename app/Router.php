@@ -78,6 +78,17 @@ class Router
 
     public function getPreviousPage()
     {
+        if (!isset($_SESSION['visitedPages'])) {
+            $_SESSION['visitedPages'] = [];
+            $_SESSION['parentReferer'] = $_SERVER['HTTP_REFERER'];
+        } else {
+            if (in_array($_SERVER['REQUEST_URI'], $_SESSION['visitedPages'], true)) {
+                unset($_SESSION['visitedPages']);
+                return $_SESSION['parentReferer'];
+            }
+        }
+
+        array_push($_SESSION['visitedPages'], $_SERVER['REQUEST_URI']);
         return $_SERVER['HTTP_REFERER'];
     }
 
