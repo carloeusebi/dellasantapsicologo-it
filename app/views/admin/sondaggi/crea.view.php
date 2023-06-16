@@ -3,7 +3,7 @@
         <header class="d-flex justify-content-between align-items-center my-5">
 
             <!-- BACK -->
-            <a href="/admin/sondaggi" class="btn btn-secondary me-3">
+            <a href="<?= app\App::$app->router->getPreviousPage() ?>" class="btn btn-secondary me-3">
                 <i class="fa-solid fa-circle-chevron-left me-md-2"></i>
                 <span class="d-none d-md-inline">Indietro</span>
             </a>
