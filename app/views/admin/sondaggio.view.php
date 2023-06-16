@@ -9,7 +9,7 @@
                 Indietro
             </span>
         </a>
-        <h1>Sondaggio di <?= $patient['fname'] . ' ' . $patient['lname'] ?></h1>
+        <h1>Sondaggio di <a href="/admin/pazienti?id=<?= $patient['id'] ?>"><?= $patient['fname'] . ' ' . $patient['lname'] ?></a></h1>
     </header>
 
     <section id="survey">
