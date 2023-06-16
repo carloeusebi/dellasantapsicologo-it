@@ -13,9 +13,9 @@ class Controller
     const ADMIN_404 = '/admin/404';
 
     private Controller $admin;
-    private $entries;
-    private $gotById;
-    private array $params = ['layout' => self::LAYOUT];
+    protected $entries;
+    protected $gotById;
+    protected array $params = ['layout' => self::LAYOUT];
     private string $page;
 
     protected static $header;
@@ -60,7 +60,9 @@ class Controller
             if (isset($_GET['id'])) {
 
                 $this->gotById = App::$app->{self::$model}->getById($_GET['id']);
-                if (!$this->gotById) $this->render404(self::$notFound);
+                if (!$this->gotById) {
+                    $this->render404(self::$notFound);
+                }
                 App::$app->session->setFlash('form', $this->gotById);
                 $labels = App::$app->{self::$model}->labels();
                 $this->params += ['labels' => $labels];
@@ -137,5 +139,10 @@ class Controller
     public static function render404($notFound)
     {
         App::$app->router->renderView(self::ADMIN_404, ['layout' => self::LAYOUT, 'notFound' => $notFound]);
+    }
+
+    public function addToParams(string $param, $value)
+    {
+        $this->params += [$param => $value];
     }
 }

@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="d-flex justify-content-between align-items-center my-5">
-        <a href="/admin/pazienti" class="btn btn-outline-primary border-0 no-hover">
+        <a href="<?= app\App::$app->router->getPreviousPage() ?>" class="btn btn-outline-primary border-0 no-hover">
             <i class="fa-solid fa-circle-chevron-left me-md-2"></i>
             <span class="d-none d-md-inline">
                 Indietro
@@ -51,7 +51,7 @@
                 Elimina
             </button>
 
-            <!-- DELTE MODAL -->
+            <!-- DELETE MODAL -->
             <div class="modal fade" id="delete-patient-modal" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -73,6 +73,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -91,3 +92,4 @@
         </li>
     <?php endforeach ?>
 </ul>
+<a href="/admin/sondaggi/crea?patient-id=<?= $element['id'] ?>">Crea sondaggio</a>

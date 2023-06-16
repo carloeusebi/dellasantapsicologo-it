@@ -37,7 +37,7 @@ class PatientsController extends AdminController
         $admin->delete();
     }
 
-    private static function initController()
+    public static function initController()
     {
         $admin = new AdminController();
         $admin::$created = self::CREATED;

@@ -145,4 +145,4 @@
 
     </div>
 
-    <script src="/js/patients.js"></script>
+    <script src="/js/table.js"></script>

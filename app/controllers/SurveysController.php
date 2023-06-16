@@ -2,17 +2,18 @@
 
 namespace app\controllers;
 
-class QuestionsController extends AdminController
+class SurveysController extends AdminController
 {
-    protected const NOT_FOUND = 'Questionario non trovato';
+    protected const NOT_FOUND = 'Sondaggio non trovato';
 
-    protected const CREATED = 'Questionario creato con successo';
-    protected const UPDATED = 'Questionario modificato con successo';
-    protected const DELETED = 'Questionario cancellato con successo';
+    protected const CREATED = 'Sondaggio creato con successo';
+    protected const UPDATED = 'Sondaggio modificato con successo';
+    protected const DELETED = 'Sondaggio cancellato con successo';
 
-    protected const HEADER = 'Location: /admin/questionari';
+    protected const HEADER = 'Location: /admin/sondaggi';
 
-    protected const MODEL = 'question';
+    protected const MODEL = 'survey';
+
 
     public static function index($page)
     {
@@ -22,8 +23,14 @@ class QuestionsController extends AdminController
 
         $admin->get();
 
+        if (isset($admin->gotById['survey'])) {
+            $surveys = json_decode($admin->gotById['survey']);
+        }
+        $admin->addToParams('surveys', $surveys);
+
         $admin->renderPage();
     }
+
 
     public static function save()
     {
@@ -31,11 +38,13 @@ class QuestionsController extends AdminController
         $admin->save();
     }
 
+
     public static function delete()
     {
         $admin = self::initController();
         $admin->delete();
     }
+
 
     private static function initController()
     {
