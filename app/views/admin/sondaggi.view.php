@@ -114,4 +114,3 @@
 <?php endif ?>
 
 <script src="/js/table.js"></script>
-<script src="/js/survey.js"></script>
