@@ -49,6 +49,7 @@ $app->router->post('/admin/pazienti/delete', [PatientsController::class, 'delete
 
 $app->router->post('/admin/sondaggi', [SurveysController::class, 'index']);
 $app->router->post('/admin/sondaggi/crea', [SurveysController::class, 'save']);
+$app->router->post('/admin/sondaggi/delete', [SurveysController::class, 'delete']);
 
 $app->router->post('/admin/questionari', [QuestionsController::class, 'index']);
 $app->router->post('/admin/questionari/create', [QuestionsController::class, 'save']);
