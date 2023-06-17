@@ -84,12 +84,12 @@
                 <!-- answers -->
                 <div>
                     <p class="h6">Lista delle domande</p>
-                    <ul class="list-unstyled mb-1">
+                    <ul class="list-unstyled mb-1 drag-container">
                         <?php $answers = isset($element['answers']) ? explode(';', $element['answers']) : [];
 
                         for ($i = 0; $i < count($answers); $i++) : ?>
 
-                            <li class="d-flex align-items-center my-1" data-list="<?= $i ?>">
+                            <li class="d-flex align-items-center my-1 draggable" draggable="true" data-list="<?= $i ?>">
                                 <input type="text" class="form-control" data-answer="<?= $i ?>" value="<?= $answers[$i] ?>" name="answers[]>">
                                 <button type="button" class="btn btn-outline-danger border-0 no-hover" data-delete="<?= $i ?>" tabindex="-1">
                                     <i class="fa-solid fa-trash-can fa-sm ms-2"></i>
@@ -119,3 +119,4 @@
 </div>
 
 <script src="/js/question.js"></script>
+<script src="/js/dragndrop.js"></script>

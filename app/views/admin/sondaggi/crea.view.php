@@ -61,32 +61,34 @@
 
             <!-- QUESTIONS -->
 
-            <?php if (empty($questions)) : ?>
-                <div class="alert alert-primary mb-0" role="alert">
-                    <i class="fa-solid fa-circle-info me-md-2"></i>
-                    Nessun questionario trovato
-                </div>
-            <?php else : ?>
+            <div class="drag-container">
 
-                <?php foreach ($questions as $question) : ?>
-                    <!-- QUESTION -->
-
-                    <div class="d-flex align-items-center user-select-none">
-                        <input type="checkbox" class="form-check-input me-3" name="checkboxes[]>" value="<?= $question['id'] ?>" id="question-<?= $question['id'] ?>">
-                        <label for="question-<?= $question['id'] ?>" class="h5"><?= $question['question'] ?></label>
-                        <a href="/admin/questionari?id=<?= $question['id'] ?>" class="btn border-0 btn-outline-primary no-hover"><i class="fa-regular fa-eye"></i></a>
+                <?php if (empty($questions)) : ?>
+                    <div class="alert alert-primary mb-0" role="alert">
+                        <i class="fa-solid fa-circle-info me-md-2"></i>
+                        Nessun questionario trovato
                     </div>
+                <?php else : ?>
 
-                    <input type="hidden" name="questions[<?= $question['id'] ?>][id]" value="<?= $question['id'] ?>">
-                    <input type="hidden" name="questions[<?= $question['id'] ?>][question]" value="<?= $question['question'] ?>">
-                    <input type="hidden" name="questions[<?= $question['id'] ?>][description]" value="<?= $question['description'] ?>">
-                    <input type="hidden" name="questions[<?= $question['id'] ?>][type]" value="<?= $question['type'] ?>">
-                    <input type="hidden" name="questions[<?= $question['id'] ?>][answers]" value="<?= $question['answers'] ?>">
-                    <input type="hidden" name="questions[<?= $question['id'] ?>][legend]" value="<?= $question['legend'] ?>">
+                    <?php foreach ($questions as $question) : ?>
+                        <!-- QUESTION -->
 
+                        <div class="d-flex align-items-center user-select-none draggable" draggable="true">
+                            <input type="checkbox" class="form-check-input me-3" name="checkboxes[]>" value="<?= $question['id'] ?>" id="question-<?= $question['id'] ?>">
+                            <label for="question-<?= $question['id'] ?>" class="h5"><?= $question['question'] ?></label>
+                            <a href="/admin/questionari?id=<?= $question['id'] ?>" class="btn border-0 btn-outline-primary no-hover"><i class="fa-regular fa-eye"></i></a>
 
-                <?php endforeach ?>
-            <?php endif ?>
+                            <input type="hidden" name="questions[<?= $question['id'] ?>][id]" value="<?= $question['id'] ?>">
+                            <input type="hidden" name="questions[<?= $question['id'] ?>][question]" value="<?= $question['question'] ?>">
+                            <input type="hidden" name="questions[<?= $question['id'] ?>][description]" value="<?= $question['description'] ?>">
+                            <input type="hidden" name="questions[<?= $question['id'] ?>][type]" value="<?= $question['type'] ?>">
+                            <input type="hidden" name="questions[<?= $question['id'] ?>][answers]" value="<?= $question['answers'] ?>">
+                            <input type="hidden" name="questions[<?= $question['id'] ?>][legend]" value="<?= $question['legend'] ?>">
+                        </div>
+
+                    <?php endforeach ?>
+                <?php endif ?>
+            </div>
             <!-- SUBMIT BUTTON -->
             <div class=" text-end">
                 <button type="submit" class="btn btn-success mt-3">
@@ -98,3 +100,4 @@
     </div>
 
     <script src="/js/survey-create.js"></script>
+    <script src="/js/dragndrop.js"></script>
