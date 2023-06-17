@@ -23,6 +23,7 @@ function handelStartDragging(e) {
     const dragging = this;
 
     if ('touches' in e) {
+        e.preventDefault();
         touchTimeout = setTimeout(() => {
             startDragging(dragging);
         }, 750);
