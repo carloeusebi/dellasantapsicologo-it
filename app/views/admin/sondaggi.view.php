@@ -43,7 +43,7 @@
                                 <!-- PATIENT NAME -->
                                 <th scope="col">
                                     <form class="w-100" action="" method="GET">
-                                        <button type="submit" class="btn w-100 no-hover text-start border-0 p-0">
+                                        <button type="submit" class="btn w-100 no-hover border-0 p-0 d-flex align-items-center justify-content-center">
                                             <input type="hidden" name="order" value="lname">
                                             <input type="hidden" name="type" value="asc">
                                             <input type="hidden" name="join" value="patient">
@@ -55,7 +55,7 @@
                                 <!-- SURVEY NAME -->
                                 <th scope="col">
                                     <form class="w-100" action="" method="GET">
-                                        <button type="submit" class="btn w-100 no-hover text-start border-0 p-0">
+                                        <button type="submit" class="btn w-100 no-hover border-0 p-0 d-flex align-items-center justify-content-center">
                                             <input type="hidden" name="order" value="title">
                                             <input type="hidden" name="type" value="asc">
                                             <strong>Titolo</strong>
@@ -66,7 +66,7 @@
                                 <!-- CREATED AT -->
                                 <th scope="col">
                                     <form class="w-100" action="" method="GET">
-                                        <button type="submit" class="btn w-100 no-hover text-start border-0 p-0">
+                                        <button type="submit" class="btn w-100 no-hover border-0 p-0 d-flex align-items-center justify-content-center">
                                             <input type="hidden" name="order" value="created_at">
                                             <input type="hidden" name="type" value="asc">
                                             <strong>Creato</strong>
@@ -77,7 +77,7 @@
                                 <!-- LAST UPDATE -->
                                 <th scope="col" class="d-none d-md-table-cell">
                                     <form class=" w-100" action="" method="GET">
-                                        <button type="submit" class="btn w-100 no-hover text-start border-0 p-0">
+                                        <button type="submit" class="btn w-100 no-hover border-0 p-0 d-flex align-items-center justify-content-center">
                                             <input type="hidden" name="order" value="last_update">
                                             <input type="hidden" name="type" value="asc">
                                             <strong>Ultima modifica</strong>
@@ -88,7 +88,7 @@
                                 <!-- COMPLETED -->
                                 <th scope="col" class="d-none d-lg-table-cell">
                                     <form class=" w-100" action="" method="GET">
-                                        <button type="submit" class="btn w-100 no-hover text-start border-0 p-0">
+                                        <button type="submit" class="btn w-100 no-hover border-0 p-0 d-flex align-items-center justify-content-center">
                                             <input type="hidden" name="order" value="completed">
                                             <input type="hidden" name="type" value="asc">
                                             <strong>Completato</strong>
