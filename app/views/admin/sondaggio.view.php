@@ -46,7 +46,13 @@
 
     <section id="survey">
 
-        <?= var_dump($surveys) ?>
+        <?php
+        foreach ($surveys as $survey) {
+            var_dump($survey);
+            echo '<br><br><br>';
+        }
+        ?>
+
 
     </section>
 
