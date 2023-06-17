@@ -218,7 +218,7 @@ main header {
 }
 
 #hero .col-50:first-of-type {
-    padding: 75px 20px 75px;
+    padding: 75px;
 }
 
 #hero img {
@@ -626,7 +626,7 @@ label[for="norm-cb"] {
 
     /*  HERO */
     #hero .col-50:first-of-type {
-        padding-left: 250px;
+        padding-left: 100px;
     }
 
     /* # DI COSA MI OCCUPO */
@@ -640,5 +640,11 @@ label[for="norm-cb"] {
 
     #dr-federico-dellasanta .col-50.mb-50 {
         margin-bottom: 0 !important;
+    }
+}
+
+@media screen and (min-width: 1080px) {
+    #hero .col-50:first-of-type {
+        padding-left: 250px;
     }
 }
