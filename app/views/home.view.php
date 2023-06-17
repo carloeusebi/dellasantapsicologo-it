@@ -2,7 +2,7 @@
 
     <!-- # HERO -->
     <header id="hero">
-        <div class="d-flex-lg flex-gap20">
+        <div class="d-flex-lg justify-space-between">
             <div class="col-50">
                 <h3>DR. Dellasanta Federico</h3>
                 <h1>Psicologo Psicoterapeuta <span>Cognitivo Comportamentale</span></h1>
@@ -12,7 +12,7 @@
                 <a href="/contatti" class="btn">Prenota un appuntamento</a>
             </div>
             <div class="col-50">
-                <figure class="d-flex justify-center">
+                <figure class="d-flex justify-end">
                     <img src="img/new-hero-img.png" alt="Il Dottor Dellasanta">
                 </figure>
             </div>
