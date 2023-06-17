@@ -118,5 +118,5 @@
     </div>
 </div>
 
-<script src="/js/question.js"></script>
 <script src="/js/dragndrop.js"></script>
+<script src="/js/question.js"></script>

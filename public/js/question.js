@@ -37,17 +37,19 @@ function createListElement() {
     const newIndex = answers.length;
 
     const newLi = document.createElement('li')
-    newLi.className = `d-flex align-items-center my-1`;
+    newLi.className = `d-flex align-items-center my-1 draggable`;
+    newLi.draggable = true;
     newLi.dataset.list = newIndex;
     newLi.innerHTML = `
         <input type="text" class="form-control" data-answer="${newIndex}" value="${newAnswer}" name="answers[]">
         <button type="button" class="btn btn-outline-danger border-0 no-hover" data-delete="${newIndex}" tabindex="-1">
-            <i class="fa-solid fa-trash-can fa-sm ms-2"></i>
+            <i class="fa-solid fa-trash-can fa-sm"></i>
         </button>
     `;
 
     ul.appendChild(newLi);
     getElements();
+    loadDraggables();
 }
 
 

@@ -1,5 +1,17 @@
 const container = document.querySelector('.drag-container');
-const draggables = document.querySelectorAll('.draggable');
+let draggables = document.querySelectorAll('.draggable');
+
+const loadDraggables = () => {
+    draggables = document.querySelectorAll('.draggable');
+
+    draggables.forEach(draggable => {
+        draggable.addEventListener('dragstart', handelStartDragging);
+        draggable.addEventListener('dragend', stopDragging);
+
+        draggable.addEventListener('touchstart', handelStartDragging, { passive: false });
+        draggable.addEventListener('touchend', stopDragging, { passive: false });
+    });
+}
 
 let isDragging = false;
 let touchTimeout;
@@ -23,7 +35,6 @@ function handelStartDragging(e) {
     const dragging = this;
 
     if ('touches' in e) {
-        e.preventDefault();
         touchTimeout = setTimeout(() => {
             startDragging(dragging);
         }, 750);
@@ -48,14 +59,7 @@ const handleTouchMove = (e) => {
     }
 }
 
-draggables.forEach(draggable => {
-    draggable.addEventListener('dragstart', handelStartDragging);
-    draggable.addEventListener('dragend', stopDragging);
-
-    draggable.addEventListener('touchstart', handelStartDragging, { passive: false });
-    draggable.addEventListener('touchend', stopDragging, { passive: false });
-});
-
+loadDraggables();
 
 container.addEventListener('dragover', handleTouchMove);
 container.addEventListener('touchmove', handleTouchMove, { passive: false });
