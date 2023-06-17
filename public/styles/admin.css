@@ -57,6 +57,14 @@ a {
     animation: alert-animation 300ms linear 1 forwards;
 }
 
+.dragging {
+    opacity: .5;
+}
+
+.add-survey-question {
+    min-height: 50px;
+}
+
 @media screen and (min-width: 400px) {
 
     .logo {

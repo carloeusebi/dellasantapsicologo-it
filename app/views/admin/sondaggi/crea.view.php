@@ -73,9 +73,9 @@
                     <?php foreach ($questions as $question) : ?>
                         <!-- QUESTION -->
 
-                        <div class="d-flex align-items-center user-select-none draggable" draggable="true">
-                            <input type="checkbox" class="form-check-input me-3" name="checkboxes[]>" value="<?= $question['id'] ?>" id="question-<?= $question['id'] ?>">
-                            <label for="question-<?= $question['id'] ?>" class="h5"><?= $question['question'] ?></label>
+                        <div class="d-flex align-items-center user-select-none draggable justify-content-between justify-content-lg-start add-survey-question" draggable="true">
+                            <input type="checkbox" class="form-check-input flex-shrink-0" name="checkboxes[]>" value="<?= $question['id'] ?>" id="question-<?= $question['id'] ?>">
+                            <label for="question-<?= $question['id'] ?>" class="h5 ms-2 mb-0 text-start flex-grow-1"><?= $question['question'] ?></label>
                             <a href="/admin/questionari?id=<?= $question['id'] ?>" class="btn border-0 btn-outline-primary no-hover"><i class="fa-regular fa-eye"></i></a>
 
                             <input type="hidden" name="questions[<?= $question['id'] ?>][id]" value="<?= $question['id'] ?>">

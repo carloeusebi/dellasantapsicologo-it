@@ -91,8 +91,8 @@
 
                             <li class="d-flex align-items-center my-1 draggable" draggable="true" data-list="<?= $i ?>">
                                 <input type="text" class="form-control" data-answer="<?= $i ?>" value="<?= $answers[$i] ?>" name="answers[]>">
-                                <button type="button" class="btn btn-outline-danger border-0 no-hover" data-delete="<?= $i ?>" tabindex="-1">
-                                    <i class="fa-solid fa-trash-can fa-sm ms-2"></i>
+                                <button type="button" class="btn btn-outline-danger border-0 no-hover mx-0" data-delete="<?= $i ?>" tabindex="-1">
+                                    <i class="fa-solid fa-trash-can fa-sm"></i>
                                 </button>
                             </li>
 
@@ -102,7 +102,7 @@
                     <div class="d-flex align-items-center my-1">
                         <input type="text" class="form-control" id="add-answer" name="answers[]">
                         <button type="button" class="btn btn-outline-primary border-0 no-hover" id="add-button">
-                            <i class=" fa-solid fa-plus fa-sm ms-2"></i>
+                            <i class=" fa-solid fa-plus fa-sm"></i>
                         </button>
                     </div>
                 </div>
