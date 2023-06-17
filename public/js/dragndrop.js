@@ -2,6 +2,7 @@ const container = document.querySelector('.drag-container');
 const draggables = document.querySelectorAll('.draggable');
 
 let isDragging = false;
+let touchTimeout;
 
 const getDragAfterElement = y => {
     const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')];
@@ -13,16 +14,26 @@ const getDragAfterElement = y => {
     }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
 
-async function startDragging() {
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    const draggable = this;
-    draggable.classList.add('dragging');
-    isDragging = true;
+function handelStartDragging(e) {
+    const startDragging = dragging => {
+        dragging.classList.add('dragging');
+        isDragging = true;
+    };
+
+    const dragging = this;
+
+    if ('touches' in e) {
+        touchTimeout = setTimeout(() => {
+            startDragging(dragging);
+        }, 750);
+    } else {
+        startDragging(dragging);
+    }
 }
 
 function stopDragging() {
-    const draggable = this;
-    draggable.classList.remove('dragging');
+    clearTimeout(touchTimeout);
+    this.classList.remove('dragging');
     isDragging = false;
 }
 
@@ -37,10 +48,10 @@ const handleTouchMove = (e) => {
 }
 
 draggables.forEach(draggable => {
-    draggable.addEventListener('dragstart', startDragging);
+    draggable.addEventListener('dragstart', handelStartDragging);
     draggable.addEventListener('dragend', stopDragging);
 
-    draggable.addEventListener('touchstart', startDragging, { passive: false });
+    draggable.addEventListener('touchstart', handelStartDragging, { passive: false });
     draggable.addEventListener('touchend', stopDragging, { passive: false });
 });
 
