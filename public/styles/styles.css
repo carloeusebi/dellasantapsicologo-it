@@ -259,7 +259,7 @@ main header {
 
 /* # COSA ASPETTARSI */
 #cosa-aspettarsi {
-    background-image: url(../img/cosa-aspettarsi-bg.jpg);
+    background-image: url(../img/cosa-aspettarsi-bg.webp);
 }
 
 #cosa-aspettarsi figure {
@@ -268,7 +268,7 @@ main header {
 
 /* # DI COSA MI OCCUPO */
 #di-cosa-mi-occupo {
-    background-image: url(../img/h4_partern.png);
+    background-image: url(../img/h4_pattern.webp);
     position: relative;
     background-size: fill;
 }
@@ -502,7 +502,7 @@ label[for="norm-cb"] {
     content: '';
     inset: 0;
 
-    background-image: url(../img/footer_right.png);
+    background-image: url(../img/footer_right.webp);
     background-size: fill;
     background-position: bottom right;
     background-repeat: no-repeat;

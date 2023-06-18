@@ -123,7 +123,7 @@
                                 <div class="col-50 p-20-lg d-flex flex-column justify-space-between mb-20">
                                     <input class="contact-info" type="text" name="name" id="name" placeholder="Nome" autocomplete="name" <?= (isset($formRefill['name'])) ? "value='{$formRefill['name']}'" : '' ?> equired>
 
-                                    <input class="contact-info" type="tel" minlength="7" name="phone" id="phone" placeholder="Numero di Telefono" <?= (isset($formRefill['phone'])) ? "value='{$formRefill['phone']}'" : '' ?> required>
+                                    <input class="contact-info" type="tel" minlength="7" name="phone" id="phone" placeholder="Numero di Telefono" autocomplete="tel" <?= (isset($formRefill['phone'])) ? "value='{$formRefill['phone']}'" : '' ?> required>
 
                                     <input class="contact-info" type="email" name="mail" id="mail" placeholder="Email" <?= (isset($formRefill['mail'])) ? "value='{$formRefill['mail']}'" : '' ?> required>
 
