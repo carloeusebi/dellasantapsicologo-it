@@ -85,7 +85,7 @@
         <li>
             <strong><?= $value ?>:</strong>
             <?php if ($key === 'consent') : ?>
-                <?= $element[$key] ? '<a href="<?= $element[$key] ?>" target="_blank">Visualizza consenso</a>' : '' ?>
+                <?= $element[$key] ? '<a href="' . $element[$key] . '" target="_blank">Visualizza consenso</a>' : '' ?>
             <?php else : ?>
                 <?= $element[$key] ?>
             <?php endif ?>
@@ -96,7 +96,6 @@
 </ul>
 
 <section id="patient-buttons" class="d-flex flex-grow-1 align-items-end justify-content-end mx-5">
-    <a class="btn btn-primary" href="/admin/sondaggi/crea?patient-id=<?= $element['id'] ?>">Crea sondaggio</a>
-
+    <a class="btn btn-primary px-5" href="/admin/sondaggi/crea?patient-id=<?= $element['id'] ?>">Crea sondaggio</a>
 </section>
 </div>
