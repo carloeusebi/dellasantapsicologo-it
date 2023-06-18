@@ -209,6 +209,7 @@ main header {
 /* # HERO */
 #hero {
     background-image: url(../img/Hero-background-1024x533.webp);
+    background-color: #bfdac6;
     background-repeat: no-repeat;
     background-position: top;
     background-size: cover;
@@ -225,6 +226,7 @@ main header {
     height: 550px;
     max-width: 100%;
     object-fit: cover;
+    background-color: #b7b8b2;
 }
 
 #hero h3 {
@@ -236,6 +238,7 @@ main header {
 
 .hero-secondary {
     background-image: url(../img/Immagini\ sito.webp);
+    background-color: #bfdac6;
     height: 25vh;
     background-position: center center;
     background-repeat: no-repeat;
@@ -543,6 +546,10 @@ label[for="norm-cb"] {
 #contatti .underline-on-hover a:hover,
 #contatti .underline-on-hover a:focus {
     border-color: black;
+}
+
+iframe.map {
+    background-color: #e5e3df;
 }
 
 /* ! ****************************** */

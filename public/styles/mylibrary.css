@@ -141,6 +141,10 @@ img {
     margin-top: 20px;
 }
 
+.mt-50 {
+    margin-top: 50px;
+}
+
 .mr-10 {
     margin-right: 10px;
 }
@@ -187,6 +191,10 @@ img {
 
 .p-20 {
     padding: 20px;
+}
+
+.px-20 {
+    padding: 0 20px;
 }
 
 /* # generals */
