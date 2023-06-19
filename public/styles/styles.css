@@ -219,7 +219,7 @@ main header {
 }
 
 #hero .col-50:first-of-type {
-    padding: 75px;
+    padding: 75px 20px;
 }
 
 #hero img {
