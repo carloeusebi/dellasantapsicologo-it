@@ -61,7 +61,7 @@ class PatientsController extends AdminController
 
     private static function getPatientId($admin)
     {
-        return $admin->gotById['id'];
+        return $admin->gotById['id'] ?? null;
     }
 
 
