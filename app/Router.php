@@ -5,16 +5,20 @@ namespace app;
 class Router
 {
     private $routes;
+    private $layout;
+
 
     public function get($path, $callback)
     {
         $this->routes['get'][$path] = $callback;
     }
 
+
     public function post($path, $callback)
     {
         $this->routes['post'][$path] = $callback;
     }
+
 
     public function resolve()
     {
@@ -35,17 +39,12 @@ class Router
         call_user_func($callback, $path);
     }
 
+
     public function renderView($page, $params = [])
     {
-        $layout = isset($params['layout']) ? $params['layout'] : 'main';
-
         foreach ($params as $param => $value) {
             $$param = $value;
         }
-
-        $page = ($page === '/') ? '/home' : $page;
-
-        $pageTitle = $this->getPageTitle($page);
 
         ob_start();
 
@@ -53,28 +52,39 @@ class Router
 
         $content = ob_get_clean();
 
-        include_once(__DIR__ . "/views/layouts/$layout.php");
+        include_once(__DIR__ . "/views/layouts/$this->layout.php");
     }
+
+
+    public function setLayout($layout)
+    {
+        $this->layout = $layout;
+    }
+
 
     public function getPath()
     {
         return parse_url($_SERVER['REQUEST_URI'])['path'];
     }
 
+
     public function getMethod()
     {
         return strtolower($_SERVER['REQUEST_METHOD']);
     }
+
 
     public function isPost()
     {
         return $this->getMethod() === 'post';
     }
 
+
     public function isGet()
     {
         return $this->getMethod() === 'get';
     }
+
 
     public function getPreviousPage()
     {
@@ -92,17 +102,6 @@ class Router
         return $_SERVER['HTTP_REFERER'];
     }
 
-    private function getPageTitle($page)
-    {
-        return match ($page) {
-            '/home' => 'Home',
-            '/chi-sono' => 'Chi Sono',
-            '/cosa-aspettarsi' => 'Cosa Aspettarsi dalla Terapia',
-            '/di-cosa-mi-occupo' => 'Di cosa mi Occupo',
-            '/contatti' => 'Contatti',
-            default => 'Pagina non trovata'
-        };
-    }
 
     public function urlIs($value)
     {

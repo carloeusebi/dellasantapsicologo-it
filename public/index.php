@@ -3,8 +3,9 @@
 require_once "../vendor/autoload.php";
 
 use app\App;
-use app\controllers\SiteController;
 use app\controllers\Controller;
+use app\controllers\SiteController;
+use app\controllers\AdminController;
 use app\controllers\PatientsController;
 use app\controllers\QuestionsController;
 use app\controllers\SurveysController;
@@ -17,7 +18,7 @@ $app->router->get('/cosa-aspettarsi', [SiteController::class, 'getPage']);
 $app->router->get('/di-cosa-mi-occupo', [SiteController::class, 'getPage']);
 $app->router->get('/contatti', [SiteController::class, 'getPage']);
 
-$app->router->get('/admin', [Controller::class, 'index']);
+$app->router->get('/admin', [AdminController::class, 'index']);
 
 $app->router->get('/admin/pazienti', [PatientsController::class, 'index']);
 $app->router->get('/admin/pazienti', [PatientsController::class, 'index']);
@@ -37,7 +38,7 @@ $app->router->post('/cosa-aspettarsi', [SiteController::class, 'post']);
 $app->router->post('/di-cosa-mi-occupo', [SiteController::class, 'post']);
 $app->router->post('/contatti', [SiteController::class, 'post']);
 
-$app->router->post('/admin', [Controller::class, 'index']);
+$app->router->post('/admin', [AdminController::class, 'index']);
 
 $app->router->post('/login', [Controller::class, 'login']);
 $app->router->post('/logout', [Controller::class, 'logout']);

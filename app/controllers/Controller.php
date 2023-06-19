@@ -7,26 +7,20 @@ use app\config\Config;
 
 class Controller
 {
-    const LAYOUT = 'admin';
-    const ADMIN_VIEW = 'admin';
     const LOGIN_VIEW = 'login';
-    const ADMIN_404 = '/admin/404';
 
-    private Controller $admin;
-    protected $entries;
-    protected $gotById;
-    protected array $params = ['layout' => self::LAYOUT];
+    protected array $params = [];
     private string $page;
 
-    protected static $header;
+    protected $layout;
+
     protected static $notFound;
+    protected static $header;
     protected static $model = '';
 
 
     public function __construct($page = '')
     {
-        $this->admin = $this;
-
         $this->page = $page;
 
         $loggedIn = $this->checkIfLogged();
@@ -40,37 +34,6 @@ class Controller
         App::$app->connect();
     }
 
-    public static function index($page)
-    {
-        $admin = new self($page);
-
-        $admin->get();
-
-        $admin->renderPage();
-
-        return $admin;
-    }
-
-
-    public function get()
-    {
-
-        if (self::$model) {
-
-            if (isset($_GET['id'])) {
-
-                $this->gotById = App::$app->{self::$model}->getById($_GET['id']);
-                if (!$this->gotById) {
-                    $this->render404(self::$notFound);
-                }
-                App::$app->session->setFlash('form', $this->gotById);
-                $labels = App::$app->{self::$model}->labels();
-                $this->params += ['labels' => $labels];
-            } else {
-                $this->entries = App::$app->{self::$model}->get();
-            }
-        }
-    }
 
     public static function logout()
     {
@@ -108,37 +71,16 @@ class Controller
 
     public function renderPage()
     {
-        $this->addToParams('entries', $this->entries);
-        $this->addToParams('element', $this->gotById);
-
-        $isFilled = false;
-
-        if (App::$app->session->getFlash('form')) {
-            $data = App::$app->session->getFlash('form');
-            App::$app->session->remove('form');
-            $isFilled = true;
-
-            foreach ($data as $key => $value) {
-                $this->addToParams($key, $value);
-            }
-        }
-
-        $this->params += ['isFilled' => $isFilled];
-
+        App::$app->router->setLayout($this->layout);
         App::$app->router->renderView($this->page, $this->params);
     }
 
 
     private function renderLogin()
     {
+        App::$app->router->setLayout($this->layout);
         if ($this->page !== '/admin') header('Location: /admin');
         App::$app->router->renderView(self::LOGIN_VIEW, $this->params);
-    }
-
-
-    public static function render404($notFound)
-    {
-        App::$app->router->renderView(self::ADMIN_404, ['layout' => self::LAYOUT, 'notFound' => $notFound]);
     }
 
     public function addToParams(string $param, $value)

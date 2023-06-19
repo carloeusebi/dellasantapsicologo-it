@@ -16,20 +16,39 @@ class PatientsController extends AdminController
 
     protected const MODEL = 'patient';
 
+
     public static function index($page)
     {
-        $admin = new Controller($page);
+        $admin = new AdminController($page);
 
         $admin::$model = self::MODEL;
 
-        $admin->get();
-
-        $patientId = self::getPatientId($admin);
+        $patientId = $admin->getId();
 
         if ($patientId) {
+            $data = $admin->getById($patientId);
+
+            if ($data) {
+                foreach ($data as $key => $value) {
+                    $admin->addToParams($key, $value);
+                }
+            } else {
+                $admin::render404(self::NOT_FOUND);
+            }
+
             $patientSurveys = self::getSurveys($patientId);
             $admin->addToParams('surveys', $patientSurveys);
+
+
+            $admin->addToParams('isFilled', true);
+
+            $labels = App::$app->patient->labels();
+            $admin->addToParams('labels', $labels);
+        } else {
+            $admin->get();
         }
+
+        self::refillForm($admin);
 
         $admin->renderPage();
     }
@@ -59,12 +78,6 @@ class PatientsController extends AdminController
     }
 
 
-    private static function getPatientId($admin)
-    {
-        return $admin->gotById['id'] ?? null;
-    }
-
-
     private static function getSurveys($id)
     {
         $allSurveys = App::$app->survey->get();
@@ -77,5 +90,24 @@ class PatientsController extends AdminController
         }
 
         return $patientSurveys;
+    }
+
+    private static function refillForm($admin)
+    {
+        $isFilled = false;
+
+        $data = App::$app->session->getFlash('form');
+
+        if ($data) {
+            App::$app->session->remove('form');
+
+            $isFilled = true;
+
+            foreach ($data as $key => $value) {
+                $admin->addToParams($key, $value);
+            }
+        }
+
+        $admin->addToParams('isFilled', $isFilled);
     }
 }

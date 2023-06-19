@@ -139,11 +139,19 @@ abstract class DbModel
         return $statement;
     }
 
+
+    public function setOrder($order)
+    {
+        $_GET['order'] = $order;
+    }
+
+
     private function getOrder()
     {
         $order = $_GET['order'] ?? 'id';
-        return in_array($order, $this->attributes()) || $order === 'lname' ? $order : 'id';
+        return in_array($order, $this->attributes()) || $order === 'lname' ? $order : 'id'; // need order === lname because surveys can be ordered by patient's lname
     }
+
 
     private function getType()
     {

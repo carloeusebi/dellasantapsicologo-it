@@ -16,11 +16,19 @@ class QuestionsController extends AdminController
 
     public static function index($page)
     {
-        $admin = new Controller($page);
+        $admin = new AdminController($page);
 
         $admin::$model = self::MODEL;
 
-        $admin->get();
+        $id = $admin->getId();
+
+        if ($id) {
+            if (!$admin->getById($id)) {
+                $admin::render404(self::NOT_FOUND);
+            }
+        } else {
+            $admin->get();
+        }
 
         $admin->renderPage();
     }

@@ -19,19 +19,28 @@ class SurveysController extends AdminController
 
     public static function index($page)
     {
-        $admin = new Controller($page);
+        $admin = new AdminController($page);
 
         $admin::$model = self::MODEL;
 
-        $admin->get();
+        $id = $admin->getId();
 
-        if (isset($admin->gotById['survey'])) {
-            $surveys = json_decode($admin->gotById['survey']);
+        if ($id) {
+            $encodedSurvey = $admin->getById($id);
+
+            if (!$encodedSurvey) {
+                $admin::render404(self::NOT_FOUND);
+            }
+
+            $surveys = json_decode($encodedSurvey['survey']);
             $admin->addToParams('surveys', $surveys);
+        } else {
+            $admin->get();
         }
 
-        if (isset($_GET['patient-id'])) {
-            $patient = self::getPatient($_GET['patient-id']);
+        $patientId = $_GET['patient-id'] ?? null;
+        if ($patientId) {
+            $patient = self::getPatient($patientId);
             $admin->addToParams('patient', $patient);
         }
 
@@ -39,7 +48,6 @@ class SurveysController extends AdminController
             $questions = self::getQuestions();
             $admin->addToParams('questions', $questions);
 
-            $_GET['order'] = 'lname'; // to order by last name
             $patients = self::getPatients();
             $admin->addToParams('patients', $patients);
         }
@@ -81,11 +89,13 @@ class SurveysController extends AdminController
 
     private static function getQuestions()
     {
+        App::$app->question->setOrder('question');
         return App::$app->question->get();
     }
 
     private static function getPatients()
     {
+        App::$app->patient->setOrder('lname');
         return App::$app->patient->get();
     }
 

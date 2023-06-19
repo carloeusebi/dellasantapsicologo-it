@@ -7,10 +7,22 @@ use app\Mailer;
 
 class SiteController extends Controller
 {
+    private const LAYOUT = 'main';
+
+
     public static function getPage($page)
     {
-        app::$app->router->renderView($page);
+        if ($page === '/') {
+            $page = '/home';
+        }
+
+        $pageTitle = self::getPageTitle($page);
+
+        App::$app->router->setLayout(self::LAYOUT);
+
+        App::$app->router->renderView($page, ['pageTitle' => $pageTitle]);
     }
+
 
     public static function post($page)
     {
@@ -32,5 +44,19 @@ class SiteController extends Controller
         $formRefill = ($status !== 'success') ? $_POST : [];
 
         App::$app->router->renderView($page, ['status' => $status, 'formRefill' => $formRefill]);
+    }
+
+
+
+    private static function getPageTitle($page)
+    {
+        return match ($page) {
+            '/home' => 'Home',
+            '/chi-sono' => 'Chi Sono',
+            '/cosa-aspettarsi' => 'Cosa Aspettarsi dalla Terapia',
+            '/di-cosa-mi-occupo' => 'Di cosa mi Occupo',
+            '/contatti' => 'Contatti',
+            default => 'Pagina non trovata'
+        };
     }
 }
