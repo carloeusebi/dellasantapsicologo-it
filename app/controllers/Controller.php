@@ -10,7 +10,7 @@ class Controller
     protected string $page;
     protected string $LOGIN_VIEW = '';
 
-    protected $layout;
+    protected string $layout;
 
 
     protected function addToParams(string $param, $value)
@@ -24,5 +24,14 @@ class Controller
     {
         App::$app->router->setLayout($this->layout);
         App::$app->router->renderView($this->page, $this->params);
+    }
+
+
+    public static function logout()
+    {
+        $location = App::$app->router->getPreviousPage();
+        session_destroy();
+        header("Location: $location");
+        exit();
     }
 }

@@ -13,7 +13,7 @@ class AdminController extends Controller
     protected string $LOGIN_VIEW = '/login';
 
     protected static $notFound = 'Pagina non trovata';
-    protected $layout = self::LAYOUT;
+    protected string $layout = self::LAYOUT;
 
     protected static $created;
     protected static $updated;
@@ -124,18 +124,6 @@ class AdminController extends Controller
     {
         App::$app->router->setLayout(self::LAYOUT);
         App::$app->router->renderView(self::ADMIN_404, ['notFound' => $notFound]);
-    }
-
-
-    public static function logout()
-    {
-        session_start();
-
-        session_destroy();
-
-        header("Location: /admin");
-
-        exit();
     }
 
 

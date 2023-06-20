@@ -5,7 +5,7 @@ namespace app;
 class Router
 {
     private $routes;
-    private $layout;
+    private $layout = 'main';
 
 
     public function get($path, $callback)

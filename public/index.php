@@ -20,6 +20,8 @@ $app->router->get('/di-cosa-mi-occupo', [SiteController::class, 'getPage']);
 $app->router->get('/contatti', [SiteController::class, 'getPage']);
 
 $app->router->get('/admin', [AdminController::class, 'index']);
+$app->router->get('/login', [AdminController::class, 'login']);
+$app->router->get('/logout', [AdminController::class, 'login']);
 
 $app->router->get('/admin/pazienti', [PatientsController::class, 'index']);
 $app->router->get('/admin/pazienti', [PatientsController::class, 'index']);
@@ -60,6 +62,8 @@ $app->router->post('/admin/questionari/create', [QuestionsController::class, 'sa
 $app->router->post('/admin/questionari/update', [QuestionsController::class, 'save']);
 $app->router->post('/admin/questionari/delete', [QuestionsController::class, 'delete']);
 
+$app->router->post('/test/login', [TestsController::class, 'login']);
+$app->router->post('/test/logout', [TestsController::class, 'logout']);
 
 $app->run();
 
