@@ -35,7 +35,7 @@ class TestsController extends Controller
     {
         $admin = new self();
 
-        $username = $_POST['name'] ?? null;
+        $username = strtolower(trim($_POST['name'])) ?? null;
 
         App::$app->connect();
 
