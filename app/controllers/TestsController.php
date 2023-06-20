@@ -48,12 +48,13 @@ class TestsController extends Controller
         foreach ($patients as $patient) {
             if ($patient['username'] === $username) {
                 $user = $patient;
+                break;
             }
         }
 
         if ($user) {
             foreach ($surveys as $survey) {
-                if ($survey['patient_id'] === $user['id']) {
+                if ($survey['patient_id'] === $user['id'] && !$survey['completed']) {
                     array_push($userSurveys, $survey);
                 }
             }
@@ -63,12 +64,11 @@ class TestsController extends Controller
             App::$app->session->setFlash('isInvalid', 'Username sbagliato, oppure non ci sono test da compilare per te');
         } else {
             $_SESSION['login'] = $user['id'];
+            $_SESSION['user'] = $user;
+            $_SESSION['surveys'] = $userSurveys;
         }
 
         header('Location: ' . self::VIEW);
-
-        $_SESSION['user'] = $user;
-        $_SESSION['surveys'] = $userSurveys;
 
         $admin->renderPage();
     }
