@@ -3,12 +3,14 @@
 namespace app\controllers;
 
 use app\App;
+use app\config\Config;
 
 class AdminController extends Controller
 {
     protected const LAYOUT = 'admin';
     protected const ADMIN_VIEW = 'admin';
     protected const ADMIN_404 = '/admin/404';
+    protected string $LOGIN_VIEW = '/login';
 
     protected static $notFound = 'Pagina non trovata';
     protected $layout = self::LAYOUT;
@@ -20,6 +22,27 @@ class AdminController extends Controller
     protected static $header;
 
     protected static $model;
+
+
+    protected function __construct($page = '')
+    {
+        $this->page = $page;
+
+        $loggedIn = $this->checkIfLogged();
+
+        if (!$loggedIn) {
+
+            if (isset($_POST['login'])) $this->login();
+            else {
+                if ($this->page !== '/admin') header('Location: /admin');
+                $this->renderLogin();
+            }
+
+            exit();
+        }
+
+        App::$app->connect();
+    }
 
 
     public static function index($page)
@@ -52,7 +75,7 @@ class AdminController extends Controller
     }
 
 
-    public static function save()
+    protected static function save()
     {
         $errors = [];
 
@@ -85,7 +108,7 @@ class AdminController extends Controller
     }
 
 
-    public static function delete()
+    protected static function delete()
     {
         if (!App::$app->router->isPost()) self::render404(self::$notFound);
 
@@ -96,9 +119,51 @@ class AdminController extends Controller
         header(self::$header);
     }
 
-    public static function render404($notFound)
+
+    protected static function render404($notFound)
     {
         App::$app->router->setLayout(self::LAYOUT);
         App::$app->router->renderView(self::ADMIN_404, ['notFound' => $notFound]);
+    }
+
+
+    public static function logout()
+    {
+        session_start();
+
+        session_destroy();
+
+        header("Location: /admin");
+
+        exit();
+    }
+
+
+    public static function login()
+    {
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+
+        if ($username === Config::ADMIN_USERNAME && $password === Config::ADMIN_PASSWORD) {
+
+            $_SESSION['login'] = 'ADMIN';
+        } else {
+
+            App::$app->session->setFlash('isInvalid', true);
+        }
+
+        header("Location: /admin");
+    }
+
+
+    protected function renderLogin()
+    {
+        App::$app->router->renderOnlyView($this->LOGIN_VIEW, $this->params);
+    }
+
+
+    protected static function checkIfLogged()
+    {
+        return isset($_SESSION['login']) && $_SESSION['login'] === 'ADMIN';
     }
 }

@@ -56,6 +56,16 @@ class Router
     }
 
 
+    public function renderOnlyView($page, $params = [])
+    {
+        foreach ($params as $param => $value) {
+            $$param = $value;
+        }
+
+        include_once(__DIR__ . "/views/$page.view.php");
+    }
+
+
     public function setLayout($layout)
     {
         $this->layout = $layout;

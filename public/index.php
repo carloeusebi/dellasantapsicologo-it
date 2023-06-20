@@ -9,6 +9,7 @@ use app\controllers\AdminController;
 use app\controllers\PatientsController;
 use app\controllers\QuestionsController;
 use app\controllers\SurveysController;
+use app\controllers\TestsController;
 
 $app = new App();
 
@@ -28,6 +29,8 @@ $app->router->get('/admin/sondaggi/crea', [SurveysController::class, 'index']);
 
 $app->router->get('/admin/questionari', [QuestionsController::class, 'index']);
 
+$app->router->get('/test', [TestsController::class, 'index']);
+
 // GET
 //-----------------------------------------------------------------------------------------------------
 // POST
@@ -40,8 +43,8 @@ $app->router->post('/contatti', [SiteController::class, 'post']);
 
 $app->router->post('/admin', [AdminController::class, 'index']);
 
-$app->router->post('/login', [Controller::class, 'login']);
-$app->router->post('/logout', [Controller::class, 'logout']);
+$app->router->post('/login', [AdminController::class, 'login']);
+$app->router->post('/logout', [AdminController::class, 'logout']);
 
 $app->router->post('/admin/pazienti', [PatientsController::class, 'index']);
 $app->router->post('/admin/pazienti/create', [PatientsController::class, 'save']);
