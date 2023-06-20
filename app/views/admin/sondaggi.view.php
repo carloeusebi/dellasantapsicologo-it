@@ -110,7 +110,7 @@
                                     <td><?= $survey['title'] ?></td>
                                     <td><?= $survey['created_at'] ?></td>
                                     <td class="d-none d-md-table-cell"><?= $survey['last_update'] ?></td>
-                                    <td class="d-none d-lg-table-cell"><?= $survey['completed'] ?></td>
+                                    <td class="d-none d-lg-table-cell text-center"><?= $survey['completed'] ? '<i class="fa-regular fa-square-check fa-lg"></i>' : '' ?></td>
                                 </tr>
                             <?php endforeach ?>
 
