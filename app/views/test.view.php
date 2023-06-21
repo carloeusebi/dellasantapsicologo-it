@@ -32,7 +32,7 @@
             <div class="container">
 
 
-                <section id="welcome">
+                <section id="main-section">
 
 
                     <h1>Benvenuto <?= $fname ?>, ci sono <?= count($surveys) ?> test per te:</h1>

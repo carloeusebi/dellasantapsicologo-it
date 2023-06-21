@@ -18,7 +18,7 @@
     </select>
 </div>
 <!-- MAIL -->
-<div class="col-12 col-md-5 col-lg-5">
+<div class="col-12 col-md-5 col-lg-5 flex-grow-1">
     <label for="email" class="form-label">Email</label>
     <input type="mail" class="form-control" id="email" name="email" value="<?= $isFilled ? $email : '' ?>">
 </div>
@@ -27,11 +27,13 @@
     <label for="phone" class="form-label">Telefono</label>
     <input type="tel" class="form-control" id="phone" name="phone" value="<?= $isFilled ? $phone : '' ?>">
 </div>
-<!-- BEGIN -->
-<div class="col-12 col-md-3 col-lg-2">
-    <label for="begin" class="form-label">Paziente dal</label>
-    <input type="date" class="form-control" id="begin" name="begin" value="<?= $isFilled ? $begin : '' ?>">
-</div>
+<?php if (!isset($test)) : ?>
+    <!-- BEGIN -->
+    <div class="col-12 col-md-3 col-lg-2">
+        <label for="begin" class="form-label">Paziente dal</label>
+        <input type="date" class="form-control" id="begin" name="begin" value="<?= $isFilled ? $begin : '' ?>">
+    </div>
+<?php endif ?>
 <!-- BIRTHDAY -->
 <div class="col-12 col-md-3">
     <label for="birthday" class="form-label">Nato il</label>

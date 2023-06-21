@@ -22,7 +22,7 @@ class TestsController extends Controller
     {
         $admin = new self();
 
-        if ($admin->isLogged()) {
+        if (self::isLogged()) {
 
             $admin->addToParams('surveys', $_SESSION['surveys'])
                 ->addToParams('isFilled', true)
@@ -80,7 +80,32 @@ class TestsController extends Controller
     }
 
 
-    private function isLogged()
+    public static function updatePatientInformation()
+    {
+        header('Content-Type: application/json');
+
+        if (self::isLogged()) {
+
+            $errors = [];
+
+            $data = (array) json_decode(file_get_contents("php://input"));
+
+            App::$app->connect();
+            App::$app->patient->load($data);
+            $errors = App::$app->patient->save();
+
+            if (empty($errors)) {
+                http_response_code('201');
+                echo json_encode('success');
+            }
+        } else {
+            http_response_code('401');
+        }
+    }
+
+
+
+    private static function isLogged()
     {
         return isset($_SESSION['login']) ? $_SESSION['login'] : false;
     }

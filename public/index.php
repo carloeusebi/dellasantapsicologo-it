@@ -64,6 +64,7 @@ $app->router->post('/admin/questionari/delete', [QuestionsController::class, 'de
 
 $app->router->post('/test/login', [TestsController::class, 'login']);
 $app->router->post('/test/logout', [TestsController::class, 'logout']);
+$app->router->post('/test/update-patient', [TestsController::class, 'updatePatientInformation']);
 
 $app->run();
 
