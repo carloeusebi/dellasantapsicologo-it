@@ -31,6 +31,9 @@
 
     <!-- roboto -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic" rel="stylesheet">
+    <!-- abhaya -->
+    <link href="https://fonts.googleapis.com/css?family=Abhaya+Libre:regular,500,600,700,800" rel="stylesheet" />
+
     <link rel="icon" href="img/Favicon.png" type="image/png">
     <!-- font awesome -->
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' integrity='sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==' crossorigin='anonymous'>
@@ -89,15 +92,15 @@
                     <div class="col-33 mb-20">
                         <h3>Hai bisogno di un consulto?</h3>
                         <h2>Contattami</h2>
-                        <p class="mb-30">
+                        <p class="mb-10">
                             Scrivi le tue informazioni e ti ricontatterò per fissare un primo consulto.
                         </p>
                         <hr class="mb-30">
                         <address>
                             <ul class="fa-ul">
-                                <li><a href="https://www.google.it/maps/place/Via+Cavour,+8,+61032+Fano+PU/@43.8403484,13.0176242,17z/data=!3m1!4b1!4m5!3m4!1s0x132d1058e81f0963:0x77cf665ada2f3879!8m2!3d43.8403484!4d13.0198182?shorturl=1" target="_blank">
+                                <li><a href="https://www.google.it/maps/place/Via+Cavour,+27,+61032+Fano+PU/@43.8404319,13.0169682,17z/data=!3m1!4b1!4m6!3m5!1s0x132d1058c36acf17:0xc83016c05d18f682!8m2!3d43.8404281!4d13.0195431!16s%2Fg%2F11csgb9dcq?entry=ttu" target="_blank">
                                         <span class="fa-li"><i class="fa-solid fa-location-dot"></i></span>
-                                        Via Cavour, 8 61032 Fano PU
+                                        Via Cavour, 27 61032 Fano PU
                                     </a></li>
                                 <li><a href="mailto:dellasanta.federico@gmail.com ">
                                         <span class="fa-li"><i class="fa-solid fa-envelope"></i></span>
@@ -183,7 +186,7 @@
             <?php endif ?>
 
             <section id="contatti">
-                <div class="container d-flex-lg">
+                <div class="container d-flex-md">
                     <div class="col-50 tablet">
                         <img src="img/Logo-768x191.webp" alt="">
                     </div>
@@ -202,9 +205,9 @@
                             <h4 class="text-align-start">Contatti</h4>
                             <address>
                                 <ul class="fa-ul">
-                                    <li><a href="https://www.google.it/maps/place/Via+Cavour,+8,+61032+Fano+PU/@43.8403484,13.0176242,17z/data=!3m1!4b1!4m5!3m4!1s0x132d1058e81f0963:0x77cf665ada2f3879!8m2!3d43.8403484!4d13.0198182?shorturl=1" target="_blank">
+                                    <li><a href="https://www.google.it/maps/place/Via+Cavour,+27,+61032+Fano+PU/@43.8404319,13.0169682,17z/data=!3m1!4b1!4m6!3m5!1s0x132d1058c36acf17:0xc83016c05d18f682!8m2!3d43.8404281!4d13.0195431!16s%2Fg%2F11csgb9dcq?entry=ttu" target="_blank">
                                             <span class="fa-li"><i class="fa-solid fa-location-dot"></i></span>
-                                            Via Cavour, 8 61032 Fano PU
+                                            Via Cavour, 27 61032 Fano PU
                                         </a></li>
                                     <li><a href="mailto:dellasanta.federico@gmail.com ">
                                             <span class="fa-li"><i class="fa-solid fa-envelope"></i></span>

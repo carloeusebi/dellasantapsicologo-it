@@ -52,10 +52,16 @@ a {
     color: black;
 }
 
+p {
+    line-height: 27px;
+}
+
 h1 {
-    font-family: serif;
+    font-family: 'Abhaya Libre', serif;
+    font-weight: bolder;
+    line-height: 0.9;
     color: var(--footer-color);
-    font-size: min(calc(2rem + 1.5vw), 56px);
+    font-size: 48px;
     margin-bottom: 20px;
 }
 
@@ -69,19 +75,19 @@ header.hero-secondary h1 {
 
 h1>span {
     display: block;
-    font-size: min(calc(1.5rem + 1.5vw), 40px);
+    font-size: 28px;
 }
 
 h2 {
-    font-family: serif;
-    font-size: 2rem;
+    font-family: 'Abhaya Libre', serif;
+    font-size: 40px;
     margin-bottom: 20px;
     letter-spacing: .8px;
 }
 
 h3 {
     color: var(--btn-color);
-    font-size: 1.1rem;
+    font-size: 17px;
     margin-bottom: 10px;
     font-weight: 500;
     text-transform: uppercase;
@@ -90,24 +96,19 @@ h3 {
 h4 {
     color: var(--btn-color);
 
-    font-size: 1.8rem;
-    font-family: serif;
-    font-weight: 500;
-    padding: 0 30px;
+    font-size: 28px;
+    font-family: 'Abhaya Libre', serif;
+    font-weight: 700;
+    padding: 0 25px;
 
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
-
-p {
-    line-height: 1.5;
-}
-
 
 hr {
-    width: 80px;
+    width: 120px;
     border: none;
     background-color: var(--footer-color);
-    height: 5px;
+    height: 2px;
 }
 
 address {
@@ -219,7 +220,7 @@ main header {
 }
 
 #hero .col-50:first-of-type {
-    padding: 75px 20px;
+    padding: 75px 20px 0;
 }
 
 #hero img {
@@ -230,7 +231,8 @@ main header {
 }
 
 #hero h3 {
-    font-family: 1.18rem;
+    font-family: 29px;
+    letter-spacing: 3px;
     font-weight: 600;
 }
 
@@ -257,20 +259,36 @@ main header {
 
 /* # CHI SONO */
 
+#chi-sono h2 {
+    margin-bottom: 0;
+}
+
+#chi-sono h4 {
+    color: black;
+    margin-bottom: 1.1rem;
+}
+
+#chi-sono p {
+    font-size: 17px;
+    line-height: 28px;
+    max-width: 765px;
+}
+
 /* # COSA ASPETTARSI */
 #cosa-aspettarsi {
     background-image: url(../img/cosa-aspettarsi-bg.webp);
 }
 
 #cosa-aspettarsi figure {
-    padding: 0 20% 0 30%;
+    padding: 0 10% 0 30%;
 }
 
 /* # DI COSA MI OCCUPO */
 #di-cosa-mi-occupo {
     background-image: url(../img/h4_pattern.webp);
     position: relative;
-    background-size: fill;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #di-cosa-mi-occupo:before {
@@ -287,7 +305,7 @@ main header {
 
 #di-cosa-mi-occupo h2 {
     color: var(--footer-color);
-    margin-bottom: 75px;
+    margin-bottom: 30px;
 }
 
 #di-cosa-mi-occupo .col {
@@ -333,6 +351,8 @@ main header {
 /* # CBT */
 #cbt {
     background-color: var(--green-bg-color);
+    padding-top: 35px;
+    padding-bottom: 35px;
 }
 
 /* # CONTATTAMI */
@@ -568,6 +588,15 @@ iframe.map {
 /* ! ****************************** */
 /* # tablet */
 @media screen and (min-width: 767px) {
+
+    h1 {
+        font-size: 56px;
+    }
+
+    h1>span {
+        font-size: 44px;
+    }
+
     .container {
         max-width: 980px;
     }
@@ -590,12 +619,14 @@ iframe.map {
     }
 
     #cbt figure {
-        padding: 0 20% 0 30%;
+        padding: 0 10% 0 30%;
     }
 }
 
 /* # desktop */
 @media screen and (min-width: 992px) {
+
+
     .container {
         max-width: 1200px;
     }
@@ -636,6 +667,10 @@ iframe.map {
         padding-left: 100px;
     }
 
+    #hero .col-50:first-of-type p {
+        font-size: 22px;
+    }
+
     /* # DI COSA MI OCCUPO */
     #di-cosa-mi-occupo .col {
         flex-basis: calc((100% - 40px) / 3);
@@ -653,5 +688,14 @@ iframe.map {
 @media screen and (min-width: 1080px) {
     #hero .col-50:first-of-type {
         padding-left: 250px;
+        padding-right: 75px;
     }
+}
+
+@media screen and (min-width: 2000px) {
+    #hero .col-50:first-of-type {
+        padding-left: 550px;
+        padding-right: 75px;
+    }
+
 }

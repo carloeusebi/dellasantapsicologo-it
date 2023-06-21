@@ -3,7 +3,7 @@
 
         <h3>Cosa aspettarsi dalla seduta</h3>
         <article>
-            <h2 class="mb-30">L'approccio cognitivo-comportamentale</h2>
+            <h2 class="mb-10">L'approccio cognitivo-comportamentale</h2>
             <hr class="mb-30">
             <p class="mb-30">
                 La terapia cognitivo comportamentale rappresenta attualmente <strong>uno dei modelli per la comprensione e il trattamento dei disturbi psicopatologici ritenuti più efficaci</strong> a livello internazionale.
