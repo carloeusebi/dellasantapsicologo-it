@@ -1,4 +1,4 @@
-<div class="vh-100 container-fluid d-flex flex-column justify-content-center align-items-center">
+<div class="min-vh-100 container-fluid d-flex flex-column justify-content-center align-items-center">
 
     <?php if (!isset($_SESSION['login'])) : ?>
 
@@ -29,15 +29,32 @@
 
         <?php else : ?>
 
-            <h1>Benvenuto <?= $user['fname'] ?>, ci sono <?= count($surveys) ?> test per te:</h1>
-            <ul class="list-unstyled">
-                <?php foreach ($surveys as $survey) : ?>
-                    <li><?= $survey['title'] ?></li>
-                <?php endforeach ?>
-            </ul>
-            <form action="/test/logout" method="POST">
-                <button>logout</button>
-            </form>
+            <div class="container">
+
+
+                <section id="welcome">
+
+
+                    <h1>Benvenuto <?= $fname ?>, ci sono <?= count($surveys) ?> test per te:</h1>
+                    <ul class="list-unstyled">
+                        <?php foreach ($surveys as $survey) : ?>
+                            <li><?= $survey['title'] ?></li>
+                        <?php endforeach ?>
+                    </ul>
+                    <form action="/test/logout" method="POST">
+                        <button>logout</button>
+                    </form>
+                    <p class="my-3">Per favore controlla e completa i tuoi dati</p>
+                    <form id="welcome-form" action="" method="POST" class="row gy-2 my-3">
+                        <?php include __DIR__ . '/components/patient-form.php' ?>
+                        <div class="d-flex justify-content-end my-4">
+                            <input type="hidden" name="id" id="id" value="<?= $id ?>">
+                            <button type="submit" class="btn btn-success col-12 col-md-3">Continua</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+
         <?php endif ?>
         </div>
 

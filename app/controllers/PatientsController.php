@@ -37,21 +37,22 @@ class PatientsController extends AdminController
             }
 
             $patientSurveys = self::getSurveys($patientId);
-            $admin->addToParams('surveys', $patientSurveys);
-
-
-            $admin->addToParams('isFilled', true);
-
             $labels = App::$app->patient->labels();
-            $admin->addToParams('labels', $labels);
+
+
+
+            $admin->addToParams('surveys', $patientSurveys)
+                ->addToParams('labels', $labels)
+                ->addToParams('isFilled', true);
         } else {
             $admin->get();
+            self::refillForm($admin);
         }
 
-        self::refillForm($admin);
 
         $admin->renderPage();
     }
+
 
     public static function save()
     {
@@ -59,11 +60,13 @@ class PatientsController extends AdminController
         $admin->save();
     }
 
+
     public static function delete()
     {
         $admin = self::initController();
         $admin->delete();
     }
+
 
     public static function initController()
     {
@@ -91,6 +94,7 @@ class PatientsController extends AdminController
 
         return $patientSurveys;
     }
+
 
     private static function refillForm($admin)
     {

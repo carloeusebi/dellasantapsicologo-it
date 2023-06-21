@@ -58,12 +58,14 @@
     <input type="text" class="form-control" id="fiscalcode" name="fiscalcode" value="<?= $isFilled ? $fiscalcode : '' ?>">
 </div>
 <!-- CONSENT -->
-<div class="col-12">
-    <input type="hidden" name="MAX_FILE_SIZE" value="1048476">
-    <label for="consent" class="form-label">Firma per il consenso</label>
-    <input type="hidden" name="oldConsent" value="<?= $isFilled ? $consent : '' ?>">
-    <input type="file" class="form-control" id="consent" name="consent" accept="application/pdf">
-</div>
+<?php if (!isset($test)) : ?>
+    <div class="col-12">
+        <input type="hidden" name="MAX_FILE_SIZE" value="1048476">
+        <label for="consent" class="form-label">Firma per il consenso</label>
+        <input type="hidden" name="oldConsent" value="<?= $isFilled ? $consent : '' ?>">
+        <input type="file" class="form-control" id="consent" name="consent" accept="application/pdf">
+    </div>
+<?php endif ?>
 <!-- WEIGHT -->
 <div class="col-6 col-md-3 col-lg-2">
     <label for="weight" class="form-label">Peso in kg</label>

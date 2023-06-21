@@ -23,8 +23,14 @@ class TestsController extends Controller
         $admin = new self();
 
         if ($admin->isLogged()) {
-            $admin->addToParams('user', $_SESSION['user'])
-                ->addToParams('surveys', $_SESSION['surveys']);
+
+            $admin->addToParams('surveys', $_SESSION['surveys'])
+                ->addToParams('isFilled', true)
+                ->addToParams('test', true);
+
+            foreach ($_SESSION['user'] as $key => $value) {
+                $admin->addToParams($key, $value);
+            }
         }
 
         $admin->renderPage();
