@@ -66,7 +66,7 @@ h1 {
 }
 
 header.hero-secondary h1 {
-    font-family: sans-serif;
+    font-family: 'roboto', sans-serif;
     font-weight: 400;
     color: white;
     text-transform: uppercase;
@@ -228,6 +228,8 @@ main header {
     max-width: 100%;
     object-fit: cover;
     background-color: #b7b8b2;
+
+    object-position: 55% 0;
 }
 
 #hero h3 {
@@ -330,8 +332,6 @@ main header {
 
 #di-cosa-mi-occupo h4 {
     min-height: 66px;
-    display: flex;
-    align-items: center;
 }
 
 #di-cosa-mi-occupo p {
@@ -669,6 +669,10 @@ iframe.map {
 
     #hero .col-50:first-of-type p {
         font-size: 22px;
+    }
+
+    #hero img {
+        object-position: 0;
     }
 
     /* # DI COSA MI OCCUPO */
