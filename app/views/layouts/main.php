@@ -176,11 +176,10 @@
 
             <!-- # CONTATTI -->
             <div id="response-anchor"></div>
-            <?php if (isset($status)) : ?>
+            <?php if ($status) : ?>
                 <script>
                     document.getElementById('response-anchor').scrollIntoView(true);
                 </script>
-                <?php unset($status); ?>
             <?php endif ?>
 
             <section id="contatti">
