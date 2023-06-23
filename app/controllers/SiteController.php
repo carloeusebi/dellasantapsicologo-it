@@ -20,7 +20,16 @@ class SiteController extends Controller
 
         App::$app->router->setLayout(self::LAYOUT);
 
-        App::$app->router->renderView($page, ['pageTitle' => $pageTitle]);
+        $status = App::$app->session->getFlash('status');
+        $formRefill = App::$app->session->getFlash('formRefill');
+
+        $params = [
+            'pageTitle' => $pageTitle,
+            'status' => $status,
+            'formRefill' => $formRefill
+        ];
+
+        App::$app->router->renderView($page, $params);
     }
 
 
@@ -32,18 +41,26 @@ class SiteController extends Controller
 
             $mail = new Mailer;
 
-            $status = $mail->prepare();
+            $status = $mail->prepareFromForm();
 
             if (!$status) {
                 $status = $mail->send();
             }
         }
 
-        if (!$status) $status = 'success';
+        if (!$status) {
+            $status = 'success';
+            $mail->sendConfirmation();
+        }
 
         $formRefill = ($status !== 'success') ? $_POST : [];
 
-        App::$app->router->renderView($page, ['status' => $status, 'formRefill' => $formRefill]);
+        App::$app->session->setFlash('status', $status);
+        App::$app->session->setFlash('formRefill', $formRefill);
+
+
+
+        header("Location: $page");
     }
 
 

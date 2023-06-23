@@ -124,7 +124,7 @@
                             <div class="d-flex-lg flex-gap20">
 
                                 <div class="col-50 p-20-lg d-flex flex-column justify-space-between mb-20">
-                                    <input class="contact-info" type="text" name="name" id="name" placeholder="Nome" autocomplete="name" <?= (isset($formRefill['name'])) ? "value='{$formRefill['name']}'" : '' ?> equired>
+                                    <input class="contact-info" type="text" name="name" id="name" placeholder="Nome" autocomplete="name" <?= (isset($formRefill['name'])) ? "value='{$formRefill['name']}'" : '' ?> required>
 
                                     <input class="contact-info" type="tel" minlength="7" name="phone" id="phone" placeholder="Numero di Telefono" autocomplete="tel" <?= (isset($formRefill['phone'])) ? "value='{$formRefill['phone']}'" : '' ?> required>
 
@@ -155,10 +155,8 @@
                     </div>
                 </div>
 
-                <?php unset($formRefill); ?>
-
-                <?php if (isset($status)) : ?>
-                    <?php if ($status == 'success') : ?>
+                <?php if ($status) : ?>
+                    <?php if ($status === 'success') : ?>
                         <div class="response success mt-20">Email inviata correttamente
                             <i class="fa-solid fa-xmark fa-xl"></i>
                         </div>

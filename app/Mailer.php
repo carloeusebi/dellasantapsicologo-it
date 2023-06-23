@@ -10,6 +10,8 @@ class Mailer
 {
     private const EMAIL_FROM = "contactme@dellasantapsicologo.it";
     private const EMAIL_NAME = "Dr Federico Dellasanta";
+    private const CONFIRMATION_SUBJECT = "Grazie per avermi Contattato";
+    private const CONFIRMATION_BODY = " per avermi contatto, ho ricevuto la tua mail e ti contatter&ograve; al pi&ugrave; presto.";
 
     private $name;
     private $phone;
@@ -20,7 +22,7 @@ class Mailer
     private $body;
 
 
-    public function prepare()
+    public function prepareFromForm()
     {
         $this->name = htmlspecialchars($_POST['name']);
         $this->phone = htmlspecialchars($_POST['phone']);
@@ -38,6 +40,18 @@ class Mailer
         $validator = new Validator;
 
         return $validator->validateMail($this->emailFrom);
+    }
+
+
+    public function sendConfirmation()
+    {
+        $this->emailTo = $this->emailFrom;
+        $this->emailFrom = self::EMAIL_FROM;
+        $this->subject = self::CONFIRMATION_SUBJECT;
+        $this->body = "Grazie " . $this->name . self::CONFIRMATION_BODY;
+        $this->name = self::EMAIL_NAME;
+
+        $this->send();
     }
 
 
