@@ -1,3 +1,5 @@
+vendor
+composer.lock
 app/config/Config.php
 app/config/.htaccess
 public/log.txt
