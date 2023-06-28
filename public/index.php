@@ -31,8 +31,6 @@ $app->router->get('/admin/sondaggi/crea', [SurveysController::class, 'index']);
 
 $app->router->get('/admin/questionari', [QuestionsController::class, 'index']);
 
-$app->router->get('/test', [TestsController::class, 'index']);
-
 // GET
 //-----------------------------------------------------------------------------------------------------
 // POST
@@ -62,9 +60,15 @@ $app->router->post('/admin/questionari/create', [QuestionsController::class, 'sa
 $app->router->post('/admin/questionari/update', [QuestionsController::class, 'save']);
 $app->router->post('/admin/questionari/delete', [QuestionsController::class, 'delete']);
 
-$app->router->post('/test/login', [TestsController::class, 'login']);
-$app->router->post('/test/logout', [TestsController::class, 'logout']);
-$app->router->post('/test/update-patient', [TestsController::class, 'updatePatientInformation']);
+
+// API
+
+$app->router->post('/api/test/login', [TestsController::class, 'login']);
+$app->router->post('/api/test/logout', [TestsController::class, 'logout']);
+$app->router->post('/api/test/update-patient', [TestsController::class, 'update_patient_info']);
+$app->router->post('/api/test/update-survey', [TestsController::class, 'update_survey']);
+
+
 
 $app->run();
 

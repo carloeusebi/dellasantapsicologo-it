@@ -32,16 +32,14 @@ class TestsController extends Controller
                 $admin->addToParams($key, $value);
             }
         }
-
-        $admin->renderPage();
     }
 
 
     public static function login()
     {
-        $admin = new self();
+        $data = (array) json_decode(file_get_contents("php://input"));
 
-        $username = strtolower(trim($_POST['name'])) ?? null;
+        $username = isset($data['username']) ? strtolower(trim($data['username'])) : null;
 
         App::$app->connect();
 
@@ -67,20 +65,33 @@ class TestsController extends Controller
         }
 
         if (empty($userSurveys)) {
-            App::$app->session->setFlash('isInvalid', 'Username sbagliato, oppure non ci sono test da compilare per te');
+            http_response_code('401');
+
+            $response = [
+                "status" => "404",
+                "response" => "unauthorized"
+            ];
+
+            echo json_encode($response);
         } else {
             $_SESSION['login'] = $user['id'];
+            http_response_code('200');
+
+            $response = [
+                "status" => 200,
+                "user" => $user,
+                "surveys" => $userSurveys
+            ];
+
+            echo json_encode($response);
+
             $_SESSION['user'] = $user;
             $_SESSION['surveys'] = $userSurveys;
         }
-
-        header('Location: ' . self::VIEW);
-
-        $admin->renderPage();
     }
 
 
-    public static function updatePatientInformation()
+    public static function update_patient_info()
     {
         header('Content-Type: application/json');
 
@@ -103,6 +114,27 @@ class TestsController extends Controller
         }
     }
 
+    public static function update_survey()
+    {
+        header('Content-Type: application/json');
+
+        if (self::isLogged()) {
+
+            $data = (array) json_decode(file_get_contents("php://input"));
+
+            //todo
+
+        } else {
+            http_response_code('401');
+        }
+    }
+
+
+    public static function logout()
+    {
+        session_destroy();
+        http_response_code('204');
+    }
 
 
     private static function isLogged()
